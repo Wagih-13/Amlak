@@ -43,7 +43,6 @@
   /* /////////////////////////// */
 }
 
-
 a {
   text-decoration: none;
 }
@@ -738,5 +737,36 @@ footer .copyright {
   }
   footer .copyright {
     font-size: 12px;
+  }
+}
+@media (max-width: 767px) {
+  footer .footerContainer .footerSocialLinks > div {
+    flex-direction: column;
+    width: 100%;
+  }
+  footer
+    .footerContainer
+    .footerSocialLinks
+    > div:nth-child(1)
+    > div:nth-child(1),
+  footer
+    .footerContainer
+    .footerSocialLinks
+    > div:nth-child(2)
+    > div:nth-child(1) {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+  }
+  footer
+    .footerContainer
+    .footerSocialLinks
+    > div:nth-child(1)
+    > div:nth-child(2),
+  footer
+    .footerContainer
+    .footerSocialLinks
+    > div:nth-child(2)
+    > div:nth-child(2) {
+    align-self: flex-start;
   }
 }
