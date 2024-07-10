@@ -1,0 +1,128 @@
+.wrapper {
+  width: 100%;
+  position: relative !important;
+}
+
+.select-btn,
+li {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.select-btn {
+  padding: 8px 20px;
+  font-size: 22px;
+  background: transparent;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  justify-content: space-between;
+  border: 1px solid white;
+  position: relative !important;
+  width: 100%;
+}
+
+.select-btn i {
+  font-size: 18px;
+  transition: transform 0.3s linear;
+  color: white;
+}
+.select-btn > span {
+  font-size: 16px;
+  color: rgb(170, 170, 170);
+}
+
+.wrapper.active .select-btn i {
+  transform: rotate(-180deg);
+}
+.content {
+  position: absolute;
+  left: 0px;
+  top: 110%;
+  width: 100%;
+  display: none;
+  padding: 15px;
+  margin-top: 15px;
+  background: var(--second-section-color);
+  border-radius: 7px;
+  border: 1px solid white;
+  z-index: 99;
+}
+
+.wrapper.active .content {
+  display: block;
+}
+.content .search {
+  position: relative;
+}
+.search i {
+  top: 50%;
+  left: 15px;
+  color: #999;
+  font-size: 20px;
+  pointer-events: none;
+  transform: translateY(-50%);
+  position: absolute;
+}
+.search input {
+  width: 100%;
+  outline: none;
+  font-size: 17px;
+  border-radius: 5px;
+  padding: 10px 20px;
+  border: 1px solid #b3b3b3;
+}
+
+.search input::placeholder {
+  color: #bfbfbf;
+}
+.content {
+  display: none;
+}
+.content .options {
+  margin-top: 10px;
+  max-height: 250px;
+  overflow-y: auto;
+  padding-right: 7px;
+}
+
+.options::-webkit-scrollbar {
+  width: 3px;
+}
+
+.options::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 25px;
+}
+
+.options::-webkit-scrollbar-thumb {
+  background: #a5a5a5;
+  border-radius: 25px;
+}
+
+.options::-webkit-scrollbar-thumb:hover {
+  background: #b3b3b3;
+}
+.options li {
+  padding: 10px;
+  font-size: 18px;
+  margin: 0px 5px;
+  color: white;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+}
+
+.options > p {
+  color: white;
+}
+
+.options li:hover,
+li.selected {
+  border-radius: 5px;
+  background: #00000042;
+}

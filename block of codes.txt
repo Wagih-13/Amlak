@@ -1,0 +1,116 @@
+// const specialUnitsSlider = document.querySelector(".specialUnitsSlider");
+// let container = "";
+// const slide = `<div class="slide" onclick="alert('done')">
+//           <div class="card">
+//             <div class="favoriteIcon">
+//               <i class="fa-regular fa-heart"></i>
+//             </div>
+//             <img
+//               src="./images/2.jpg"
+//               alt=""
+//             />
+//             <div class="info">
+//               <div class="rateAndOffer">
+//                 <span>
+//                   <span class="icons">
+//                     <i class="fa-solid fa-star"></i>
+//                     <i class="fa-solid fa-star"></i>
+//                     <i class="fa-solid fa-star"></i>
+//                     <i class="fa-solid fa-star"></i>
+//                     <i class="fa-regular fa-star"></i>
+//                   </span>
+//                   4.5
+//                 </span>
+//                 <span>خصم 50%</span>
+//               </div>
+//               <div class="specialUnitsStatistics">
+//                 <span>32 <i class="fa-solid fa-house"></i></span>
+//                 <span>53 <i class="fa-solid fa-couch"></i></span>
+//               </div>
+//               <p>
+//                 استمتع بالراحة والفخامة على شواطئ درة العروس - حجوزات منازل
+//                 عطلاتك المثالية
+//               </p>
+//               <span class="price">سعر الوحدة 100$</span>
+//             </div>
+//           </div>
+//         </div>`;
+
+// for (let i = 0; i < 15; i++) {
+//   container += slide;
+// }
+
+// const data = `
+//   <div class="slideContainer ">
+//           ${container}
+//         </div>
+//   `;
+
+// specialUnitsSlider.innerHTML = data;
+// const slideContainer = document.querySelectorAll(".slideContainer");
+// const copyOfElemnts = document.querySelector(".slideContainer").cloneNode(true);
+// specialUnitsSlider.appendChild(copyOfElemnts);
+// const numberOfElements = document.querySelectorAll(".slide").length;
+// specialUnitsSlider.style.cssText = `width: ${numberOfElements * 400}px;`;
+// const slideContainer2 = document.querySelectorAll(".slideContainer");
+// if (localStorage.getItem("lang") === "ltr") {
+//   slideContainer2.forEach((slider) => slider.classList.add("leftDir"));
+//   slideContainer2.forEach((slider) => slider.classList.remove("rightDir"));
+// } else {
+//   slideContainer2.forEach((slider) => slider.classList.add("rightDir"));
+//   slideContainer2.forEach((slider) => slider.classList.remove("leftDir"));
+// }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+const offerSlider = document.querySelectorAll(".offerSlider .slider");
+
+// let blockOfCode = "";
+// const offerSlide = `
+//   <div class="slide" onclick="alert('done')">
+//     <div class="imageBox">
+//     <img src="./images/3.jpg" alt="" />
+//     </div>
+//   </div>
+//   `;
+
+// for (let i = 0; i < 10; i++) {
+//   blockOfCode += offerSlide;
+// }
+
+// const offerData = `
+//   <div class="slideContainer ">
+//           ${blockOfCode}
+//         </div>
+//   `;
+
+// offerSlider[0].innerHTML = offerData;
+// offerSlider[1].innerHTML = offerData;
+// offerSlider[2].innerHTML = offerData;
+
+// const offerSlideContainer = document.querySelectorAll(
+//   ".offerSlider .slider .slideContainer"
+// );
+// const sliders_1 = offerSlideContainer[0].cloneNode(true);
+// const sliders_2 = offerSlideContainer[1].cloneNode(true);
+// const sliders_3 = offerSlideContainer[2].cloneNode(true);
+// offerSlider[0].appendChild(sliders_1);
+// offerSlider[1].appendChild(sliders_2);
+// offerSlider[2].appendChild(sliders_3);
+
+// const numberOfSlilders_1 = document.querySelectorAll(
+//   ".offerSlider .slider:nth-child(1) .slideContainer .slide"
+// ).length;
+
+// const numberOfSlilders_2 = document.querySelectorAll(
+//   ".offerSlider .slider:nth-child(2) .slideContainer .slide"
+// ).length;
+
+// const numberOfSlilders_3 = document.querySelectorAll(
+//   ".offerSlider .slider:nth-child(3) .slideContainer .slide"
+// ).length;
+
+// offerSlider[0].style.cssText = `height: ${numberOfSlilders_1 * 240}px;`;
+// offerSlider[1].style.cssText = `height: ${numberOfSlilders_2 * 240}px;`;
+// offerSlider[2].style.cssText = `height: ${numberOfSlilders_3 * 240}px;`;

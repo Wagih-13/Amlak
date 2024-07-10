@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <link rel="icon" href="./images/amlak.ico" />
+
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <link rel="stylesheet" href="./css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@latest/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="./css/calender.css" />
+    <link rel="stylesheet" href="./css/freamWork.css" />
+    <link rel="stylesheet" href="globalStyle.css" />
+    <link rel="stylesheet" href="./css/fillterUnit.css" />
+    <link rel="stylesheet" href="./css/indexStlye.css" />
+
+    <title>Amlak-Elshatea</title>
+  </head>
+
+  <body dir="">
+    <div class="imageSlider">
+      <div class="buttonLay">
+        <button class="mainButton gold-color">احجز الان</button>
+        <div class="searchContainer">
+          <div class="searchUnit">
+            <form class="filterUnitForm">
+              <div class="inputContainer">
+                <label for="">نوع البيوت العطلات</label>
+                <input type="text" class="valueInput" id="" />
+                <div class="wrapper">
+                  <div class="select-btn">
+                    <span> نوع البيوت العطلات </span>
+                    <i class="fa-solid fa-angle-down"></i>
+                  </div>
+                  <div class="content">
+                    <div class="search">
+                      <input
+                        spellcheck="false"
+                        type="text"
+                        placeholder="Search"
+                      />
+                    </div>
+                    <ul class="options"></ul>
+                  </div>
+                </div>
+              </div>
+              <div class="inputContainer">
+                <label for="">أختر المدينة</label>
+                <input type="text" class="valueInput" id="" />
+                <div class="wrapper">
+                  <div class="select-btn">
+                    <span>اختر الحي </span>
+                    <i class="fa-solid fa-angle-down"></i>
+                  </div>
+                  <div class="content">
+                    <div class="search">
+                      <input
+                        spellcheck="false"
+                        type="text"
+                        placeholder="Search"
+                      />
+                    </div>
+                    <ul class="options"></ul>
+                  </div>
+                </div>
+              </div>
+              <div class="inputContainer">
+                <label for="">أختر الحي</label>
+                <input type="text" class="valueInput" id="" />
+                <div class="wrapper">
+                  <div class="select-btn">
+                    <span>اختر الحي </span>
+                    <i class="fa-solid fa-angle-down"></i>
+                  </div>
+                  <div class="content">
+                    <div class="search">
+                      <input
+                        spellcheck="false"
+                        type="text"
+                        placeholder="Search"
+                      />
+                    </div>
+                    <ul class="options"></ul>
+                  </div>
+                </div>
+              </div>
+              <div class="inputContainer">
+                <label for="">اختار التاريخ</label>
+                <div class="dropDownBox">
+                  <input
+                    type="text"
+                    name="daterange"
+                    disabled
+                    value=""
+                    placeholder="اختار التاريخ"
+                  />
+                  <i class="fa-solid fa-angle-down"></i>
+                </div>
+                <div class="dateDropDown">
+                  <div class="calender">
+                    <div class="month">
+                      <i
+                        class="fa fa-angle-right next"
+                        style="color: black"
+                      ></i>
+                      <div class="date">
+                        <h1 style="color: black"></h1>
+                        <!-- month -->
+                        <p style="color: black"></p>
+                        <!--Fri May 29,2020-->
+                      </div>
+                      <i class="fa fa-angle-left prev" style="color: black"></i>
+                    </div>
+                    <div class="weekdays">
+                      <div>Sun</div>
+                      <div>Mon</div>
+                      <div>Tue</div>
+                      <div>wed</div>
+                      <div>thu</div>
+                      <div>Fri</div>
+                      <div>sat</div>
+                    </div>
+
+                    <div class="days"></div>
+                  </div>
+                  <div class="close-icon mt-0 mb-3 bg-success">
+                    <span>أعادة تعين التاريخ</span>
+                  </div>
+                </div>
+              </div>
+              <button class="searchButton">بحث</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="swiper Slider-container">
+        <div class="swiper-wrapper" id="swip">
+          <div class="swiper-slide">
+            <div class="overLay">
+              <p>
+                استمتع بالراحة والفخامة على شواطئ درة العروس - حجوزات منازل
+                عطلاتك المثالية
+              </p>
+            </div>
+            <img src="./images/1.jpg" alt="" />
+          </div>
+          <div class="swiper-slide">
+            <div class="overLay">
+              <p>
+                استمتع بالراحة والفخامة على شواطئ درة العروس - حجوزات منازل
+                عطلاتك المثالية
+              </p>
+            </div>
+
+            <img src="./images/2.jpg" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="unitSearchOutput">
+      <div class="filterContainer">
+        <div class="filterBoxContainer">
+          <div class="filterBox">
+            <div class="outputFilterHeader">
+              <h1>تصفية النتائج</h1>
+              <i class="fa-solid fa-x" onclick="handelClosefilterBox()"></i>
+            </div>
+            <form class="outputFilterForm">
+              <div class="priceSection">
+                <h2>السعر</h2>
+                <div class="rangeInputContainer">
+                  <div class="slider">
+                    <div class="progress"></div>
+                  </div>
+                  <div class="range-input">
+                    <input
+                      type="range"
+                      class="range-min"
+                      min="0"
+                      max="10000"
+                      value="2500"
+                      step="100"
+                    />
+                    <input
+                      type="range"
+                      class="range-max"
+                      min="0"
+                      max="10000"
+                      value="7500"
+                      step="100"
+                    />
+                  </div>
+                </div>
+                <div class="price-input">
+                  <div class="field">
+                    <span>الحد الادنى</span>
+                    <input type="number" class="input-max" value="7500" />
+                  </div>
+                  <div class="field">
+                    <span>الحد الاقصى</span>
+                    <input type="number" class="input-min" value="2500" />
+                  </div>
+                </div>
+              </div>
+              <div class="advancedSearchSection">
+                <h2>بحث متقدم</h2>
+                <div class="advancedSerchForm">
+                  <div class="inputContainer">
+                    <label for="">ابحث باسم الوحدة</label>
+                    <input type="text" class="valueInput" id="" />
+                    <div class="wrapper">
+                      <div class="select-btn">
+                        <span> مثال: شاليه في الرياض</span>
+                        <i class="fa-solid fa-angle-down"></i>
+                      </div>
+                      <div class="content">
+                        <div class="search">
+                          <input
+                            spellcheck="false"
+                            type="text"
+                            placeholder="Search"
+                          />
+                        </div>
+                        <ul class="options"></ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="inputContainer">
+                    <label for="">ابحث بكود الوحدة</label>
+                    <input type="text" class="valueInput" id="" />
+                    <div class="wrapper">
+                      <div class="select-btn">
+                        <span> مثال : Bh12 </span>
+                        <i class="fa-solid fa-angle-down"></i>
+                      </div>
+                      <div class="content">
+                        <div class="search">
+                          <input
+                            spellcheck="false"
+                            type="text"
+                            placeholder="Search"
+                          />
+                        </div>
+                        <ul class="options"></ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="inputContainer">
+                    <label for="">ابحث بعنوان الوحداة</label>
+                    <input type="text" class="valueInput" id="" />
+                    <div class="wrapper">
+                      <div class="select-btn">
+                        <span> مثال : الرياض - جدة </span>
+                        <i class="fa-solid fa-angle-down"></i>
+                      </div>
+                      <div class="content">
+                        <div class="search">
+                          <input
+                            spellcheck="false"
+                            type="text"
+                            placeholder="Search"
+                          />
+                        </div>
+                        <ul class="options"></ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="capacitySection">
+                <h2>السعة</h2>
+                <div class="capacityForm">
+                  <div class="inputContainer">
+                    <input type="radio" name="capacity" checked id="" />
+                    <label for="">0 + الكل </label>
+                  </div>
+                  <div class="inputContainer">
+                    <input type="radio" name="capacity" id="" />
+                    <label for="">0-5 اشخاص</label>
+                  </div>
+                  <div class="inputContainer">
+                    <input type="radio" name="capacity" id="" />
+                    <label for="">5-10 اشخاص</label>
+                  </div>
+                  <div class="inputContainer">
+                    <input type="radio" name="capacity" id="" />
+                    <label for="">10-20 اشخاص</label>
+                  </div>
+                  <div class="inputContainer">
+                    <input type="radio" name="capacity" id="" />
+                    <label for="">20-30 اشخاص</label>
+                  </div>
+                  <div class="inputContainer">
+                    <input type="radio" name="capacity" id="" />
+                    <label for="">30-40 اشخاص</label>
+                  </div>
+                </div>
+              </div>
+              <div class="numberOfVehiclesSection">
+                <h2>عدد السيارات المسموح</h2>
+                <div class="numberOfVehiclesForm">
+                  <div class="inputContainer">
+                    <input type="radio" name="numberOfVehicles" checked id="" />
+                    <label for="">0 + الكل </label>
+                  </div>
+                  <div class="inputContainer">
+                    <input type="radio" name="numberOfVehicles" id="" />
+                    <label for="">0-5 اشخاص</label>
+                  </div>
+                  <div class="inputContainer">
+                    <input type="radio" name="numberOfVehicles" id="" />
+                    <label for="">5-10 اشخاص</label>
+                  </div>
+                  <div class="inputContainer">
+                    <input type="radio" name="numberOfVehicles" id="" />
+                    <label for="">10-20 اشخاص</label>
+                  </div>
+                  <div class="inputContainer">
+                    <input type="radio" name="numberOfVehicles" id="" />
+                    <label for="">20-30 اشخاص</label>
+                  </div>
+                  <div class="inputContainer">
+                    <input type="radio" name="numberOfVehicles" id="" />
+                    <label for="">30-40 اشخاص</label>
+                  </div>
+                </div>
+              </div>
+              <div class="displayButton">
+                <button>عرض النتائج</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="orderContainer">
+        <div class="orderBoxContainer">
+          <div class="orderBox">
+            <div class="outputOrderHeader">
+              <h1>ترتيب النتائج</h1>
+              <i class="fa-solid fa-x" onclick="handelCloseOrderBox()"></i>
+            </div>
+            <form class="outputOrderForm">
+              <div class="inputContainer">
+                <span>الترتيب الافتراضي</span>
+                <input type="radio" checked name="order" id="" />
+              </div>
+              <div class="inputContainer">
+                <span>وحداتي المفضلة اولا</span>
+                <input type="radio" name="order" id="" />
+              </div>
+              <div class="inputContainer">
+                <span>الاعلي تقيما اولا</span>
+                <input type="radio" name="order" id="" />
+              </div>
+              <div class="inputContainer">
+                <span>الاعلي سعرا اولا</span>
+                <input type="radio" name="order" id="" />
+              </div>
+              <div class="inputContainer">
+                <span>الاقل سعرا اولا</span>
+                <input type="radio" name="order" id="" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="close">
+          <i class="fa-solid fa-x" onclick="handelCloseUnitSearchOutput()"></i>
+        </div>
+        <header class="searchOutputHeader">
+          <div class="filterBox">
+            <div class="filter" onclick="handelOpenFilterBox()">
+              تصفية <i class="fa-solid fa-filter"></i>
+            </div>
+            <div class="order" onclick="handelOpenOrderBox()">
+              ترتيب <i class="fa-solid fa-arrow-down-wide-short"></i>
+            </div>
+          </div>
+          <button class="mapBox">
+            show on map <i class="fa-solid fa-location-dot"></i>
+          </button>
+        </header>
+        <section class="cardsContainer">
+          <div class="card">
+            <div class="favoriteIcon">
+              <i class="fa-regular fa-heart"></i>
+            </div>
+            <img src="./images/1.jpg" alt="" />
+            <div class="info">
+              <div class="rateAndOffer">
+                <span>
+                  <span class="icons">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </span>
+                  4.5
+                </span>
+                <span>خصم 50%</span>
+              </div>
+              <div class="specialUnitsStatistics">
+                <span>32 <i class="fa-solid fa-house"></i></span>
+                <span>53 <i class="fa-solid fa-couch"></i></span>
+                <span>83 <i class="fa-solid fa-couch"></i></span>
+              </div>
+              <p>Bt120</p>
+              <span class="price">سعر الوحدة 738$</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="favoriteIcon">
+              <i class="fa-regular fa-heart"></i>
+            </div>
+            <img src="./images/1.jpg" alt="" />
+            <div class="info">
+              <div class="rateAndOffer">
+                <span>
+                  <span class="icons">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </span>
+                  4.5
+                </span>
+                <span>خصم 50%</span>
+              </div>
+              <div class="specialUnitsStatistics">
+                <span>32 <i class="fa-solid fa-house"></i></span>
+                <span>53 <i class="fa-solid fa-couch"></i></span>
+                <span>83 <i class="fa-solid fa-couch"></i></span>
+              </div>
+              <p>Bt120</p>
+              <span class="price">سعر الوحدة 738$</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="favoriteIcon">
+              <i class="fa-regular fa-heart"></i>
+            </div>
+            <img src="./images/1.jpg" alt="" />
+            <div class="info">
+              <div class="rateAndOffer">
+                <span>
+                  <span class="icons">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </span>
+                  4.5
+                </span>
+                <span>خصم 50%</span>
+              </div>
+              <div class="specialUnitsStatistics">
+                <span>32 <i class="fa-solid fa-house"></i></span>
+                <span>53 <i class="fa-solid fa-couch"></i></span>
+                <span>83 <i class="fa-solid fa-couch"></i></span>
+              </div>
+              <p>Bt120</p>
+              <span class="price">سعر الوحدة 738$</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="favoriteIcon">
+              <i class="fa-regular fa-heart"></i>
+            </div>
+            <img src="./images/1.jpg" alt="" />
+            <div class="info">
+              <div class="rateAndOffer">
+                <span>
+                  <span class="icons">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </span>
+                  4.5
+                </span>
+                <span>خصم 50%</span>
+              </div>
+              <div class="specialUnitsStatistics">
+                <span>32 <i class="fa-solid fa-house"></i></span>
+                <span>53 <i class="fa-solid fa-couch"></i></span>
+                <span>83 <i class="fa-solid fa-couch"></i></span>
+              </div>
+              <p>Bt120</p>
+              <span class="price">سعر الوحدة 738$</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="favoriteIcon">
+              <i class="fa-regular fa-heart"></i>
+            </div>
+            <img src="./images/1.jpg" alt="" />
+            <div class="info">
+              <div class="rateAndOffer">
+                <span>
+                  <span class="icons">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </span>
+                  4.5
+                </span>
+                <span>خصم 50%</span>
+              </div>
+              <div class="specialUnitsStatistics">
+                <span>32 <i class="fa-solid fa-house"></i></span>
+                <span>53 <i class="fa-solid fa-couch"></i></span>
+                <span>83 <i class="fa-solid fa-couch"></i></span>
+              </div>
+              <p>Bt120</p>
+              <span class="price">سعر الوحدة 738$</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="favoriteIcon">
+              <i class="fa-regular fa-heart"></i>
+            </div>
+            <img src="./images/1.jpg" alt="" />
+            <div class="info">
+              <div class="rateAndOffer">
+                <span>
+                  <span class="icons">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </span>
+                  4.5
+                </span>
+                <span>خصم 50%</span>
+              </div>
+              <div class="specialUnitsStatistics">
+                <span>32 <i class="fa-solid fa-house"></i></span>
+                <span>53 <i class="fa-solid fa-couch"></i></span>
+                <span>83 <i class="fa-solid fa-couch"></i></span>
+              </div>
+              <p>Bt120</p>
+              <span class="price">سعر الوحدة 738$</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="favoriteIcon">
+              <i class="fa-regular fa-heart"></i>
+            </div>
+            <img src="./images/1.jpg" alt="" />
+            <div class="info">
+              <div class="rateAndOffer">
+                <span>
+                  <span class="icons">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </span>
+                  4.5
+                </span>
+                <span>خصم 50%</span>
+              </div>
+              <div class="specialUnitsStatistics">
+                <span>32 <i class="fa-solid fa-house"></i></span>
+                <span>53 <i class="fa-solid fa-couch"></i></span>
+                <span>83 <i class="fa-solid fa-couch"></i></span>
+              </div>
+              <p>Bt120</p>
+              <span class="price">سعر الوحدة 738$</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="favoriteIcon">
+              <i class="fa-regular fa-heart"></i>
+            </div>
+            <img src="./images/1.jpg" alt="" />
+            <div class="info">
+              <div class="rateAndOffer">
+                <span>
+                  <span class="icons">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </span>
+                  4.5
+                </span>
+                <span>خصم 50%</span>
+              </div>
+              <div class="specialUnitsStatistics">
+                <span>32 <i class="fa-solid fa-house"></i></span>
+                <span>53 <i class="fa-solid fa-couch"></i></span>
+                <span>83 <i class="fa-solid fa-couch"></i></span>
+              </div>
+              <p>Bt120</p>
+              <span class="price">سعر الوحدة 738$</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="favoriteIcon">
+              <i class="fa-regular fa-heart"></i>
+            </div>
+            <img src="./images/1.jpg" alt="" />
+            <div class="info">
+              <div class="rateAndOffer">
+                <span>
+                  <span class="icons">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </span>
+                  4.5
+                </span>
+                <span>خصم 50%</span>
+              </div>
+              <div class="specialUnitsStatistics">
+                <span>32 <i class="fa-solid fa-house"></i></span>
+                <span>53 <i class="fa-solid fa-couch"></i></span>
+                <span>83 <i class="fa-solid fa-couch"></i></span>
+              </div>
+              <p>Bt120</p>
+              <span class="price">سعر الوحدة 738$</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="favoriteIcon">
+              <i class="fa-regular fa-heart"></i>
+            </div>
+            <img src="./images/1.jpg" alt="" />
+            <div class="info">
+              <div class="rateAndOffer">
+                <span>
+                  <span class="icons">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </span>
+                  4.5
+                </span>
+                <span>خصم 50%</span>
+              </div>
+              <div class="specialUnitsStatistics">
+                <span>32 <i class="fa-solid fa-house"></i></span>
+                <span>53 <i class="fa-solid fa-couch"></i></span>
+                <span>83 <i class="fa-solid fa-couch"></i></span>
+              </div>
+              <p>Bt120</p>
+              <span class="price">سعر الوحدة 738$</span>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <div class="specialUnits">
+      <h1>وحدات مميزة</h1>
+      <div class="specialUnitsSlider"></div>
+    </div>
+    <div class="offers">
+      <div class="container">
+        <div class="offerInfo">
+          <h1>عروض</h1>
+          <h2>عروض اللحظة الاخيرة</h2>
+          <p>
+            من الجَمْعة الدافئة مع الأهل، إلى صحبة الأصدقاء الحلوة، استمتعوا
+            بالعروض والخصومات التي تصل الى 50%، عروض رائعة و مستمرة على
+            الشاليهات والمخيمات والمزارع والفلل والشقق.
+          </p>
+          <button class="offerButton">
+            <span> احجز لان </span> <i class="fa-solid fa-arrow-left-long"></i>
+          </button>
+        </div>
+        <div class="offerSlider">
+          <div class="slider"></div>
+          <div class="slider"></div>
+          <div class="slider"></div>
+        </div>
+      </div>
+    </div>
+    <div class="whoAreWe">
+      <div class="container">
+        <div class="whoAreWeInfo">
+          <h1>من نحن</h1>
+          <p>
+            أملاك الشاطئ هي منصة حجوزات عقارية رائدة في جدة، تقدم مجموعة واسعة
+            من الخيارات السياحية مثل الفلل والشاليهات المصممة بأناقة وتمتاز
+            بإطلالات بحرية رائعة. توفر الخدمات بأسعار تنافسية مع دعم عملاء على
+            مدار الساعة، مما يجعل تجربة الحجز سهلة وممتعة. الجودة والأمان هما
+            ركيزتان أساسيتان، مع دفع مريح وخيارات تأمين لتلبية احتياجات العملاء.
+          </p>
+        </div>
+        <div class="whoAreWeSlider">
+          <div class="swiper Slider-container">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img src="./images/6.jpg" alt="" />
+              </div>
+              <div class="swiper-slide">
+                <img src="./images/6.jpg" alt="" />
+              </div>
+              <div class="swiper-slide">
+                <img src="./images/6.jpg" alt="" />
+              </div>
+              <div class="swiper-slide">
+                <img src="./images/6.jpg" alt="" />
+              </div>
+              <div class="swiper-slide">
+                <img src="./images/6.jpg" alt="" />
+              </div>
+              <div class="swiper-slide">
+                <img src="./images/6.jpg" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="statistics">
+      <h1>الإحصائيات</h1>
+      <div class="container">
+        <div class="staitsticBox">
+          <i class="fa-solid fa-user"></i>
+          <span>343</span>
+          <p>عدد الوحدات المتاحة</p>
+        </div>
+        <div class="staitsticBox">
+          <i class="fa-solid fa-user"></i>
+          <span>232</span>
+          <p>عدد الحجوزات</p>
+        </div>
+        <div class="staitsticBox">
+          <i class="fa-solid fa-user"></i>
+          <span>232</span>
+          <p>عدد الوحدات</p>
+        </div>
+        <div class="staitsticBox">
+          <i class="fa-solid fa-user"></i>
+          <span>234</span>
+          <p>عدد الزوار</p>
+        </div>
+      </div>
+    </div>
+    <div class="ourServices">
+      <h1>خدماتنا</h1>
+      <div class="container">
+        <div class="ourServicesBox">
+          <i class="fa-solid fa-shield-heart"></i>
+          <span>ادارة المرافق </span>
+          <p>
+            نستعين بخبراء لديهم من المعرفة و الخبرة في مجال ادارة المرافق و
+            صيانتها
+          </p>
+        </div>
+        <div class="ourServicesBox">
+          <i class="fa-solid fa-house"></i>
+          <span>ادارة الاملاك </span>
+          <p>
+            نضمن لك السلاسة و الاحترافية في ادارة الاصول العقارية من خلال القيام
+            بجميع الوظائف المطلوبة كاعداد العقود و صيانة العقار
+          </p>
+        </div>
+        <div class="ourServicesBox">
+          <i class="fa-solid fa-clock"></i>
+          <span>التطوير العقاري </span>
+          <p>
+            نسعى الى تقديم خدمة تطوير العقارات بطريقة مميزة و مبتكرة من خلال
+            مجموعة من المستشاريين العقاريين
+          </p>
+        </div>
+        <div class="ourServicesBox">
+          <i class="fa-solid fa-user-gear"></i>
+          <span>التسويق العقاري </span>
+          <p>
+            نقدم خدمة التسويق العقاري لتلبية احتياج العميل في بيع و تسويق
+            عقاراتهم باسعار تنافسية للوصول بكل سهولة الى العميل المحتمل
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./js/calender.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@latest/swiper-bundle.min.js"></script>
+    <script src="./globalScript.js"></script>
+    <script src="./js/indexScript.js"></script>
+  </body>
+</html>

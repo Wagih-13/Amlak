@@ -1,0 +1,41 @@
+:root {
+  --main-color: #a99571;
+  --main-dark: #493954;
+  --white-color: #fff;
+  --white2-color: #f5f5f5;
+  --primary-color: #a6a6a6;
+  --black-color: #000;
+  --dark-90: #18131c;
+  --dark-80: #251d2a;
+  --dark-70: #312638;
+  --dark-60: #675a70;
+  --dark-20: #c2bdc6;
+  --dark-10: #dbd7dd;
+  --white-dark: #f3f3f3;
+  --padding: 8rem;
+}
+
+.gold-color {
+  background-color: var(--main-color);
+  border: 2px solid var(--main-color);
+}
+.transparent-color {
+  background-color: transparent;
+  border: 2px solid var(--main-color);
+}
+
+.gold-color:hover {
+  transform: translateY(-5px) scale(0.9);
+  -webkit-transform: translateY(-5px) scale(0.9);
+  -moz-transform: translateY(-5px) scale(0.9);
+  -ms-transform: translateY(-5px) scale(0.9);
+  -o-transform: translateY(-5px) scale(0.9);
+}
+.transparent-color:hover {
+  background-color: var(--main-color);
+  transform: translateY(-5px) scale(0.9);
+  -webkit-transform: translateY(-5px) scale(0.9);
+  -moz-transform: translateY(-5px) scale(0.9);
+  -ms-transform: translateY(-5px) scale(0.9);
+  -o-transform: translateY(-5px) scale(0.9);
+}

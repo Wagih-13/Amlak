@@ -1,0 +1,199 @@
+.calender {
+  background: #18131c;
+  min-height: 400px;
+  border-radius: 15px;
+  padding: 10px;
+  opacity: 1;
+}
+
+.calender .month {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  align-items: center;
+  background: var(--main-color);
+  color: #fff;
+  border-radius: 10px 10px 0 0;
+  text-align: center;
+}
+
+.calender .month i {
+  cursor: pointer;
+  font-size: var(--Xlarg-font-size);
+  font-weight: 600;
+}
+
+.calender .month i.prev {
+  cursor: no-drop;
+}
+
+.calender .month .date h1 {
+  text-align: center;
+  font-size: var(--Xlarg-font-size);
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 15px;
+}
+
+.calender .month .date p {
+  font-size: 14px;
+}
+
+.calender .weekdays {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 50px;
+  gap: 2px;
+  color: white;
+  font-size: var(--main-font-size);
+}
+
+.calender .weekdays > div {
+  width: calc(100% / 7 - 2px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calender .days {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+}
+
+.calender .days > div {
+  width: calc(100% / 7 - 2px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  font-size: 16px;
+  margin-bottom: 2px;
+  transition: 0.5s;
+  border-radius: 8px;
+  padding: 10px;
+  color: white;
+  background-color: #633e79;
+}
+
+.calender .days > div.today {
+  background: #fff;
+  color: black;
+  font-size: 18px;
+  border: 1px solid gray;
+}
+
+.calender .days > div.reserved-day {
+  background: #ffbbbb;
+  opacity: 0.3;
+}
+
+.calender .days > div.arrived-selected {
+  background: rgb(158 208 217);
+  color: #fff;
+}
+
+.calender .days > div.leaved-selected {
+  background: rgb(4 110 129 / 31%);
+  color: #fff;
+}
+
+.calender .days > div.day-selected {
+  background: rgb(4 110 129 / 31%);
+  color: #fff;
+}
+
+.calender .days > div.before-today,
+.calender .days > div.cancel {
+  text-decoration: line-through;
+}
+
+.calender
+  .days
+  > div.day:hover:not(
+    .reserved-day,
+    .cancel,
+    .before-today,
+    .day-selected,
+    .leaved-selected,
+    .arrived-selected
+  ) {
+  background: #dad9d9;
+  border: 1px solid #eee;
+}
+
+.prev-date,
+.next-date {
+  opacity: 0.3;
+  text-decoration: line-through;
+}
+
+.selected-reserve-dates {
+  display: flex;
+  max-width: 500px;
+  width: 100%;
+  direction: rtl;
+  background: #fff;
+  padding: 7px 15px 7px;
+  position: relative;
+  justify-content: center;
+  border: 1px solid #e1e1e1;
+  border-radius: 15px;
+  cursor: pointer;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.selected-reserve-dates > div:not(.close-icon) {
+  max-width: 200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.selected-reserve-dates > div .title {
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+.selected-reserve-dates > div .date {
+  text-align: right;
+  font-weight: 600;
+}
+
+.close-icon {
+  background: var(--main-color);
+  color: #fff;
+  padding: 6px 15px;
+  border-radius: 7px;
+  margin-top: 15px;
+  cursor: pointer;
+  font-size: 18px;
+  display: none;
+}
+
+.close-icon.show {
+  display: block;
+}
+
+.month img {
+  width: 40px;
+  cursor: pointer;
+}
+
+.month img.prev {
+  transform: rotate(180deg);
+}
+@media (max-width: 991px) {
+  .calender {
+    min-height: 360px;
+  }
+}
+@media (max-width: 767px) {
+  .calender {
+    min-height: 330px;
+  }
+}
