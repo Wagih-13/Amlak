@@ -24,7 +24,7 @@ const specialUnitsSlider = document.querySelector(".specialUnitsSlider");
 
 function createSlide(imageUrl, rating, discountText, description, price) {
   return `
-    <div class="slide" onclick="alert('done')">
+    <div class="slide" >
       <div class="card">
         <div class="favoriteIcon">
           <i class="fa-regular fa-heart"></i>
@@ -107,7 +107,7 @@ const offerSlider = document.querySelectorAll(".offerSlider .slider");
 let verticalSlidesContainer = [];
 const createVerticalSlider = (imageUrl, i) => {
   return `
-  <div class="slide" onclick="alert('done')">
+  <div class="slide" >
     <div class="imageBox">
     <span class="offerLable">50%</span>
     <img src="${imageUrl}" alt="" />
