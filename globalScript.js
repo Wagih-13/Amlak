@@ -10,10 +10,10 @@ const navBar = `
         </div>
         <div class="links">
           <ul>
-            <li><a href="./about.html"> وحدات مميزة </a></li>
-            <li><a href=""> العروض </a></li>
-            <li><a href=""> من نحن </a></li>
-            <li><a href=""> تواصل معنا </a></li>
+            <li><a href="#specialUnits"> وحدات مميزة </a></li>
+            <li><a href="#offers"> العروض </a></li>
+            <li><a href="#whoAreWe"> من نحن </a></li>
+            <li><a href="#contactUs"> تواصل معنا </a></li>
           </ul>
         </div>
         <div class="buttons">
@@ -79,7 +79,7 @@ const footer = `
         <img src="./images/left.png" class="png-2" alt="footerBackground" />
       </div>
       <div class="container">
-        <div class="supscribeBox">
+        <div class="supscribeBox" id="contactUs">
           <p>إشتراك فى خدمة رسائل البريد الالكترونى</p>
           <form class="inputBox">
             <input type="text" name="" id="" placeholder="ادخل الايميل" />

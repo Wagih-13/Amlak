@@ -53,6 +53,7 @@ body {
   padding: 0px;
   position: relative;
   overflow-x: hidden !important;
+  scroll-behavior: smooth;
 }
 
 body {
