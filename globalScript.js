@@ -47,10 +47,10 @@ const navBar = `
       </div>
       <div class="links">
         <ul>
-            <li><a href="#specialUnits"> وحدات مميزة </a></li>
-            <li><a href="#offers"> العروض </a></li>
-            <li><a href="#whoAreWe"> من نحن </a></li>
-            <li><a href="#contactUs"> تواصل معنا </a></li>
+            <li onclick="handelOpenLinksList()"><a href="#specialUnits"> وحدات مميزة </a></li>
+            <li onclick="handelOpenLinksList()"><a href="#offers"> العروض </a></li>
+            <li onclick="handelOpenLinksList()"><a href="#whoAreWe"> من نحن </a></li>
+            <li onclick="handelOpenLinksList()"><a href="#contactUs"> تواصل معنا </a></li>
         </ul>
       </div>
       <div class="buttons">
