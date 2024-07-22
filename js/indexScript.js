@@ -88,9 +88,10 @@ window.addEventListener("touchend", function (event) {
   isMouseDown = false;
 });
 window.addEventListener("touchmove", (event) => {
-  const x = event.clientX;
+  const touch = event.touches[0];
+  const currentX = touch.pageX;
   if (isMouseDown) {
-    specialUnitsSlider.style.cssText = `transform: translateX(${x}px)`;
+    specialUnitsSlider.style.cssText = `transform: translateX(${currentX}px)`;
   }
 });
 /////////////////////////////////////// create offer Slider //////////////////////////////////////////////
