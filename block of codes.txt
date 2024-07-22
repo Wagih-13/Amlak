@@ -114,3 +114,10 @@ const offerSlider = document.querySelectorAll(".offerSlider .slider");
 // offerSlider[0].style.cssText = `height: ${numberOfSlilders_1 * 240}px;`;
 // offerSlider[1].style.cssText = `height: ${numberOfSlilders_2 * 240}px;`;
 // offerSlider[2].style.cssText = `height: ${numberOfSlilders_3 * 240}px;`;
+
+
+
+
+
+<i class="fa-solid fa-person"></i>
+<i class="fa-solid fa-car"></i>

@@ -10,7 +10,12 @@ const navBar = `
         </div>
         <div class="links">
           <ul>
-            <li><a href="#specialUnits"> وحدات مميزة </a></li>
+           ${
+             window.location.pathname === "/"
+               ? '<li><a href="#specialUnits"> وحدات مميزة </a></li>'
+               : '<li><a href="/"> الرئيسية </a></li>'
+           }
+            
             <li><a href="#offers"> العروض </a></li>
             <li><a href="#whoAreWe"> من نحن </a></li>
             <li><a href="#contactUs"> تواصل معنا </a></li>
@@ -196,10 +201,14 @@ themeToggleButton.forEach((checkbox) =>
 const localStorageKey = "lang";
 const toggleLang = document.querySelector("#lang");
 const toggleLangMinScreen = document.querySelector("#lang2");
+const ArLang = document.querySelectorAll(".ArLang");
+const EnLang = document.querySelectorAll(".EnLang");
 const getLang = () => {
   const storedLang = localStorage.getItem(localStorageKey);
   return storedLang ?? "rtl";
 };
+const imageSliderContainer =
+  document.getElementById("imageSliderContainer") | null;
 
 const setLang = (lang) => {
   localStorage.setItem(localStorageKey, lang);
@@ -207,9 +216,19 @@ const setLang = (lang) => {
   if (lang === "rtl") {
     toggleLang.textContent = "EN";
     toggleLangMinScreen.textContent = "EN";
+    ArLang.forEach((div) => (div.style.cssText = `display:initial;`));
+    EnLang.forEach((div) => (div.style.cssText = `display:none;`));
+    if (imageSliderContainer) {
+      imageSliderContainer.setAttribute("dir", "ltr");
+    }
   } else {
     toggleLang.textContent = "AR";
     toggleLangMinScreen.textContent = "AR";
+    ArLang.forEach((div) => (div.style.cssText = `display:none;`));
+    EnLang.forEach((div) => (div.style.cssText = `display:initial;`));
+    if (imageSliderContainer) {
+      imageSliderContainer.setAttribute("dir", "ltr");
+    }
   }
 };
 
@@ -220,18 +239,26 @@ const switchLanguage = () => {
   const currentLang = getLang();
   const newLang = currentLang === "ltr" ? "rtl" : "ltr";
   setLang(newLang);
-  ////////////// reset slider dir /////////////////
-  const sliderContainers = document.querySelectorAll(".slideContainer");
-  if (newLang === "ltr") {
-    sliderContainers.forEach((slider) => slider.classList.add("leftDir"));
-    sliderContainers.forEach((slider) => slider.classList.remove("rightDir"));
-  } else {
-    sliderContainers.forEach((slider) => slider.classList.add("rightDir"));
-    sliderContainers.forEach((slider) => slider.classList.remove("leftDir"));
-  }
-  window.location.reload();
-  //////////////end reset slider dir /////////////////
 };
+console.log("hiiii");
+////////////// reset specialUnits slider dir /////////////////
+
+const specialUnitsSliderGlobal = document.querySelectorAll(
+  ".specialUnitsSlider .slideContainer"
+);
+if (localStorage.getItem("lang") === "ltr") {
+  specialUnitsSliderGlobal.forEach((slider) => slider.classList.add("leftDir"));
+  specialUnitsSliderGlobal.forEach((slider) =>
+    slider.classList.remove("rightDir")
+  );
+} else {
+  specialUnitsSliderGlobal.forEach((slider) =>
+    slider.classList.add("rightDir")
+  );
+  specialUnitsSliderGlobal.forEach((slider) =>
+    slider.classList.remove("leftDir")
+  );
+}
 
 //////////////////////////// handel open side nav ////////////////////////////////////
 
@@ -265,5 +292,145 @@ copyButtons.forEach((button) => {
       console.error("Failed to copy text:", err);
     }
     document.body.removeChild(tempInput);
+  });
+});
+
+////////////////////////////////////// handel open and close  all dropDown lists //////////////////////////////////////////////
+
+const searchInputsContainer = document.querySelectorAll(
+  ".inputContainer:not(.calenderInput)"
+);
+const searchDateInput = document.querySelector(".inputContainer.calenderInput");
+
+searchInputsContainer.forEach((inputBox) => {
+  inputBox.addEventListener("click", () => {
+    const dropDownList = inputBox.querySelector(".dropDownList");
+    $(dropDownList).slideToggle();
+  });
+});
+
+searchDateInput.addEventListener("click", (event) => {
+  const dropDownList = searchDateInput.querySelector(".dateDropDown");
+  const myDiv = document.querySelector(
+    ".inputContainer.calenderInput .dateDropDown"
+  );
+  const clickedElement = event.target;
+  if (clickedElement === myDiv || myDiv.contains(clickedElement)) {
+    event.stopPropagation();
+  } else {
+    $(dropDownList).slideToggle();
+  }
+});
+
+searchInputsContainer.forEach((inputBox) => {
+  const option = inputBox.querySelectorAll(".dropDownList li");
+  const input = inputBox.querySelector(".valueInput");
+  console.log(input);
+  option.forEach((opt) => {
+    opt.addEventListener("click", () => {
+      const valueOfOtion = opt.textContent.trim();
+      input.value = valueOfOtion;
+    });
+  });
+});
+
+////////////////////////////////////////// handel all DropDowns ///////////////////////////////////////////
+
+const searchUnitSelectBtn = document.querySelectorAll(
+  ".inputContainer .select-btn"
+);
+const searchUnitContent = document.querySelectorAll(".inputContainer .content");
+const searchUnitWrapper = document.querySelectorAll(".inputContainer .wrapper");
+const searchUnitSearchInp = document.querySelectorAll(
+  ".inputContainer .wrapper input"
+);
+const searchUnitValueInputs = document.querySelectorAll(
+  ".inputContainer .valueInput"
+);
+const searchUnitEmptyInput = document.querySelectorAll(
+  ".inputContainer .emptyInput"
+);
+const searchUnitOptions = document.querySelectorAll(
+  ".inputContainer .wrapper .options"
+);
+
+const searchUnitOptionsArray = Array.from(searchUnitOptions);
+const dropDownData = searchUnitOptionsArray.map((options) =>
+  Array.from(options.querySelectorAll("li")).map((li) => li)
+);
+
+function searchUnitAddCase(selectedLi) {
+  searchUnitOptions.forEach((option, index) => {
+    option.innerHTML = "";
+    const unitCode = selectedLi.getAttribute("optionCode");
+    let li = `<li onclick="restDropDown(this)">All</li>`;
+    option.insertAdjacentHTML("afterbegin", li);
+    dropDownData[index].forEach((list) => {
+      let li = list.outerHTML;
+      option.insertAdjacentHTML("beforeend", li);
+    });
+  });
+}
+
+function searchUnitUpdateName(selectedLi) {
+  const inputContainer = selectedLi.closest(".inputContainer");
+  inputContainer.querySelector(".wrapper .content input").value = "";
+  searchUnitAddCase(selectedLi);
+  inputContainer.querySelector(".wrapper ").classList.remove("active");
+  inputContainer.querySelector(".select-btn").firstElementChild.innerText =
+    selectedLi.innerText;
+  inputContainer.querySelector(".valueInput").value =
+    selectedLi.getAttribute("optionCode");
+  inputContainer.querySelector(".emptyInput").value = selectedLi.innerText;
+  $(inputContainer.querySelector(".wrapper .content")).slideUp();
+}
+
+function restDropDown(selectedLi) {
+  const inputContainer = selectedLi.closest(".inputContainer");
+  inputContainer.querySelector(".wrapper .content input").value = "";
+  inputContainer.querySelector(".valueInput").value = "";
+  inputContainer.querySelector(".select-btn").firstElementChild.innerText = "";
+  $(inputContainer.querySelector(".wrapper .content")).slideUp();
+}
+
+searchUnitSearchInp.forEach((input, index) => {
+  input.addEventListener("keyup", () => {
+    let arr = [];
+    let searchWord = input.value.toLowerCase();
+
+    arr = dropDownData[index]
+      .filter((data) => {
+        return data.innerText.toLowerCase().trim().startsWith(searchWord);
+      })
+      .map((data) => {
+        let li = data.outerHTML;
+        return li;
+      })
+      .join("");
+    searchUnitOptions[index].innerHTML = arr
+      ? arr
+      : `<p style="margin-top: 10px;">Oops! Country not found</p>`;
+  });
+});
+
+searchUnitSelectBtn.forEach((btn, index) => {
+  btn.addEventListener("click", () => {
+    $(searchUnitContent[index]).slideToggle();
+    searchUnitSelectBtn.forEach((select, idx) => {
+      if (select !== btn) {
+        $(searchUnitContent[idx]).slideUp();
+      }
+    });
+  });
+});
+
+document.addEventListener("click", (event) => {
+  searchUnitContent.forEach((content, index) => {
+    if (
+      !searchUnitSelectBtn[index].contains(event.target) &&
+      !content.contains(event.target)
+    ) {
+      $(content).slideUp();
+    }
   });
 });

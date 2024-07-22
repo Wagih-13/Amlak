@@ -98,6 +98,20 @@ h1 {
   display: none;
 }
 
+.emptyInput {
+  display: none;
+}
+
+.imptyBox {
+  min-height: 100vh;
+}
+.ArLang {
+  display: initial;
+}
+.EnLang {
+  display: initial;
+}
+
 /* ///////////////////////////////////////////////// Start Theme Button  //////////////////////////////////////////////////// */
 
 .themeButton {
@@ -263,7 +277,7 @@ h1 {
   position: fixed;
   top: 20px;
   right: 20px;
-  z-index: 9999;
+  z-index: 999999999;
 }
 
 #nav-icon1 {
@@ -353,7 +367,7 @@ h1 {
   -moz-transition: 0.5s;
   -ms-transition: 0.5s;
   -o-transition: 0.5s;
-  z-index: 999;
+  z-index: 9999999;
 }
 
 .NavBarMinScreen .links {

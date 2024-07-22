@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <link rel="stylesheet" href="./css/all.min.css" />
+    <link rel="stylesheet" href="./css/freamWork.css" />
+    <link rel="stylesheet" href="globalStyle.css" />
+    <link rel="stylesheet" href="./css/showOnMapStyle.css" />
+    <title>Amlak-Elshatea | showOnMap</title>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"
+      async
+      defer
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+  </head>
+  <body>
+    <div class="showOnMap">
+      <div class="container">
+        <div class="unitSideContainer"><div class="unitsSide"></div></div>
+        <div class="mapSide" id="map-section">
+          <div id="map"></div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet-src.js"
+      integrity="sha512-I5Hd7FcJ9rZkH7uD01G3AjsuzFy3gqz7HIJvzFZGFt2mrCS4Piw9bYZvCgUE0aiJuiZFYIJIwpbNnDIM6ohTrg=="
+      crossorigin=""
+    ></script>
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script src="./globalScript.js"></script>
+    <script src="./js/showOnMapScript.js"></script>
+  </body>
+</html>

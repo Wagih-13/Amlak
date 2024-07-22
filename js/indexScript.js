@@ -1,4 +1,11 @@
 //////////////////////////////////////// create backGroundHome slider /////////////////////////////////////////////
+window.addEventListener("popstate", function (event) {
+  // تحقق من تغير عنوان URL
+  if (event.state && event.state.reload) {
+    // أعد تحميل الصفحة
+    location.reload();
+  }
+});
 
 let swiper = new Swiper(".imageSlider .Slider-container", {
   effect: "Autoplay",
@@ -9,6 +16,9 @@ let swiper = new Swiper(".imageSlider .Slider-container", {
     delay: 2000,
     disableOnInteraction: false,
     pauseOnMouseEnter: false,
+  },
+  hashNavigation: {
+    replaceState: true,
   },
   navigation: {
     nextEl: ".swiper-button-next",
@@ -21,131 +31,138 @@ swiper.running;
 //////////////////////////////////////// create spceialUnits slider /////////////////////////////////////////////
 
 const specialUnitsSlider = document.querySelector(".specialUnitsSlider");
+const slideContainers = specialUnitsSlider.querySelectorAll(".slideContainer");
 
-function createSlide(imageUrl, rating, discountText, description, price) {
-  return `
-    <div class="slide" >
-      <div class="card">
-        <div class="favoriteIcon">
-          <i class="fa-regular fa-heart"></i>
-        </div>
-        <img src="${imageUrl}" alt="" />
-        <div class="info">
-          <div class="rateAndOffer">
-            <span>
-              <span class="icons">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                ${"".padStart(
-                  Math.floor(rating),
-                  '<i class="fa-solid fa-star"></i>'
-                )}
-                ${rating % 1 !== 0 ? '<i class="fa-regular fa-star"></i>' : ""}
-              </span>
-              ${rating}
-            </span>
-            <span>${discountText}</span>
-          </div>
-          <div class="specialUnitsStatistics">
-            <span>32 <i class="fa-solid fa-house"></i></span>
-            <span>53 <i class="fa-solid fa-couch"></i></span>
-          </div>
-          <p>${description}</p>
-          <span class="price">سعر الوحدة ${price}$</span>
-        </div>
-      </div>
-    </div>
-  `;
-}
-
-const slides = [];
-for (let i = 0; i < 15; i++) {
-  slides.push(
-    createSlide(
-      "./images/2.jpg",
-      4.5,
-      "خصم 50%",
-      "استمتع بالراحة والفخامة على شواطئ درة العروس - حجوزات منازل عطلاتك المثالية",
-      "100$"
-    )
-  );
-}
-
-const slidesContainer = `
-  <div class="slideContainer ">
-    ${slides.join("")}
-  </div>
-`;
-
-const cloneSpecialUnitsData = () => {
-  const cloneOfData = [];
-  for (let i = 0; i < 2; i++) {
-    cloneOfData.push(slidesContainer);
-  }
-  const container = cloneOfData.join("");
-  return container;
-};
-
-specialUnitsSlider.innerHTML = cloneSpecialUnitsData();
-
-const slideContainers = document.querySelectorAll(".slideContainer");
-const numberOfElements = document.querySelectorAll(".slide").length;
-
-specialUnitsSlider.style.width = `${numberOfElements * 400}px`;
-
-const isLeftToRight = localStorage.getItem("lang") === "ltr";
-slideContainers.forEach((slider) =>
-  slider.classList.add(isLeftToRight ? "leftDir" : "rightDir")
+specialUnitsSlider.insertAdjacentHTML(
+  "beforeend",
+  specialUnitsSlider.querySelector(".slideContainer").outerHTML
 );
 
-/////////////////////////////////////// create offer Slider //////////////////////////////////////////////
-
-const offerSlider = document.querySelectorAll(".offerSlider .slider");
-
-let verticalSlidesContainer = [];
-const createVerticalSlider = (imageUrl, i) => {
-  return `
-  <div class="slide" >
-    <div class="imageBox">
-    <span class="offerLable">50%</span>
-    <img src="${imageUrl}" alt="" />
-    </div>
-  </div>
-  `;
-};
-
-for (let i = 0; i < 10; i++) {
-  verticalSlidesContainer.push(createVerticalSlider("./images/3.jpg", i));
+function setSliderWidth(slideContainer) {
+  const numberOfSlides = slideContainer.querySelectorAll(".slide").length;
+  const slideWidth = 400;
+  specialUnitsSlider.style.width = `${numberOfSlides * slideWidth * 2}px`;
 }
 
-const offerData = `
-  <div class="slideContainer ">
-          ${verticalSlidesContainer.join("")}
-        </div>
-`;
+slideContainers.forEach(setSliderWidth);
 
-const cloneOfferData = () => {
-  const cloneOfData = [];
-  for (let i = 0; i < 2; i++) {
-    cloneOfData.push(offerData);
+// Attach the event listener to the window object
+
+// function trackMouse(event) {
+//   // Get the mouse coordinates from the event object
+//   const x = event.clientX;
+//   const y = event.clientY;
+
+//   // You can use these coordinates to do something, like:
+//   console.log("Mouse at X: " + x + ", Y: " + y);
+//   // Update an element's position based on mouse movement
+//   //  ...
+// }
+
+// // Attach the event listener to the window object
+// window.addEventListener("mousemove", trackMouse);
+
+let isMouseDown;
+
+window.addEventListener("mousemove", (event) => {
+  specialUnitsSlider.addEventListener("mousedown", function (event) {
+    if (specialUnitsSlider.contains(event.target)) {
+      isMouseDown = true;
+    }
+  });
+  window.addEventListener("mouseup", function (event) {
+    isMouseDown = false;
+  });
+
+  const x = event.clientX;
+  const y = event.clientY;
+  if (isMouseDown) {
+    specialUnitsSlider.style.cssText = `transform: translateX(${x}px)`;
   }
-  const container = cloneOfData.join("");
-  return container;
-};
+});
+
+window.addEventListener("touchmove", (event) => {
+  specialUnitsSlider.addEventListener("touchstart", function (event) {
+    if (specialUnitsSlider.contains(event.target)) {
+      isMouseDown = true;
+    }
+  });
+  window.addEventListener("touchend", function (event) {
+    isMouseDown = false;
+  });
+
+  const x = event.clientX;
+  const y = event.clientY;
+  if (isMouseDown) {
+    specialUnitsSlider.style.cssText = `transform: translateX(${x}px)`;
+  }
+});
+/////////////////////////////////////// create offer Slider //////////////////////////////////////////////
+// const offerSliderData = [
+//   { name: "ahmed", age: 23, id: 1 },
+//   { name: "ahmed", age: 23, id: 1 },
+//   { name: "ahmed", age: 23, id: 1 },
+//   { name: "ahmed", age: 23, id: 2 },
+//   { name: "ahmed", age: 23, id: 2 },
+//   { name: "ahmed", age: 23, id: 2 },
+//   { name: "ahmed", age: 23, id: 3 },
+//   { name: "ahmed", age: 23, id: 3 },
+//   { name: "ahmed", age: 23, id: 3 },
+//   { name: "ahmed", age: 23, id: 3 },
+// ];
+
+// let groupIndex = Math.floor(offerSliderData.length / 3);
+// let firstSlide = [];
+// let secondSlide = [];
+// let thirdSlide = [];
+
+// for (let i = 0; i < groupIndex; i++) {
+//   firstSlide.push(offerSliderData[i]);
+// }
+// for (let i = groupIndex; i < groupIndex * 2; i++) {
+//   secondSlide.push(offerSliderData[i]);
+// }
+// for (let i = groupIndex * 2; i < offerSliderData.length; i++) {
+//   thirdSlide.push(offerSliderData[i]);
+// }
+// const allOfferSliders = [firstSlide, secondSlide, thirdSlide];
+
+// const offerSlidersContainer = document.querySelector(".offers .offerSlider");
+// for (let i = 0; i < allOfferSliders.length; i++) {
+//   offerSlidersContainer.insertAdjacentHTML(
+//     "beforeend",
+//     `  <div class="slider">
+//             <div class="slideContainer">
+//              ${allOfferSliders[i].map((ele) => {
+//                `
+//                <div class="slide">
+//                 <div class="imageBox">
+//                   <span class="offerLable">50%</span>
+//                   <img src="./images/6.jpg" alt="" />
+//                 </div>
+//               </div>
+//               `;
+//              })}
+//             </div>
+//           </div>
+//    `
+//   );
+// }
 
 const offerSliders = document.querySelectorAll(".offerSlider .slider");
 
-offerSliders.forEach((offer) => {
-  offer.innerHTML = cloneOfferData();
-});
+for (let i = 0; i < offerSliders.length; i++) {
+  offerSliders[i].insertAdjacentHTML(
+    "beforeend",
+    offerSliders[i].querySelector(".slideContainer").outerHTML
+  );
+}
 
 function setSliderHeight(slider) {
   const slideContainer = slider.querySelector(".slideContainer");
   const numberOfSlides = slideContainer.querySelectorAll(".slide").length;
   const slideHeight = 290;
-  slider.style.height = `${numberOfSlides * slideHeight}px`;
+  slider.style.height = `${numberOfSlides * slideHeight * 2}px`;
 }
 
 offerSliders.forEach(setSliderHeight);
@@ -164,215 +181,62 @@ let whoAreWeSlider = new Swiper(".whoAreWeSlider .Slider-container", {
 });
 // swiper.changeDirection('vertical');
 
-////////////////////////////////////// handel search unit //////////////////////////////////////////////
-
-const searchInputsContainer = document.querySelectorAll(
-  ".inputContainer:not(:nth-child(4)) "
-);
-const searchDateInput = document.querySelector(".inputContainer:nth-child(4) ");
-
-searchInputsContainer.forEach((inputBox) => {
-  inputBox.addEventListener("click", () => {
-    const dropDownList = inputBox.querySelector(".dropDownList");
-    $(dropDownList).slideToggle();
-  });
-});
-
-searchDateInput.addEventListener("click", (event) => {
-  const dropDownList = searchDateInput.querySelector(".dateDropDown");
-  const myDiv = document.querySelector(
-    ".inputContainer:nth-child(4) .dateDropDown"
-  );
-  const clickedElement = event.target;
-  if (clickedElement === myDiv || myDiv.contains(clickedElement)) {
-    event.stopPropagation();
-  } else {
-    $(dropDownList).slideToggle();
-  }
-});
-
-searchInputsContainer.forEach((inputBox) => {
-  const option = inputBox.querySelectorAll(".dropDownList li");
-  const input = inputBox.querySelector("input");
-  option.forEach((opt) => {
-    opt.addEventListener("click", () => {
-      const valueOfOtion = opt.textContent.trim();
-      input.value = valueOfOtion;
-    });
-  });
-});
-
-// $(function () {
-//   $('input[name="daterange"]').daterangepicker(
-//     {
-//       opens: "left",
-//       locale: {
-//         format: "YYYY-MM-DD",
-//       },
-//     },
-//     function (start, end, label) {
-//       console.log(
-//         "A new date selection was made: " +
-//           start.format("YYYY-MM-DD") +
-//           " to " +
-//           end.format("YYYY-MM-DD")
-//       );
-//     }
-//   );
-// });
-
-////////////////////////////////////// handel filter unit //////////////////////////////////////////////
-
-const searchUnitSelectBtn = document.querySelectorAll(
-  ".imageSlider .buttonLay .searchUnit form .inputContainer .select-btn"
-);
-const searchUnitContent = document.querySelectorAll(
-  ".imageSlider .buttonLay .searchUnit form .inputContainer .content"
-);
-const searchUnitWrapper = document.querySelectorAll(
-  ".imageSlider .buttonLay .searchUnit form .inputContainer .wrapper"
-);
-const searchUnitSearchInp = document.querySelectorAll(
-  ".imageSlider .buttonLay .searchUnit form .inputContainer .wrapper input"
-);
-const searchUnitOptions = document.querySelectorAll(
-  ".imageSlider .buttonLay .searchUnit form .inputContainer .wrapper .options"
-);
-const searchUnitValueInputs = document.querySelectorAll(
-  ".imageSlider .buttonLay .searchUnit form .inputContainer .valueInput"
-);
-
-const countr1 = [
-  "افغانستان",
-  "الجزائر",
-  "الارجنتين",
-  "استراليا",
-  "بنغلاديش",
-  "بلجيكا",
-  "بوتان",
-  "البرازيل",
-  "كندا",
-  "الصين",
-  "عمان",
-  "الامارات العربية المتحدة",
-  "لبنان",
-  "فلسطين",
-  "الاردن",
-  "مصر",
-  "السودان",
-  "تونس",
-  "الجزائر",
-  "المغرب",
-  "موريتانيا",
-  "الصومال",
-  "جيبوتي",
-  "جزر القمر",
-  "السعودية",
-  "العراق",
-  "سوريا",
-  "كردستان",
-];
-const carNamesArabic = [
-  "أودي",
-  "ألفا روميو",
-  "أستين مارتن",
-  "بي إم دبليو",
-  "بيجو",
-  "بنتلي",
-  "بوغاتي",
-  "بويك",
-  "بورشه",
-  "بيك أب",
-  "شفروليه",
-  "سيتروين",
-  "كاديلاك",
-  "شيري",
-  "شيفروليه",
-];
-const aircraftNamesAr = [
-  "إيرباص إيه 320",
-  "إيرباص إيه 330",
-  "إيرباص إيه 350",
-  "إيرباص إيه 380",
-  "بوينج 737",
-  "بوينج 747",
-  "بوينج 777",
-  "بوينج 787",
-  "إمبراير 190",
-  "إمبراير 19",
-];
-
-const countries = [carNamesArabic, aircraftNamesAr, countr1];
-
-function searchUnitAddCase(selectedCountry) {
-  searchUnitOptions.forEach((option, index) => {
-    option.innerHTML = "";
-    countries[index].forEach((country) => {
-      let isSelected = country == selectedCountry ? "selected" : "";
-      let li = `<li onclick="searchUnitUpdateName(this , ${index} )" class="${isSelected}">${country}</li>`;
-      option.insertAdjacentHTML("beforeend", li);
-    });
-  });
-}
-searchUnitAddCase();
-
-function searchUnitUpdateName(selectedLi, index) {
-  searchUnitSearchInp[index].value = "";
-  searchUnitAddCase(selectedLi.innerText, index);
-  searchUnitWrapper[index].classList.remove("active");
-  searchUnitSelectBtn[index].firstElementChild.innerText = selectedLi.innerText;
-  searchUnitValueInputs[index].value = selectedLi.innerText;
-  $(searchUnitContent[index]).slideUp();
-}
-
-searchUnitSearchInp.forEach((input, index) => {
-  input.addEventListener("keyup", () => {
-    let arr = [];
-    let searchWord = searchUnitSearchInp[index].value.toLowerCase();
-    arr = countries[index]
-      .filter((data) => {
-        return data.toLowerCase().startsWith(searchWord);
-      })
-      .map((data) => {
-        let isSelected =
-          data == searchUnitSelectBtn[index].firstElementChild.innerText
-            ? "selected"
-            : "";
-        return `<li onclick="searchUnitUpdateName(this , ${index})" class="${isSelected}">${data}</li>`;
-      })
-      .join("");
-    searchUnitOptions[index].innerHTML = arr
-      ? arr
-      : `<p style="margin-top: 10px;">Oops! Country not found</p>`;
-  });
-});
-
-searchUnitSelectBtn.forEach((btn, index) => {
-  btn.addEventListener("click", () => {
-    $(searchUnitContent[index]).slideToggle();
-    searchUnitSelectBtn.forEach((select, idx) => {
-      if (select !== btn) {
-        $(searchUnitContent[idx]).slideUp();
-      }
-    });
-  });
-});
-
-////////////////////////////////////// handel  //////////////////////////////////////////////
+////////////////////////////////////// handel open and close sections //////////////////////////////////////////////
 const filterUnitForm = document.querySelector(".filterUnitForm");
 filterUnitForm.addEventListener("submit", function (event) {
   event.preventDefault();
   $(".unitSearchOutput").slideDown();
-});
+  const homeType = document.getElementById("AreaUnitName").value;
+  const choseTown = document.getElementById("AreaUnitCode").value;
+  const choseNeighborhood = document.getElementById("AreaUnitDistrict").value;
 
+  const displayInputsValue = document.getElementById("displayInputsValue");
+  displayInputsValue.innerHTML = `${homeType != "" ? homeType + " - " : ""}${
+    choseTown != "" ? choseTown + " - " : ""
+  }${choseNeighborhood != "" ? choseNeighborhood : ""}`;
+
+  const scrollTop = document.querySelector("#unitSearchOutput").offsetTop;
+  window.scrollTo({
+    top: scrollTop,
+    behavior: "smooth",
+  });
+  const inputContainer = document.querySelectorAll(
+    ".inputContainer .select-btn  "
+  );
+  const inputs = document.querySelectorAll("input");
+  for (var i = 0; i < inputs.length; i++) {
+    inputs[i].value = "";
+    inputContainer[i].firstElementChild.innerText = "";
+  }
+});
+const offerBtn = document.querySelector("#openOffersSection");
+offerBtn.addEventListener("click", function (event) {
+  event.preventDefault();
+  $(".offersSectionScreen").slideDown();
+  const scrollTop = document.querySelector("#offersSectionScreen").offsetTop;
+  window.scrollTo({
+    top: scrollTop,
+    behavior: "smooth",
+  });
+});
 const handelCloseUnitSearchOutput = () => {
   $(".unitSearchOutput").slideUp();
 };
+const handelCloseOffersSectionScreen = () => {
+  $(".offersSectionScreen").slideUp();
+};
 const handelOpenOrderBox = () => {
-  $(".orderContainer").fadeIn();
+  $("#uintSearchOrderContainer").fadeIn();
+  3;
 };
 const handelOpenFilterBox = () => {
-  $(".filterContainer").fadeIn();
+  $("#uintSearchFilterContainer").fadeIn();
+};
+const handelOpenOffersOrderBox = () => {
+  $("#offersOrderContainer").fadeIn();
+};
+const handelOpenOffersFilterBox = () => {
+  $("#offerFilterContainer").fadeIn();
 };
 const handelCloseOrderBox = () => {
   $(".orderContainer").fadeOut();
@@ -381,13 +245,17 @@ const handelClosefilterBox = () => {
   $(".filterContainer").fadeOut();
 };
 
+const searchBtn = document.querySelectorAll(".searchUnitSearchButton");
+searchBtn.forEach((btn) => {
+  btn.addEventListener("click", () => {});
+});
 ////////////////////////////////////// handel price range//////////////////////////////////////////////
 const lang = localStorage.getItem("lang");
 const isRight = lang === "rtl";
 const rangeInput = document.querySelectorAll(".range-input input"),
   priceInput = document.querySelectorAll(".price-input input"),
   range = document.querySelector(".slider .progress");
-let priceGap = 1000;
+let priceGap = 100;
 
 priceInput.forEach((input) => {
   input.addEventListener("input", (e) => {
@@ -440,81 +308,308 @@ rangeInput.forEach((input) => {
   });
 });
 
-const FilterFormWrapper = document.querySelectorAll(
-  `.unitSearchOutput .filterBoxContainer .filterBox .outputFilterForm .advancedSearchSection .inputContainer .wrapper`
+////////////////////////////////////handel filter unitSearchOutput///////////////////////////////////
+const unitSearchCardsContainer = document.querySelector(
+  ".unitSearchOutput .cardsContainer "
 );
-const FilterFormSelectBtn = document.querySelectorAll(
-  `.unitSearchOutput .filterBoxContainer .filterBox .outputFilterForm .advancedSearchSection .inputContainer .wrapper  .select-btn`
+const unitSearchCards = document.querySelectorAll(
+  ".unitSearchOutput .cardsContainer .card"
 );
-const FilterFormContent = document.querySelectorAll(
-  `.unitSearchOutput .filterBoxContainer .filterBox .outputFilterForm .advancedSearchSection .inputContainer .wrapper .content`
-);
+const filterForm = document.querySelector("#outputFilterForm");
+filterForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const minPrice = document.querySelector("#UnitSearchMinPrice").value;
+  const maxPrice = document.querySelector("#UnitSearchMaxPrice").value;
+  const unitName = document.querySelector("#UnitSearchUnitName").value;
+  const unitCode = document.querySelector("#UnitSearchUnitCode").value;
+  const unitLocation = document.querySelector("#UnitSearchUnitLocation").value;
+  const numberOfVehiclesInput = filterForm.querySelectorAll(
+    'input[type="radio"][name="numberOfVehicles"]'
+  );
+  const capacityInput = filterForm.querySelectorAll(
+    'input[type="radio"][name="capacity"]'
+  );
+  let minNumberOfVehicles;
+  let maxNumberOfVehicles;
 
-const FilterFormSearchInp = document.querySelectorAll(
-  `.unitSearchOutput .filterBoxContainer .filterBox .outputFilterForm .advancedSearchSection .inputContainer .wrapper input`
-);
-const FilterFormOptions = document.querySelectorAll(
-  `.unitSearchOutput .filterBoxContainer .filterBox .outputFilterForm .advancedSearchSection .inputContainer .content .options`
-);
-const FilterFormValueInputs = document.querySelectorAll(
-  ".unitSearchOutput .filterBoxContainer .filterBox .outputFilterForm .advancedSearchSection .inputContainer  .valueInput"
-);
+  for (const radioButton of numberOfVehiclesInput) {
+    if (radioButton.checked) {
+      minNumberOfVehicles = radioButton.getAttribute("minNumberOfVehicles");
+      maxNumberOfVehicles = radioButton.getAttribute("maxNumberOfVehicles");
+      break;
+    }
+  }
 
-const countries2 = [carNamesArabic, aircraftNamesAr, countr1];
+  let minCapacity;
+  let maxCapacity;
+  for (const radioButton of capacityInput) {
+    if (radioButton.checked) {
+      minCapacity = radioButton.getAttribute("minCapacity");
+      maxCapacity = radioButton.getAttribute("maxCapacity");
+      break;
+    }
+  }
 
-function FilterFormAddCase(selectedCountry) {
-  FilterFormOptions.forEach((option, index) => {
-    option.innerHTML = "";
-    countries2[index].forEach((country) => {
-      let isSelected = country == selectedCountry ? "selected" : "";
-      let li = `<li onclick="FilterFormUpdateName(this , ${index} )" class="${isSelected}" >${country}</li>`;
-      option.insertAdjacentHTML("beforeend", li);
-    });
-    console.log(option);
+  const filteredCards = Array.from(unitSearchCards).filter((card) => {
+    return (
+      (+card.getAttribute("minCapacity") >= minCapacity ||
+        minCapacity === "") &&
+      (+card.getAttribute("maxCapacity") <= maxCapacity ||
+        maxCapacity === "") &&
+      +card.getAttribute("price") >= minPrice &&
+      +card.getAttribute("price") <= maxPrice &&
+      (+card.getAttribute("minNumberOfVehicles") >= minNumberOfVehicles ||
+        minNumberOfVehicles === "") &&
+      (+card.getAttribute("maxNumberOfVehicles") <= maxNumberOfVehicles ||
+        maxNumberOfVehicles === "") &&
+      (card.getAttribute("unitName").includes(unitName) || unitName === "") &&
+      (card.getAttribute("unitCode").includes(unitCode) || unitCode === "") &&
+      (card.getAttribute("unitLocation").includes(unitLocation) ||
+        unitLocation === "")
+    );
   });
+  unitSearchCardsContainer.innerHTML = "";
+
+  for (let i = 0; i < filteredCards.length; i++) {
+    const cardElement = filteredCards[i];
+    unitSearchCardsContainer.appendChild(cardElement);
+  }
+
+  handelClosefilterBox();
+});
+////////////////////////////////////handel filter offersSectionScreen ///////////////////////////////////
+
+const offersSectioncardsContainer = document.querySelector(
+  ".offersSectionScreen .cardsContainer "
+);
+const offerCards = document.querySelectorAll(
+  ".offersSectionScreen .cardsContainer .card"
+);
+const offerFilterForm = document.getElementById("offerFilterForm");
+offerFilterForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const unitName = document.getElementById("offersSectionUnitName").value;
+  const unitCode = document.getElementById("offersSectionUnitCode").value;
+  const unitLocation = document.getElementById(
+    "offersSectionUnitLocation"
+  ).value;
+  const numberOfVehiclesInput = offerFilterForm.querySelectorAll(
+    'input[type="radio"][name="numberOfVehicles"]'
+  );
+  const capacityInput = offerFilterForm.querySelectorAll(
+    'input[type="radio"][name="capacity"]'
+  );
+  let minNumberOfVehicles;
+  let maxNumberOfVehicles;
+
+  for (const radioButton of numberOfVehiclesInput) {
+    if (radioButton.checked) {
+      minNumberOfVehicles = radioButton.getAttribute("minNumberOfVehicles");
+      maxNumberOfVehicles = radioButton.getAttribute("maxNumberOfVehicles");
+      break;
+    }
+  }
+
+  let minCapacity;
+  let maxCapacity;
+  for (const radioButton of capacityInput) {
+    if (radioButton.checked) {
+      minCapacity = radioButton.getAttribute("minCapacity");
+      maxCapacity = radioButton.getAttribute("maxCapacity");
+      break;
+    }
+  }
+
+  const filteredCards = Array.from(offerCards).filter((card) => {
+    return (
+      (+card.getAttribute("minCapacity") >= minCapacity ||
+        minCapacity === "") &&
+      (+card.getAttribute("maxCapacity") <= maxCapacity ||
+        maxCapacity === "") &&
+      (+card.getAttribute("minNumberOfVehicles") >= minNumberOfVehicles ||
+        minNumberOfVehicles === "") &&
+      (+card.getAttribute("maxNumberOfVehicles") <= maxNumberOfVehicles ||
+        maxNumberOfVehicles === "") &&
+      (card.getAttribute("unitName").includes(unitName) || unitName === "") &&
+      (card.getAttribute("unitCode").includes(unitCode) || unitCode === "") &&
+      (card.getAttribute("unitLocation").includes(unitLocation) ||
+        unitLocation === "")
+    );
+  });
+
+  offersSectioncardsContainer.innerHTML = "";
+
+  for (let i = 0; i < filteredCards.length; i++) {
+    const cardElement = filteredCards[i];
+
+    offersSectioncardsContainer.appendChild(cardElement);
+  }
+
+  handelClosefilterBox();
+});
+///////////////////////////////////////Handel Send Cards To Map///////////////////////////////////////
+
+const searchOutputMapButton = document.getElementById("searchOutputMapButton");
+const offersSectionMapButton = document.getElementById(
+  "offersSectionMapButton"
+);
+const cardSelector = ".unitSearchOutput .cardsContainer .card";
+const cardSelector2 = ".offersSectionScreen .cardsContainer .card";
+
+const handelSendCardsToMap = (searchOutputMapButton, cardSelector) => {
+  searchOutputMapButton.addEventListener("click", () => {
+    const currentunitSearchCards = Array.from(
+      document.querySelectorAll(cardSelector)
+    );
+
+    let mapCards = [];
+    let i = 110;
+    for (const card of currentunitSearchCards) {
+      mapCards.push({
+        id: i,
+        price: card.getAttribute("price"),
+        name: card.getAttribute("unitName"),
+        lon: card.getAttribute("lon"),
+        lat: card.getAttribute("lat"),
+      });
+      i++;
+    }
+    localStorage.setItem("cardsShownInMap", JSON.stringify(mapCards));
+    window.location.href = "../showOnMap.html";
+  });
+};
+
+handelSendCardsToMap(searchOutputMapButton, cardSelector);
+handelSendCardsToMap(offersSectionMapButton, cardSelector2);
+
+///////////////////////////////// handel pagenation ////////////////////////////////////
+
+const sectionData = [
+  { name: "ahmed", age: 23, id: 1 },
+  { name: "ahmed", age: 23, id: 1 },
+  { name: "ahmed", age: 23, id: 1 },
+  { name: "ahmed", age: 23, id: 2 },
+  { name: "ahmed", age: 23, id: 2 },
+  { name: "ahmed", age: 23, id: 2 },
+  { name: "ahmed", age: 23, id: 3 },
+  { name: "ahmed", age: 23, id: 3 },
+  { name: "ahmed", age: 23, id: 3 },
+  { name: "ahmed", age: 23, id: 3 },
+];
+
+let unitSearchSectionCurrentDisplayedPage = 0;
+let offersSectionCurrentDisplayedPage = 0;
+let displayedItems = [];
+function createPagination(selector, SectionCurrentDisplayedPage, data) {
+  displayedItems = [];
+  let counter = 0;
+  let displayedPage = [];
+  // repleac data to cards data
+  for (let i = 0; i < data.length; i++) {
+    if (counter === 8) {
+      counter = 0;
+      displayedItems.push(displayedPage);
+      displayedPage = [];
+    }
+    displayedPage.push(data[i]);
+    counter++;
+  }
+
+  let blockOfElements = `${displayedItems[SectionCurrentDisplayedPage].map(
+    (card) => `<div
+            class="card"
+            price="100"
+            minCapacity="0"
+            maxCapacity="0"
+            minNumberOfVehicles="5"
+            maxNumberOfVehicles="10"
+            unitLocation="geda"
+            unitCode="RB65"
+            unitName="amlak"
+            lat="30.3"
+            lon="31.53"
+          >
+            <div class="favoriteIcon">
+              <i class="fa-regular fa-heart"></i>
+            </div>
+            <img src="./images/1.jpg" alt="" />
+            <div class="info">
+              <div class="rateAndOffer">
+                <span>
+                  <span class="icons">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </span>
+                  4.5
+                </span>
+                <span>خصم 50%</span>
+              </div>
+              <div class="specialUnitsStatistics">
+                <span>32 <i class="fa-solid fa-house"></i></span>
+                <span>53 <i class="fa-solid fa-couch"></i></span>
+                <span>83 <i class="fa-solid fa-couch"></i></span>
+              </div>
+              <p>Bt120</p>
+              <span class="price">سعر الوحدة ${card.age}$</span>
+            </div>
+          </div>`
+  ).join(" ")}`;
+  selector.innerHTML = blockOfElements;
 }
 
-FilterFormAddCase();
-
-function FilterFormUpdateName(selectedLi, index) {
-  FilterFormSearchInp[index].value = "";
-  FilterFormAddCase(selectedLi.innerText, index);
-  FilterFormWrapper[index].classList.remove("active");
-  FilterFormSelectBtn[index].firstElementChild.innerText = selectedLi.innerText;
-  FilterFormValueInputs[index].value = selectedLi.innerText;
-  $(FilterFormContent[index]).slideUp();
+function handleOffersNextPage() {
+  const unitSearchOutputSection = document.querySelector(
+    ".offersSectionScreen"
+  );
+  const selector = unitSearchOutputSection.querySelector(".cardsContainer");
+  const pagenationContainer = unitSearchOutputSection.querySelector(
+    ".pagenation .pageNumber"
+  );
+  // createPagination(selector, unitSearchSectionCurrentDisplayedPage ,sectionData);
+  if (offersSectionCurrentDisplayedPage < 10 - 1) {
+    offersSectionCurrentDisplayedPage++;
+    pagenationContainer.innerHTML = offersSectionCurrentDisplayedPage + 1;
+  }
+}
+function handleOffersPreviousPage() {
+  const unitSearchOutputSection = document.querySelector(
+    ".offersSectionScreen"
+  );
+  const selector = unitSearchOutputSection.querySelector(".cardsContainer");
+  const pagenationContainer = unitSearchOutputSection.querySelector(
+    ".pagenation .pageNumber"
+  );
+  // createPagination(selector, unitSearchSectionCurrentDisplayedPage , sectionData);
+  if (offersSectionCurrentDisplayedPage > 0) {
+    offersSectionCurrentDisplayedPage--;
+    pagenationContainer.innerHTML = offersSectionCurrentDisplayedPage + 1;
+  }
 }
 
-FilterFormSearchInp.forEach((input, index) => {
-  input.addEventListener("keyup", () => {
-    let arr = [];
-    let searchWord = FilterFormSearchInp[index].value.toLowerCase();
-    arr = countries2[index]
-      .filter((data) => {
-        return data.toLowerCase().startsWith(searchWord);
-      })
-      .map((data) => {
-        let isSelected =
-          data == FilterFormSelectBtn[index].firstElementChild.innerText
-            ? "selected"
-            : "";
-        return `<li onclick="FilterFormUpdateName(this , ${index})" class="${isSelected}">${data}</li>`;
-      })
-      .join("");
-    FilterFormOptions[index].innerHTML = arr
-      ? arr
-      : `<p style="margin-top: 10px;">Oops! Country not found</p>`;
-  });
-});
+function handleUnitSearchNextPage() {
+  const unitSearchOutputSection = document.querySelector(".unitSearchOutput");
+  const selector = unitSearchOutputSection.querySelector(".cardsContainer");
+  const pagenationContainer = unitSearchOutputSection.querySelector(
+    ".pagenation .pageNumber"
+  );
+  // createPagination(selector, unitSearchSectionCurrentDisplayedPage ,sectionData);
 
-FilterFormSelectBtn.forEach((btn, index) => {
-  btn.addEventListener("click", () => {
-    $(FilterFormContent[index]).slideToggle();
-    console.log(FilterFormContent[index], index);
-    FilterFormSelectBtn.forEach((select, idx) => {
-      if (select !== btn) {
-        $(FilterFormContent[idx]).slideUp();
-      }
-    });
-  });
-});
+  if (unitSearchSectionCurrentDisplayedPage < 10 - 1) {
+    unitSearchSectionCurrentDisplayedPage++;
+    pagenationContainer.innerHTML = unitSearchSectionCurrentDisplayedPage + 1;
+  }
+}
+function handleUnitSearchPreviousPage() {
+  const unitSearchOutputSection = document.querySelector(".unitSearchOutput");
+  const selector = unitSearchOutputSection.querySelector(".cardsContainer");
+  const pagenationContainer = unitSearchOutputSection.querySelector(
+    ".pagenation .pageNumber"
+  );
+  // createPagination(selector, unitSearchSectionCurrentDisplayedPage ,sectionData);
+  if (unitSearchSectionCurrentDisplayedPage > 0) {
+    unitSearchSectionCurrentDisplayedPage--;
+    pagenationContainer.innerHTML = unitSearchSectionCurrentDisplayedPage + 1;
+  }
+}

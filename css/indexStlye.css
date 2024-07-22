@@ -1,5 +1,10 @@
 /* ///////////////////////////// Strart Image Slider ////////////////////////////////// */
-
+.sectionTitle {
+  font-size: var(--Xlarg-font-size);
+  color: var(--main-color);
+  margin: 20px auto 20px;
+  text-align: center;
+}
 .imageSlider {
   width: 100%;
   position: relative;
@@ -252,6 +257,7 @@
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row;
+  cursor: grab;
 }
 
 .specialUnitsSlider .slideContainer {
@@ -260,6 +266,7 @@
   align-content: center;
   justify-content: center;
   flex-wrap: nowrap;
+  cursor: grab;
 }
 
 .specialUnitsSlider:hover .slideContainer {
@@ -273,6 +280,7 @@
   -ms-transition: 0.5s;
   -o-transition: 0.5s;
   padding: 20px;
+  cursor: grab;
 }
 .specialUnitsSlider .slideContainer .slide .card {
   transition: 0.5s;
@@ -290,6 +298,7 @@
   border: 1px solid var(--border-card-color);
   cursor: pointer;
   position: relative;
+  cursor: grab;
 }
 .specialUnitsSlider .slideContainer .slide .card .favoriteIcon {
   position: absolute;
@@ -347,7 +356,7 @@
 }
 
 .specialUnitsSlider .slideContainer .slide img {
-  width: 100%;
+  height: 250px;
   border-radius: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -480,18 +489,18 @@
   cursor: pointer;
 }
 .offers .container .offerSlider .slider:nth-child(1) .slideContainer {
-  animation: swipeUp 40s infinite 0.4s linear;
-  -webkit-animation: swipeUp 40s infinite 0.4s linear;
+  animation: swipeUp 10s infinite 0.4s linear;
+  -webkit-animation: swipeUp 10s infinite 0.4s linear;
 }
 
 .offers .container .offerSlider .slider:nth-child(3) .slideContainer {
-  animation: swipeUp 40s infinite linear;
-  -webkit-animation: swipeUp 40s infinite linear;
+  animation: swipeUp 10s infinite linear;
+  -webkit-animation: swipeUp 10s infinite linear;
 }
 
 .offers .container .offerSlider .slider:nth-child(2) .slideContainer {
-  animation: swipeDown 40s infinite 0.9s linear;
-  -webkit-animation: swipeDown 40s infinite 0.9s linear;
+  animation: swipeDown 10s infinite 0.9s linear;
+  -webkit-animation: swipeDown 10s infinite 0.9s linear;
 }
 
 .offers .container .offerSlider .slider .slideContainer .slide .imageBox {
@@ -786,6 +795,16 @@
 /* ///////////////////////////// Strart KeyFrames Section ////////////////////////////////// */
 
 .unitSearchOutput {
+  padding: 150px 0px 0px;
+  background-color: var(--main-section-color);
+  display: none;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+}
+.offersSectionScreen {
   padding: 120px 0px 0px;
   background-color: var(--main-section-color);
   display: none;
@@ -796,13 +815,15 @@
   -o-transition: 0.5s;
 }
 
-.unitSearchOutput .container .cardsContainer {
+.container .cardsContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 400px));
+  align-items: center;
+  justify-content: center;
   gap: 20px;
 }
 
-.unitSearchOutput .container .searchOutputHeader {
+.container .searchOutputHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -811,17 +832,17 @@
   padding: 30px 0px;
 }
 
-.unitSearchOutput .container .close {
+.container .close {
   width: 100%;
   padding: 10px 20px;
 }
-.unitSearchOutput .container .close i {
+.container .close i {
   font-size: var(--larg-font-size);
   color: var(--text-black-white);
   cursor: pointer;
 }
 
-.unitSearchOutput .container .searchOutputHeader .mapBox {
+.container .searchOutputHeader .mapBox {
   padding: 10px 40px;
   color: var(--main-color);
   border: 2px solid var(--main-color);
@@ -839,18 +860,19 @@
   -ms-transition: 0.5s;
   -o-transition: 0.5s;
   cursor: pointer;
+  text-decoration: none;
 }
-.unitSearchOutput .container .searchOutputHeader .mapBox:hover {
+.container .searchOutputHeader .mapBox:hover {
   background-color: var(--main-color);
   color: var(--text-black-white);
 }
 
-.unitSearchOutput .container .searchOutputHeader .mapBox i {
+.container .searchOutputHeader .mapBox i {
   margin: 0px 5px;
   font-size: 18px;
 }
 
-.unitSearchOutput .container .searchOutputHeader .filterBox {
+.container .searchOutputHeader .filterBox {
   padding: 15px 20px;
   display: flex;
   align-items: center;
@@ -864,8 +886,8 @@
   background-color: var(--main-color);
 }
 
-.unitSearchOutput .container .searchOutputHeader .filterBox .filter,
-.unitSearchOutput .container .searchOutputHeader .filterBox .order {
+.container .searchOutputHeader .filterBox .filter,
+.container .searchOutputHeader .filterBox .order {
   color: white;
   cursor: pointer;
   transition: 0.5s;
@@ -874,16 +896,16 @@
   -ms-transition: 0.5s;
   -o-transition: 0.5s;
 }
-.unitSearchOutput .container .searchOutputHeader .filterBox i {
+.container .searchOutputHeader .filterBox i {
   margin: 0px 5px;
 }
-.unitSearchOutput .container .searchOutputHeader .filterBox .filter:hover,
-.unitSearchOutput .container .searchOutputHeader .filterBox .order:hover {
+.container .searchOutputHeader .filterBox .filter:hover,
+.container .searchOutputHeader .filterBox .order:hover {
   filter: brightness(70%);
   -webkit-filter: brightness(70%);
 }
 
-.unitSearchOutput .container .cardsContainer .card {
+.container .cardsContainer .card {
   transition: 0.5s;
   -webkit-transition: 0.5s;
   -moz-transition: 0.5s;
@@ -900,49 +922,40 @@
   cursor: pointer;
   position: relative;
 }
-.unitSearchOutput .container .cardsContainer .card img {
+.container .cardsContainer .card img {
   width: 100%;
 }
-.unitSearchOutput .container .cardsContainer .card .favoriteIcon {
+.container .cardsContainer .card .favoriteIcon {
   position: absolute;
   top: 15px;
   left: 15px;
   font-size: var(--main-font-size);
   color: white;
 }
-.unitSearchOutput .container .cardsContainer .card .info {
+.container .cardsContainer .card .info {
   padding: 20px;
 }
-.unitSearchOutput .container .cardsContainer .card .info .rateAndOffer {
+.container .cardsContainer .card .info .rateAndOffer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: var(--text-black-white);
   padding: 20px 0px;
 }
-.unitSearchOutput .container .cardsContainer .card .info .rateAndOffer .icons {
+.container .cardsContainer .card .info .rateAndOffer .icons {
   font-size: 16px;
   color: var(--main-color);
   margin: 0px 5px;
 }
-.unitSearchOutput
-  .container
-  .cardsContainer
-  .card
-  .info
-  .specialUnitsStatistics {
+
+.container .cardsContainer .card .info .specialUnitsStatistics {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   gap: 10px;
 }
-.unitSearchOutput
-  .container
-  .cardsContainer
-  .card
-  .info
-  .specialUnitsStatistics
-  span {
+
+.container .cardsContainer .card .info .specialUnitsStatistics span {
   padding: 8px;
   color: var(--text-black-white);
   font-size: 14px;
@@ -953,17 +966,17 @@
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
 }
-.unitSearchOutput .container .cardsContainer .card .info p {
+.container .cardsContainer .card .info p {
   font-size: var(--larg-font-size);
   line-height: 1.5rem;
   color: var(--text-black-white);
 }
-.unitSearchOutput .container .cardsContainer .card .info .price {
+.container .cardsContainer .card .info .price {
   font-size: var(--main-font-size);
   color: var(--text-black-white);
 }
 
-.unitSearchOutput .orderContainer {
+.orderContainer {
   display: none;
   position: fixed;
   inset: 0;
@@ -971,14 +984,14 @@
   backdrop-filter: blur(10px);
   z-index: 999999;
 }
-.unitSearchOutput .orderBoxContainer {
+.orderBoxContainer {
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
   inset: 0;
 }
-.unitSearchOutput .orderBoxContainer .orderBox {
+.orderBoxContainer .orderBox {
   padding: 20px;
   border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -989,11 +1002,11 @@
   width: 600px;
 }
 
-.unitSearchOutput .orderBoxContainer .orderBox .outputOrderHeader {
+.orderBoxContainer .orderBox .outputOrderHeader {
   border-bottom: 1px solid var(--main-color);
   position: relative;
 }
-.unitSearchOutput .orderBoxContainer .orderBox .outputOrderHeader h1 {
+.orderBoxContainer .orderBox .outputOrderHeader h1 {
   font-size: var(--Xlarg-font-size);
   color: white;
   margin: 0px;
@@ -1001,7 +1014,7 @@
   width: 100%;
   text-align: center;
 }
-.unitSearchOutput .orderBoxContainer .orderBox .outputOrderHeader i {
+.orderBoxContainer .orderBox .outputOrderHeader i {
   position: absolute;
   top: 10px;
   left: 10px;
@@ -1009,7 +1022,7 @@
   color: white;
   cursor: pointer;
 }
-.unitSearchOutput .orderBoxContainer .orderBox .outputOrderForm {
+.orderBoxContainer .orderBox .outputOrderForm {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1017,11 +1030,8 @@
   gap: 10px;
   width: 100%;
 }
-.unitSearchOutput
-  .orderBoxContainer
-  .orderBox
-  .outputOrderForm
-  .inputContainer {
+
+.orderBoxContainer .orderBox .outputOrderForm .inputContainer {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1029,19 +1039,14 @@
   gap: 20px;
   width: 100%;
 }
-.unitSearchOutput
-  .orderBoxContainer
-  .orderBox
-  .outputOrderForm
-  .inputContainer
-  span {
+
+.orderBoxContainer .orderBox .outputOrderForm .inputContainer span {
   color: white;
   font-weight: bold;
   font-size: var(--larg-font-size);
 }
 
-.unitSearchOutput
-  .orderBoxContainer
+.orderBoxContainer
   .orderBox
   .outputOrderForm
   .inputContainer
@@ -1052,9 +1057,15 @@
   accent-color: var(--main-color);
   cursor: pointer;
 }
+
+#displayInputsValue {
+  font-size: var(--larg-font-size);
+  color: var(--main-color);
+  text-align: center;
+}
 /* /////////////////////////////////////////////////////////////////////////////////////////////// */
 
-.unitSearchOutput .filterContainer {
+.filterContainer {
   display: none;
   position: fixed;
   inset: 0;
@@ -1062,14 +1073,14 @@
   backdrop-filter: blur(10px);
   z-index: 999999;
 }
-.unitSearchOutput .filterBoxContainer {
+.filterBoxContainer {
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
   inset: 0;
 }
-.unitSearchOutput .filterBoxContainer .filterBox {
+.filterBoxContainer .filterBox {
   padding: 20px;
   border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -1082,31 +1093,29 @@
   overflow-y: auto;
 }
 
-.unitSearchOutput .filterBoxContainer .filterBox::-webkit-scrollbar {
+.filterBoxContainer .filterBox::-webkit-scrollbar {
   width: 5px;
 }
 
-.unitSearchOutput .filterBoxContainer .filterBox::-webkit-scrollbar-track {
+.filterBoxContainer .filterBox::-webkit-scrollbar-track {
   background: #f1f1f1;
   border-radius: 25px;
 }
 
-.unitSearchOutput .filterBoxContainer .filterBox::-webkit-scrollbar-thumb {
+.filterBoxContainer .filterBox::-webkit-scrollbar-thumb {
   background: #a5a5a5;
   border-radius: 25px;
 }
 
-.unitSearchOutput
-  .filterBoxContainer
-  .filterBox::-webkit-scrollbar-thumb:hover {
+.filterBoxContainer .filterBox::-webkit-scrollbar-thumb:hover {
   background: #b3b3b3;
 }
 
-.unitSearchOutput .filterBoxContainer .filterBox .outputFilterHeader {
+.filterBoxContainer .filterBox .outputFilterHeader {
   border-bottom: 1px solid var(--main-color);
   position: relative;
 }
-.unitSearchOutput .filterBoxContainer .filterBox .outputFilterHeader h1 {
+.filterBoxContainer .filterBox .outputFilterHeader h1 {
   font-size: var(--Xlarg-font-size);
   color: white;
   margin: 0px;
@@ -1114,7 +1123,7 @@
   width: 100%;
   text-align: center;
 }
-.unitSearchOutput .filterBoxContainer .filterBox .outputFilterHeader i {
+.filterBoxContainer .filterBox .outputFilterHeader i {
   position: absolute;
   top: 10px;
   left: 10px;
@@ -1122,31 +1131,24 @@
   color: white;
   cursor: pointer;
 }
-.unitSearchOutput .filterBoxContainer .filterBox .outputFilterForm {
+.filterBoxContainer .filterBox .outputFilterForm {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  width: 100%;
-}
-.unitSearchOutput
-  .filterBoxContainer
-  .filterBox
-  .outputFilterForm
-  > div:not(:last-child) {
-  border-bottom: 2px solid #18131c;
-  padding: 20px 0px;
-}
-.unitSearchOutput .filterBoxContainer .filterBox .outputFilterForm > div {
   width: 100%;
 }
 
-.unitSearchOutput
-  .filterBoxContainer
-  .filterBox
-  .outputFilterForm
-  .priceSection {
+.filterBoxContainer .filterBox .outputFilterForm > div:not(:last-child) {
+  border-bottom: 2px solid #18131c;
+  padding: 20px 0px;
+}
+.filterBoxContainer .filterBox .outputFilterForm > div {
+  width: 100%;
+}
+
+.filterBoxContainer .filterBox .outputFilterForm .priceSection {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1154,36 +1156,27 @@
   gap: 10px;
   width: 100%;
 }
-.unitSearchOutput
-  .filterBoxContainer
-  .filterBox
-  .outputFilterForm
-  .priceSection
-  > div {
+
+.filterBoxContainer .filterBox .outputFilterForm .priceSection > div {
   width: 100%;
 }
 
 /* ///////////////////////////// Strart KeyFrames Section ////////////////////////////////// */
-.unitSearchOutput .filterBoxContainer .filterBox .outputFilterForm h2 {
+.filterBoxContainer .filterBox .outputFilterForm h2 {
   font-size: var(--header-font-size);
   color: white;
   margin-top: 0px;
   text-align: center;
 }
 
-.unitSearchOutput
-  .filterBoxContainer
-  .filterBox
-  .outputFilterForm
-  .priceSection
-  .price-input {
+.filterBoxContainer .filterBox .outputFilterForm .priceSection .price-input {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 20px;
 }
-.unitSearchOutput
-  .filterBoxContainer
+
+.filterBoxContainer
   .filterBox
   .outputFilterForm
   .priceSection
@@ -1196,8 +1189,8 @@
   gap: 5px;
   overflow: hidden;
 }
-.unitSearchOutput
-  .filterBoxContainer
+
+.filterBoxContainer
   .filterBox
   .outputFilterForm
   .priceSection
@@ -1207,13 +1200,8 @@
   width: max-content;
   color: #ddd;
 }
-.unitSearchOutput
-  .filterBoxContainer
-  .filterBox
-  .outputFilterForm
-  .priceSection
-  .field
-  input {
+
+.filterBoxContainer .filterBox .outputFilterForm .priceSection .field input {
   outline: none;
   font-size: 19px;
   border: none;
@@ -1222,14 +1210,13 @@
   background-color: transparent;
   color: #ddd;
 }
-.unitSearchOutput
-  .filterBoxContainer
+
+.filterBoxContainer
   .filterBox
   .outputFilterForm
   .priceSection
   input[type="number"]::-webkit-outer-spin-button,
-.unitSearchOutput
-  .filterBoxContainer
+.filterBoxContainer
   .filterBox
   .outputFilterForm
   .priceSection
@@ -1237,15 +1224,15 @@
   -webkit-appearance: none;
 }
 
-.unitSearchOutput .filterBoxContainer .filterBox .outputFilterForm .slider {
+.filterBoxContainer .filterBox .outputFilterForm .slider {
   height: 10px;
   position: relative;
   background: #ddd;
   border-radius: 5px;
   width: 100%;
 }
-.unitSearchOutput
-  .filterBoxContainer
+
+.filterBoxContainer
   .filterBox
   .outputFilterForm
   .priceSection
@@ -1259,16 +1246,12 @@
   background: var(--main-color);
   opacity: 0.6;
 }
-.unitSearchOutput
-  .filterBoxContainer
-  .filterBox
-  .outputFilterForm
-  .priceSection
-  .range-input {
+
+.filterBoxContainer .filterBox .outputFilterForm .priceSection .range-input {
   position: relative;
 }
-.unitSearchOutput
-  .filterBoxContainer
+
+.filterBoxContainer
   .filterBox
   .outputFilterForm
   .priceSection
@@ -1284,8 +1267,7 @@
   -moz-appearance: none;
 }
 
-.unitSearchOutput
-  .filterBoxContainer
+.filterBoxContainer
   .filterBox
   .outputFilterForm
   .priceSection
@@ -1300,8 +1282,8 @@
   position: relative;
   cursor: grab;
 }
-.unitSearchOutput
-  .filterBoxContainer
+
+.filterBoxContainer
   .filterBox
   .outputFilterForm
   .priceSection
@@ -1316,14 +1298,13 @@
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
   cursor: pointer;
 }
-.unitSearchOutput
-  .filterBoxContainer
+
+.filterBoxContainer
   .filterBox
   .outputFilterForm
   .numberOfVehiclesSection
   .numberOfVehiclesForm,
-.unitSearchOutput
-  .filterBoxContainer
+.filterBoxContainer
   .filterBox
   .outputFilterForm
   .capacitySection
@@ -1335,15 +1316,14 @@
   flex-wrap: wrap;
   gap: 10px;
 }
-.unitSearchOutput
-  .filterBoxContainer
+
+.filterBoxContainer
   .filterBox
   .outputFilterForm
   .capacitySection
   .capacityForm
   .inputContainer,
-.unitSearchOutput
-  .filterBoxContainer
+.filterBoxContainer
   .filterBox
   .outputFilterForm
   .numberOfVehiclesSection
@@ -1363,8 +1343,8 @@
   color: white;
   font-size: var(--main-font-size);
 }
-.unitSearchOutput
-  .filterBoxContainer
+
+.filterBoxContainer
   .filterBox
   .outputFilterForm
   .inputContainer
@@ -1376,8 +1356,7 @@
   cursor: pointer;
 }
 
-.unitSearchOutput
-  .filterBoxContainer
+.filterBoxContainer
   .filterBox
   .outputFilterForm
   .advancedSearchSection
@@ -1390,8 +1369,7 @@
   margin: 20px 0px;
 }
 
-.unitSearchOutput
-  .filterBoxContainer
+.filterBoxContainer
   .filterBox
   .outputFilterForm
   .advancedSearchSection
@@ -1401,8 +1379,7 @@
   color: white;
 }
 
-.unitSearchOutput
-  .filterBoxContainer
+.filterBoxContainer
   .filterBox
   .outputFilterForm
   .advancedSearchSection
@@ -1412,22 +1389,13 @@
   max-height: 200px;
 }
 
-.unitSearchOutput
-  .filterBoxContainer
-  .filterBox
-  .outputFilterForm
-  .displayButton {
+.filterBoxContainer .filterBox .outputFilterForm .displayButton {
   width: 100%;
   padding: 20px;
   text-align: center;
 }
 
-.unitSearchOutput
-  .filterBoxContainer
-  .filterBox
-  .outputFilterForm
-  .displayButton
-  button {
+.filterBoxContainer .filterBox .outputFilterForm .displayButton button {
   padding: 10px 40px;
   font-size: var(--larg-font-size);
   border-radius: 10px;
@@ -1439,6 +1407,30 @@
   background-color: var(--main-color);
   color: white;
   cursor: pointer;
+}
+
+.pagenation {
+  color: var(--main-color);
+  font-size: var(--Xlarg-font-size);
+  display: inline-block;
+  width: 100%;
+  margin: 100px auto 20px;
+  text-align: center;
+}
+.pagenation i {
+  margin: 0px 10px;
+  font-size: var(--larg-font-size);
+  cursor: pointer;
+}
+
+.pagenation span {
+  display: inline-block;
+  transform: translateY(-5px);
+  -webkit-transform: translateY(-5px);
+  -moz-transform: translateY(-5px);
+  -ms-transform: translateY(-5px);
+  -o-transform: translateY(-5px);
+  margin: 0px 10px;
 }
 
 /* ///////////////////////////// Strart KeyFrames Section ////////////////////////////////// */
@@ -1489,11 +1481,11 @@
   }
 
   to {
-    transform: translateY(-90%);
-    -webkit-transform: translateY(-90%);
-    -moz-transform: translateY(-90%);
-    -ms-transform: translateY(-90%);
-    -o-transform: translateY(-90%);
+    transform: translateY(-75%);
+    -webkit-transform: translateY(-75%);
+    -moz-transform: translateY(-75%);
+    -ms-transform: translateY(-75%);
+    -o-transform: translateY(-75%);
   }
 }
 @keyframes swipeDown {
@@ -1506,11 +1498,11 @@
   }
 
   to {
-    transform: translateY(90%);
-    -webkit-transform: translateY(90%);
-    -moz-transform: translateY(90%);
-    -ms-transform: translateY(90%);
-    -o-transform: translateY(90%);
+    transform: translateY(75%);
+    -webkit-transform: translateY(75%);
+    -moz-transform: translateY(75%);
+    -ms-transform: translateY(75%);
+    -o-transform: translateY(75%);
   }
 }
 
@@ -1601,7 +1593,7 @@
   .imageSlider .buttonLay .searchUnit form .inputContainer .dateDropDown {
     width: 400px;
   }
-  .unitSearchOutput .orderBoxContainer .orderBox {
+  .orderBoxContainer .orderBox {
     padding: 20px;
     border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -1611,17 +1603,16 @@
     background-color: var(--second-section-color);
     width: 90%;
   }
-  .unitSearchOutput .filterBoxContainer .filterBox {
+  .filterBoxContainer .filterBox {
     width: 90%;
   }
-  .unitSearchOutput
-    .filterBoxContainer
+
+  .filterBoxContainer
     .filterBox
     .outputFilterForm
     .numberOfVehiclesSection
     .numberOfVehiclesForm,
-  .unitSearchOutput
-    .filterBoxContainer
+  .filterBoxContainer
     .filterBox
     .outputFilterForm
     .capacitySection
@@ -1641,11 +1632,10 @@
   .offers .container .offerInfo p {
     width: 90%;
   }
-  .specialUnits,
-  .unitSearchOutput {
+  .specialUnits {
     padding-top: 300px;
   }
-  .unitSearchOutput .container .searchOutputHeader {
+  .container .searchOutputHeader {
     flex-direction: column;
     justify-content: center;
     gap: 20px;
@@ -1658,5 +1648,11 @@
   }
   .imageSlider .buttonLay .searchUnit form .inputContainer .dateDropDown {
     width: 100%;
+  }
+  .container .cardsContainer {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  .unitSearchOutput {
+    padding-top: 250px;
   }
 }

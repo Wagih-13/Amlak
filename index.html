@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <link rel="icon" href="./images/amlak.ico" />
-
     <link rel="stylesheet" href="./css/normalize.css" />
     <link rel="stylesheet" href="./css/all.min.css" />
     <link
@@ -27,10 +26,11 @@
         <button class="mainButton gold-color">احجز الان</button>
         <div class="searchContainer">
           <div class="searchUnit">
-            <form class="filterUnitForm">
+            <form class="filterUnitForm" id="searchUnitForm">
               <div class="inputContainer">
                 <label for="">نوع البيوت العطلات</label>
-                <input type="text" class="valueInput" id="" />
+                <input type="text" class="valueInput" id="homeType" />
+                <input type="text" class="emptyInput" id="AreaUnitName" />
                 <div class="wrapper">
                   <div class="select-btn">
                     <span> نوع البيوت العطلات </span>
@@ -44,13 +44,51 @@
                         placeholder="Search"
                       />
                     </div>
-                    <ul class="options"></ul>
+                    <ul class="options">
+                      <li
+                        onclick="searchUnitUpdateName(this)"
+                        optionCode="2822"
+                      >
+                        ahmed
+                      </li>
+                      <li
+                        onclick="searchUnitUpdateName(this)"
+                        optionCode="2822"
+                      >
+                        mohamed
+                      </li>
+                      <li
+                        onclick="searchUnitUpdateName(this)"
+                        optionCode="2822"
+                      >
+                        amr
+                      </li>
+                      <li
+                        onclick="searchUnitUpdateName(this)"
+                        optionCode="2822"
+                      >
+                        asim
+                      </li>
+                      <li
+                        onclick="searchUnitUpdateName(this)"
+                        optionCode="2822"
+                      >
+                        asim
+                      </li>
+                      <li
+                        onclick="searchUnitUpdateName(this)"
+                        optionCode="2822"
+                      >
+                        asim
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
               <div class="inputContainer">
                 <label for="">أختر المدينة</label>
-                <input type="text" class="valueInput" id="" />
+                <input type="text" class="valueInput" id="choseTown" />
+                <input type="text" class="emptyInput" id="AreaUnitCode" />
                 <div class="wrapper">
                   <div class="select-btn">
                     <span>اختر الحي </span>
@@ -64,13 +102,51 @@
                         placeholder="Search"
                       />
                     </div>
-                    <ul class="options"></ul>
+                    <ul class="options">
+                      <li
+                        onclick="searchUnitUpdateName(this)"
+                        optionCode="2822"
+                      >
+                        mgdy
+                      </li>
+                      <li
+                        onclick="searchUnitUpdateName(this)"
+                        optionCode="2822"
+                      >
+                        sara
+                      </li>
+                      <li
+                        onclick="searchUnitUpdateName(this)"
+                        optionCode="2822"
+                      >
+                        maryem
+                      </li>
+                      <li
+                        onclick="searchUnitUpdateName(this)"
+                        optionCode="2822"
+                      >
+                        asim
+                      </li>
+                      <li
+                        onclick="searchUnitUpdateName(this)"
+                        optionCode="2822"
+                      >
+                        asim
+                      </li>
+                      <li
+                        onclick="searchUnitUpdateName(this)"
+                        optionCode="2822"
+                      >
+                        asim
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
               <div class="inputContainer">
                 <label for="">أختر الحي</label>
-                <input type="text" class="valueInput" id="" />
+                <input type="text" class="valueInput" id="choseNeighborhood" />
+                <input type="text" class="emptyInput" id="AreaUnitDistrict" />
                 <div class="wrapper">
                   <div class="select-btn">
                     <span>اختر الحي </span>
@@ -84,11 +160,48 @@
                         placeholder="Search"
                       />
                     </div>
-                    <ul class="options"></ul>
+                    <ul class="options">
+                      <li
+                        onclick="searchUnitUpdateName(this)"
+                        optionCode="2822"
+                      >
+                        asim
+                      </li>
+                      <li
+                        onclick="searchUnitUpdateName(this)"
+                        optionCode="2822"
+                      >
+                        fars
+                      </li>
+                      <li
+                        onclick="searchUnitUpdateName(this)"
+                        optionCode="2822"
+                      >
+                        amr
+                      </li>
+                      <li
+                        onclick="searchUnitUpdateName(this)"
+                        optionCode="2822"
+                      >
+                        asim
+                      </li>
+                      <li
+                        onclick="searchUnitUpdateName(this)"
+                        optionCode="2822"
+                      >
+                        asim
+                      </li>
+                      <li
+                        onclick="searchUnitUpdateName(this)"
+                        optionCode="2822"
+                      >
+                        asim
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
-              <div class="inputContainer">
+              <div class="inputContainer calenderInput">
                 <label for="">اختار التاريخ</label>
                 <div class="dropDownBox">
                   <input
@@ -132,12 +245,17 @@
                   </div>
                 </div>
               </div>
-              <button class="searchButton">بحث</button>
+              <button class="searchButton EnLang searchUnitSearchButton">
+                search
+              </button>
+              <button class="searchButton ArLang searchUnitSearchButton">
+                بحث
+              </button>
             </form>
           </div>
         </div>
       </div>
-      <div class="swiper Slider-container">
+      <div class="swiper Slider-container" id="imageSliderContainer" dir="">
         <div class="swiper-wrapper" id="swip">
           <div class="swiper-slide">
             <div class="overLay">
@@ -161,15 +279,15 @@
         </div>
       </div>
     </div>
-    <div class="unitSearchOutput">
-      <div class="filterContainer">
+    <div class="unitSearchOutput" id="unitSearchOutput">
+      <div class="filterContainer" id="uintSearchFilterContainer">
         <div class="filterBoxContainer">
           <div class="filterBox">
             <div class="outputFilterHeader">
               <h1>تصفية النتائج</h1>
               <i class="fa-solid fa-x" onclick="handelClosefilterBox()"></i>
             </div>
-            <form class="outputFilterForm">
+            <form class="outputFilterForm" id="outputFilterForm">
               <div class="priceSection">
                 <h2>السعر</h2>
                 <div class="rangeInputContainer">
@@ -183,7 +301,7 @@
                       min="0"
                       max="10000"
                       value="2500"
-                      step="100"
+                      step="10"
                     />
                     <input
                       type="range"
@@ -191,18 +309,28 @@
                       min="0"
                       max="10000"
                       value="7500"
-                      step="100"
+                      step="10"
                     />
                   </div>
                 </div>
                 <div class="price-input">
                   <div class="field">
                     <span>الحد الادنى</span>
-                    <input type="number" class="input-max" value="7500" />
+                    <input
+                      type="number"
+                      class="input-max"
+                      value="7500"
+                      id="UnitSearchMinPrice"
+                    />
                   </div>
                   <div class="field">
                     <span>الحد الاقصى</span>
-                    <input type="number" class="input-min" value="2500" />
+                    <input
+                      type="number"
+                      class="input-min"
+                      value="2500"
+                      id="UnitSearchMaxPrice"
+                    />
                   </div>
                 </div>
               </div>
@@ -211,7 +339,11 @@
                 <div class="advancedSerchForm">
                   <div class="inputContainer">
                     <label for="">ابحث باسم الوحدة</label>
-                    <input type="text" class="valueInput" id="" />
+                    <input
+                      type="text"
+                      class="valueInput"
+                      id="UnitSearchUnitName"
+                    />
                     <div class="wrapper">
                       <div class="select-btn">
                         <span> مثال: شاليه في الرياض</span>
@@ -225,13 +357,66 @@
                             placeholder="Search"
                           />
                         </div>
-                        <ul class="options"></ul>
+                        <ul class="options">
+                          <li
+                            onclick="searchUnitUpdateName(this)"
+                            optionCode="2822"
+                          >
+                            amlak
+                          </li>
+                          <li
+                            onclick="searchUnitUpdateName(this)"
+                            optionCode="2822"
+                          >
+                            amlak
+                          </li>
+                          <li
+                            onclick="searchUnitUpdateName(this)"
+                            optionCode="2822"
+                          >
+                            amlak
+                          </li>
+                          <li
+                            onclick="searchUnitUpdateName(this)"
+                            optionCode="2822"
+                          >
+                            amlak
+                          </li>
+                          <li
+                            onclick="searchUnitUpdateName(this)"
+                            optionCode="2822"
+                          >
+                            test
+                          </li>
+                          <li
+                            onclick="searchUnitUpdateName(this)"
+                            optionCode="2822"
+                          >
+                            amlak
+                          </li>
+                          <li
+                            onclick="searchUnitUpdateName(this)"
+                            optionCode="2822"
+                          >
+                            amlak
+                          </li>
+                          <li
+                            onclick="searchUnitUpdateName(this)"
+                            optionCode="2822"
+                          >
+                            amlak
+                          </li>
+                        </ul>
                       </div>
                     </div>
                   </div>
                   <div class="inputContainer">
                     <label for="">ابحث بكود الوحدة</label>
-                    <input type="text" class="valueInput" id="" />
+                    <input
+                      type="text"
+                      class="valueInput"
+                      id="UnitSearchUnitCode"
+                    />
                     <div class="wrapper">
                       <div class="select-btn">
                         <span> مثال : Bh12 </span>
@@ -245,13 +430,48 @@
                             placeholder="Search"
                           />
                         </div>
-                        <ul class="options"></ul>
+                        <ul class="options">
+                          <li
+                            onclick="searchUnitUpdateName(this)"
+                            optionCode="2822"
+                          >
+                            RB65
+                          </li>
+                          <li
+                            onclick="searchUnitUpdateName(this)"
+                            optionCode="2822"
+                          >
+                            RB65
+                          </li>
+                          <li
+                            onclick="searchUnitUpdateName(this)"
+                            optionCode="2822"
+                          >
+                            RB65
+                          </li>
+                          <li
+                            onclick="searchUnitUpdateName(this)"
+                            optionCode="2822"
+                          >
+                            RB65
+                          </li>
+                          <li
+                            onclick="searchUnitUpdateName(this)"
+                            optionCode="2822"
+                          >
+                            RB65
+                          </li>
+                        </ul>
                       </div>
                     </div>
                   </div>
                   <div class="inputContainer">
                     <label for="">ابحث بعنوان الوحداة</label>
-                    <input type="text" class="valueInput" id="" />
+                    <input
+                      type="text"
+                      class="valueInput"
+                      id="UnitSearchUnitLocation"
+                    />
                     <div class="wrapper">
                       <div class="select-btn">
                         <span> مثال : الرياض - جدة </span>
@@ -265,7 +485,50 @@
                             placeholder="Search"
                           />
                         </div>
-                        <ul class="options"></ul>
+                        <ul class="options">
+                          <li
+                            onclick="searchUnitUpdateName(this)"
+                            optionCode="2822"
+                          >
+                            geda
+                          </li>
+                          <li
+                            onclick="searchUnitUpdateName(this)"
+                            optionCode="2822"
+                          >
+                            geda
+                          </li>
+                          <li
+                            onclick="searchUnitUpdateName(this)"
+                            optionCode="2822"
+                          >
+                            geda
+                          </li>
+                          <li
+                            onclick="searchUnitUpdateName(this)"
+                            optionCode="2822"
+                          >
+                            geda
+                          </li>
+                          <li
+                            onclick="searchUnitUpdateName(this)"
+                            optionCode="2822"
+                          >
+                            geda
+                          </li>
+                          <li
+                            onclick="searchUnitUpdateName(this)"
+                            optionCode="2822"
+                          >
+                            geda
+                          </li>
+                          <li
+                            onclick="searchUnitUpdateName(this)"
+                            optionCode="2822"
+                          >
+                            geda
+                          </li>
+                        </ul>
                       </div>
                     </div>
                   </div>
@@ -275,27 +538,58 @@
                 <h2>السعة</h2>
                 <div class="capacityForm">
                   <div class="inputContainer">
-                    <input type="radio" name="capacity" checked id="" />
+                    <input
+                      type="radio"
+                      name="capacity"
+                      checked
+                      minCapacity=""
+                      maxCapacity=""
+                    />
                     <label for="">0 + الكل </label>
                   </div>
                   <div class="inputContainer">
-                    <input type="radio" name="capacity" id="" />
+                    <input
+                      type="radio"
+                      name="capacity"
+                      minCapacity="0"
+                      maxCapacity="5"
+                    />
                     <label for="">0-5 اشخاص</label>
                   </div>
                   <div class="inputContainer">
-                    <input type="radio" name="capacity" id="" />
+                    <input
+                      type="radio"
+                      name="capacity"
+                      minCapacity="5"
+                      maxCapacity="10"
+                    />
                     <label for="">5-10 اشخاص</label>
                   </div>
                   <div class="inputContainer">
-                    <input type="radio" name="capacity" id="" />
+                    <input
+                      type="radio"
+                      name="capacity"
+                      minCapacity="10"
+                      maxCapacity="20"
+                    />
                     <label for="">10-20 اشخاص</label>
                   </div>
                   <div class="inputContainer">
-                    <input type="radio" name="capacity" id="" />
+                    <input
+                      type="radio"
+                      name="capacity"
+                      minCapacity="20"
+                      maxCapacity="30"
+                    />
                     <label for="">20-30 اشخاص</label>
                   </div>
                   <div class="inputContainer">
-                    <input type="radio" name="capacity" id="" />
+                    <input
+                      type="radio"
+                      name="capacity"
+                      minCapacity="30"
+                      maxCapacity="40"
+                    />
                     <label for="">30-40 اشخاص</label>
                   </div>
                 </div>
@@ -304,27 +598,58 @@
                 <h2>عدد السيارات المسموح</h2>
                 <div class="numberOfVehiclesForm">
                   <div class="inputContainer">
-                    <input type="radio" name="numberOfVehicles" checked id="" />
+                    <input
+                      type="radio"
+                      name="numberOfVehicles"
+                      checked
+                      minNumberOfVehicles=""
+                      maxNumberOfVehicles=""
+                    />
                     <label for="">0 + الكل </label>
                   </div>
                   <div class="inputContainer">
-                    <input type="radio" name="numberOfVehicles" id="" />
+                    <input
+                      type="radio"
+                      name="numberOfVehicles"
+                      minNumberOfVehicles="0"
+                      maxNumberOfVehicles="0"
+                    />
                     <label for="">0-5 اشخاص</label>
                   </div>
                   <div class="inputContainer">
-                    <input type="radio" name="numberOfVehicles" id="" />
+                    <input
+                      type="radio"
+                      name="numberOfVehicles"
+                      minNumberOfVehicles="5"
+                      maxNumberOfVehicles="10"
+                    />
                     <label for="">5-10 اشخاص</label>
                   </div>
                   <div class="inputContainer">
-                    <input type="radio" name="numberOfVehicles" id="" />
+                    <input
+                      type="radio"
+                      name="numberOfVehicles"
+                      minNumberOfVehicles="10"
+                      maxNumberOfVehicles="20"
+                    />
                     <label for="">10-20 اشخاص</label>
                   </div>
                   <div class="inputContainer">
-                    <input type="radio" name="numberOfVehicles" id="" />
+                    <input
+                      type="radio"
+                      name="numberOfVehicles"
+                      minNumberOfVehicles="20"
+                      maxNumberOfVehicles="30"
+                    />
                     <label for="">20-30 اشخاص</label>
                   </div>
                   <div class="inputContainer">
-                    <input type="radio" name="numberOfVehicles" id="" />
+                    <input
+                      type="radio"
+                      name="numberOfVehicles"
+                      minNumberOfVehicles="30"
+                      maxNumberOfVehicles="40"
+                    />
                     <label for="">30-40 اشخاص</label>
                   </div>
                 </div>
@@ -336,7 +661,7 @@
           </div>
         </div>
       </div>
-      <div class="orderContainer">
+      <div class="orderContainer" id="uintSearchOrderContainer">
         <div class="orderBoxContainer">
           <div class="orderBox">
             <div class="outputOrderHeader">
@@ -372,6 +697,8 @@
         <div class="close">
           <i class="fa-solid fa-x" onclick="handelCloseUnitSearchOutput()"></i>
         </div>
+        <h1 class="sectionTitle">ناتج البحث</h1>
+        <p id="displayInputsValue"></p>
         <header class="searchOutputHeader">
           <div class="filterBox">
             <div class="filter" onclick="handelOpenFilterBox()">
@@ -381,12 +708,1117 @@
               ترتيب <i class="fa-solid fa-arrow-down-wide-short"></i>
             </div>
           </div>
-          <button class="mapBox">
+          <button
+            href="./showOnMap.html"
+            class="mapBox"
+            id="searchOutputMapButton"
+          >
             show on map <i class="fa-solid fa-location-dot"></i>
           </button>
         </header>
         <section class="cardsContainer">
-          <div class="card">
+          <div
+            class="card"
+            price="100"
+            minCapacity="0"
+            maxCapacity="0"
+            minNumberOfVehicles="5"
+            maxNumberOfVehicles="10"
+            unitLocation="geda"
+            unitCode="RB65"
+            unitName="amlak"
+            lat="30.3"
+            lon="31.53"
+          >
+            <div class="favoriteIcon">
+              <i class="fa-regular fa-heart"></i>
+            </div>
+            <img src="./images/1.jpg" alt="" />
+            <div class="info">
+              <div class="rateAndOffer">
+                <span>
+                  <span class="icons">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </span>
+                  4.5
+                </span>
+                <span>خصم 50%</span>
+              </div>
+              <div class="specialUnitsStatistics">
+                <span>32 <i class="fa-solid fa-house"></i></span>
+                <span>53 <i class="fa-solid fa-couch"></i></span>
+                <span>83 <i class="fa-solid fa-couch"></i></span>
+              </div>
+              <p>Bt120</p>
+              <span class="price">سعر الوحدة 100$</span>
+            </div>
+          </div>
+          <div
+            class="card"
+            price="200"
+            minCapacity="0"
+            maxCapacity="5"
+            minNumberOfVehicles="10"
+            maxNumberOfVehicles="20"
+            unitLocation="geda"
+            unitCode="RB65"
+            unitName="amlak"
+            lat="30.3"
+            lon="31.53"
+          >
+            <div class="favoriteIcon">
+              <i class="fa-regular fa-heart"></i>
+            </div>
+            <img src="./images/1.jpg" alt="" />
+            <div class="info">
+              <div class="rateAndOffer">
+                <span>
+                  <span class="icons">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </span>
+                  4.5
+                </span>
+                <span>خصم 50%</span>
+              </div>
+              <div class="specialUnitsStatistics">
+                <span>32 <i class="fa-solid fa-house"></i></span>
+                <span>53 <i class="fa-solid fa-couch"></i></span>
+                <span>83 <i class="fa-solid fa-couch"></i></span>
+              </div>
+              <p>Bt120</p>
+              <span class="price">سعر الوحدة 200$</span>
+            </div>
+          </div>
+          <div
+            class="card"
+            price="300"
+            minCapacity="5"
+            maxCapacity="10"
+            minNumberOfVehicles="20"
+            maxNumberOfVehicles="30"
+            unitLocation="geda"
+            unitCode="RB65"
+            unitName="amlak"
+            lat="31.3"
+            lon="31.53"
+          >
+            <div class="favoriteIcon">
+              <i class="fa-regular fa-heart"></i>
+            </div>
+            <img src="./images/1.jpg" alt="" />
+            <div class="info">
+              <div class="rateAndOffer">
+                <span>
+                  <span class="icons">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </span>
+                  4.5
+                </span>
+                <span>خصم 50%</span>
+              </div>
+              <div class="specialUnitsStatistics">
+                <span>32 <i class="fa-solid fa-house"></i></span>
+                <span>53 <i class="fa-solid fa-couch"></i></span>
+                <span>83 <i class="fa-solid fa-couch"></i></span>
+              </div>
+              <p>Bt120</p>
+              <span class="price">سعر الوحدة 300$</span>
+            </div>
+          </div>
+          <div
+            class="card"
+            price="400"
+            minCapacity="10"
+            maxCapacity="20"
+            minNumberOfVehicles="30"
+            maxNumberOfVehicles="40"
+            unitLocation="geda"
+            unitCode="RB65"
+            unitName="amlak"
+            lat="32.3"
+            lon="32.53"
+          >
+            <div class="favoriteIcon">
+              <i class="fa-regular fa-heart"></i>
+            </div>
+            <img src="./images/1.jpg" alt="" />
+            <div class="info">
+              <div class="rateAndOffer">
+                <span>
+                  <span class="icons">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </span>
+                  4.5
+                </span>
+                <span>خصم 50%</span>
+              </div>
+              <div class="specialUnitsStatistics">
+                <span>32 <i class="fa-solid fa-house"></i></span>
+                <span>53 <i class="fa-solid fa-couch"></i></span>
+                <span>83 <i class="fa-solid fa-couch"></i></span>
+              </div>
+              <p>Bt120</p>
+              <span class="price">سعر الوحدة 400$</span>
+            </div>
+          </div>
+          <div
+            class="card"
+            price="1000"
+            minCapacity="10"
+            maxCapacity="20"
+            minNumberOfVehicles="10"
+            maxNumberOfVehicles="20"
+            unitLocation="geda"
+            unitCode="RB65"
+            unitName="amlak"
+            lat="30.3"
+            lon="31.23"
+          >
+            <div class="favoriteIcon">
+              <i class="fa-regular fa-heart"></i>
+            </div>
+            <img src="./images/1.jpg" alt="" />
+            <div class="info">
+              <div class="rateAndOffer">
+                <span>
+                  <span class="icons">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </span>
+                  4.5
+                </span>
+                <span>خصم 50%</span>
+              </div>
+              <div class="specialUnitsStatistics">
+                <span>32 <i class="fa-solid fa-house"></i></span>
+                <span>53 <i class="fa-solid fa-couch"></i></span>
+                <span>83 <i class="fa-solid fa-couch"></i></span>
+              </div>
+              <p>Bt120</p>
+              <span class="price">سعر الوحدة 1000$</span>
+            </div>
+          </div>
+          <div
+            class="card"
+            price="500"
+            minCapacity="20"
+            maxCapacity="30"
+            minNumberOfVehicles="40"
+            maxNumberOfVehicles="50"
+            unitLocation="geda"
+            unitCode="RB65"
+            unitName="amlak"
+            lat="33.3"
+            lon="31.53"
+          >
+            <div class="favoriteIcon">
+              <i class="fa-regular fa-heart"></i>
+            </div>
+            <img src="./images/1.jpg" alt="" />
+            <div class="info">
+              <div class="rateAndOffer">
+                <span>
+                  <span class="icons">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </span>
+                  4.5
+                </span>
+                <span>خصم 50%</span>
+              </div>
+              <div class="specialUnitsStatistics">
+                <span>32 <i class="fa-solid fa-house"></i></span>
+                <span>53 <i class="fa-solid fa-couch"></i></span>
+                <span>83 <i class="fa-solid fa-couch"></i></span>
+              </div>
+              <p>Bt120</p>
+              <span class="price">سعر الوحدة 500$</span>
+            </div>
+          </div>
+          <div
+            class="card"
+            price="600"
+            minCapacity="30"
+            maxCapacity="40"
+            minNumberOfVehicles="10"
+            maxNumberOfVehicles="20"
+            unitLocation="geda"
+            unitCode="RB65"
+            unitName="amlak"
+            lat="34.3"
+            lon="33.53"
+          >
+            <div class="favoriteIcon">
+              <i class="fa-regular fa-heart"></i>
+            </div>
+            <img src="./images/1.jpg" alt="" />
+            <div class="info">
+              <div class="rateAndOffer">
+                <span>
+                  <span class="icons">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </span>
+                  4.5
+                </span>
+                <span>خصم 50%</span>
+              </div>
+              <div class="specialUnitsStatistics">
+                <span>32 <i class="fa-solid fa-house"></i></span>
+                <span>53 <i class="fa-solid fa-couch"></i></span>
+                <span>83 <i class="fa-solid fa-couch"></i></span>
+              </div>
+              <p>Bt120</p>
+              <span class="price">سعر الوحدة 600$</span>
+            </div>
+          </div>
+          <div
+            class="card"
+            price="700"
+            minCapacity="10"
+            maxCapacity="20"
+            minNumberOfVehicles="5"
+            maxNumberOfVehicles="20"
+            unitLocation="geda"
+            unitCode="RB65"
+            unitName="amlak"
+            lat="30.6"
+            lon="31.83"
+          >
+            <div class="favoriteIcon">
+              <i class="fa-regular fa-heart"></i>
+            </div>
+            <img src="./images/1.jpg" alt="" />
+            <div class="info">
+              <div class="rateAndOffer">
+                <span>
+                  <span class="icons">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </span>
+                  4.5
+                </span>
+                <span>خصم 50%</span>
+              </div>
+              <div class="specialUnitsStatistics">
+                <span>32 <i class="fa-solid fa-house"></i></span>
+                <span>53 <i class="fa-solid fa-couch"></i></span>
+                <span>83 <i class="fa-solid fa-couch"></i></span>
+              </div>
+              <p>Bt120</p>
+              <span class="price">سعر الوحدة 700$</span>
+            </div>
+          </div>
+        </section>
+        <div class="pagenation" dir="ltr">
+          <i
+            class="fa-solid fa-backward"
+            onclick="handleUnitSearchPreviousPage()"
+          ></i
+          ><span class="pageNumber">1</span
+          ><i
+            class="fa-solid fa-forward"
+            onclick="handleUnitSearchNextPage()"
+          ></i>
+        </div>
+      </div>
+    </div>
+    <div class="specialUnits" id="specialUnits">
+      <h1>وحدات مميزة</h1>
+      <div class="specialUnitsSlider">
+        <div class="slideContainer">
+          <div class="slide">
+            <div class="card">
+              <div class="favoriteIcon">
+                <i class="fa-regular fa-heart"></i>
+              </div>
+              <img src="./images/2.jpg" alt="" />
+              <div class="info">
+                <div class="rateAndOffer">
+                  <span>
+                    <span class="icons">
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                    </span>
+                    4.5
+                  </span>
+                  <span>50%</span>
+                </div>
+                <div class="specialUnitsStatistics">
+                  <span>32 <i class="fa-solid fa-house"></i></span>
+                  <span>53 <i class="fa-solid fa-couch"></i></span>
+                </div>
+                <p>
+                  Lorem ipsum dolor sit amet. Lorem ipsum dolor, sit amet
+                  consectetur adipisicing elit. Distinctio, perspiciatis.
+                </p>
+                <span class="price">سعر الوحدة 3932$</span>
+              </div>
+            </div>
+          </div>
+          <div class="slide">
+            <div class="card">
+              <div class="favoriteIcon">
+                <i class="fa-regular fa-heart"></i>
+              </div>
+              <img src="./images/2.jpg" alt="" />
+              <div class="info">
+                <div class="rateAndOffer">
+                  <span>
+                    <span class="icons">
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                    </span>
+                    4.5
+                  </span>
+                  <span>50%</span>
+                </div>
+                <div class="specialUnitsStatistics">
+                  <span>32 <i class="fa-solid fa-house"></i></span>
+                  <span>53 <i class="fa-solid fa-couch"></i></span>
+                </div>
+                <p>
+                  Lorem ipsum dolor sit amet. Lorem ipsum dolor, sit amet
+                  consectetur adipisicing elit. Distinctio, perspiciatis.
+                </p>
+                <span class="price">سعر الوحدة 3932$</span>
+              </div>
+            </div>
+          </div>
+          <div class="slide">
+            <div class="card">
+              <div class="favoriteIcon">
+                <i class="fa-regular fa-heart"></i>
+              </div>
+              <img src="./images/2.jpg" alt="" />
+              <div class="info">
+                <div class="rateAndOffer">
+                  <span>
+                    <span class="icons">
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                    </span>
+                    4.5
+                  </span>
+                  <span>50%</span>
+                </div>
+                <div class="specialUnitsStatistics">
+                  <span>32 <i class="fa-solid fa-house"></i></span>
+                  <span>53 <i class="fa-solid fa-couch"></i></span>
+                </div>
+                <p>
+                  Lorem ipsum dolor sit amet. Lorem ipsum dolor, sit amet
+                  consectetur adipisicing elit. Distinctio, perspiciatis.
+                </p>
+                <span class="price">سعر الوحدة 3932$</span>
+              </div>
+            </div>
+          </div>
+          <div class="slide">
+            <div class="card">
+              <div class="favoriteIcon">
+                <i class="fa-regular fa-heart"></i>
+              </div>
+              <img src="./images/2.jpg" alt="" />
+              <div class="info">
+                <div class="rateAndOffer">
+                  <span>
+                    <span class="icons">
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                    </span>
+                    4.5
+                  </span>
+                  <span>50%</span>
+                </div>
+                <div class="specialUnitsStatistics">
+                  <span>32 <i class="fa-solid fa-house"></i></span>
+                  <span>53 <i class="fa-solid fa-couch"></i></span>
+                </div>
+                <p>
+                  Lorem ipsum dolor sit amet. Lorem ipsum dolor, sit amet
+                  consectetur adipisicing elit. Distinctio, perspiciatis.
+                </p>
+                <span class="price">سعر الوحدة 3932$</span>
+              </div>
+            </div>
+          </div>
+          <div class="slide">
+            <div class="card">
+              <div class="favoriteIcon">
+                <i class="fa-regular fa-heart"></i>
+              </div>
+              <img src="./images/2.jpg" alt="" />
+              <div class="info">
+                <div class="rateAndOffer">
+                  <span>
+                    <span class="icons">
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                    </span>
+                    4.5
+                  </span>
+                  <span>50%</span>
+                </div>
+                <div class="specialUnitsStatistics">
+                  <span>32 <i class="fa-solid fa-house"></i></span>
+                  <span>53 <i class="fa-solid fa-couch"></i></span>
+                </div>
+                <p>
+                  Lorem ipsum dolor sit amet. Lorem ipsum dolor, sit amet
+                  consectetur adipisicing elit. Distinctio, perspiciatis.
+                </p>
+                <span class="price">سعر الوحدة 3932$</span>
+              </div>
+            </div>
+          </div>
+          <div class="slide">
+            <div class="card">
+              <div class="favoriteIcon">
+                <i class="fa-regular fa-heart"></i>
+              </div>
+              <img src="./images/2.jpg" alt="" />
+              <div class="info">
+                <div class="rateAndOffer">
+                  <span>
+                    <span class="icons">
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                    </span>
+                    4.5
+                  </span>
+                  <span>50%</span>
+                </div>
+                <div class="specialUnitsStatistics">
+                  <span>32 <i class="fa-solid fa-house"></i></span>
+                  <span>53 <i class="fa-solid fa-couch"></i></span>
+                </div>
+                <p>
+                  Lorem ipsum dolor sit amet. Lorem ipsum dolor, sit amet
+                  consectetur adipisicing elit. Distinctio, perspiciatis.
+                </p>
+                <span class="price">سعر الوحدة 3932$</span>
+              </div>
+            </div>
+          </div>
+          <div class="slide">
+            <div class="card">
+              <div class="favoriteIcon">
+                <i class="fa-regular fa-heart"></i>
+              </div>
+              <img src="./images/2.jpg" alt="" />
+              <div class="info">
+                <div class="rateAndOffer">
+                  <span>
+                    <span class="icons">
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                    </span>
+                    4.5
+                  </span>
+                  <span>50%</span>
+                </div>
+                <div class="specialUnitsStatistics">
+                  <span>32 <i class="fa-solid fa-house"></i></span>
+                  <span>53 <i class="fa-solid fa-couch"></i></span>
+                </div>
+                <p>
+                  Lorem ipsum dolor sit amet. Lorem ipsum dolor, sit amet
+                  consectetur adipisicing elit. Distinctio, perspiciatis.
+                </p>
+                <span class="price">سعر الوحدة 3932$</span>
+              </div>
+            </div>
+          </div>
+          <div class="slide">
+            <div class="card">
+              <div class="favoriteIcon">
+                <i class="fa-regular fa-heart"></i>
+              </div>
+              <img src="./images/2.jpg" alt="" />
+              <div class="info">
+                <div class="rateAndOffer">
+                  <span>
+                    <span class="icons">
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                    </span>
+                    4.5
+                  </span>
+                  <span>50%</span>
+                </div>
+                <div class="specialUnitsStatistics">
+                  <span>32 <i class="fa-solid fa-house"></i></span>
+                  <span>53 <i class="fa-solid fa-couch"></i></span>
+                </div>
+                <p>
+                  Lorem ipsum dolor sit amet. Lorem ipsum dolor, sit amet
+                  consectetur adipisicing elit. Distinctio, perspiciatis.
+                </p>
+                <span class="price">سعر الوحدة 3932$</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="offers" id="offers">
+      <div class="container">
+        <div class="offerInfo">
+          <h1>عروض</h1>
+          <h2>عروض اللحظة الاخيرة</h2>
+          <p>
+            من الجَمْعة الدافئة مع الأهل، إلى صحبة الأصدقاء الحلوة، استمتعوا
+            بالعروض والخصومات التي تصل الى 50%، عروض رائعة و مستمرة على
+            الشاليهات والمخيمات والمزارع والفلل والشقق.
+          </p>
+          <button class="offerButton" id="openOffersSection">
+            <span> احجز لان </span> <i class="fa-solid fa-arrow-left-long"></i>
+          </button>
+        </div>
+        <div class="offerSlider">
+          <div class="slider">
+            <div class="slideContainer">
+              <div class="slide">
+                <div class="imageBox">
+                  <span class="offerLable">50%</span>
+                  <img src="./images/6.jpg" alt="" />
+                </div>
+              </div>
+              <div class="slide">
+                <div class="imageBox">
+                  <span class="offerLable">50%</span>
+                  <img src="./images/6.jpg" alt="" />
+                </div>
+              </div>
+              <div class="slide">
+                <div class="imageBox">
+                  <span class="offerLable">50%</span>
+                  <img src="./images/6.jpg" alt="" />
+                </div>
+              </div>
+              <div class="slide">
+                <div class="imageBox">
+                  <span class="offerLable">50%</span>
+                  <img src="./images/6.jpg" alt="" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slider">
+            <div class="slideContainer">
+              <div class="slide">
+                <div class="imageBox">
+                  <span class="offerLable">50%</span>
+                  <img src="./images/6.jpg" alt="" />
+                </div>
+              </div>
+              <div class="slide">
+                <div class="imageBox">
+                  <span class="offerLable">50%</span>
+                  <img src="./images/6.jpg" alt="" />
+                </div>
+              </div>
+              <div class="slide">
+                <div class="imageBox">
+                  <span class="offerLable">50%</span>
+                  <img src="./images/6.jpg" alt="" />
+                </div>
+              </div>
+              <div class="slide">
+                <div class="imageBox">
+                  <span class="offerLable">50%</span>
+                  <img src="./images/6.jpg" alt="" />
+                </div>
+              </div>
+              <div class="slide">
+                <div class="imageBox">
+                  <span class="offerLable">50%</span>
+                  <img src="./images/6.jpg" alt="" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slider">
+            <div class="slideContainer">
+              <div class="slide">
+                <div class="imageBox">
+                  <span class="offerLable">50%</span>
+                  <img src="./images/6.jpg" alt="" />
+                </div>
+              </div>
+              <div class="slide">
+                <div class="imageBox">
+                  <span class="offerLable">50%</span>
+                  <img src="./images/6.jpg" alt="" />
+                </div>
+              </div>
+              <div class="slide">
+                <div class="imageBox">
+                  <span class="offerLable">50%</span>
+                  <img src="./images/6.jpg" alt="" />
+                </div>
+              </div>
+              <div class="slide">
+                <div class="imageBox">
+                  <span class="offerLable">50%</span>
+                  <img src="./images/6.jpg" alt="" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="offersSectionScreen" id="offersSectionScreen">
+      <div class="filterContainer" id="offerFilterContainer">
+        <div class="filterBoxContainer">
+          <div class="filterBox">
+            <div class="outputFilterHeader">
+              <h1>تصفية النتائج</h1>
+              <i class="fa-solid fa-x" onclick="handelClosefilterBox()"></i>
+            </div>
+            <form class="outputFilterForm" id="offerFilterForm">
+              <div class="advancedSearchSection">
+                <h2>بحث متقدم</h2>
+                <div class="advancedSerchForm">
+                  <div class="inputContainer">
+                    <label for="">ابحث باسم الوحدة</label>
+                    <input
+                      type="text"
+                      class="valueInput"
+                      id="offersSectionUnitName"
+                    />
+                    <div class="wrapper">
+                      <div class="select-btn">
+                        <span> مثال: شاليه في الرياض</span>
+                        <i class="fa-solid fa-angle-down"></i>
+                      </div>
+                      <div class="content">
+                        <div class="search">
+                          <input
+                            spellcheck="false"
+                            type="text"
+                            placeholder="Search"
+                          />
+                        </div>
+                        <ul class="options">
+                          <li
+                            onclick="searchUnitUpdateName(this)"
+                            optionCode="2822"
+                          >
+                            osn
+                          </li>
+                          <li
+                            onclick="searchUnitUpdateName(this)"
+                            optionCode="2822"
+                          >
+                            osn
+                          </li>
+                          <li
+                            onclick="searchUnitUpdateName(this)"
+                            optionCode="2822"
+                          >
+                            osn
+                          </li>
+                          <li
+                            onclick="searchUnitUpdateName(this)"
+                            optionCode="2822"
+                          >
+                            الحمد لله
+                          </li>
+                          <li
+                            onclick="searchUnitUpdateName(this)"
+                            optionCode="2822"
+                          >
+                            الحمد لله
+                          </li>
+                          <li
+                            onclick="searchUnitUpdateName(this)"
+                            optionCode="2822"
+                          >
+                            الحمد لله
+                          </li>
+                          <li
+                            onclick="searchUnitUpdateName(this)"
+                            optionCode="2822"
+                          >
+                            الحمد لله
+                          </li>
+                          <li
+                            onclick="searchUnitUpdateName(this)"
+                            optionCode="2822"
+                          >
+                            الحمد لله
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="inputContainer">
+                    <label for="">ابحث بكود الوحدة</label>
+                    <input
+                      type="text"
+                      class="valueInput"
+                      id="offersSectionUnitCode"
+                    />
+                    <div class="wrapper">
+                      <div class="select-btn">
+                        <span> مثال : Bh12 </span>
+                        <i class="fa-solid fa-angle-down"></i>
+                      </div>
+                      <div class="content">
+                        <div class="search">
+                          <input
+                            spellcheck="false"
+                            type="text"
+                            placeholder="Search"
+                          />
+                        </div>
+                        <ul class="options">
+                          <li
+                            onclick="searchUnitUpdateName(this)"
+                            optionCode="2822"
+                          >
+                            رب العالمين الحمد لله
+                          </li>
+                          <li
+                            onclick="searchUnitUpdateName(this)"
+                            optionCode="2822"
+                          >
+                            رب العالمين الحمد لله
+                          </li>
+                          <li
+                            onclick="searchUnitUpdateName(this)"
+                            optionCode="2822"
+                          >
+                            رب العالمين الحمد لله
+                          </li>
+                          <li
+                            onclick="searchUnitUpdateName(this)"
+                            optionCode="2822"
+                          >
+                            رب العالمين الحمد لله
+                          </li>
+                          <li
+                            onclick="searchUnitUpdateName(this)"
+                            optionCode="2822"
+                          >
+                            رب العالمين الحمد لله
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="inputContainer">
+                    <label for="">ابحث بعنوان الوحداة</label>
+                    <input
+                      type="text"
+                      class="valueInput"
+                      id="offersSectionUnitLocation"
+                    />
+                    <div class="wrapper">
+                      <div class="select-btn">
+                        <span> مثال : الرياض - جدة </span>
+                        <i class="fa-solid fa-angle-down"></i>
+                      </div>
+                      <div class="content">
+                        <div class="search">
+                          <input
+                            spellcheck="false"
+                            type="text"
+                            placeholder="Search"
+                          />
+                        </div>
+                        <ul class="options">
+                          <li
+                            onclick="searchUnitUpdateName(this)"
+                            optionCode="2822"
+                          >
+                            done
+                          </li>
+                          <li
+                            onclick="searchUnitUpdateName(this)"
+                            optionCode="2822"
+                          >
+                            done
+                          </li>
+                          <li
+                            onclick="searchUnitUpdateName(this)"
+                            optionCode="2822"
+                          >
+                            done
+                          </li>
+                          <li
+                            onclick="searchUnitUpdateName(this)"
+                            optionCode="2822"
+                          >
+                            done
+                          </li>
+                          <li
+                            onclick="searchUnitUpdateName(this)"
+                            optionCode="2822"
+                          >
+                            done
+                          </li>
+                          <li
+                            onclick="searchUnitUpdateName(this)"
+                            optionCode="2822"
+                          >
+                            done
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="capacitySection">
+                <h2>السعة</h2>
+                <div class="capacityForm">
+                  <div class="inputContainer">
+                    <input
+                      type="radio"
+                      name="capacity"
+                      checked
+                      id=""
+                      minCapacity=""
+                      maxCapacity=""
+                    />
+                    <label for="">0 + الكل </label>
+                  </div>
+                  <div class="inputContainer">
+                    <input
+                      type="radio"
+                      name="capacity"
+                      id=""
+                      minCapacity="0"
+                      maxCapacity="5"
+                    />
+                    <label for="">0-5 اشخاص</label>
+                  </div>
+                  <div class="inputContainer">
+                    <input
+                      type="radio"
+                      name="capacity"
+                      id=""
+                      minCapacity="5"
+                      maxCapacity="10"
+                    />
+                    <label for="">5-10 اشخاص</label>
+                  </div>
+                  <div class="inputContainer">
+                    <input
+                      type="radio"
+                      name="capacity"
+                      id=""
+                      minCapacity="10"
+                      maxCapacity="20"
+                    />
+                    <label for="">10-20 اشخاص</label>
+                  </div>
+                  <div class="inputContainer">
+                    <input
+                      type="radio"
+                      name="capacity"
+                      id=""
+                      minCapacity="20"
+                      maxCapacity="30"
+                    />
+                    <label for="">20-30 اشخاص</label>
+                  </div>
+                  <div class="inputContainer">
+                    <input
+                      type="radio"
+                      name="capacity"
+                      id=""
+                      minCapacity="30"
+                      maxCapacity="40"
+                    />
+                    <label for="">30-40 اشخاص</label>
+                  </div>
+                </div>
+              </div>
+              <div class="numberOfVehiclesSection">
+                <h2>عدد السيارات المسموح</h2>
+                <div class="numberOfVehiclesForm">
+                  <div class="inputContainer">
+                    <input
+                      type="radio"
+                      name="numberOfVehicles"
+                      checked
+                      id=""
+                      minNumberOfVehicles=""
+                      maxNumberOfVehicles=""
+                    />
+                    <label for="">0 + الكل </label>
+                  </div>
+                  <div class="inputContainer">
+                    <input
+                      type="radio"
+                      name="numberOfVehicles"
+                      id=""
+                      minNumberOfVehicles="0"
+                      maxNumberOfVehicles="5"
+                    />
+                    <label for="">0-5 اشخاص</label>
+                  </div>
+                  <div class="inputContainer">
+                    <input
+                      type="radio"
+                      name="numberOfVehicles"
+                      id=""
+                      minNumberOfVehicles="5"
+                      maxNumberOfVehicles="10"
+                    />
+                    <label for="">5-10 اشخاص</label>
+                  </div>
+                  <div class="inputContainer">
+                    <input
+                      type="radio"
+                      name="numberOfVehicles"
+                      id=""
+                      minNumberOfVehicles="10"
+                      maxNumberOfVehicles="40"
+                    />
+                    <label for="">10-20 اشخاص</label>
+                  </div>
+                  <div class="inputContainer">
+                    <input
+                      type="radio"
+                      name="numberOfVehicles"
+                      id=""
+                      minNumberOfVehicles="30"
+                      maxNumberOfVehicles="40"
+                    />
+                    <label for="">20-30 اشخاص</label>
+                  </div>
+                  <div class="inputContainer">
+                    <input
+                      type="radio"
+                      name="numberOfVehicles"
+                      id=""
+                      minNumberOfVehicles="30"
+                      maxNumberOfVehicles="40"
+                    />
+                    <label for="">30-40 اشخاص</label>
+                  </div>
+                </div>
+              </div>
+              <div class="displayButton">
+                <button>عرض النتائج</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="orderContainer" id="offersOrderContainer">
+        <div class="orderBoxContainer">
+          <div class="orderBox">
+            <div class="outputOrderHeader">
+              <h1>ترتيب النتائج</h1>
+              <i class="fa-solid fa-x" onclick="handelCloseOrderBox()"></i>
+            </div>
+            <form class="outputOrderForm">
+              <div class="inputContainer">
+                <span>الترتيب الافتراضي</span>
+                <input type="radio" checked name="order" id="" />
+              </div>
+              <div class="inputContainer">
+                <span>وحداتي المفضلة اولا</span>
+                <input type="radio" name="order" id="" />
+              </div>
+              <div class="inputContainer">
+                <span>الاعلي تقيما اولا</span>
+                <input type="radio" name="order" id="" />
+              </div>
+              <div class="inputContainer">
+                <span>الاعلي سعرا اولا</span>
+                <input type="radio" name="order" id="" />
+              </div>
+              <div class="inputContainer">
+                <span>الاقل سعرا اولا</span>
+                <input type="radio" name="order" id="" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="close">
+          <i
+            class="fa-solid fa-x"
+            onclick="handelCloseOffersSectionScreen()"
+          ></i>
+        </div>
+        <h1 class="sectionTitle">العروض الخاصة</h1>
+        <header class="searchOutputHeader">
+          <div class="filterBox">
+            <div class="filter" onclick="handelOpenOffersFilterBox()">
+              تصفية <i class="fa-solid fa-filter"></i>
+            </div>
+            <div class="order" onclick="handelOpenOffersOrderBox()">
+              ترتيب <i class="fa-solid fa-arrow-down-wide-short"></i>
+            </div>
+          </div>
+          <button
+            href="./showOnMap.html"
+            class="mapBox"
+            id="offersSectionMapButton"
+          >
+            show on map <i class="fa-solid fa-location-dot"></i>
+          </button>
+        </header>
+        <section class="cardsContainer">
+          <div
+            class="card"
+            price="100"
+            minCapacity="0"
+            maxCapacity="0"
+            minNumberOfVehicles="30"
+            maxNumberOfVehicles="40"
+            unitLocation="geda"
+            unitCode="RB65"
+            unitName="Amlak-Elshatea"
+            lat="30.3"
+            lon="31.88"
+          >
             <div class="favoriteIcon">
               <i class="fa-regular fa-heart"></i>
             </div>
@@ -413,7 +1845,19 @@
               <span class="price">سعر الوحدة 738$</span>
             </div>
           </div>
-          <div class="card">
+          <div
+            class="card"
+            price="100"
+            minCapacity="5"
+            maxCapacity="10"
+            minNumberOfVehicles="10"
+            maxNumberOfVehicles="20"
+            unitLocation="geda"
+            unitCode="RB65"
+            unitName="Amlak-Elshatea"
+            lat="30.3"
+            lon="31.78"
+          >
             <div class="favoriteIcon">
               <i class="fa-regular fa-heart"></i>
             </div>
@@ -440,7 +1884,19 @@
               <span class="price">سعر الوحدة 738$</span>
             </div>
           </div>
-          <div class="card">
+          <div
+            class="card"
+            price="100"
+            minCapacity="10"
+            maxCapacity="20"
+            minNumberOfVehicles="20"
+            maxNumberOfVehicles="30"
+            unitLocation="geda"
+            unitCode="RB65"
+            unitName="Amlak-Elshatea"
+            lat="30.3"
+            lon="31.43"
+          >
             <div class="favoriteIcon">
               <i class="fa-regular fa-heart"></i>
             </div>
@@ -467,7 +1923,19 @@
               <span class="price">سعر الوحدة 738$</span>
             </div>
           </div>
-          <div class="card">
+          <div
+            class="card"
+            price="100"
+            minCapacity="20"
+            maxCapacity="30"
+            minNumberOfVehicles="0"
+            maxNumberOfVehicles="5"
+            unitLocation="geda"
+            unitCode="RB65"
+            unitName="Amlak-Elshatea"
+            lat="30.3"
+            lon="31.45"
+          >
             <div class="favoriteIcon">
               <i class="fa-regular fa-heart"></i>
             </div>
@@ -494,7 +1962,19 @@
               <span class="price">سعر الوحدة 738$</span>
             </div>
           </div>
-          <div class="card">
+          <div
+            class="card"
+            price="100"
+            minCapacity="30"
+            maxCapacity="40"
+            minNumberOfVehicles="5"
+            maxNumberOfVehicles="10"
+            unitLocation="geda"
+            unitCode="RB65"
+            unitName="Amlak-Elshatea"
+            lat="31.3"
+            lon="33.53"
+          >
             <div class="favoriteIcon">
               <i class="fa-regular fa-heart"></i>
             </div>
@@ -521,7 +2001,19 @@
               <span class="price">سعر الوحدة 738$</span>
             </div>
           </div>
-          <div class="card">
+          <div
+            class="card"
+            price="100"
+            minCapacity="20"
+            maxCapacity="30"
+            minNumberOfVehicles="10"
+            maxNumberOfVehicles="20"
+            unitLocation="geda"
+            unitCode="RB65"
+            unitName="Amlak-Elshatea"
+            lat="30.3"
+            lon="35.53"
+          >
             <div class="favoriteIcon">
               <i class="fa-regular fa-heart"></i>
             </div>
@@ -548,7 +2040,19 @@
               <span class="price">سعر الوحدة 738$</span>
             </div>
           </div>
-          <div class="card">
+          <div
+            class="card"
+            price="100"
+            minCapacity="10"
+            maxCapacity="20"
+            minNumberOfVehicles="10"
+            maxNumberOfVehicles="20"
+            unitLocation="geda"
+            unitCode="RB65"
+            unitName="Amlak-Elshatea"
+            lat="30.3"
+            lon="32.53"
+          >
             <div class="favoriteIcon">
               <i class="fa-regular fa-heart"></i>
             </div>
@@ -575,7 +2079,19 @@
               <span class="price">سعر الوحدة 738$</span>
             </div>
           </div>
-          <div class="card">
+          <div
+            class="card"
+            price="100"
+            minCapacity="30"
+            maxCapacity="40"
+            minNumberOfVehicles="5"
+            maxNumberOfVehicles="10"
+            unitLocation="geda"
+            unitCode="RB65"
+            unitName="Amlak-Elshatea"
+            lat="33.3"
+            lon="31.53"
+          >
             <div class="favoriteIcon">
               <i class="fa-regular fa-heart"></i>
             </div>
@@ -602,7 +2118,19 @@
               <span class="price">سعر الوحدة 738$</span>
             </div>
           </div>
-          <div class="card">
+          <div
+            class="card"
+            price="100"
+            minCapacity="10"
+            maxCapacity="20"
+            minNumberOfVehicles="20"
+            maxNumberOfVehicles="30"
+            unitLocation="geda"
+            unitCode="RB65"
+            unitName="Amlak-Elshatea"
+            lat="32.3"
+            lon="33.53"
+          >
             <div class="favoriteIcon">
               <i class="fa-regular fa-heart"></i>
             </div>
@@ -629,7 +2157,19 @@
               <span class="price">سعر الوحدة 738$</span>
             </div>
           </div>
-          <div class="card">
+          <div
+            class="card"
+            price="100"
+            minCapacity="0"
+            maxCapacity="5"
+            minNumberOfVehicles="0"
+            maxNumberOfVehicles="5"
+            unitLocation="geda"
+            unitCode="RB65"
+            unitName="amlak"
+            lat="31.3"
+            lon="31.53"
+          >
             <div class="favoriteIcon">
               <i class="fa-regular fa-heart"></i>
             </div>
@@ -657,30 +2197,13 @@
             </div>
           </div>
         </section>
-      </div>
-    </div>
-    <div class="specialUnits" id="specialUnits">
-      <h1>وحدات مميزة</h1>
-      <div class="specialUnitsSlider"></div>
-    </div>
-    <div class="offers" id="offers">
-      <div class="container">
-        <div class="offerInfo">
-          <h1>عروض</h1>
-          <h2>عروض اللحظة الاخيرة</h2>
-          <p>
-            من الجَمْعة الدافئة مع الأهل، إلى صحبة الأصدقاء الحلوة، استمتعوا
-            بالعروض والخصومات التي تصل الى 50%، عروض رائعة و مستمرة على
-            الشاليهات والمخيمات والمزارع والفلل والشقق.
-          </p>
-          <button class="offerButton">
-            <span> احجز لان </span> <i class="fa-solid fa-arrow-left-long"></i>
-          </button>
-        </div>
-        <div class="offerSlider">
-          <div class="slider"></div>
-          <div class="slider"></div>
-          <div class="slider"></div>
+        <div class="pagenation" dir="ltr">
+          <i
+            class="fa-solid fa-backward"
+            onclick="handleOffersPreviousPage()"
+          ></i
+          ><span class="pageNumber">1</span
+          ><i class="fa-solid fa-forward" onclick="handleOffersNextPage()"></i>
         </div>
       </div>
     </div>
