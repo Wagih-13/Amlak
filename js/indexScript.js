@@ -64,35 +64,31 @@ slideContainers.forEach(setSliderWidth);
 
 let isMouseDown;
 
-window.addEventListener("mousemove", (event) => {
-  specialUnitsSlider.addEventListener("mousedown", function (event) {
-    if (specialUnitsSlider.contains(event.target)) {
-      isMouseDown = true;
-    }
-  });
-  window.addEventListener("mouseup", function (event) {
-    isMouseDown = false;
-  });
+// specialUnitsSlider.addEventListener("mousedown", function (event) {
+//   if (specialUnitsSlider.contains(event.target)) {
+//     isMouseDown = true;
+//   }
+// });
+// window.addEventListener("mouseup", function (event) {
+//   isMouseDown = false;
+// });
 
-  const x = event.clientX;
-  const y = event.clientY;
-  if (isMouseDown) {
-    specialUnitsSlider.style.cssText = `transform: translateX(${x}px)`;
+// window.addEventListener("mousemove", (event) => {
+//   const x = event.clientX;
+//   if (isMouseDown) {
+//     specialUnitsSlider.style.cssText = `transform: translateX(${x}px)`;
+//   }
+// });
+specialUnitsSlider.addEventListener("touchstart", function (event) {
+  if (specialUnitsSlider.contains(event.target)) {
+    isMouseDown = true;
   }
 });
-
+window.addEventListener("touchend", function (event) {
+  isMouseDown = false;
+});
 window.addEventListener("touchmove", (event) => {
-  specialUnitsSlider.addEventListener("touchstart", function (event) {
-    if (specialUnitsSlider.contains(event.target)) {
-      isMouseDown = true;
-    }
-  });
-  window.addEventListener("touchend", function (event) {
-    isMouseDown = false;
-  });
-
   const x = event.clientX;
-  const y = event.clientY;
   if (isMouseDown) {
     specialUnitsSlider.style.cssText = `transform: translateX(${x}px)`;
   }
