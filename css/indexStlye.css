@@ -244,19 +244,6 @@
   -moz-transition: 0.5s;
   -ms-transition: 0.5s;
   -o-transition: 0.5s;
-  overflow-x: scroll;
-}
-
-.specialUnits::-webkit-scrollbar {
-  display: none;
-}
-
-.specialUnits::-webkit-scrollbar-track {
-  display: none;
-}
-
-.specialUnits::-webkit-scrollbar-thumb {
-  display: none;
 }
 
 .specialUnits h1 {
