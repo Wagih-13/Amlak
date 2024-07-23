@@ -121,3 +121,83 @@ const offerSlider = document.querySelectorAll(".offerSlider .slider");
 
 <i class="fa-solid fa-person"></i>
 <i class="fa-solid fa-car"></i>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            forEach((card))
+            let displayedItems = [];
+            const unitSearchOutputSection = document.querySelector(".unitSearchOutput");
+            const selector = unitSearchOutputSection.querySelector(".cardsContainer");
+            const pagenationContainer = unitSearchOutputSection.querySelector(".pagenation .pageNumber");
+
+function createPagination( SectionCurrentDisplayedPage ,data) {
+    displayedItems = [];
+    let counter = 0;
+    let displayedPage = [];
+    // repleac data to cards data
+    for (let i = 0; i < data.length; i++) {
+        if (counter === 8) {
+            counter = 0;
+            displayedItems.push(displayedPage);
+            displayedPage = [];
+        }
+        displayedPage.push(data[i]);
+        counter++;
+    }
+
+    let blockOfElements = `${displayedItems[SectionCurrentDisplayedPage].map(
+        (card , i) => `<div
+            class="card"
+            price="100"
+            minCapacity="0"
+            maxCapacity="0"
+            minNumberOfVehicles="5"
+            maxNumberOfVehicles="10"
+            unitLocation="geda"
+            unitCode="RB65"
+            unitName="amlak"
+            lat="30.3"
+            lon="31.53"
+          >
+            <div class="favoriteIcon">
+              <i class="fa-regular fa-heart"></i>
+            </div>
+                    <img src="${Result[i].AreaUnitMainPhoto}" alt="" />
+            <div class="info">
+              <div class="rateAndOffer">
+                <span>
+                  <span class="icons">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </span>
+                          ${Result[i].AreaUnitAvgRating}
+                </span>
+                        <span>خصم ${Result[i].OfferText}%</span>
+              </div>
+              <div class="specialUnitsStatistics">
+                       <span>${Result[i].AreaUnitArea} <i class="fa-solid fa-house"></i></span>
+                                            <span>${Result[i].AreaUnitCarsNo} <i class="fa-solid fa-couch"></i></span>
+                                            <span>${Result[i].AreaUnitCapacity} <i class="fa-solid fa-person"></i></span>
+                                            <span>${Result[i].AreaUnitRoomsNo} <i class="fa-solid fa-car"></i></span>
+              </div>
+              <p>Bt120</p>
+                         <span class="price ArLang">سعر الوحدة ${Result[i].AreaUnitPrice} $</span>
+                                        <span class="price EnLang"> Unit price ${Result[i].AreaUnitPrice} $</span>
+            </div>
+          </div>`
+    ).join(" ")}`;
+    selector.innerHTML = blockOfElements;
+}
+                createPagination(unitSearchSectionCurrentDisplayedPage, Result);

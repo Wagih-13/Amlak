@@ -207,8 +207,7 @@ const getLang = () => {
   const storedLang = localStorage.getItem(localStorageKey);
   return storedLang ?? "rtl";
 };
-const imageSliderContainer =
-  document.getElementById("imageSliderContainer") | null;
+const imageSliderContainer = document.getElementById("imageSliderContainer");
 
 const setLang = (lang) => {
   localStorage.setItem(localStorageKey, lang);
@@ -216,16 +215,20 @@ const setLang = (lang) => {
   if (lang === "rtl") {
     toggleLang.textContent = "EN";
     toggleLangMinScreen.textContent = "EN";
-    ArLang.forEach((div) => (div.style.cssText = `display:initial;`));
-    EnLang.forEach((div) => (div.style.cssText = `display:none;`));
+    ArLang.forEach(
+      (div) => (div.style.cssText = `display:initial !important;`)
+    );
+    EnLang.forEach((div) => (div.style.cssText = `display:none !important;`));
     if (imageSliderContainer) {
       imageSliderContainer.setAttribute("dir", "ltr");
     }
   } else {
     toggleLang.textContent = "AR";
     toggleLangMinScreen.textContent = "AR";
-    ArLang.forEach((div) => (div.style.cssText = `display:none;`));
-    EnLang.forEach((div) => (div.style.cssText = `display:initial;`));
+    ArLang.forEach((div) => (div.style.cssText = `display:none !important;`));
+    EnLang.forEach(
+      (div) => (div.style.cssText = `display:initial !important;`)
+    );
     if (imageSliderContainer) {
       imageSliderContainer.setAttribute("dir", "ltr");
     }
@@ -240,7 +243,7 @@ const switchLanguage = () => {
   const newLang = currentLang === "ltr" ? "rtl" : "ltr";
   setLang(newLang);
 };
-console.log("hiiii");
+
 ////////////// reset specialUnits slider dir /////////////////
 
 const specialUnitsSliderGlobal = document.querySelectorAll(
@@ -325,7 +328,7 @@ searchDateInput.addEventListener("click", (event) => {
 searchInputsContainer.forEach((inputBox) => {
   const option = inputBox.querySelectorAll(".dropDownList li");
   const input = inputBox.querySelector(".valueInput");
-  console.log(input);
+
   option.forEach((opt) => {
     opt.addEventListener("click", () => {
       const valueOfOtion = opt.textContent.trim();

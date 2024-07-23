@@ -782,6 +782,16 @@ footer .copyright {
     .footerSocialLinks
     > div:nth-child(2)
     > div:nth-child(2) {
-    align-self: flex-start;
+    align-self: flex-start ;
   }
 }
+
+
+
+
+
+
+
+
+
+

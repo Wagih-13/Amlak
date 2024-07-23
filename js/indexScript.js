@@ -46,54 +46,7 @@ function setSliderWidth(slideContainer) {
 
 slideContainers.forEach(setSliderWidth);
 
-// Attach the event listener to the window object
 
-// function trackMouse(event) {
-//   // Get the mouse coordinates from the event object
-//   const x = event.clientX;
-//   const y = event.clientY;
-
-//   // You can use these coordinates to do something, like:
-//   console.log("Mouse at X: " + x + ", Y: " + y);
-//   // Update an element's position based on mouse movement
-//   //  ...
-// }
-
-// // Attach the event listener to the window object
-// window.addEventListener("mousemove", trackMouse);
-
-let isMouseDown;
-
-// specialUnitsSlider.addEventListener("mousedown", function (event) {
-//   if (specialUnitsSlider.contains(event.target)) {
-//     isMouseDown = true;
-//   }
-// });
-// window.addEventListener("mouseup", function (event) {
-//   isMouseDown = false;
-// });
-
-// window.addEventListener("mousemove", (event) => {
-//   const x = event.clientX;
-//   if (isMouseDown) {
-//     specialUnitsSlider.style.cssText = `transform: translateX(${x}px)`;
-//   }
-// });
-specialUnitsSlider.addEventListener("touchstart", function (event) {
-  if (specialUnitsSlider.contains(event.target)) {
-    isMouseDown = true;
-  }
-});
-window.addEventListener("touchend", function (event) {
-  isMouseDown = false;
-});
-window.addEventListener("touchmove", (event) => {
-  const touch = event.touches[0];
-  const currentX = touch.pageX;
-  if (isMouseDown) {
-    specialUnitsSlider.style.cssText = `transform: translateX(${currentX}px)`;
-  }
-});
 /////////////////////////////////////// create offer Slider //////////////////////////////////////////////
 // const offerSliderData = [
 //   { name: "ahmed", age: 23, id: 1 },
@@ -306,10 +259,10 @@ rangeInput.forEach((input) => {
 });
 
 ////////////////////////////////////handel filter unitSearchOutput///////////////////////////////////
-const unitSearchCardsContainer = document.querySelector(
+let unitSearchCardsContainer = document.querySelector(
   ".unitSearchOutput .cardsContainer "
 );
-const unitSearchCards = document.querySelectorAll(
+let unitSearchCards = document.querySelectorAll(
   ".unitSearchOutput .cardsContainer .card"
 );
 const filterForm = document.querySelector("#outputFilterForm");
@@ -346,7 +299,7 @@ filterForm.addEventListener("submit", (event) => {
       break;
     }
   }
-
+  console.log(unitSearchCards);
   const filteredCards = Array.from(unitSearchCards).filter((card) => {
     return (
       (+card.getAttribute("minCapacity") >= minCapacity ||
@@ -482,40 +435,50 @@ handelSendCardsToMap(offersSectionMapButton, cardSelector2);
 ///////////////////////////////// handel pagenation ////////////////////////////////////
 
 const sectionData = [
-  { name: "ahmed", age: 23, id: 1 },
-  { name: "ahmed", age: 23, id: 1 },
-  { name: "ahmed", age: 23, id: 1 },
-  { name: "ahmed", age: 23, id: 2 },
-  { name: "ahmed", age: 23, id: 2 },
-  { name: "ahmed", age: 23, id: 2 },
-  { name: "ahmed", age: 23, id: 3 },
-  { name: "ahmed", age: 23, id: 3 },
-  { name: "ahmed", age: 23, id: 3 },
-  { name: "ahmed", age: 23, id: 3 },
+  { name: "ahmed", price: 100, id: 1 },
+  { name: "ahmed", price: 200, id: 2 },
+  { name: "ahmed", price: 300, id: 3 },
+  { name: "ahmed", price: 400, id: 4 },
+  { name: "ahmed", price: 500, id: 5 },
+  { name: "ahmed", price: 600, id: 6 },
+  { name: "ahmed", price: 700, id: 7 },
+  { name: "ahmed", price: 800, id: 8 },
+  { name: "ahmed", price: 900, id: 9 },
+  { name: "ahmed", price: 1000, id: 10 },
+  { name: "ahmed", price: 1100, id: 11 },
+  { name: "ahmed", price: 1200, id: 12 },
 ];
 
 let unitSearchSectionCurrentDisplayedPage = 0;
 let offersSectionCurrentDisplayedPage = 0;
 let displayedItems = [];
-function createPagination(selector, SectionCurrentDisplayedPage, data) {
+const unitSearchOutputSection = document.querySelector(".unitSearchOutput");
+const selector = unitSearchOutputSection.querySelector(".cardsContainer");
+const pagenationContainer = unitSearchOutputSection.querySelector(
+  ".pagenation .pageNumber"
+);
+
+function createPagination() {
   displayedItems = [];
   let counter = 0;
   let displayedPage = [];
-  // repleac data to cards data
-  for (let i = 0; i < data.length; i++) {
-    if (counter === 8) {
+  for (let i = 0; i <= sectionData.length; i++) {
+    if (counter == 8 || i == sectionData.length) {
       counter = 0;
       displayedItems.push(displayedPage);
       displayedPage = [];
     }
-    displayedPage.push(data[i]);
+    displayedPage.push(sectionData[i]);
     counter++;
   }
+}
 
-  let blockOfElements = `${displayedItems[SectionCurrentDisplayedPage].map(
-    (card) => `<div
+function creatSection() {
+  let blockOfElements = `${displayedItems[unitSearchSectionCurrentDisplayedPage]
+    .map(
+      (card) => `<div
             class="card"
-            price="100"
+            price="${card.price}"
             minCapacity="0"
             maxCapacity="0"
             minNumberOfVehicles="5"
@@ -549,64 +512,67 @@ function createPagination(selector, SectionCurrentDisplayedPage, data) {
                 <span>83 <i class="fa-solid fa-couch"></i></span>
               </div>
               <p>Bt120</p>
-              <span class="price">سعر الوحدة ${card.age}$</span>
+              <span class="price">سعر الوحدة ${card.price}$</span>
             </div>
           </div>`
-  ).join(" ")}`;
+    )
+    .join(" ")}`;
+
   selector.innerHTML = blockOfElements;
+  unitSearchCardsContainer = document.querySelector(
+    ".unitSearchOutput .cardsContainer "
+  );
+  unitSearchCards = document.querySelectorAll(
+    ".unitSearchOutput .cardsContainer .card"
+  );
 }
 
-function handleOffersNextPage() {
-  const unitSearchOutputSection = document.querySelector(
-    ".offersSectionScreen"
-  );
-  const selector = unitSearchOutputSection.querySelector(".cardsContainer");
-  const pagenationContainer = unitSearchOutputSection.querySelector(
-    ".pagenation .pageNumber"
-  );
-  // createPagination(selector, unitSearchSectionCurrentDisplayedPage ,sectionData);
-  if (offersSectionCurrentDisplayedPage < 10 - 1) {
-    offersSectionCurrentDisplayedPage++;
-    pagenationContainer.innerHTML = offersSectionCurrentDisplayedPage + 1;
-  }
-}
-function handleOffersPreviousPage() {
-  const unitSearchOutputSection = document.querySelector(
-    ".offersSectionScreen"
-  );
-  const selector = unitSearchOutputSection.querySelector(".cardsContainer");
-  const pagenationContainer = unitSearchOutputSection.querySelector(
-    ".pagenation .pageNumber"
-  );
-  // createPagination(selector, unitSearchSectionCurrentDisplayedPage , sectionData);
-  if (offersSectionCurrentDisplayedPage > 0) {
-    offersSectionCurrentDisplayedPage--;
-    pagenationContainer.innerHTML = offersSectionCurrentDisplayedPage + 1;
-  }
-}
+createPagination();
+creatSection();
 
 function handleUnitSearchNextPage() {
-  const unitSearchOutputSection = document.querySelector(".unitSearchOutput");
-  const selector = unitSearchOutputSection.querySelector(".cardsContainer");
-  const pagenationContainer = unitSearchOutputSection.querySelector(
-    ".pagenation .pageNumber"
-  );
-  // createPagination(selector, unitSearchSectionCurrentDisplayedPage ,sectionData);
-
-  if (unitSearchSectionCurrentDisplayedPage < 10 - 1) {
+  console.log(displayedItems.length);
+  if (unitSearchSectionCurrentDisplayedPage < displayedItems.length - 1) {
     unitSearchSectionCurrentDisplayedPage++;
     pagenationContainer.innerHTML = unitSearchSectionCurrentDisplayedPage + 1;
+    createPagination();
+    creatSection();
   }
 }
 function handleUnitSearchPreviousPage() {
-  const unitSearchOutputSection = document.querySelector(".unitSearchOutput");
-  const selector = unitSearchOutputSection.querySelector(".cardsContainer");
-  const pagenationContainer = unitSearchOutputSection.querySelector(
-    ".pagenation .pageNumber"
-  );
-  // createPagination(selector, unitSearchSectionCurrentDisplayedPage ,sectionData);
   if (unitSearchSectionCurrentDisplayedPage > 0) {
     unitSearchSectionCurrentDisplayedPage--;
     pagenationContainer.innerHTML = unitSearchSectionCurrentDisplayedPage + 1;
+    createPagination();
+    creatSection();
   }
 }
+
+// function handleOffersNextPage() {
+//   const unitSearchOutputSection = document.querySelector(
+//     ".offersSectionScreen"
+//   );
+//   const selector = unitSearchOutputSection.querySelector(".cardsContainer");
+//   const pagenationContainer = unitSearchOutputSection.querySelector(
+//     ".pagenation .pageNumber"
+//   );
+//   // createPagination(selector, unitSearchSectionCurrentDisplayedPage ,sectionData);
+//   if (offersSectionCurrentDisplayedPage < 10 - 1) {
+//     offersSectionCurrentDisplayedPage++;
+//     pagenationContainer.innerHTML = offersSectionCurrentDisplayedPage + 1;
+//   }
+// }
+// function handleOffersPreviousPage() {
+//   const unitSearchOutputSection = document.querySelector(
+//     ".offersSectionScreen"
+//   );
+//   const selector = unitSearchOutputSection.querySelector(".cardsContainer");
+//   const pagenationContainer = unitSearchOutputSection.querySelector(
+//     ".pagenation .pageNumber"
+//   );
+//   // createPagination(selector, unitSearchSectionCurrentDisplayedPage , sectionData);
+//   if (offersSectionCurrentDisplayedPage > 0) {
+//     offersSectionCurrentDisplayedPage--;
+//     pagenationContainer.innerHTML = offersSectionCurrentDisplayedPage + 1;
+//   }
+// }

@@ -244,6 +244,19 @@
   -moz-transition: 0.5s;
   -ms-transition: 0.5s;
   -o-transition: 0.5s;
+  overflow-x: scroll;
+}
+
+.specialUnits::-webkit-scrollbar {
+  display: none;
+}
+
+.specialUnits::-webkit-scrollbar-track {
+  display: none;
+}
+
+.specialUnits::-webkit-scrollbar-thumb {
+  display: none;
 }
 
 .specialUnits h1 {
@@ -258,6 +271,12 @@
   flex-wrap: nowrap;
   flex-direction: row;
   cursor: grab;
+  pointer-events: none;
+  transform: translate(0px);
+  -webkit-transform: translate(0px);
+  -moz-transform: translate(0px);
+  -ms-transform: translate(0px);
+  -o-transform: translate(0px);
 }
 
 .specialUnitsSlider .slideContainer {
@@ -267,6 +286,12 @@
   justify-content: center;
   flex-wrap: nowrap;
   cursor: grab;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  pointer-events: auto;
 }
 
 .specialUnitsSlider:hover .slideContainer {
@@ -299,6 +324,8 @@
   cursor: pointer;
   position: relative;
   cursor: grab;
+  pointer-events: none;
+  width: 400px;
 }
 .specialUnitsSlider .slideContainer .slide .card .favoriteIcon {
   position: absolute;
@@ -306,6 +333,7 @@
   left: 15px;
   font-size: var(--main-font-size);
   color: white;
+  pointer-events: none;
 }
 .specialUnitsSlider .slideContainer .slide .card .info {
   padding: 20px;
@@ -356,7 +384,8 @@
 }
 
 .specialUnitsSlider .slideContainer .slide img {
-  height: 250px;
+  width: 100%;
+  aspect-ratio: 2/1.25;
   border-radius: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -818,9 +847,10 @@
 .container .cardsContainer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 400px));
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   gap: 20px;
+  min-height: 110vh;
 }
 
 .container .searchOutputHeader {
