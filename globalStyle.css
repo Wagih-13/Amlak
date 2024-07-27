@@ -11,6 +11,7 @@
 }
 
 :root {
+  --Xsmall-font-size: 10px;
   --small-font-size: 12px;
   --main-font-size: 14px;
   --larg-font-size: 26px;
@@ -709,6 +710,84 @@ footer .copyright {
   font-size: 14px;
 }
 
+/* ///////////////////////////////////////////////// Start date dropDown list  //////////////////////////////////////////////////// */
+
+.dropDownList {
+  position: absolute;
+  top: 110%;
+  left: 0%;
+  width: 100%;
+  background-color: var(--second-section-color);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border: 1px solid white;
+  z-index: 5;
+  padding: 10px;
+  display: none;
+}
+.dateDropDown {
+  position: absolute;
+  top: 110%;
+  left: 0%;
+  background-color: var(--second-section-color);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border: 1px solid white;
+  z-index: 5;
+  padding: 10px;
+  display: none;
+  width: 400px;
+}
+
+.dropDownList li {
+  padding: 10px;
+  font-size: var(--main-font-size);
+  color: white;
+  cursor: pointer;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+}
+
+.dropDownList li:hover {
+  backdrop-filter: brightness(80%);
+}
+
+.dropDownBox {
+  background-color: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid white;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  padding: 0px 10px;
+  width: 100%;
+  cursor: pointer;
+}
+.dropDownBox input {
+  background-color: transparent;
+  width: 90%;
+  border: none;
+  outline: none;
+  padding: 8px;
+  color: white;
+}
+.dropDownBox i {
+  color: white;
+}
+
 /* ///////////////////////////////////////////////// Start media  //////////////////////////////////////////////////// */
 
 @media (min-width: 1200px) {
@@ -782,16 +861,15 @@ footer .copyright {
     .footerSocialLinks
     > div:nth-child(2)
     > div:nth-child(2) {
-    align-self: flex-start ;
+    align-self: flex-start;
+  }
+  .dateDropDown {
+    width: 100%;
   }
 }
-
-
-
-
-
-
-
-
-
-
+@media (max-width: 500px) {
+  .inputContainer .dateDropDown {
+    width: 112%;
+    left: -6%;
+  }
+}

@@ -88,6 +88,7 @@
   align-items: flex-end;
   gap: 20px;
 }
+
 .imageSlider .buttonLay .searchUnit form .inputContainer {
   display: flex;
   justify-content: center;
@@ -98,90 +99,11 @@
   position: relative;
   width: 25%;
 }
-
-.imageSlider .buttonLay .searchUnit form .inputContainer .dropDownList {
-  position: absolute;
-  top: 110%;
-  left: 0%;
-  width: 100%;
-  background-color: var(--second-section-color);
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
-  border: 1px solid white;
-  z-index: 5;
-  padding: 10px;
-  display: none;
-}
-.imageSlider .buttonLay .searchUnit form .inputContainer .dateDropDown {
-  position: absolute;
-  top: 110%;
-  left: 0%;
-  background-color: var(--second-section-color);
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
-  border: 1px solid white;
-  z-index: 5;
-  padding: 10px;
-  display: none;
-  width: 500px;
-}
-
-.imageSlider .buttonLay .searchUnit form .inputContainer .dropDownList li {
-  padding: 10px;
-  font-size: var(--main-font-size);
-  color: white;
-  cursor: pointer;
-  transition: 0.5s;
-  -webkit-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -ms-transition: 0.5s;
-  -o-transition: 0.5s;
-}
-.imageSlider
-  .buttonLay
-  .searchUnit
-  form
-  .inputContainer
-  .dropDownList
-  li:hover {
-  backdrop-filter: brightness(80%);
-}
-.imageSlider .buttonLay .searchUnit form .inputContainer label {
+.imageSlider .buttonLay .searchUnit form label {
   font-size: var(--main-font-size);
   color: white;
 }
-.imageSlider .buttonLay .searchUnit form .inputContainer .dropDownBox {
-  background-color: transparent;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 1px solid white;
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
-  padding: 0px 10px;
-  width: 100%;
-  cursor: pointer;
-}
-.imageSlider .buttonLay .searchUnit form .inputContainer .dropDownBox input {
-  background-color: transparent;
-  width: 90%;
-  border: none;
-  outline: none;
-  padding: 8px;
-  color: white;
-}
-.imageSlider .buttonLay .searchUnit form .inputContainer .dropDownBox i {
-  color: white;
-}
+
 .imageSlider .buttonLay .searchUnit form .searchButton {
   padding: 10px 40px;
   border-radius: 10px;
@@ -1607,7 +1529,7 @@
   .imageSlider .buttonLay .searchUnit form .inputContainer:nth-child(2) {
     display: none;
   }
-  .imageSlider .buttonLay .searchUnit form .inputContainer .dateDropDown {
+  .dateDropDown {
     width: 400px;
   }
   .orderBoxContainer .orderBox {
@@ -1660,12 +1582,11 @@
   .imageSlider .buttonLay .searchUnit form {
     flex-direction: column;
   }
+
   .imageSlider .buttonLay .searchUnit form .inputContainer {
     width: 100%;
   }
-  .imageSlider .buttonLay .searchUnit form .inputContainer .dateDropDown {
-    width: 100%;
-  }
+
   .container .cardsContainer {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }

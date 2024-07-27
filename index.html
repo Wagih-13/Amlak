@@ -202,7 +202,10 @@
                 </div>
               </div>
               <div class="inputContainer calenderInput">
-                <label for="">اختار التاريخ</label>
+                <label for="">
+                  <span class="ArLang">اختار التاريخ</span>
+                  <span class="EnLang">Pick a date</span></label
+                >
                 <div class="dropDownBox">
                   <input
                     type="text"
@@ -210,10 +213,14 @@
                     disabled
                     value=""
                     placeholder="اختار التاريخ"
+                    id="confirmDateInput"
+                    class="confirmDateInput"
+                    arrivedDate=""
+                    leavedDate=""
                   />
                   <i class="fa-solid fa-angle-down"></i>
                 </div>
-                <div class="dateDropDown">
+                <div class="dateDropDown" dir="rtl">
                   <div class="calender">
                     <div class="month">
                       <i
@@ -229,19 +236,32 @@
                       <i class="fa fa-angle-left prev" style="color: black"></i>
                     </div>
                     <div class="weekdays">
-                      <div>Sun</div>
-                      <div>Mon</div>
-                      <div>Tue</div>
-                      <div>wed</div>
-                      <div>thu</div>
-                      <div>Fri</div>
-                      <div>sat</div>
+                      <div class="EnLang">Sun</div>
+                      <div class="ArLang">الاحد</div>
+                      <div class="EnLang">Mon</div>
+                      <div class="ArLang">الاثنين</div>
+                      <div class="EnLang">Tue</div>
+                      <div class="ArLang">الثلثاء</div>
+                      <div class="EnLang">wed</div>
+                      <div class="ArLang">الاربعاء</div>
+                      <div class="EnLang">thu</div>
+                      <div class="ArLang">الخميس</div>
+                      <div class="EnLang">Fri</div>
+                      <div class="ArLang">الجمعة</div>
+                      <div class="EnLang">sat</div>
+                      <div class="ArLang">السبت</div>
                     </div>
-
                     <div class="days"></div>
                   </div>
-                  <div class="close-icon mt-0 mb-3 bg-success">
-                    <span>أعادة تعين التاريخ</span>
+                  <div class="buttonsContainer">
+                    <div class="close-icon">
+                      <span class="ArLang">أعادة تعين التاريخ</span>
+                      <span class="EnLang">Reset Date</span>
+                    </div>
+                    <div class="close-icon" onclick="fillConfirmDate(this)">
+                      <span class="ArLang">تاكيد التاريخ</span>
+                      <span class="EnLang">Confirm Date</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -2309,10 +2329,10 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="./js/calender.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@latest/swiper-bundle.min.js"></script>
     <script src="./globalScript.js"></script>
     <script src="./js/indexScript.js"></script>
+    <script src="./js/calender.js"></script>
   </body>
 </html>

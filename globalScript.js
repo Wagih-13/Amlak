@@ -242,6 +242,7 @@ const switchLanguage = () => {
   const currentLang = getLang();
   const newLang = currentLang === "ltr" ? "rtl" : "ltr";
   setLang(newLang);
+  location.reload();
 };
 
 ////////////// reset specialUnits slider dir /////////////////
@@ -303,7 +304,7 @@ copyButtons.forEach((button) => {
 const searchInputsContainer = document.querySelectorAll(
   ".inputContainer:not(.calenderInput)"
 );
-const searchDateInput = document.querySelector(".inputContainer.calenderInput");
+const searchDateInput = document.querySelectorAll(".inputContainer.calenderInput");
 
 searchInputsContainer.forEach((inputBox) => {
   inputBox.addEventListener("click", () => {
@@ -312,18 +313,20 @@ searchInputsContainer.forEach((inputBox) => {
   });
 });
 
-searchDateInput.addEventListener("click", (event) => {
-  const dropDownList = searchDateInput.querySelector(".dateDropDown");
-  const myDiv = document.querySelector(
-    ".inputContainer.calenderInput .dateDropDown"
-  );
-  const clickedElement = event.target;
-  if (clickedElement === myDiv || myDiv.contains(clickedElement)) {
-    event.stopPropagation();
-  } else {
-    $(dropDownList).slideToggle();
-  }
-});
+searchDateInput.forEach((input)=>{
+  input.addEventListener("click", (event) => {
+    const dropDownList = input.querySelector(".dateDropDown");
+    const myDiv = document.querySelector(
+      ".inputContainer.calenderInput .dateDropDown"
+    );
+    const clickedElement = event.target;
+    if (clickedElement === myDiv || myDiv.contains(clickedElement)) {
+      event.stopPropagation();
+    } else {
+      $(dropDownList).slideToggle();
+    }
+  });
+})
 
 searchInputsContainer.forEach((inputBox) => {
   const option = inputBox.querySelectorAll(".dropDownList li");
@@ -428,12 +431,24 @@ searchUnitSelectBtn.forEach((btn, index) => {
 });
 
 document.addEventListener("click", (event) => {
+  const clickedElement = event.target;
   searchUnitContent.forEach((content, index) => {
     if (
       !searchUnitSelectBtn[index].contains(event.target) &&
       !content.contains(event.target)
     ) {
       $(content).slideUp();
+    }
+  });
+  const dropDownList = document.querySelectorAll(
+    ".inputContainer.calenderInput .dateDropDown"
+  );
+  const myDiv = document.querySelectorAll(".inputContainer.calenderInput ");
+  myDiv.forEach((div, index) => {
+    if (!div.contains(clickedElement)) {
+      $(dropDownList[index]).slideUp();
+    } else {
+      event.stopPropagation();
     }
   });
 });

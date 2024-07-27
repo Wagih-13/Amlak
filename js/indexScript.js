@@ -46,7 +46,6 @@ function setSliderWidth(slideContainer) {
 
 slideContainers.forEach(setSliderWidth);
 
-
 /////////////////////////////////////// create offer Slider //////////////////////////////////////////////
 // const offerSliderData = [
 //   { name: "ahmed", age: 23, id: 1 },
@@ -473,6 +472,8 @@ function createPagination() {
   }
 }
 
+let rating = 2.5;
+
 function creatSection() {
   let blockOfElements = `${displayedItems[unitSearchSectionCurrentDisplayedPage]
     .map(
@@ -496,11 +497,17 @@ function creatSection() {
             <div class="info">
               <div class="rateAndOffer">
                 <span>
-                  <span class="icons">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
+                   <span class="icons">
+                    ${Array(5)
+                      .fill("")
+                      .map((_, i) =>
+                        i < rating
+                          ? '<i class="fa-solid fa-star"></i>'
+                          : i < Math.ceil(Number(rating))
+                          ? '<i class="fa-regular fa-star-half-stroke"></i>'
+                          : '<i class="fa-regular fa-star"></i>'
+                      )
+                      .join("")}
                   </span>
                   4.5
                 </span>
@@ -519,6 +526,7 @@ function creatSection() {
     .join(" ")}`;
 
   selector.innerHTML = blockOfElements;
+
   unitSearchCardsContainer = document.querySelector(
     ".unitSearchOutput .cardsContainer "
   );
