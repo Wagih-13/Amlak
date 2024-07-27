@@ -16,6 +16,12 @@
   -o-transition: 0.5s;
 }
 
+.offerLable {
+  border-radius: 10px;
+  padding: 5px;
+  background-color: var(--main-color);
+}
+
 .swiper-slide {
   position: relative;
 }
@@ -254,6 +260,11 @@
   color: var(--text-black-white);
   padding: 20px 0px;
 }
+/* .specialUnitsSlider .slideContainer .slide .card .info .rateAndOffer span {
+  border-radius: 10px;
+  padding: 5px;
+  background-color: var(--main-color);
+} */
 .specialUnitsSlider .slideContainer .slide .card .info .rateAndOffer .icons {
   font-size: 16px;
   color: var(--main-color);

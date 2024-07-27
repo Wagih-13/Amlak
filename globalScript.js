@@ -320,13 +320,10 @@ searchInputsContainer.forEach((inputBox) => {
 });
 
 searchDateInput.forEach((input) => {
-  input.addEventListener("click", (event) => {
+  input.querySelector(".dropDownBox").addEventListener("click", (event) => {
     const dropDownList = input.querySelector(".dateDropDown");
-    const myDiv = document.querySelector(
-      ".inputContainer.calenderInput .dateDropDown"
-    );
     const clickedElement = event.target;
-    if (clickedElement === myDiv || myDiv.contains(clickedElement)) {
+    if (dropDownList.contains(clickedElement)) {
       event.stopPropagation();
     } else {
       $(dropDownList).slideToggle();
@@ -337,7 +334,6 @@ searchDateInput.forEach((input) => {
 searchInputsContainer.forEach((inputBox) => {
   const option = inputBox.querySelectorAll(".dropDownList li");
   const input = inputBox.querySelector(".valueInput");
-
   option.forEach((opt) => {
     opt.addEventListener("click", () => {
       const valueOfOtion = opt.textContent.trim();

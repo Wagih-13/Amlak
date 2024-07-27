@@ -783,7 +783,12 @@ footer .copyright {
   outline: none;
   padding: 8px;
   color: white;
+  position: relative;
+  z-index: -1;
 }
+
+
+/* /////////////////////////////////////////////// modifay //////////////////////////////////// */
 .dropDownBox i {
   color: white;
 }

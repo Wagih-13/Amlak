@@ -29,14 +29,14 @@
 
 .calender .month .date h1 {
   text-align: center;
-  font-size: var(--Xlarg-font-size);
-  font-weight: 600;
+  font-size: var(--larg-font-size);
+  font-weight: bold;
   text-transform: uppercase;
   margin-top: 15px;
 }
 
 .calender .month .date p {
-  font-size: 14px;
+  font-size: var(--small-font-size);
 }
 
 .calender .weekdays {
@@ -113,6 +113,18 @@
 
 .calender
   .days
+  > div.day:not(
+    .reserved-day,
+    .cancel,
+    .before-today,
+    .day-selected,
+    .leaved-selected,
+    .arrived-selected
+  ) {
+  border: 1px solid #eeeeee00;
+}
+.calender
+  .days
   > div.day:hover:not(
     .reserved-day,
     .cancel,
@@ -125,13 +137,16 @@
   border: 1px solid #eee;
 }
 .before-today {
-  background-color: #5d2f80e8 !important;
+  background-color: #391e4ee8 !important;
+  cursor: default !important;
 }
 
 .prev-date,
 .next-date {
-  opacity: 0.3;
   text-decoration: line-through;
+  background-color: #3e294ee8 !important;
+  color: #494949 !important;
+  cursor: default !important;
 }
 
 .selected-reserve-dates {

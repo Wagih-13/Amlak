@@ -274,58 +274,56 @@ const renderCalendar = () => {
           countOfClick = 1;
           setArrivedDate = divDay.getAttribute("data-date");
         } else if (countOfClick == 1) {
+          let totalDaysDiff = Math.ceil(
+            (new Date(divDay.getAttribute("data-date")) -
+              new Date(setArrivedDate)) /
+              (1000 * 3600 * 24)
+          );
+          divDay.classList.add("leaved-selected");
+          document.querySelector(".buttonsContainer").classList.add("show");
+          setLeavedDate = divDay.getAttribute("data-date");
+          if (maxReserved !== 0) {
+            if (totalDaysDiff < parseInt(maxReserved)) {
+              divDay.classList.add("leaved-selected");
+              document.querySelector(".buttonsContainer").classList.add("show");
+              document.getElementById("txtCheckOutDate").value = new Date(
+                divDay.getAttribute("data-date")
+              ).toDateString();
+
+              setLeavedDate = divDay.getAttribute("data-date");
+              selectAllDaysBetweenArrivedAndLeaved(
+                new Date(setArrivedDate),
+                new Date(setLeavedDate)
+              );
+            } else {
+              setArrivedDate = "";
+              document.querySelector(
+                ".messages"
+              ).innerHTML = `أقصى عدد الأيام الحجز = ${maxReserved}`;
+              if (document.querySelector(".arrived-selected")) {
+                document
+                  .querySelector(".arrived-selected")
+                  .classList.remove("arrived-selected");
+              }
+            }
+          }
           if (
             new Date(divDay.getAttribute("data-date")) -
               new Date(setArrivedDate) >
             0
           ) {
-            let totalDaysDiff = Math.ceil(
-              (new Date(divDay.getAttribute("data-date")) -
-                new Date(setArrivedDate)) /
-                (1000 * 3600 * 24)
-            );
-
-            divDay.classList.add("leaved-selected");
-            document.querySelector(".buttonsContainer").classList.add("show");
-
-            setLeavedDate = divDay.getAttribute("data-date");
-            if (maxReserved !== 0) {
-              if (totalDaysDiff < parseInt(maxReserved)) {
-                divDay.classList.add("leaved-selected");
-                document
-                  .querySelector(".buttonsContainer")
-                  .classList.add("show");
-                document.getElementById("txtCheckOutDate").value = new Date(
-                  divDay.getAttribute("data-date")
-                ).toDateString();
-
-                setLeavedDate = divDay.getAttribute("data-date");
-                selectAllDaysBetweenArrivedAndLeaved(
-                  new Date(setArrivedDate),
-                  new Date(setLeavedDate)
-                );
-              } else {
-                setArrivedDate = "";
-
-                document.querySelector(
-                  ".messages"
-                ).innerHTML = `أقصى عدد الأيام الحجز = ${maxReserved}`;
-                if (document.querySelector(".arrived-selected")) {
-                  document
-                    .querySelector(".arrived-selected")
-                    .classList.remove("arrived-selected");
-                }
-              }
-            }
             selectAllDaysBetweenArrivedAndLeaved(
               new Date(setArrivedDate),
               new Date(setLeavedDate)
             );
           } else {
-            removeReservedSelected();
-            divDay.classList.add("arrived-selected");
-            countOfClick = 1;
-            setArrivedDate = divDay.getAttribute("data-date");
+            let arrivedDate = setArrivedDate;
+            setArrivedDate = setLeavedDate;
+            setLeavedDate = arrivedDate;
+            selectAllDaysBetweenArrivedAndLeaved(
+              new Date(setArrivedDate),
+              new Date(setLeavedDate)
+            );
           }
           countOfClick = 2;
         } else if (countOfClick == 2) {
@@ -407,6 +405,19 @@ renderReservedDays();
 renderCalendar();
 
 function fillConfirmDate(button) {
+  const dateSetLeavedDate = new Date(setLeavedDate);
+  const formattedLeavedDateDate = dateSetLeavedDate.toLocaleDateString("fr-FR", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
+  const dateSetArrivedDate= new Date(setArrivedDate);
+  const formattedArrivedDate = dateSetArrivedDate.toLocaleDateString("fr-FR", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
+  
   const calenderInput = button.closest(".calenderInput");
   calenderInput
     .querySelector("#confirmDateInput")
@@ -417,7 +428,7 @@ function fillConfirmDate(button) {
 
   calenderInput
     .querySelector("#confirmDateInput")
-    .setAttribute("placeholder", `${setArrivedDate} - ${setLeavedDate}`);
+    .setAttribute("placeholder", `${formattedArrivedDate} - ${formattedLeavedDateDate}`);
   const dropDownList = button.closest(".dateDropDown");
   $(dropDownList).slideToggle();
 }

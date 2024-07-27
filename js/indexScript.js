@@ -138,11 +138,15 @@ filterUnitForm.addEventListener("submit", function (event) {
   const homeType = document.getElementById("AreaUnitName").value;
   const choseTown = document.getElementById("AreaUnitCode").value;
   const choseNeighborhood = document.getElementById("AreaUnitDistrict").value;
-
+  const confirmDateInput = document.getElementById("confirmDateInput");
   const displayInputsValue = document.getElementById("displayInputsValue");
+  const arrivedDate = confirmDateInput.getAttribute("arrivedDate");
+  const leavedDate = confirmDateInput.getAttribute("leavedDate");
   displayInputsValue.innerHTML = `${homeType != "" ? homeType + " - " : ""}${
     choseTown != "" ? choseTown + " - " : ""
-  }${choseNeighborhood != "" ? choseNeighborhood : ""}`;
+  }${choseNeighborhood != "" ? choseNeighborhood + " - " : ""}${
+    arrivedDate != "" ? arrivedDate + " - " : ""
+  }${leavedDate != "" ? leavedDate : ""}`;
 
   const scrollTop = document.querySelector("#unitSearchOutput").offsetTop;
   window.scrollTo({
@@ -153,9 +157,24 @@ filterUnitForm.addEventListener("submit", function (event) {
     ".inputContainer .select-btn  "
   );
   const inputs = document.querySelectorAll("input");
+  confirmDateInput.setAttribute("arrivedDate", "");
+  confirmDateInput.setAttribute("leavedDate", "");
+  confirmDateInput.setAttribute("placeholder", "");
+  countOfClick = 0;
+  document.querySelectorAll(".days>div").forEach((divDay) => {
+    divDay.classList.remove("arrived-selected");
+    divDay.classList.remove("leaved-selected");
+    divDay.classList.remove("day-selected");
+  });
+  document.querySelector(".buttonsContainer").classList.remove("show");
+  setArrivedDate = "";
+  setLeavedDate = "";
+
   for (var i = 0; i < inputs.length; i++) {
-    inputs[i].value = "";
-    inputContainer[i].firstElementChild.innerText = "";
+    if (inputContainer[i]) {
+      inputs[i].value = "";
+      inputContainer[i].firstElementChild.innerText = "";
+    }
   }
 });
 const offerBtn = document.querySelector("#openOffersSection");
