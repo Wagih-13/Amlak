@@ -52,7 +52,11 @@ const navBar = `
       </div>
       <div class="links">
         <ul>
-            <li onclick="handelOpenLinksList()"><a href="#specialUnits"> وحدات مميزة </a></li>
+           ${
+             window.location.pathname === "/"
+               ? ' <li onclick="handelOpenLinksList()"><a href="#specialUnits"> وحدات مميزة </a></li>'
+               : ' <li onclick="handelOpenLinksList()"><a href="/"> الرئيسية </a></li>'
+           }
             <li onclick="handelOpenLinksList()"><a href="#offers"> العروض </a></li>
             <li onclick="handelOpenLinksList()"><a href="#whoAreWe"> من نحن </a></li>
             <li onclick="handelOpenLinksList()"><a href="#contactUs"> تواصل معنا </a></li>
@@ -304,7 +308,9 @@ copyButtons.forEach((button) => {
 const searchInputsContainer = document.querySelectorAll(
   ".inputContainer:not(.calenderInput)"
 );
-const searchDateInput = document.querySelectorAll(".inputContainer.calenderInput");
+const searchDateInput = document.querySelectorAll(
+  ".inputContainer.calenderInput"
+);
 
 searchInputsContainer.forEach((inputBox) => {
   inputBox.addEventListener("click", () => {
@@ -313,7 +319,7 @@ searchInputsContainer.forEach((inputBox) => {
   });
 });
 
-searchDateInput.forEach((input)=>{
+searchDateInput.forEach((input) => {
   input.addEventListener("click", (event) => {
     const dropDownList = input.querySelector(".dateDropDown");
     const myDiv = document.querySelector(
@@ -326,7 +332,7 @@ searchDateInput.forEach((input)=>{
       $(dropDownList).slideToggle();
     }
   });
-})
+});
 
 searchInputsContainer.forEach((inputBox) => {
   const option = inputBox.querySelectorAll(".dropDownList li");
