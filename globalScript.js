@@ -59,7 +59,7 @@ const navBar = `
            }
             <li onclick="handelOpenLinksList()"><a href="#offers"> العروض </a></li>
             <li onclick="handelOpenLinksList()"><a href="#whoAreWe"> من نحن </a></li>
-            <li onclick="handelOpenLinksList()"><a href="#contactUs"> تواصل معنا </a></li>
+            <li onclick="handelOpenLinksList()"> <a href="/unitDetails.html"> unit details </a></li>
         </ul>
       </div>
       <div class="buttons">
@@ -237,7 +237,6 @@ const setLang = (lang) => {
       imageSliderContainer.setAttribute("dir", "ltr");
     }
   }
-
 };
 
 const initialLang = getLang();

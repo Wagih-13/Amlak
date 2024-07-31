@@ -9,6 +9,23 @@ function removeReservedSelected(event) {
   setLeavedDate = "";
 }
 
+
+function fillConfirmDate(button) {
+  console.log("fillConfirmDate");
+}
+function removeVal() {
+  const expensesContainer = document.querySelector(
+    `.unitDetails .calenderSide .bookingDetails .expenses`
+  );
+  $(expensesContainer).slideUp();
+}
+function showContainer() {
+  const expensesContainer = document.querySelector(
+    `.unitDetails .calenderSide .bookingDetails .expenses`
+  );
+  $(expensesContainer).slideDown();
+}
+
 let defaultLat = 31.32;
 let defaultLon = 31.51;
 
@@ -27,21 +44,6 @@ marker.bindPopup("<h3>  unit.name </h3>");
 setTimeout(() => {
   map.invalidateSize();
 }, 2000);
-function fillConfirmDate(button) {
-  console.log("fillConfirmDate");
-}
-function removeVal() {
-  const expensesContainer = document.querySelector(
-    `.unitDetails .calenderSide .bookingDetails .expenses`
-  );
-  $(expensesContainer).slideUp();
-}
-function showContainer() {
-  const expensesContainer = document.querySelector(
-    `.unitDetails .calenderSide .bookingDetails .expenses`
-  );
-  $(expensesContainer).slideDown();
-}
 
 let swiper = new Swiper(".mySwiper", {
   pagination: {
