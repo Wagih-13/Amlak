@@ -1,0 +1,983 @@
+.unitDetails {
+  padding: 150px 0px 100px;
+  background-color: var(--section-color);
+  transition: 0.5s;
+  position: relative;
+}
+
+.unitDetails .imagesSliderLay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.178);
+  backdrop-filter: blur(10px);
+  z-index: 99999;
+  display: none;
+}
+
+.unitDetails .imagesSliderLay .sliderContainer {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.unitDetails .imagesSliderLay .swiperContainer {
+  width: 50%;
+  aspect-ratio: 2/1.5;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+.closeIcon {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 40px;
+  color: rgb(255, 255, 255);
+  text-shadow: 2px 2px 5px rgb(133, 133, 133);
+  z-index: 999999;
+  cursor: pointer;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+}
+.closeIcon:hover {
+  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
+}
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  color: white !important;
+  font-size: var(--Xlarg-font-size);
+}
+.swiper-button-next:after {
+  text-shadow: -2px 2px 7px rgb(0, 0, 0);
+}
+.swiper-button-prev:after {
+  text-shadow: 2px 2px 7px rgb(3, 3, 3);
+}
+.swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+  background-color: var(--main-color);
+}
+.unitDetails .container .unitName {
+  width: 100%;
+  padding: 20px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 15px;
+  flex-direction: column;
+}
+
+.unitDetails .container .unitName .nameOfUnit {
+  font-size: var(--Xlarg-font-size);
+  color: white;
+  margin: 0px;
+}
+
+.unitDetails .container .unitName .codeOfUnit {
+  font-size: var(--larg-font-size);
+  font-weight: 600;
+  color: rgb(168, 168, 168);
+  margin: 0px;
+}
+
+.unitDetails .container .mainDetails {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 50px;
+  padding: 20px 0px;
+}
+
+.unitDetails .container .mainDetails > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--main-font-size);
+  color: white;
+}
+
+.unitDetails .container .mainDetails > div > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  transition: 0.5s;
+}
+
+.unitDetails .container .mainDetails .services > div:hover {
+  background-color: rgba(0, 0, 0, 0.26);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+}
+
+.unitDetails .container .mainDetails .services > div i {
+  padding: 8px;
+  border-radius: 20px;
+  transition: 0.5s;
+}
+
+.unitDetails .container .mainDetails .services > div i:hover {
+  background-color: rgba(128, 128, 128, 0.74);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+}
+
+.unitDetails .container .unitPhotos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  height: 50vh;
+  width: 100%;
+}
+
+.unitDetails .container .unitPhotos > div {
+  width: 50%;
+  height: 50vh;
+  overflow: hidden;
+}
+.unitDetails .container .unitPhotos .mainPhoto {
+  border: 2px solid var(--main-color);
+  border-top-right-radius: 10px;
+  position: relative;
+}
+.unitDetails .container .unitPhotos .mainPhoto .sliderButton {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  border: 2px solid var(--main-color);
+  border-radius: 10px;
+  color: white;
+  font-size: var(--main-font-size);
+  transition: 0.5s;
+  padding: 10px 20px;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.137);
+  backdrop-filter: blur(10px);
+  border-bottom-right-radius: 0px;
+}
+
+.unitDetails .container .unitPhotos .mainPhoto .sliderButton:hover {
+  background-color: var(--main-color);
+  cursor: pointer;
+}
+
+.unitDetails .container .unitPhotos .mainPhoto img {
+  width: 100%;
+  height: 100%;
+}
+.unitDetails .container .unitPhotos .otherPhotos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.unitDetails .container .unitPhotos .otherPhotos > span {
+  width: calc(100% / 2 - 10px);
+  height: calc(50vh / 2 - 10px);
+  border: 2px solid var(--main-color);
+  overflow: hidden;
+}
+.unitDetails .container .unitPhotos .otherPhotos > span:nth-child(2) {
+  border-top-left-radius: 10px;
+}
+.unitDetails .container .unitPhotos .otherPhotos > span img {
+  width: 100%;
+  height: 100%;
+}
+
+.unitDetails .container .unitInformation {
+  padding: 50px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+  width: 100%;
+}
+
+.unitDetails .container .unitInformation .infoSide {
+  width: calc(100% - 500px - 30px);
+}
+
+.unitDetails .container .unitInformation .calenderSide {
+  width: 500px;
+  border: 2px solid var(--main-color);
+  border-radius: 10px;
+  padding: 20px;
+}
+.unitDetails .container .unitInformation .calenderSide .calenderContainer {
+  width: 100%;
+}
+.unitDetails .container .unitInformation .calenderSide .conditions {
+  border-top: 1px solid var(--main-color);
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20px;
+  font-size: var(--main-font-size);
+  color: rgb(207, 207, 207);
+}
+
+.unitDetails .container .unitInformation .calenderSide .conditions span i {
+  margin: 0px 10px;
+}
+
+.unitDetails .container .unitInformation .calenderSide .days {
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.unitDetails .container .unitInformation .calenderSide .calender {
+  padding: 20px 10px 40px;
+}
+.unitDetails .container .unitInformation .calenderSide .calender .days > div {
+  width: calc(100% / 7 - 10px);
+  background-color: transparent;
+  padding: 16px;
+}
+
+.calender .days > div.arrived-selected,
+.calender .days > div.leaved-selected,
+.calender .days > div.day-selected {
+  background: #764a8fde !important ;
+}
+
+.unitDetails .container .unitInformation .calenderSide .bookingDetails {
+  width: 100%;
+  border-top: 1px solid var(--main-color);
+  padding: 20px 0px;
+}
+
+.unitDetails
+  .container
+  .unitInformation
+  .calenderSide
+  .bookingDetails
+  .bookingTime {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px 0px;
+}
+.unitDetails
+  .container
+  .unitInformation
+  .calenderSide
+  .bookingDetails
+  .bookingTime
+  > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  color: white;
+  font-size: var(--main-font-size);
+}
+
+.unitDetails
+  .container
+  .unitInformation
+  .calenderSide
+  .bookingDetails
+  .bookingButton {
+  width: 70%;
+  padding: 15px 40px;
+  border-radius: 25px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
+  background-color: #928263c9;
+  color: white;
+  font-size: var(--larg-font-size);
+  margin: 20px auto;
+  border: none;
+  outline: none;
+  cursor: not-allowed;
+  display: block;
+  border: 2px solid var(--main-color);
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+}
+
+.unitDetails
+  .container
+  .unitInformation
+  .calenderSide
+  .bookingDetails
+  .bookingButton:hover {
+  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  -o-transform: scale(1.05);
+}
+
+.unitDetails
+  .container
+  .unitInformation
+  .calenderSide
+  .bookingDetails
+  .expenses {
+  display: none;
+}
+
+.unitDetails
+  .container
+  .unitInformation
+  .calenderSide
+  .bookingDetails
+  .totalBookingExpenses {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+}
+
+.unitDetails
+  .container
+  .unitInformation
+  .calenderSide
+  .bookingDetails
+  .totalBookingExpenses
+  > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--main-font-size);
+  color: white;
+}
+.unitDetails
+  .container
+  .unitInformation
+  .calenderSide
+  .bookingDetails
+  .totalBookingExpenses
+  > div.offerExpense {
+  color: var(--main-color);
+}
+
+.unitDetails
+  .container
+  .unitInformation
+  .calenderSide
+  .bookingDetails
+  .totalExpenses {
+  padding: 20px 20px 0px;
+  border-top: 1px solid var(--main-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--main-font-size);
+  color: white;
+}
+.unitDetails
+  .container
+  .unitInformation
+  .infoSide
+  .guaranteeContainer.mobileView {
+  display: none;
+  margin-top: 20px;
+  padding: 5px;
+}
+.unitDetails
+  .container
+  .unitInformation
+  .infoSide
+  .guaranteeContainer.mobileView
+  .unitNameMobileView {
+  padding: 20px;
+}
+
+.unitDetails .container .unitInformation .infoSide .guarantee {
+  width: 100%;
+  border: 2px solid var(--main-color);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.unitDetails .container .unitInformation .infoSide .guarantee > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.unitDetails .container .unitInformation .infoSide .guarantee > div > div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+
+.unitDetails .container .unitInformation .infoSide .guarantee > div img {
+  width: 100px;
+}
+
+.unitDetails .container .unitInformation .infoSide .guarantee h4 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 0px;
+  gap: 10px;
+}
+
+.unitDetails
+  .container
+  .unitInformation
+  .infoSide
+  .guarantee
+  h4
+  span:nth-child(1) {
+  font-size: var(--main-font-size);
+  color: white;
+}
+.unitDetails
+  .container
+  .unitInformation
+  .infoSide
+  .guarantee
+  h4
+  span:nth-child(2),
+.unitDetails
+  .container
+  .unitInformation
+  .infoSide
+  .guarantee
+  h4
+  span:nth-child(3) {
+  font-size: var(--small-font-size);
+  color: white;
+}
+.unitDetails .container .unitInformation .infoSide .guarantee i {
+  color: white;
+  font-size: large;
+  cursor: pointer;
+}
+.unitDetails .container .unitInformation .infoSide .guarantee .infoDropdown {
+  color: rgb(228, 228, 228);
+  font-size: var(--main-font-size);
+  display: none;
+}
+.unitDetails .container .unitInformation .infoSide .description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  gap: 20px;
+  padding: 20px;
+}
+.unitDetails .container .unitInformation .infoSide .description h2 {
+  font-size: var(--larg-font-size);
+  margin: 0px;
+}
+.unitDetails .container .unitInformation .infoSide .description p {
+  font-size: var(--main-font-size);
+  color: rgb(228, 228, 228);
+  margin: 0px;
+}
+.unitDetails .container .unitInformation .infoSide .unitInfoNavBarContainer {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.unitDetails
+  .container
+  .unitInformation
+  .infoSide
+  .unitInfoNavBarContainer
+  .infoNavBar {
+  border: 2px solid var(--main-color);
+  border-radius: 40px;
+  padding: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  flex-wrap: nowrap;
+  gap: 10px;
+  background-color: rgba(0, 0, 0, 0.089);
+  backdrop-filter: blur(10px);
+}
+.unitDetails
+  .container
+  .unitInformation
+  .infoSide
+  .unitInfoNavBarContainer
+  .infoNavBar
+  > span {
+  padding: 15px 20px;
+  width: calc(100% / 4 - 6px);
+  border-radius: 40px;
+  color: white;
+  text-align: center;
+  transition: 0.5s;
+  cursor: pointer;
+  font-size: var(--main-font-size);
+}
+.unitDetails
+  .container
+  .unitInformation
+  .infoSide
+  .unitInfoNavBarContainer
+  .infoNavBar
+  > span:hover {
+  background-color: rgba(255, 255, 255, 0.192);
+}
+.unitDetails .container .unitInformation .infoSide .activeSectionContainer {
+  overflow-y: auto;
+  height: 55vh;
+}
+.unitDetails
+  .container
+  .unitInformation
+  .infoSide
+  .activeSectionContainer::-webkit-scrollbar {
+  width: 5px;
+  margin-top: 20px;
+}
+
+.unitDetails
+  .container
+  .unitInformation
+  .infoSide
+  .activeSectionContainer::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 25px;
+  margin-top: 20px;
+}
+
+.unitDetails
+  .container
+  .unitInformation
+  .infoSide
+  .activeSectionContainer::-webkit-scrollbar-thumb {
+  background: var(--main-color);
+  border-radius: 25px;
+}
+.unitDetails
+  .container
+  .unitInformation
+  .infoSide
+  .activeSectionContainer
+  > div {
+  display: none;
+  padding: 20px;
+}
+.unitDetails
+  .container
+  .unitInformation
+  .infoSide
+  .activeSectionContainer
+  > div:nth-child(1)
+  h2 {
+  font-size: var(--larg-font-size);
+  color: white;
+  margin: 20px 0px 0px;
+  font-weight: 500;
+}
+.unitDetails
+  .container
+  .unitInformation
+  .infoSide
+  .activeSectionContainer
+  > div:nth-child(1)
+  h2
+  i {
+  margin: 0px 8px;
+}
+.unitDetails
+  .container
+  .unitInformation
+  .infoSide
+  .activeSectionContainer
+  > div:nth-child(1)
+  ul {
+  list-style: initial !important;
+  margin: 20px 10px;
+  padding: 0px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+.unitDetails
+  .container
+  .unitInformation
+  .infoSide
+  .activeSectionContainer
+  > div:nth-child(1)
+  ul
+  li {
+  font-size: 16px;
+  color: white;
+}
+.unitDetails
+  .container
+  .unitInformation
+  .infoSide
+  .activeSectionContainer
+  > div:nth-child(4)
+  pre {
+  margin: -50px 0px 0px;
+  padding: 0px;
+  width: 100%;
+}
+.unitDetails
+  .container
+  .unitInformation
+  .infoSide
+  .activeSectionContainer
+  > div:nth-child(4)
+  pre
+  ol {
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+}
+.unitDetails
+  .container
+  .unitInformation
+  .infoSide
+  .activeSectionContainer
+  > div:nth-child(4)
+  pre
+  ol
+  li {
+  word-break: break-all;
+  white-space: pre-wrap;
+  font-size: var(--main-font-size);
+  color: white;
+  line-height: 1.5rem;
+}
+.unitDetails
+  .container
+  .unitInformation
+  .infoSide
+  .activeSectionContainer
+  > div:nth-child(3) {
+  width: 100%;
+  padding: 20px;
+  height: 100% !important;
+  overflow: hidden !important;
+}
+.unitDetails
+  .container
+  .unitInformation
+  .infoSide
+  .activeSectionContainer
+  > div:nth-child(3)
+  #map {
+  width: 100% !important;
+  height: 100% !important;
+}
+.activeLink {
+  background-color: #482464;
+}
+.activeSection {
+  display: inline-block !important;
+}
+
+.unitDetails .sliderContainerMobileView {
+  width: 100%;
+  display: none;
+  position: relative;
+}
+.unitDetails .sliderContainerMobileView .servicesMobileView {
+  position: absolute;
+  top: 15px;
+  left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  gap: 10px;
+  z-index: 99;
+}
+.unitDetails .sliderContainerMobileView .servicesMobileView > div {
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  padding: 8px 10px;
+  border-radius: 20px;
+  font-size: var(--Xlarg-font-size);
+  color: white;
+  text-shadow: 2px 2px 5px rgb(156, 156, 156);
+}
+.unitDetails .sliderContainerMobileView .servicesMobileView > div:hover {
+  background-color: rgba(0, 0, 0, 0.26);
+  backdrop-filter: blur(10px);
+}
+.unitDetails .sliderContainerMobileView .swiperContainer {
+  width: 100%;
+  height: 70vh;
+}
+.unitDetails .sliderContainerMobileView .swiperContainer .mobileViewSwiper {
+  width: 100%;
+}
+
+.unitDetails .unitNameMobileView > div:nth-child(1) {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.unitDetails .unitNameMobileView > div:nth-child(1) h1 {
+  font-size: var(--Xlarg-font-size);
+  color: white;
+  margin: 0px;
+}
+.unitDetails .unitNameMobileView > div:nth-child(1) h4 {
+  font-size: var(--larg-font-size);
+  font-weight: 600;
+  color: rgb(168, 168, 168);
+  margin: 0px;
+}
+.unitDetails .unitNameMobileView > div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+.unitDetails .unitNameMobileView > div:nth-child(2) > div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  font-size: var(--main-font-size);
+}
+
+.unitDetails .confirmBooking {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.301);
+  backdrop-filter: blur(10px);
+  display: none;
+  z-index: 999;
+}
+.unitDetails .confirmBooking .totalExpensesMobileView {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+  font-size: var(--inital-font-size);
+  color: white;
+  padding: 20px 0px;
+  text-align: center;
+}
+.unitDetails .confirmBooking .totalExpensesMobileView .totalPrice {
+  font-size: var(--Xlarg-font-size);
+}
+.unitDetails .confirmBooking .bookingButtonMobileView {
+  width: 100%;
+  padding: 15px 40px;
+  color: white;
+  border: 2px solid var(--main-color);
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  background-color: #928263c9;
+  margin-top: 20px;
+  cursor: not-allowed;
+}
+
+@media (min-width: 1400px) {
+  .unitDetails
+    .container
+    .unitInformation
+    .infoSide
+    .activeSectionContainer
+    > div:nth-child(3)
+    #map {
+    width: 100%;
+    aspect-ratio: 1/0.5;
+  }
+}
+@media (max-width: 1100px) {
+  .unitDetails .confirmBooking {
+    display: block;
+  }
+  .unitDetails .sliderContainerMobileView {
+    display: block;
+  }
+  .unitDetails {
+    padding-top: 0px;
+  }
+
+  .webView,
+  .mainDetails,
+  .unitName,
+  .imagesSliderLay,
+  .unitPhotos,
+  .totalExpenses,
+  .bookingButton {
+    display: none !important;
+  }
+
+  .unitDetails
+    .container
+    .unitInformation
+    .infoSide
+    .guaranteeContainer.mobileView {
+    display: block !important;
+  }
+  .unitDetails .container .unitPhotos .mainPhoto {
+    width: 100%;
+    border-radius: 0px;
+  }
+  .unitDetails .container .unitPhotos .otherPhotos {
+    display: none;
+  }
+  .unitDetails .container .unitInformation {
+    flex-direction: column;
+  }
+  .unitDetails .container .unitInformation > div {
+    width: 100% !important;
+  }
+  .unitDetails .container .unitInformation .calenderSide .days {
+    justify-content: center;
+    gap: 5px;
+  }
+  .unitDetails .container .unitInformation .calenderSide .calender .days > div {
+    width: calc(100% / 7 - 5px) !important;
+  }
+  .unitDetails .container .unitInformation .infoSide .activeSectionContainer {
+    border-top: 1px solid var(--main-color);
+  }
+  .unitDetails .container .unitInformation {
+    padding-top: 0px;
+    transform: translateY(-50px);
+    -webkit-transform: translateY(-50px);
+    -moz-transform: translateY(-50px);
+    -ms-transform: translateY(-50px);
+    -o-transform: translateY(-50px);
+    position: relative;
+    z-index: 9;
+  }
+}
+@media (max-width: 991px) {
+  .unitDetails {
+    padding: 0px 0px 30px;
+  }
+  .unitDetails .imagesSliderLay .swiperContainer {
+    width: 90% !important;
+  }
+  .closeIcon {
+    font-size: 30px;
+  }
+  .unitDetails .container .unitInformation .infoSide .activeSectionContainer {
+    margin-top: 20px;
+  }
+
+  .unitDetails .container .unitInformation .calenderSide .calender {
+    padding: 5px;
+  }
+  .unitDetails .container .unitInformation .calenderSide .calender .days {
+    gap: 3px;
+  }
+  .unitDetails .container .unitInformation .calenderSide .calender .days > div {
+    width: calc(100% / 7 - 3px);
+    background-color: transparent;
+    padding: 13px;
+  }
+}
+@media (max-width: 767px) {
+  .unitDetails
+    .container
+    .unitInformation
+    .infoSide
+    .unitInfoNavBarContainer
+    .infoNavBar {
+    gap: 5px;
+  }
+  .unitDetails
+    .container
+    .unitInformation
+    .infoSide
+    .unitInfoNavBarContainer
+    .infoNavBar
+    span {
+    padding: 8px 2px;
+    width: calc(100% / 4 - 4px);
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .unitDetails
+    .container
+    .unitInformation
+    .infoSide
+    .unitInfoNavBarContainer
+    .infoNavBar
+    span
+    > span {
+    width: 100%;
+  }
+  .unitDetails .container .unitInformation .calenderSide {
+    padding: 10px;
+  }
+  .unitDetails .container .unitInformation .calenderSide .days {
+    gap: 2px !important;
+  }
+  .unitDetails .container .unitInformation .calenderSide .calender .days > div {
+    width: calc(100% / 7 -2px) !important;
+  }
+}

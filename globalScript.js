@@ -18,7 +18,7 @@ const navBar = `
             
             <li><a href="#offers"> العروض </a></li>
             <li><a href="#whoAreWe"> من نحن </a></li>
-            <li><a href="#contactUs"> تواصل معنا </a></li>
+            <li><a href="/unitDetails.html"> unit details </a></li>
           </ul>
         </div>
         <div class="buttons">
@@ -237,6 +237,7 @@ const setLang = (lang) => {
       imageSliderContainer.setAttribute("dir", "ltr");
     }
   }
+
 };
 
 const initialLang = getLang();

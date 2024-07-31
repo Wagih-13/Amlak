@@ -1,4 +1,5 @@
 let unitsData = JSON.parse(localStorage.getItem("cardsShownInMap"));
+
 let defaultLat = unitsData[0].lat;
 let defaultLon = unitsData[0].lon;
 
@@ -10,6 +11,9 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution:
     '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 }).addTo(map);
+setTimeout(() => {
+  map.invalidateSize();
+}, 2000);
 
 let unitSideContainer = document.querySelector(".unitSideContainer ");
 let unitContainer = document.querySelector(".unitsSide");

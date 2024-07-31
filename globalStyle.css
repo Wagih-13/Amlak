@@ -14,6 +14,7 @@
   --Xsmall-font-size: 10px;
   --small-font-size: 12px;
   --main-font-size: 14px;
+  --inital-font-size: 16px;
   --larg-font-size: 26px;
   --header-font-size: 30px;
   --Xlarg-font-size: 36px;
@@ -787,13 +788,18 @@ footer .copyright {
   z-index: -1;
 }
 
-
 /* /////////////////////////////////////////////// modifay //////////////////////////////////// */
 .dropDownBox i {
   color: white;
 }
 
 /* ///////////////////////////////////////////////// Start media  //////////////////////////////////////////////////// */
+
+@media (min-width: 1700px) {
+  .container {
+    width: 75%;
+  }
+}
 
 @media (min-width: 1200px) {
   .NavBarMinScreen {
@@ -833,6 +839,7 @@ footer .copyright {
     --larg-font-size: 20px;
     --header-font-size: 24px;
     --Xlarg-font-size: 28px;
+    --inital-font-size: 14px;
   }
   footer .copyright {
     font-size: 12px;

@@ -603,3 +603,58 @@ function handleUnitSearchPreviousPage() {
 //     pagenationContainer.innerHTML = offersSectionCurrentDisplayedPage + 1;
 //   }
 // }
+////////////////////////////////////handel calender ///////////////////////////////////
+
+function showContainer() {
+  document.querySelector(".buttonsContainer").classList.add("show");
+}
+
+function removeVal(event) {
+  document.querySelector(".buttonsContainer").classList.remove("show");
+  if (event) {
+    const calenderInput = event.target.closest(".calenderInput");
+    calenderInput
+      .querySelector("#confirmDateInput")
+      .setAttribute("leavedDate", ``);
+    calenderInput
+      .querySelector("#confirmDateInput")
+      .setAttribute("arrivedDate", ``);
+
+    calenderInput
+      .querySelector("#confirmDateInput")
+      .setAttribute("placeholder", "");
+  }
+}
+
+function fillConfirmDate() {
+  const dateSetLeavedDate = new Date(setLeavedDate);
+  const formattedLeavedDateDate = dateSetLeavedDate.toLocaleDateString(
+    "fr-FR",
+    {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    }
+  );
+  const dateSetArrivedDate = new Date(setArrivedDate);
+  const formattedArrivedDate = dateSetArrivedDate.toLocaleDateString("fr-FR", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
+
+  const calenderInput = document.querySelector(".calenderInput");
+  calenderInput
+    .querySelector("#confirmDateInput")
+    .setAttribute("leavedDate", `  ${setLeavedDate}`);
+  calenderInput
+    .querySelector("#confirmDateInput")
+    .setAttribute("arrivedDate", `${setArrivedDate}`);
+
+  calenderInput
+    .querySelector("#confirmDateInput")
+    .setAttribute(
+      "placeholder",
+      `${formattedArrivedDate} - ${formattedLeavedDateDate}`
+    );
+}

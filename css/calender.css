@@ -84,6 +84,21 @@
   color: white;
   font-size: 18px;
   border: 1px solid transparent;
+  position: relative;
+}
+.calender .days > div.today::after {
+  content: "";
+  position: absolute;
+  width: 70%;
+  height: 2px;
+  left: calc(50% - 35%);
+  bottom: 5px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
 }
 
 .calender .days > div.reserved-day {
@@ -92,17 +107,17 @@
 }
 
 .calender .days > div.arrived-selected {
-  background: var(--main-color);
-  color: #fff;
+  background: var(--main-color) !important;
+  color: #fff !important;
 }
 
 .calender .days > div.leaved-selected {
-  background: var(--main-color);
+  background: var(--main-color) !important;
   color: #fff;
 }
 
 .calender .days > div.day-selected {
-  background: var(--main-color);
+  background: var(--main-color) !important ;
   color: #fff;
 }
 

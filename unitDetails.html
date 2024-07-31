@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <link rel="stylesheet" href="./css/all.min.css" />
+    <link rel="stylesheet" href="./css/freamWork.css" />
+    <link rel="stylesheet" href="./css/calender.css" />
+    <link rel="stylesheet" href="globalStyle.css" />
+    <link rel="stylesheet" href="./css/unitDetailsStyle.css" />
+    <title>Unit Details</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+  </head>
+  <body>
+    <div class="unitDetails">
+      <div class="sliderContainerMobileView">
+        <div class="servicesMobileView">
+          <div onclick="openLcationSection()">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <div>
+            <i class="fa-solid fa-arrow-up-from-bracket"></i>
+          </div>
+          <div>
+            <i class="fa-regular fa-heart"></i>
+          </div>
+        </div>
+        <div class="swiperContainer">
+          <div class="swiper mobileViewSwiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img src="./images/1.jpg" alt="" />
+              </div>
+              <div class="swiper-slide">
+                <img src="./images/2.jpg" alt="" />
+              </div>
+              <div class="swiper-slide">
+                <img src="./images/4.jpg" alt="" />
+              </div>
+              <div class="swiper-slide">
+                <img src="./images/3.jpg" alt="" />
+              </div>
+              <div class="swiper-slide">
+                <img src="./images/5.jpg" alt="" />
+              </div>
+              <div class="swiper-slide">
+                <img src="./images/6.jpg" alt="" />
+              </div>
+              <div class="swiper-slide">
+                <img src="./images/2.jpg" alt="" />
+              </div>
+              <div class="swiper-slide">
+                <img src="./images/5.jpg" alt="" />
+              </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </div>
+      <div class="imagesSliderLay">
+        <div class="sliderContainer">
+          <div class="swiperContainer">
+            <div class="closeIcon" id="close" onclick="closeSliderScreen()">
+              <i class="fa-solid fa-xmark"></i>
+            </div>
+            <div class="swiper mySwiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <img src="./images/1.jpg" alt="" />
+                </div>
+                <div class="swiper-slide">
+                  <img src="./images/2.jpg" alt="" />
+                </div>
+                <div class="swiper-slide">
+                  <img src="./images/4.jpg" alt="" />
+                </div>
+                <div class="swiper-slide">
+                  <img src="./images/3.jpg" alt="" />
+                </div>
+                <div class="swiper-slide">
+                  <img src="./images/5.jpg" alt="" />
+                </div>
+                <div class="swiper-slide">
+                  <img src="./images/6.jpg" alt="" />
+                </div>
+                <div class="swiper-slide">
+                  <img src="./images/2.jpg" alt="" />
+                </div>
+                <div class="swiper-slide">
+                  <img src="./images/5.jpg" alt="" />
+                </div>
+              </div>
+              <div class="swiper-button-next"></div>
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="unitName">
+          <h1 class="nameOfUnit">RB4000</h1>
+          <h4 class="codeOfUnit">
+            <span class="ArLang">كود الوحدة </span
+            ><span class="EnLang">Unit code </span>( RB0004 )
+          </h4>
+        </div>
+        <div class="mainDetails">
+          <div class="unitInfo">
+            <div>
+              <span>قطاع رقم 4 بدرة العروس</span>
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div>
+              <span class="ArLang">مساحة الوحدة: 200م²</span>
+              <span class="EnLang">Unit Area: 1m²</span>
+              <i class="fa-solid fa-chart-area"></i>
+            </div>
+            <div>
+              <span>فيلا</span>
+              <i class="fa-solid fa-boxes-stacked"></i>
+            </div>
+            <div>
+              <span>الروز بيتش</span>
+              <i class="fa-solid fa-house"></i>
+            </div>
+          </div>
+          <div class="services">
+            <div onclick="openLcationSection()">
+              <span class="ArLang">الموقع</span>
+              <span class="EnLang">Location</span>
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div>
+              <span class="ArLang">مشاركة</span>
+              <span class="EnLang">Share</span>
+              <i class="fa-solid fa-arrow-up-from-bracket"></i>
+            </div>
+            <div>
+              <span class="ArLang">المفضلة</span>
+              <span class="EnLang">Favorite</span>
+              <i class="fa-regular fa-heart"></i>
+            </div>
+          </div>
+        </div>
+        <div class="unitPhotos" dir="rtl">
+          <div class="mainPhoto">
+            <img src="./images/1.jpg" alt="" />
+            <div
+              class="sliderButton"
+              id="displayButton"
+              onclick="openSliderScreen()"
+            >
+              <span class="ArLang"> عرض كل الصور</span>
+              <span class="EnLang"> View all photos</span>
+            </div>
+          </div>
+          <div class="otherPhotos">
+            <span><img src="./images/2.jpg" alt="" /></span>
+            <span><img src="./images/3.jpg" alt="" /></span>
+            <span><img src="./images/4.jpg" alt="" /></span>
+            <span><img src="./images/5.jpg" alt="" /></span>
+          </div>
+        </div>
+        <div class="unitInformation">
+          <div class="infoSide">
+            <div class="guaranteeContainer webView">
+              <div class="guarantee">
+                <div>
+                  <div>
+                    <img src="./images/logo.png" alt="" />
+                    <h4>
+                      <span class="ArLang">ضمان ملكية الشاطئ </span>
+                      <span class="EnLang">Guarantee of beach ownership </span>
+                      <span>نضمن لك صحة المعلومات ونظافة المكان</span>
+                    </h4>
+                  </div>
+                  <i
+                    class="fa-solid fa-chevron-down dropIcon"
+                    onclick="openinfoDropdown(this)"
+                  ></i>
+                </div>
+                <p class="infoDropdown">
+                  نضمن لك صحة المعلومات الواردة في هذه الصفحة ونضمن لك نظافة
+                  المكان ، وفي حالة عدم تطابق المعلومات مع 80٪ أو وجدت المكان
+                  غير نظيف ، نوفر لك أحد الخيارات
+                </p>
+              </div>
+              <div class="description">
+                <h2 class="ArLang">الوصف</h2>
+                <h2 class="EnLang">description</h2>
+                <p>
+                  فيلا دورين 4 غرف بمسبح خاص وجلسه خارجيه خاصه علي البحر بشاطيء
+                  الروز بيتش الدور الارضي صاله ومطبخ وحمام مع مغسله خارجيه الدور
+                  الاول ٤ غرف نوم (٢ غرفه ماستر بحمام خاص + ٢ غرفه بينهم حمام
+                  مشترك 💥خدمات الفيلا 💥 العاب اطفال + سماعه + ادوات نظافه
+                  شخصيه ( مناديل وصابون وشامبو وجل استحمام)
+                </p>
+              </div>
+            </div>
+            <div class="unitInfoNavBarContainer">
+              <div class="infoNavBar">
+                <span
+                  class="activeLink"
+                  sectionId="firstSection"
+                  onclick="swichSction(this)"
+                  ><span class="ArLang">المواصفات</span
+                  ><span class="EnLang">specifications</span></span
+                >
+                <span sectionId="secondSection" onclick="swichSction(this)"
+                  ><span class="ArLang">التقيمات</span>
+                  <span class="EnLang">Guest Reviews</span></span
+                >
+                <span sectionId="thirdSection" onclick="swichSction(this)"
+                  ><span class="ArLang">الخريطة</span
+                  ><span class="EnLang">Location & Map</span></span
+                >
+                <span sectionId="fourthSection" onclick="swichSction(this)"
+                  ><span class="ArLang">الشروط</span>
+                  <span class="EnLang">Terms & Policies</span></span
+                >
+              </div>
+              <div class="guaranteeContainer mobileView">
+                <div class="guarantee">
+                  <div>
+                    <div>
+                      <img src="./images/logo.png" alt="" />
+                      <h4>
+                        <span class="ArLang">ضمان ملكية الشاطئ </span>
+                        <span class="EnLang"
+                          >Guarantee of beach ownership
+                        </span>
+                        <span>نضمن لك صحة المعلومات ونظافة المكان</span>
+                      </h4>
+                    </div>
+                    <i
+                      class="fa-solid fa-chevron-down dropIcon"
+                      onclick="openinfoDropdown(this)"
+                    ></i>
+                  </div>
+                  <p class="infoDropdown">
+                    نضمن لك صحة المعلومات الواردة في هذه الصفحة ونضمن لك نظافة
+                    المكان ، وفي حالة عدم تطابق المعلومات مع 80٪ أو وجدت المكان
+                    غير نظيف ، نوفر لك أحد الخيارات
+                  </p>
+                </div>
+                <div class="description">
+                  <h2 class="ArLang">الوصف</h2>
+                  <h2 class="EnLang">description</h2>
+                  <p>
+                    فيلا دورين 4 غرف بمسبح خاص وجلسه خارجيه خاصه علي البحر
+                    بشاطيء الروز بيتش الدور الارضي صاله ومطبخ وحمام مع مغسله
+                    خارجيه الدور الاول ٤ غرف نوم (٢ غرفه ماستر بحمام خاص + ٢
+                    غرفه بينهم حمام مشترك 💥خدمات الفيلا 💥 العاب اطفال + سماعه
+                    + ادوات نظافه شخصيه ( مناديل وصابون وشامبو وجل استحمام)
+                  </p>
+                </div>
+                <div class="unitNameMobileView">
+                  <div>
+                    <h1 class="nameOfUnit">RB4000</h1>
+                    <h4 class="codeOfUnit">كود الوحدة ( RB0004 )</h4>
+                  </div>
+                  <div class="unitInfo">
+                    <div>
+                      <span>قطاع رقم 4 بدرة العروس</span>
+                      <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <div>
+                      <span class="ArLang">مساحة الوحدة: 200م²</span>
+                      <span class="EnLang">Unit Area: 1m²</span>
+                      <i class="fa-solid fa-chart-area"></i>
+                    </div>
+                    <div>
+                      <span>فيلا</span>
+                      <i class="fa-solid fa-boxes-stacked"></i>
+                    </div>
+                    <div>
+                      <span>الروز بيتش</span>
+                      <i class="fa-solid fa-house"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="activeSectionContainer" id="activeSectionContainer">
+                <div class="activeSection" sectionId="firstSection">
+                  <h2>
+                    <i class="fa-solid fa-list-check"></i>
+                    <span class="ArLang">مواصفات الوحدة</span
+                    ><span class="EnLang">Unit Specifications</span>
+                  </h2>
+                  <ul>
+                    <li>حمام سسباحة 25 م</li>
+                    <li>موقف سيارات يحتوي على اماكن تسع 6 سيارات</li>
+                    <li>مكيفة بالكامل</li>
+                  </ul>
+                </div>
+                <div sectionId="secondSection"></div>
+                <div sectionId="thirdSection" >
+                  <div id="map"></div>
+                </div>
+                <div sectionId="fourthSection">
+                  <pre>
+                  <ol>
+                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae inventore deserunt, sapiente nam nulla, laboriosam est consequatur doloremque provident soluta dolor eius eum, eligendi voluptas id deleniti mollitia earum enim..</li>
+                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae inventore deserunt, sapiente nam nulla, laboriosam est consequatur doloremque provident soluta dolor eius eum, eligendi voluptas id deleniti mollitia earum enim..</li>
+                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae inventore deserunt, sapiente nam nulla, laboriosam est consequatur doloremque provident soluta dolor eius eum, eligendi voluptas id deleniti mollitia earum enim..</li>
+                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae inventore deserunt, sapiente nam nulla, laboriosam est consequatur doloremque provident soluta dolor eius eum, eligendi voluptas id deleniti mollitia earum enim..</li>
+                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae inventore deserunt, sapiente nam nulla, laboriosam est consequatur doloremque provident soluta dolor eius eum, eligendi voluptas id deleniti mollitia earum enim..</li>
+                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae inventore deserunt, sapiente nam nulla, laboriosam est consequatur doloremque provident soluta dolor eius eum, eligendi voluptas id deleniti mollitia earum enim..</li>
+                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae inventore deserunt, sapiente nam nulla, laboriosam est consequatur doloremque provident soluta dolor eius eum, eligendi voluptas id deleniti mollitia earum enim..</li>
+                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae inventore deserunt, sapiente nam nulla, laboriosam est consequatur doloremque provident soluta dolor eius eum, eligendi voluptas id deleniti mollitia earum enim..</li>
+                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae inventore deserunt, sapiente nam nulla, laboriosam est consequatur doloremque provident soluta dolor eius eum, eligendi voluptas id deleniti mollitia earum enim..</li>
+                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae inventore deserunt, sapiente nam nulla, laboriosam est consequatur doloremque provident soluta dolor eius eum, eligendi voluptas id deleniti mollitia earum enim..</li>
+                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae inventore deserunt, sapiente nam nulla, laboriosam est consequatur doloremque provident soluta dolor eius eum, eligendi voluptas id deleniti mollitia earum enim..</li>
+                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae inventore deserunt, sapiente nam nulla, laboriosam est consequatur doloremque provident soluta dolor eius eum, eligendi voluptas id deleniti mollitia earum enim..</li>
+                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae inventore deserunt, sapiente nam nulla, laboriosam est consequatur doloremque provident soluta dolor eius eum, eligendi voluptas id deleniti mollitia earum enim..</li>
+                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae inventore deserunt, sapiente nam nulla, laboriosam est consequatur doloremque provident soluta dolor eius eum, eligendi voluptas id deleniti mollitia earum enim..</li>
+                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae inventore deserunt, sapiente nam nulla, laboriosam est consequatur doloremque provident soluta dolor eius eum, eligendi voluptas id deleniti mollitia earum enim..</li>
+                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae inventore deserunt, sapiente nam nulla, laboriosam est consequatur doloremque provident soluta dolor eius eum, eligendi voluptas id deleniti mollitia earum enim..</li>
+                  </ol>
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="calenderSide">
+            <div class="calenderContainer" dir="rtl">
+              <div class="calender">
+                <div class="month">
+                  <i class="fa fa-angle-right next" style="color: black"></i>
+                  <div class="date">
+                    <h1 style="color: black"></h1>
+                    <!-- month -->
+                    <p style="color: black"></p>
+                    <!--Fri May 29,2020-->
+                  </div>
+                  <i class="fa fa-angle-left prev" style="color: black"></i>
+                </div>
+                <div class="weekdays">
+                  <div class="EnLang">Sun</div>
+                  <div class="ArLang">الاحد</div>
+                  <div class="EnLang">Mon</div>
+                  <div class="ArLang">الاثنين</div>
+                  <div class="EnLang">Tue</div>
+                  <div class="ArLang">الثلثاء</div>
+                  <div class="EnLang">wed</div>
+                  <div class="ArLang">الاربعاء</div>
+                  <div class="EnLang">thu</div>
+                  <div class="ArLang">الخميس</div>
+                  <div class="EnLang">Fri</div>
+                  <div class="ArLang">الجمعة</div>
+                  <div class="EnLang">sat</div>
+                  <div class="ArLang">السبت</div>
+                </div>
+                <div class="days"></div>
+              </div>
+              <div class="bookingDetails">
+                <div class="bookingTime">
+                  <div>
+                    <span class="ArLang">وقت الوصول</span>
+                    <span class="EnLang">Arrival time</span>
+                    <span>12.00 </span>
+                  </div>
+                  <div>
+                    <span class="ArLang">وقت المغادرة</span>
+                    <span class="EnLang">Departure time </span>
+                    <span>12.00 </span>
+                  </div>
+                </div>
+                <button class="bookingButton" disabled>
+                  <span class="ArLang">حجز</span>
+                  <span class="EnLang">Book</span>
+                </button>
+                <div class="expenses">
+                  <div class="totalBookingExpenses">
+                    <div>
+                      <span class="ArLang">ليلة واحدة * سعر الليلة</span>
+                      <span class="ArLang">200.000 ريال</span>
+                      <span class="EnLang">One night * night price </span>
+                      <span class="EnLang">2300.00 SR </span>
+                    </div>
+                    <div>
+                      <span class="ArLang">0 ليال * سعر نهاية الاسبوع</span>
+                      <span class="ArLang">10.00 ريال</span>
+                      <span class="EnLang">0 nights * weekend price </span>
+                      <span class="EnLang">0.00 SR </span>
+                    </div>
+                    <div>
+                      <span class="ArLang">مصاريف ادارية</span>
+                      <span class="ArLang">20.00 ريال</span>
+                      <span class="EnLang">Administrative expenses </span>
+                      <span class="EnLang">150.00 SR </span>
+                    </div>
+                    <div>
+                      <span class="ArLang">رسوم الخدمة</span>
+                      <span class="ArLang">50.00 ريال</span>
+                      <span class="EnLang">Service Fees </span>
+                      <span class="EnLang">0.00 SR </span>
+                    </div>
+                    <div class="offerExpense">
+                      <span class="ArLang">اجمالي الخصم</span>
+                      <span class="ArLang">10.00 ريال</span>
+                      <span class="EnLang">Total discount </span>
+                      <span class="EnLang">0.00 SR </span>
+                    </div>
+                  </div>
+                  <div class="totalExpenses">
+                    <span class="ArLang">المجموع</span>
+                    <span class="ArLang">300.000 ريال</span>
+                    <span class="EnLang">Total</span>
+                    <span class="EnLang">300.00 SR</span>
+                  </div>
+                </div>
+              </div>
+              <div class="conditions">
+                <span class="ArLang"
+                  ><i class="fa-solid fa-circle-exclamation"></i> مبلغ التأمين 0
+                  يسدد عند استلام الوحدة</span
+                >
+                <span class="EnLang"
+                  ><i class="fa-solid fa-circle-exclamation"></i>Amount of
+                  insurance 0 Reimbursed upon receipt of the contingents</span
+                >
+                <span class="ArLang"
+                  ><i class="fa-solid fa-circle-exclamation"></i> سيتم إسترداد
+                  مبلغ التأمين بعد الخروج</span
+                >
+                <span class="EnLang"
+                  ><i class="fa-solid fa-circle-exclamation"></i> The insurance
+                  fees will be refunded after checkout.</span
+                >
+                <span class="ArLang"
+                  ><i class="fa-solid fa-circle-exclamation"></i> سيتم إالغاء
+                  الحجز في حالة عدم الدفع خلال 24 ساعة</span
+                >
+                <span class="EnLang"
+                  ><i class="fa-solid fa-circle-exclamation"></i> Any booking
+                  will be cancelled if it hasn't been paid for within 24
+                  hours.</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="confirmBooking">
+        <div class="container">
+          <div class="totalExpensesMobileView">
+            <span class="ArLang"> 300.000 ريال / الليلة </span>
+            <span class="EnLang"> 300 SR/Night</span>
+            <span class="ArLang">
+              مجموع 5 ليال <span class="totalPrice">1500.00</span> ريال</span
+            >
+            <span class="EnLang">
+              Total for One night
+              <span class="totalPrice">1500.00</span> SR</span
+            >
+          </div>
+          <button class="bookingButtonMobileView" disabled>
+            <span class="ArLang">حجز</span> <span class="EnLang">Book</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet-src.js"
+      integrity="sha512-I5Hd7FcJ9rZkH7uD01G3AjsuzFy3gqz7HIJvzFZGFt2mrCS4Piw9bYZvCgUE0aiJuiZFYIJIwpbNnDIM6ohTrg=="
+      crossorigin=""
+    ></script>
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./globalScript.js"></script>
+    <script src="./js/unitDetailsScript.js"></script>
+    <script src="./js/calender.js"></script>
+  </body>
+</html>

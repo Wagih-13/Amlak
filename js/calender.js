@@ -280,12 +280,12 @@ const renderCalendar = () => {
               (1000 * 3600 * 24)
           );
           divDay.classList.add("leaved-selected");
-          document.querySelector(".buttonsContainer").classList.add("show");
+          showContainer();
           setLeavedDate = divDay.getAttribute("data-date");
           if (maxReserved !== 0) {
             if (totalDaysDiff < parseInt(maxReserved)) {
               divDay.classList.add("leaved-selected");
-              document.querySelector(".buttonsContainer").classList.add("show");
+              showContainer();
               document.getElementById("txtCheckOutDate").value = new Date(
                 divDay.getAttribute("data-date")
               ).toDateString();
@@ -325,6 +325,7 @@ const renderCalendar = () => {
               new Date(setLeavedDate)
             );
           }
+          fillConfirmDate();
           countOfClick = 2;
         } else if (countOfClick == 2) {
           removeReservedSelected();
@@ -333,34 +334,10 @@ const renderCalendar = () => {
       }
     });
   });
-
-  document
-    .querySelector(".close-icon")
-    .addEventListener("click", removeReservedSelected);
-
-  function removeReservedSelected(event) {
-    countOfClick = 0;
-    document.querySelectorAll(".days>div").forEach((divDay) => {
-      divDay.classList.remove("arrived-selected");
-      divDay.classList.remove("leaved-selected");
-      divDay.classList.remove("day-selected");
-    });
-    document.querySelector(".buttonsContainer").classList.remove("show");
-    setArrivedDate = "";
-    setLeavedDate = "";
-    if (event) {
-      const calenderInput = event.target.closest(".calenderInput");
-      calenderInput
-        .querySelector("#confirmDateInput")
-        .setAttribute("leavedDate", ``);
-      calenderInput
-        .querySelector("#confirmDateInput")
-        .setAttribute("arrivedDate", ``);
-
-      calenderInput
-        .querySelector("#confirmDateInput")
-        .setAttribute("placeholder", "");
-    }
+  if (document.querySelector(".close-icon")) {
+    document
+      .querySelector(".close-icon")
+      .addEventListener("click", removeReservedSelected);
   }
 
   function selectAllDaysBetweenArrivedAndLeaved(arrivedDate, leavedDate) {
@@ -404,31 +381,14 @@ document.querySelector(".next").addEventListener("click", () => {
 renderReservedDays();
 renderCalendar();
 
-function fillConfirmDate(button) {
-  const dateSetLeavedDate = new Date(setLeavedDate);
-  const formattedLeavedDateDate = dateSetLeavedDate.toLocaleDateString("fr-FR", {
-    day: "2-digit",
-    month: "2-digit",
-    year: "numeric",
+function removeReservedSelected(event) {
+  countOfClick = 0;
+  document.querySelectorAll(".days>div").forEach((divDay) => {
+    divDay.classList.remove("arrived-selected");
+    divDay.classList.remove("leaved-selected");
+    divDay.classList.remove("day-selected");
   });
-  const dateSetArrivedDate= new Date(setArrivedDate);
-  const formattedArrivedDate = dateSetArrivedDate.toLocaleDateString("fr-FR", {
-    day: "2-digit",
-    month: "2-digit",
-    year: "numeric",
-  });
-  
-  const calenderInput = button.closest(".calenderInput");
-  calenderInput
-    .querySelector("#confirmDateInput")
-    .setAttribute("leavedDate", `  ${setLeavedDate}`);
-  calenderInput
-    .querySelector("#confirmDateInput")
-    .setAttribute("arrivedDate", `${setArrivedDate}`);
-
-  calenderInput
-    .querySelector("#confirmDateInput")
-    .setAttribute("placeholder", `${formattedArrivedDate} - ${formattedLeavedDateDate}`);
-  const dropDownList = button.closest(".dateDropDown");
-  $(dropDownList).slideToggle();
+  setArrivedDate = "";
+  setLeavedDate = "";
+  removeVal(event);
 }
