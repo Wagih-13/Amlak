@@ -141,7 +141,7 @@
 }
 
 .unitDetails .container .mainDetails .services > div:hover {
-  background-color: rgba(0, 0, 0, 0.26);
+  background-color: rgba(0, 0, 0, 0.438);
   backdrop-filter: blur(10px);
   cursor: pointer;
 }
@@ -543,7 +543,7 @@
   align-content: center;
   flex-wrap: nowrap;
   gap: 10px;
-  background-color: rgba(0, 0, 0, 0.089);
+  background-color: rgba(0, 0, 0, 0.432);
   backdrop-filter: blur(10px);
 }
 .unitDetails
@@ -805,7 +805,7 @@
   left: 0px;
   right: 0px;
   padding: 20px;
-  background-color: rgba(0, 0, 0, 0.301);
+  background-color: rgba(0, 0, 0, 0.795);
   backdrop-filter: blur(10px);
   display: none;
   z-index: 999;
