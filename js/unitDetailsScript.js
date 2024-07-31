@@ -9,7 +9,6 @@ function removeReservedSelected(event) {
   setLeavedDate = "";
 }
 
-
 function fillConfirmDate(button) {
   console.log("fillConfirmDate");
 }
@@ -69,7 +68,7 @@ let mobileViewSwiper = new Swiper(".mobileViewSwiper", {
 });
 
 const imagesSliderLay = document.querySelector(".imagesSliderLay");
-const swiperContainer = document.querySelector(".swiperContainer");
+const swiperContainer = document.getElementById("swiperContainer");
 
 function closeSliderScreen() {
   $(imagesSliderLay).fadeOut();
@@ -80,6 +79,7 @@ function openSliderScreen() {
 
 imagesSliderLay.addEventListener("click", (e) => {
   if (!swiperContainer.contains(e.target)) {
+    console.log("hiii");
     closeSliderScreen();
   }
 });
