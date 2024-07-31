@@ -59,7 +59,7 @@ const navBar = `
            }
             <li onclick="handelOpenLinksList()"><a href="#offers"> العروض </a></li>
             <li onclick="handelOpenLinksList()"><a href="#whoAreWe"> من نحن </a></li>
-            <li onclick="handelOpenLinksList()"> <a href="/unitDetails.html"> unit details </a></li>
+            <li > <a href="/unitDetails.html"> unit details </a></li>
         </ul>
       </div>
       <div class="buttons">
