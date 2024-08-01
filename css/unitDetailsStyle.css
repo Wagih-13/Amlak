@@ -610,6 +610,7 @@
   > div {
   display: none;
   padding: 20px;
+  width: 100%;
 }
 .unitDetails
   .container
@@ -658,6 +659,174 @@
   li {
   font-size: 16px;
   color: white;
+}
+.unitDetails
+  .container
+  .unitInformation
+  .infoSide
+  .activeSectionContainer
+  > div:nth-child(2) {
+  position: relative;
+}
+
+.unitDetails
+  .container
+  .unitInformation
+  .infoSide
+  .activeSectionContainer
+  > div:nth-child(2)
+  .addReviewsContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+  width: 100%;
+  position: sticky;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  padding: 30px 0px;
+  background-color: var(--section-color);
+}
+.unitDetails
+  .container
+  .unitInformation
+  .infoSide
+  .activeSectionContainer
+  > div:nth-child(2)
+  .addReviewsContainer
+  h2 {
+  font-size: var(--larg-font-size);
+  color: var(--main-color);
+}
+
+.unitDetails
+  .container
+  .unitInformation
+  .infoSide
+  .activeSectionContainer
+  > div:nth-child(2)
+  .addReviewsContainer
+  button {
+  padding: 10px 20px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border: 2px solid var(--main-color);
+  color: var(--main-color);
+  font-size: var(--main-font-size);
+  background-color: transparent;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  cursor: pointer;
+}
+.unitDetails
+  .container
+  .unitInformation
+  .infoSide
+  .activeSectionContainer
+  > div:nth-child(2)
+  .addReviewsContainer
+  button:hover {
+  background-color: var(--main-color);
+  color: white;
+  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  -o-transform: scale(1.05);
+}
+.unitDetails
+  .container
+  .unitInformation
+  .infoSide
+  .activeSectionContainer
+  > div:nth-child(2)
+  .reviewsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+.unitDetails
+  .container
+  .unitInformation
+  .infoSide
+  .activeSectionContainer
+  > div:nth-child(2)
+  .reviewsContainer
+  .review {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+  padding: 20px 0px;
+  border-bottom: 1px solid var(--main-color);
+}
+.unitDetails
+  .container
+  .unitInformation
+  .infoSide
+  .activeSectionContainer
+  > div:nth-child(2)
+  .reviewsContainer
+  .review
+  p {
+  font-size: var(--main-font-size);
+  color: white;
+  line-height: 1.5rem;
+}
+.unitDetails
+  .container
+  .unitInformation
+  .infoSide
+  .activeSectionContainer
+  > div:nth-child(2)
+  .reviewsContainer
+  .review
+  .user {
+  font-size: var(--main-font-size);
+  color: white;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+.unitDetails
+  .container
+  .unitInformation
+  .infoSide
+  .activeSectionContainer
+  > div:nth-child(2)
+  .reviewsContainer
+  .review
+  .user
+  > div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+}
+.unitDetails
+  .container
+  .unitInformation
+  .infoSide
+  .activeSectionContainer
+  > div:nth-child(2)
+  .reviewsContainer
+  .review
+  .user
+  img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 10px;
 }
 .unitDetails
   .container
@@ -903,6 +1072,7 @@
   }
   .unitDetails .container .unitInformation {
     padding-top: 0px;
+    padding-bottom: 200px;
     transform: translateY(-50px);
     -webkit-transform: translateY(-50px);
     -moz-transform: translateY(-50px);
@@ -910,6 +1080,9 @@
     -o-transform: translateY(-50px);
     position: relative;
     z-index: 9;
+  }
+  footer {
+    display: none;
   }
 }
 @media (max-width: 991px) {
@@ -936,6 +1109,26 @@
     width: calc(100% / 7 - 3px);
     background-color: transparent;
     padding: 13px;
+  }
+  .unitDetails
+    .container
+    .unitInformation
+    .infoSide
+    .activeSectionContainer
+    > div:nth-child(2)
+    .addReviewsContainer
+    h2 {
+    font-size: var(--intial-font-size) !important;
+  }
+  .unitDetails
+    .container
+    .unitInformation
+    .infoSide
+    .activeSectionContainer
+    > div:nth-child(2)
+    .addReviewsContainer
+    button {
+    font-size: var(--main-font-size) !important;
   }
 }
 @media (max-width: 767px) {
