@@ -27,6 +27,8 @@ function showContainer() {
   const confirmBooking = document.querySelector(`.unitDetails .confirmBooking`);
   $(expensesContainer).slideDown();
   $(confirmBooking).fadeIn();
+  const section = document.getElementById("bookingDetails");
+  section.scrollIntoView({ behavior: "smooth" });
 }
 
 let defaultLat = 31.32;
