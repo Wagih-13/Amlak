@@ -80,7 +80,6 @@
 }
 
 .calender .days > div.today {
-  background: #8944b1;
   color: white;
   font-size: 18px;
   border: 1px solid transparent;
@@ -106,18 +105,14 @@
   opacity: 0.3;
 }
 
-.calender .days > div.arrived-selected {
-  background: var(--main-color) !important;
-  color: #fff !important;
+.calender .days > div {
+  background-color: transparent;
 }
 
-.calender .days > div.leaved-selected {
-  background: var(--main-color) !important;
-  color: #fff;
-}
-
+.calender .days > div.arrived-selected,
+.calender .days > div.leaved-selected,
 .calender .days > div.day-selected {
-  background: var(--main-color) !important ;
+  background: #764a8fde !important ;
   color: #fff;
 }
 

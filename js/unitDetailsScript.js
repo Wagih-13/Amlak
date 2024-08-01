@@ -1,5 +1,10 @@
-let defaultLat = 31.32;
-let defaultLon = 31.51;
+let defaultLat = Number(
+  document.getElementById("unitDetails").getAttribute("Lat")
+);
+let defaultLon = Number(
+  document.getElementById("unitDetails").getAttribute("Lon")
+);
+
 
 let map = L.map("map", {
   zoomSnap: 2,
@@ -16,17 +21,6 @@ marker.bindPopup("<h3>  unit.name </h3>");
 setTimeout(() => {
   map.invalidateSize();
 }, 2000);
-
-function removeReservedSelected(event) {
-  countOfClick = 0;
-  document.querySelectorAll(".days>div").forEach((divDay) => {
-    divDay.classList.remove("arrived-selected");
-    divDay.classList.remove("leaved-selected");
-    divDay.classList.remove("day-selected");
-  });
-  setArrivedDate = "";
-  setLeavedDate = "";
-}
 
 function fillConfirmDate(button) {
   console.log("fillConfirmDate");
@@ -47,8 +41,7 @@ function showContainer() {
   $(expensesContainer).slideDown();
   $(confirmBooking).fadeIn();
   const section = document.getElementById("bookingDetails");
-  section.scrollIntoView({ behavior: "smooth" });
-  const mediaQuery = window.matchMedia("(min-width: 1100px)");
+  const mediaQuery = window.matchMedia("(max-width: 1100px)");
   if (mediaQuery.matches) {
     section.scrollIntoView({ behavior: "smooth" });
   }
