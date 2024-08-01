@@ -573,7 +573,7 @@
 }
 .unitDetails .container .unitInformation .infoSide .activeSectionContainer {
   overflow-y: auto;
-  height: 55vh;
+  max-height: 70vh;
 }
 .unitDetails
   .container
