@@ -1020,13 +1020,19 @@
     aspect-ratio: 1/0.5;
   }
 }
+@media (min-width: 1100px) {
+  .unitDetails .confirmBooking {
+    display: none !important;
+  }
+}
 @media (max-width: 1100px) {
   .unitDetails .container .unitInformation .calenderSide {
     margin-top: 50px;
   }
   .unitDetails .confirmBooking {
-    display: block;
+    display: none;
   }
+
   .unitDetails .sliderContainerMobileView {
     display: block;
   }

@@ -17,12 +17,16 @@ function removeVal() {
     `.unitDetails .calenderSide .bookingDetails .expenses`
   );
   $(expensesContainer).slideUp();
+  const confirmBooking = document.querySelector(`.unitDetails .confirmBooking`);
+  $(confirmBooking).fadeOut();
 }
 function showContainer() {
   const expensesContainer = document.querySelector(
     `.unitDetails .calenderSide .bookingDetails .expenses`
   );
+  const confirmBooking = document.querySelector(`.unitDetails .confirmBooking`);
   $(expensesContainer).slideDown();
+  $(confirmBooking).fadeIn();
 }
 
 let defaultLat = 31.32;
