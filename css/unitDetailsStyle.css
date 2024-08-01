@@ -267,7 +267,8 @@
 }
 
 .unitDetails .container .unitInformation .calenderSide .calender {
-  padding: 20px 10px 40px;
+  padding: 20px 10px;
+  margin: 20px 0px 30px;
 }
 .unitDetails .container .unitInformation .calenderSide .calender .days > div {
   width: calc(100% / 7 - 10px);
@@ -1020,6 +1021,9 @@
   }
 }
 @media (max-width: 1100px) {
+  .unitDetails .container .unitInformation .calenderSide {
+    margin-top: 50px;
+  }
   .unitDetails .confirmBooking {
     display: block;
   }
