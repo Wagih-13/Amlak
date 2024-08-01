@@ -875,7 +875,7 @@
   > div:nth-child(3) {
   width: 100%;
   padding: 20px;
-  aspect-ratio: 1/1 !important;
+  height: 50vh !important;
 
   overflow: hidden !important;
 }
