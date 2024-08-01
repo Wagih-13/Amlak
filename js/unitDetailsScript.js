@@ -48,6 +48,10 @@ function showContainer() {
   $(confirmBooking).fadeIn();
   const section = document.getElementById("bookingDetails");
   section.scrollIntoView({ behavior: "smooth" });
+  const mediaQuery = window.matchMedia("(min-width: 1100px)");
+  if (mediaQuery.matches) {
+    section.scrollIntoView({ behavior: "smooth" });
+  }
 }
 
 let swiper = new Swiper(".mySwiper", {
@@ -133,6 +137,11 @@ function swichSction(element) {
       return;
     }
   });
+  const section = document.getElementById("activeSectionContainer");
+  const mediaQuery = window.matchMedia("(max-width: 1100px)");
+  if (mediaQuery.matches) {
+    section.scrollIntoView({ behavior: "smooth" });
+  }
 }
 
 function openLcationSection() {
