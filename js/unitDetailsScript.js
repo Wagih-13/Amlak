@@ -1,3 +1,22 @@
+let defaultLat = 31.32;
+let defaultLon = 31.51;
+
+let map = L.map("map", {
+  zoomSnap: 2,
+}).setView([defaultLat, defaultLon], 13);
+
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  attribution:
+    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+}).addTo(map);
+
+let marker = L.marker([defaultLat, defaultLon], 13).addTo(map);
+marker.bindPopup("<h3>  unit.name </h3>");
+
+setTimeout(() => {
+  map.invalidateSize();
+}, 2000);
+
 function removeReservedSelected(event) {
   countOfClick = 0;
   document.querySelectorAll(".days>div").forEach((divDay) => {
@@ -30,25 +49,6 @@ function showContainer() {
   const section = document.getElementById("bookingDetails");
   section.scrollIntoView({ behavior: "smooth" });
 }
-
-let defaultLat = 31.32;
-let defaultLon = 31.51;
-
-let map = L.map("map", {
-  zoomSnap: 2,
-}).setView([defaultLat, defaultLon], 13);
-
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  attribution:
-    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-}).addTo(map);
-
-let marker = L.marker([defaultLat, defaultLon], 13).addTo(map);
-marker.bindPopup("<h3>  unit.name </h3>");
-
-setTimeout(() => {
-  map.invalidateSize();
-}, 2000);
 
 let swiper = new Swiper(".mySwiper", {
   pagination: {
