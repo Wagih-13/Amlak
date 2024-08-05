@@ -1,0 +1,486 @@
+.bookingConfirmation {
+  min-height: 90vh;
+  padding: 150px 0px 100px;
+  background-color: var(--section-color);
+  transition: 0.5s;
+  position: relative;
+}
+
+.bookingConfirmation .bookingConfirmationHeader {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bookingConfirmation .bookingConfirmationHeader h1 {
+  margin: 0px;
+  font-size: var(--Xlarg-font-size);
+  color: white;
+  padding: 20px;
+  position: relative;
+  text-align: center;
+}
+.bookingConfirmation .bookingConfirmationHeader h1::after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  height: 1px;
+  background-color: var(--main-color);
+}
+
+.bookingConfirmation .container .sections {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.bookingConfirmation .container .sections > div {
+  width: 100%;
+}
+
+.bookingConfirmation .container .sections > div .sectionHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.bookingConfirmation
+  .container
+  .sections
+  .tenantData
+  .dataSection
+  .inputContainer {
+  width: calc(100% / 4 - 30px);
+}
+.bookingConfirmation .container .sections .tenantData #firstSection {
+  border-top: 1px solid var(--main-color);
+}
+
+.bookingConfirmation .container .sections .tenantData .sectionHead {
+  justify-content: flex-start;
+}
+
+.bookingConfirmation .container .sections > div .sectionHead h2 {
+  font-size: var(--larg-font-size);
+  color: white;
+}
+
+.bookingConfirmation .container .sections > div .sectionHead .countOfElements {
+  font-size: var(--inital-font-size);
+  color: #b8b8b8;
+  margin: 0px 8px;
+}
+
+.bookingConfirmation .container .sections > div .sectionHead button {
+  padding: 10px 20px;
+  font-size: var(--inital-font-size);
+  color: white;
+  background-color: var(--main-color);
+  border: 1px solid var(--main-color);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  outline: none;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  cursor: pointer;
+}
+
+.bookingConfirmation .container .sections > div .sectionHead button:hover {
+  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  -o-transform: scale(1.05);
+}
+
+.bookingConfirmation .container .sections > div .dataSectionsContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-items: center;
+  border-top: 1px solid var(--main-color);
+  gap: 10px;
+}
+
+.bookingConfirmation .container .sections > div .dataSection {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  gap: 40px;
+}
+
+.bookingConfirmation .container .sections > div .dataSection .delete {
+  width: 100px;
+}
+
+.bookingConfirmation .container .sections > div .dataSection .delete button {
+  width: 100%;
+  padding: 8px 20px;
+  font-size: var(--inital-font-size);
+  color: white;
+  background-color: transparent;
+  border: 2px solid rgba(126, 2, 2, 0.781);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  outline: none;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  cursor: pointer;
+}
+
+.bookingConfirmation
+  .container
+  .sections
+  > div
+  .dataSection
+  .delete
+  button:hover {
+  background-color: rgba(126, 2, 2, 0.5);
+  transform: scale(0.98);
+  -webkit-transform: scale(0.98);
+  -moz-transform: scale(0.98);
+  -ms-transform: scale(0.98);
+  -o-transform: scale(0.98);
+}
+
+.bookingConfirmation .container .sections > div .dataSection .inputContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+  width: calc(100% / 4 - 68px);
+}
+
+.bookingConfirmation
+  .container
+  .sections
+  > div
+  .dataSection
+  .inputContainer
+  input {
+  width: 100%;
+  padding: 9px 10px;
+  border: 1px solid #d1d1d1;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  color: black;
+  font-size: var(--main-font-size);
+  background-color: rgb(255, 255, 255);
+}
+
+.bookingConfirmation
+  .container
+  .sections
+  > div
+  .dataSection
+  .inputContainer
+  label {
+  font-size: var(--main-font-size);
+  color: white;
+}
+
+.bookingConfirmation .container .confirmSection .dataSection {
+  display: flex;
+  justify-content: space-between !important;
+  align-items: center;
+  gap: 50px;
+  border-top: 1px solid var(--main-color);
+}
+.bookingConfirmation .container .confirmSection .dataSection .leftSide {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  width: 50%;
+}
+.bookingConfirmation
+  .container
+  .confirmSection
+  .dataSection
+  .leftSide
+  .inputContainer {
+  width: 50%;
+}
+.bookingConfirmation
+  .container
+  .confirmSection
+  .dataSection
+  .leftSide
+  #checkboxinput {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+  width: fit-content !important ;
+}
+.bookingConfirmation
+  .container
+  .confirmSection
+  .dataSection
+  .leftSide
+  #checkboxinput
+  input {
+  width: fit-content;
+  cursor: pointer;
+}
+
+.bookingConfirmation
+  .container
+  .confirmSection
+  .dataSection
+  .confirmButton
+  button {
+  padding: 10px 50px;
+  font-size: var(--inital-font-size);
+  color: white;
+  background-color: var(--main-color);
+  border: 1px solid var(--main-color);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  outline: none;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  cursor: pointer;
+}
+
+.bookingConfirmation
+  .container
+  .confirmSection
+  .dataSection
+  .confirmButton
+  button:hover {
+  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  -o-transform: scale(1.05);
+}
+.bookingConfirmation
+  .container
+  .confirmSection
+  .dataSection
+  .confirmButton
+  button
+  i {
+  display: none;
+}
+
+.phoneInput {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+}
+.phoneInput label {
+  font-size: var(--main-font-size);
+  color: white;
+}
+.phoneInput input {
+  width: 250px !important;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  outline: none;
+  font-size: var(--main-font-size);
+  cursor: not-allowed;
+}
+
+.iti--allow-dropdown input.iti__tel-input,
+.iti--allow-dropdown input.iti__tel-input[type="text"],
+.iti--allow-dropdown input.iti__tel-input[type="tel"] {
+  padding: 9px 10px 9px 60px !important;
+}
+
+.bookingConfirmation .container .sections .phoneInput input {
+  background-color: #906da598;
+  color: rgb(228, 228, 228);
+  font-weight: bold;
+  border: 1px solid var(--main-color);
+}
+.bookingConfirmation
+  .container
+  .sections
+  > div
+  .dataSection
+  .inputContainer
+  #phone2 {
+  width: 250px !important;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  outline: none;
+  font-size: var(--main-font-size);
+  cursor: not-allowed;
+  background-color: #ffffff !important;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  border: 1px solid rgb(212, 212, 212);
+  cursor: text;
+}
+
+.bookingConfirmation .iti__selected-country {
+  border-right: 1px solid var(--main-color);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.iti--inline-dropdown .iti__dropdown-content {
+  margin-top: 10px;
+  z-index: 9999;
+}
+
+.phoneInput #iti-0__dropdown-content {
+  width: 250px !important;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border: 1px solid var(--main-color);
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+#click {
+  margin-top: 50px;
+}
+
+.iti__search-input {
+  padding: 8px 20px !important;
+}
+
+[dir="rtl"] .iti--allow-dropdown .iti__country-container {
+  left: 0 !important;
+  right: auto !important;
+}
+
+.iti__selected-country-primary {
+  gap: 5px;
+}
+
+.bookingConfirmation .container .sections .iti__arrow {
+  border-top-color: #000000;
+}
+
+.bookingConfirmation .container .sections .select-btn {
+  background-color: white;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+}
+.bookingConfirmation .container .sections .select-btn i {
+  color: black;
+}
+.bookingConfirmation .container .sections .select-btn span {
+  color: black;
+}
+
+@media (max-width: 1100px) {
+  .bookingConfirmation {
+    padding-top: 50px;
+  }
+  .bookingConfirmation .container .sections > div .dataSection .inputContainer,
+  .bookingConfirmation .container .sections > div .dataSection .phoneInput {
+    width: calc(100% / 2 - 20px) !important;
+  }
+  .bookingConfirmation .container .sections > div .dataSection {
+    flex-wrap: wrap;
+  }
+  .bookingConfirmation .container .confirmSection .dataSection {
+    flex-direction: column;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  .bookingConfirmation .container .confirmSection .dataSection > div {
+    width: 100% !important;
+  }
+  .bookingConfirmation .container .confirmSection .dataSection .leftSide {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .bookingConfirmation
+    .container
+    .confirmSection
+    .dataSection
+    .leftSide
+    .inputContainer {
+    justify-content: center;
+    align-items: flex-end;
+  }
+  .bookingConfirmation .container .confirmSection .dataSection .confirmButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .bookingConfirmation
+    .container
+    .confirmSection
+    .dataSection
+    .confirmButton
+    button {
+    width: 100%;
+  }
+}
+@media (max-width: 660px) {
+  .bookingConfirmation .container .sections > div .dataSection .inputContainer,
+  .bookingConfirmation .container .sections > div .dataSection .phoneInput {
+    width: calc(100%) !important;
+  }
+  .bookingConfirmation .container .confirmSection .dataSection .leftSide {
+    flex-direction: column-reverse;
+  }
+  .bookingConfirmation
+    .container
+    .confirmSection
+    .dataSection
+    .leftSide
+    .inputContainer {
+    justify-content: center;
+    align-items: center;
+  }
+}

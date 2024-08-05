@@ -275,8 +275,6 @@
   padding: 16px;
 }
 
-
-
 .unitDetails .container .unitInformation .calenderSide .bookingDetails {
   width: 100%;
   border-top: 1px solid var(--main-color);
@@ -1004,6 +1002,415 @@
   cursor: not-allowed;
 }
 
+/* ////////////////////////////////////////////////////////////////////////////// */
+
+.unitDetails .verificationScreen {
+  position: fixed;
+  inset: 0;
+  z-index: 99999999;
+  display: none;
+}
+.unitDetails .verificationScreen .verificationScreenContainer {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0px;
+}
+
+.unitDetails .verificationScreen .verificationScreenCloseIcon {
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  cursor: pointer;
+  z-index: 999999999;
+}
+
+.unitDetails .verificationScreen .verificationScreenCloseIcon i {
+  font-size: var(--Xlarg-font-size);
+  color: white;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+}
+.unitDetails .verificationScreen .verificationScreenCloseIcon i:hover {
+  transform: scale(0.95);
+  -webkit-transform: scale(0.95);
+  -moz-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  -o-transform: scale(0.95);
+}
+
+.unitDetails .verificationScreen .imageSide {
+  width: 400px;
+  background-color: var(--second-section-color);
+  position: relative;
+}
+
+.unitDetails .verificationScreen .imageSide .backgroundLay {
+  position: absolute;
+  inset: 0px;
+  z-index: 1;
+}
+
+.unitDetails .verificationScreen .imageSide .backgroundLay img {
+  width: 100%;
+  height: 100%;
+}
+
+.unitDetails .verificationScreen .imageSide .displaiedLay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: rgb(24, 19, 28);
+  background: linear-gradient(
+    180deg,
+    rgba(36, 27, 44, 0.979) 10%,
+    rgba(36, 30, 41, 0.205) 95%
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+  padding: 20px;
+}
+.unitDetails .verificationScreen .imageSide .displaiedLay img {
+  width: 250px;
+}
+
+.unitDetails .verificationScreen .imageSide .displaiedLay .textSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: var(--larg-font-size);
+  color: white;
+  text-align: center;
+  padding: 20px 0px;
+  border-bottom: 1px solid white;
+}
+
+.unitDetails .verificationScreen .verificationSide {
+  width: calc(100% - 400px);
+  background-color: var(--section-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.unitDetails .verificationScreen .verificationSide > div {
+  width: 500px;
+  border: 1px solid white;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  padding: 20px;
+}
+.unitDetails .verificationScreen .verificationSide .mobileInputBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+}
+.unitDetails
+  .verificationScreen
+  .verificationSide
+  .mobileInputBox
+  #verificationCodeCounter {
+  color: rgb(167, 4, 4);
+  font-size: var(--larg-font-size);
+
+  padding: 0px 20px;
+}
+.unitDetails .verificationScreen .verificationSide .verifyInputBox {
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  display: none;
+}
+
+.unitDetails .verificationScreen .verificationSide .mobileInputBox h2,
+.unitDetails .verificationScreen .verificationSide .verifyInputBox h2 {
+  margin: 10px 0px;
+  font-size: var(--Xlarg-font-size);
+  color: white;
+}
+
+.unitDetails .verificationScreen .verificationSide .mobileInputBox p,
+.unitDetails .verificationScreen .verificationSide .verifyInputBox p {
+  font-size: var(--inital-font-size);
+  color: rgb(189, 189, 189);
+  width: 90%;
+  margin: 0px;
+}
+
+.unitDetails
+  .verificationScreen
+  .verificationSide
+  .mobileInputBox
+  .continueButton,
+.unitDetails
+  .verificationScreen
+  .verificationSide
+  .verifyInputBox
+  .continueButton {
+  width: 100%;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border: none;
+  background-color: var(--main-color);
+  color: white;
+  padding: 10px 30px;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  cursor: pointer;
+}
+
+.unitDetails
+  .verificationScreen
+  .verificationSide
+  .mobileInputBox
+  .continueButton:hover,
+.unitDetails
+  .verificationScreen
+  .verificationSide
+  .verifyInputBox
+  .continueButton:hover {
+  transform: scale(0.98);
+  -webkit-transform: scale(0.98);
+  -moz-transform: scale(0.98);
+  -ms-transform: scale(0.98);
+  -o-transform: scale(0.98);
+}
+.unitDetails
+  .verificationScreen
+  .verificationSide
+  .mobileInputBox
+  .continueButton
+  i,
+.unitDetails
+  .verificationScreen
+  .verificationSide
+  .verifyInputBox
+  .continueButton
+  i {
+  display: none;
+}
+.unitDetails .verificationScreen .verificationSide .errorMessage span {
+  font-size: var(--main-font-size);
+  color: rgb(167, 4, 4);
+}
+
+.unitDetails
+  .verificationScreen
+  .verificationSide
+  .verifyInputBox
+  .backToPhoneIput {
+  font-size: var(--main-font-size);
+  padding: 0px 20px;
+  color: var(--main-color);
+  cursor: pointer;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+}
+.unitDetails
+  .verificationScreen
+  .verificationSide
+  .verifyInputBox
+  .backToPhoneIput:hover {
+  color: #d3b57d;
+  transform: scale(1.01);
+  -webkit-transform: scale(1.01);
+  -moz-transform: scale(1.01);
+  -ms-transform: scale(1.01);
+  -o-transform: scale(1.01);
+}
+.unitDetails
+  .verificationScreen
+  .verificationSide
+  .verifyInputBox
+  .backToPhoneIput
+  i {
+  margin: 0px 10px;
+}
+.unitDetails
+  .verificationScreen
+  .verificationSide
+  .verifyInputBox
+  .verificationCodeInput {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  margin: 0px auto;
+}
+
+.unitDetails
+  .verificationScreen
+  .verificationSide
+  .verifyInputBox
+  .verificationCodeInput
+  input {
+  width: calc(100% / 4 - 15px);
+  font-size: var(--Xlarg-font-size);
+  padding: 10px 30px;
+  border: 1px solid white;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  background-color: transparent;
+  color: white;
+}
+
+.unitDetails .verificationScreen .verificationSide .mobileInputBox input {
+  width: 250px !important;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  outline: none;
+  font-size: var(--main-font-size);
+  cursor: text;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+}
+
+.iti--allow-dropdown input.iti__tel-input,
+.iti--allow-dropdown input.iti__tel-input[type="text"],
+.iti--allow-dropdown input.iti__tel-input[type="tel"] {
+  padding: 9px 20px 9px 20px !important;
+}
+
+.iti--allow-dropdown .iti__country-container {
+  left: -70px !important;
+  right: auto !important;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+}
+
+.unitDetails
+  .verificationScreen
+  .verificationSide
+  .mobileInputBox
+  .phoneInputContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.unitDetails
+  .verificationScreen
+  .verificationSide
+  .mobileInputBox
+  .iti__selected-country {
+  padding: 5px;
+}
+
+.unitDetails
+  .verificationScreen
+  .verificationSide
+  .mobileInputBox
+  .iti--inline-dropdown
+  .iti__dropdown-content {
+  margin-top: 10px;
+  z-index: 99;
+}
+
+.unitDetails
+  .verificationScreen
+  .verificationSide
+  .mobileInputBox
+  #iti-0__dropdown-content {
+  width: 320px !important;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.unitDetails .verificationScreen .verificationSide .mobileInputBox #click {
+  margin-top: 50px;
+}
+
+.unitDetails
+  .verificationScreen
+  .verificationSide
+  .mobileInputBox
+  .iti__search-input {
+  padding: 8px 20px !important;
+  width: 100% !important;
+}
+
+.iti__selected-country-primary {
+  gap: 5px;
+}
+
+.unitDetails .verificationScreen .verificationSide .mobileInputBox .iti__arrow {
+  border-top-color: #000000;
+}
+
+.unitDetails .verificationScreen .verificationSide .mobileInputBox .select-btn {
+  background-color: white;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+}
+.unitDetails
+  .verificationScreen
+  .verificationSide
+  .mobileInputBox
+  .select-btn
+  i {
+  color: black;
+}
+.unitDetails
+  .verificationScreen
+  .verificationSide
+  .mobileInputBox
+  .select-btn
+  span {
+  color: black;
+}
+
+/* ////////////////////////////////////////////////////////////////////////////// */
+
 @media (min-width: 1400px) {
   .unitDetails
     .container
@@ -1086,6 +1493,12 @@
     -o-transform: translateY(-50px);
     position: relative;
     z-index: 9;
+  }
+  .unitDetails .verificationScreen .imageSide {
+    display: none;
+  }
+  .unitDetails .verificationScreen .verificationSide {
+    width: 100%;
   }
   footer {
     display: none;
@@ -1178,5 +1591,26 @@
   }
   .unitDetails .container .unitInformation .calenderSide .calender .days > div {
     width: calc(100% / 7 -2px) !important;
+  }
+  .unitDetails .verificationScreen .verificationSide > div {
+    width: 100%;
+  }
+  .unitDetails
+    .verificationScreen
+    .verificationSide
+    .verifyInputBox
+    .verificationCodeInput
+    input {
+    padding: 10px 15px;
+  }
+  .unitDetails .verificationScreen .verificationSide .mobileInputBox input {
+    width: 150px !important;
+  }
+  .unitDetails
+  .verificationScreen
+  .verificationSide
+  .mobileInputBox
+  #iti-0__dropdown-content {
+    width: 220px !important;
   }
 }

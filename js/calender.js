@@ -280,12 +280,12 @@ const renderCalendar = () => {
               (1000 * 3600 * 24)
           );
           divDay.classList.add("leaved-selected");
-          showContainer();
+
           setLeavedDate = divDay.getAttribute("data-date");
           if (maxReserved !== 0) {
             if (totalDaysDiff < parseInt(maxReserved)) {
               divDay.classList.add("leaved-selected");
-              showContainer();
+
               document.getElementById("txtCheckOutDate").value = new Date(
                 divDay.getAttribute("data-date")
               ).toDateString();
@@ -325,7 +325,7 @@ const renderCalendar = () => {
               new Date(setLeavedDate)
             );
           }
-          fillConfirmDate();
+          fillConfirmDate(setArrivedDate, setLeavedDate);
           countOfClick = 2;
         } else if (countOfClick == 2) {
           removeReservedSelected();

@@ -248,6 +248,26 @@ const switchLanguage = () => {
   setLang(newLang);
   location.reload();
 };
+// <!-- //////////////// تعديل //////////////// -->
+function reRenderLang() {
+  const lang = localStorage.getItem("lang");
+  const ArLang = document.querySelectorAll(".ArLang");
+  const EnLang = document.querySelectorAll(".EnLang");
+  if (lang === "rtl") {
+    ArLang.forEach(
+      (div) => (div.style.cssText = `display:initial !important;`)
+    );
+    EnLang.forEach((div) => (div.style.cssText = `display:none !important;`));
+    if (imageSliderContainer) {
+      imageSliderContainer.setAttribute("dir", "ltr");
+    }
+  } else {
+    ArLang.forEach((div) => (div.style.cssText = `display:none !important;`));
+    EnLang.forEach(
+      (div) => (div.style.cssText = `display:initial !important;`)
+    );
+  }
+}
 
 ////////////// reset specialUnits slider dir /////////////////
 
@@ -276,6 +296,7 @@ const handelOpenLinksList = (eI) => {
 };
 
 //////////////////////////// handel copy on click ////////////////////////////////////
+// <!-- //////////////// تعديل //////////////// -->
 const copyButtons = document.querySelectorAll(".copy-button");
 
 copyButtons.forEach((button) => {
@@ -295,6 +316,7 @@ copyButtons.forEach((button) => {
         title: `${message}`,
         showConfirmButton: false,
         timer: 1500,
+        iconColor: "#a99571",
       });
     } catch (err) {
       console.error("Failed to copy text:", err);
@@ -344,28 +366,74 @@ searchInputsContainer.forEach((inputBox) => {
 
 ////////////////////////////////////////// handel all DropDowns ///////////////////////////////////////////
 
-const searchUnitSelectBtn = document.querySelectorAll(
+let searchUnitSelectBtn = document.querySelectorAll(
   ".inputContainer .select-btn"
 );
-const searchUnitContent = document.querySelectorAll(".inputContainer .content");
-const searchUnitWrapper = document.querySelectorAll(".inputContainer .wrapper");
-const searchUnitSearchInp = document.querySelectorAll(
+let searchUnitContent = document.querySelectorAll(".inputContainer .content");
+let searchUnitWrapper = document.querySelectorAll(".inputContainer .wrapper");
+let searchUnitSearchInp = document.querySelectorAll(
   ".inputContainer .wrapper input"
 );
-const searchUnitValueInputs = document.querySelectorAll(
+let searchUnitValueInputs = document.querySelectorAll(
   ".inputContainer .valueInput"
 );
-const searchUnitEmptyInput = document.querySelectorAll(
+let searchUnitEmptyInput = document.querySelectorAll(
   ".inputContainer .emptyInput"
 );
-const searchUnitOptions = document.querySelectorAll(
+let searchUnitOptions = document.querySelectorAll(
   ".inputContainer .wrapper .options"
 );
 
-const searchUnitOptionsArray = Array.from(searchUnitOptions);
-const dropDownData = searchUnitOptionsArray.map((options) =>
+let searchUnitOptionsArray = Array.from(searchUnitOptions);
+let dropDownData = searchUnitOptionsArray.map((options) =>
   Array.from(options.querySelectorAll("li")).map((li) => li)
 );
+
+
+// <!-- //////////////// تعديل //////////////// -->
+function resetValues() {
+  searchUnitSelectBtn = document.querySelectorAll(
+    ".inputContainer .select-btn"
+  );
+  searchUnitContent = document.querySelectorAll(".inputContainer .content");
+  searchUnitWrapper = document.querySelectorAll(".inputContainer .wrapper");
+  searchUnitSearchInp = document.querySelectorAll(
+    ".inputContainer .wrapper input"
+  );
+  searchUnitValueInputs = document.querySelectorAll(
+    ".inputContainer .valueInput"
+  );
+  searchUnitEmptyInput = document.querySelectorAll(
+    ".inputContainer .emptyInput"
+  );
+  searchUnitOptions = document.querySelectorAll(
+    ".inputContainer .wrapper .options"
+  );
+
+  searchUnitOptionsArray = Array.from(searchUnitOptions);
+  dropDownData = searchUnitOptionsArray.map((options) =>
+    Array.from(options.querySelectorAll("li")).map((li) => li)
+  );
+  searchUnitSearchInp.forEach((input, index) => {
+    input.addEventListener("keyup", () => {
+      let arr = [];
+      let searchWord = input.value.toLowerCase();
+
+      arr = dropDownData[index]
+        .filter((data) => {
+          return data.innerText.toLowerCase().trim().startsWith(searchWord);
+        })
+        .map((data) => {
+          let li = data.outerHTML;
+          return li;
+        })
+        .join("");
+      searchUnitOptions[index].innerHTML = arr
+        ? arr
+        : `<p style="margin-top: 10px;">Oops! Country not found</p>`;
+    });
+  });
+}
 
 function searchUnitAddCase(selectedLi) {
   searchUnitOptions.forEach((option, index) => {
@@ -379,20 +447,20 @@ function searchUnitAddCase(selectedLi) {
     });
   });
 }
-
+// <!-- //////////////// تعديل //////////////// -->
 function searchUnitUpdateName(selectedLi) {
   const inputContainer = selectedLi.closest(".inputContainer");
   inputContainer.querySelector(".wrapper .content input").value = "";
   searchUnitAddCase(selectedLi);
   inputContainer.querySelector(".wrapper ").classList.remove("active");
   inputContainer.querySelector(".select-btn").firstElementChild.innerText =
-    selectedLi.innerText;
+    selectedLi.innerText.trim();
   inputContainer.querySelector(".valueInput").value =
     selectedLi.getAttribute("optionCode");
   inputContainer.querySelector(".emptyInput").value = selectedLi.innerText;
   $(inputContainer.querySelector(".wrapper .content")).slideUp();
 }
-
+// <!-- //////////////// تعديل //////////////// -->
 function restDropDown(selectedLi) {
   const inputContainer = selectedLi.closest(".inputContainer");
   inputContainer.querySelector(".wrapper .content input").value = "";
@@ -421,16 +489,45 @@ searchUnitSearchInp.forEach((input, index) => {
   });
 });
 
+// <!-- //////////////// تعديل //////////////// -->
+
 searchUnitSelectBtn.forEach((btn, index) => {
-  btn.addEventListener("click", () => {
-    $(searchUnitContent[index]).slideToggle();
-    searchUnitSelectBtn.forEach((select, idx) => {
-      if (select !== btn) {
-        $(searchUnitContent[idx]).slideUp();
-      }
+  if (!btn.dataset.hasEventListener) {
+    btn.dataset.hasEventListener = true;
+
+    btn.addEventListener("click", () => {
+      $(searchUnitContent[index]).slideToggle();
+      searchUnitSelectBtn.forEach((select, idx) => {
+        if (select !== btn) {
+          $(searchUnitContent[idx]).slideUp();
+        }
+      });
     });
-  });
+  }
 });
+// <!-- //////////////// تعديل //////////////// -->
+function reRenderDropdown() {
+  const searchUnitSelectBtn = document.querySelectorAll(
+    ".inputContainer .select-btn"
+  );
+  const searchUnitContent = document.querySelectorAll(
+    ".inputContainer .content"
+  );
+
+  searchUnitSelectBtn.forEach((btn, index) => {
+    if (!btn.dataset.hasEventListener) {
+      btn.dataset.hasEventListener = true;
+      btn.addEventListener("click", () => {
+        $(searchUnitContent[index]).slideToggle();
+        searchUnitSelectBtn.forEach((select, idx) => {
+          if (select !== btn) {
+            $(searchUnitContent[idx]).slideUp();
+          }
+        });
+      });
+    }
+  });
+}
 
 document.addEventListener("click", (event) => {
   const clickedElement = event.target;

@@ -468,7 +468,6 @@ const sectionData = [
 ];
 
 let unitSearchSectionCurrentDisplayedPage = 0;
-let offersSectionCurrentDisplayedPage = 0;
 let displayedItems = [];
 const unitSearchOutputSection = document.querySelector(".unitSearchOutput");
 const selector = unitSearchOutputSection.querySelector(".cardsContainer");
@@ -574,6 +573,8 @@ function handleUnitSearchPreviousPage() {
     creatSection();
   }
 }
+
+let offersSectionCurrentDisplayedPage = 0;
 
 // function handleOffersNextPage() {
 //   const unitSearchOutputSection = document.querySelector(
