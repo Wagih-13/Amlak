@@ -31,8 +31,6 @@
   --card-backgrond: rgba(255, 255, 255, 0.075);
 }
 
-
-
 .light-mode {
   --section-color: #2c2233;
   --body-color-gradient: #ac86c298;
@@ -281,7 +279,7 @@ h1 {
   position: fixed;
   top: 20px;
   right: 20px;
-  z-index: 999999;
+  z-index: 99999999;
 }
 
 #nav-icon1 {

@@ -164,17 +164,29 @@ function openLcationSection() {
   swichSction(infoLinksList[2]);
 }
 /////////////////////////////////////////// اخر تعديل //////////////////////////////////////////////////////
+// const input = document.querySelector("#phone");
+// window.intlTelInput(input, {
+//   utilsScript:
+//     "https://cdn.jsdelivr.net/npm/intl-tel-input@23.8.0/build/js/utils.js",
+// });
+// const country = document.querySelectorAll(".iti__country ");
+
+// country.forEach((item) => {
+//   item.addEventListener("click", () => {
+//     input.value = item.querySelector(".iti__dial-code").innerText;
+//   });
+// });
+
 const input = document.querySelector("#phone");
 window.intlTelInput(input, {
-  utilsScript:
-    "https://cdn.jsdelivr.net/npm/intl-tel-input@23.8.0/build/js/utils.js",
-});
-const country = document.querySelectorAll(".iti__country ");
-
-country.forEach((item) => {
-  item.addEventListener("click", () => {
-    input.value = item.querySelector(".iti__dial-code").innerText;
-  });
+  initialCountry: "auto",
+  geoIpLookup: callback => {
+    fetch("https://ipapi.co/json")
+      .then(res => res.json())
+      .then(data => callback(data.country_code))
+      .catch(() => callback("us"));
+  },
+  utilsScript: "/intl-tel-input/js/utils.js?1722010922246" // just for formatting/placeholders etc
 });
 
 const verificationCodeInput = document.querySelectorAll(
@@ -315,3 +327,6 @@ function backToPhoneIput() {
   document.getElementById("mobileInputBox").style.display = "flex";
   document.getElementById("verifyInputBox").style.display = "none";
 }
+
+
+

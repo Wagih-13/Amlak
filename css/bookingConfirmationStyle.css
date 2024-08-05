@@ -420,6 +420,10 @@
   color: black;
 }
 
+.iti.iti--container.iti--fullscreen-popup {
+  z-index: 999999999;
+}
+
 @media (max-width: 1100px) {
   .bookingConfirmation {
     padding-top: 50px;
