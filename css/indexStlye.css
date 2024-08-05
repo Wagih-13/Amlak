@@ -1383,8 +1383,12 @@
   margin: 0px 10px;
 }
 
+.select-btn {
+  height: 35px;
+}
 .select-btn > span {
   color: #6c6c6d;
+
 }
 
 /* ///////////////////////////// Strart KeyFrames Section ////////////////////////////////// */

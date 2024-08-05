@@ -776,6 +776,7 @@ footer .copyright {
   padding: 0px 10px;
   width: 100%;
   cursor: pointer;
+  height: 35px;
 }
 /* /////////////////////////////////////////////// modifay //////////////////////////////////// */
 .dropDownBox input {
