@@ -1383,6 +1383,10 @@
   margin: 0px 10px;
 }
 
+.select-btn > span {
+  color: #6c6c6d;
+}
+
 /* ///////////////////////////// Strart KeyFrames Section ////////////////////////////////// */
 
 @keyframes swipeLeft {

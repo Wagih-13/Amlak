@@ -777,15 +777,16 @@ footer .copyright {
   width: 100%;
   cursor: pointer;
 }
+/* /////////////////////////////////////////////// modifay //////////////////////////////////// */
 .dropDownBox input {
   background-color: transparent;
   width: 90%;
   border: none;
   outline: none;
   padding: 8px;
-  color: white;
   position: relative;
   z-index: -1;
+  font-size: 16px;
 }
 
 /* /////////////////////////////////////////////// modifay //////////////////////////////////// */
