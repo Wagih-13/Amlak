@@ -137,7 +137,7 @@ const footer = `
                 <div class="socialInfo copy-button">
                   <img
                     width="20px"
-                    src="https://purecatamphetamine.github.io/country-flag-icons/3x2/SA.svg"
+                    src="./images/saudia flag.png"
                     alt="saudi flag"
                   /><span >01938373990</span>
                 </div>
@@ -149,7 +149,7 @@ const footer = `
                 <div class="socialInfo copy-button">
                   <img
                     width="20px"
-                    src="https://purecatamphetamine.github.io/country-flag-icons/3x2/SA.svg"
+                    src="./images/saudia flag.png"
                     alt="saudi flag"
                   /><span >01938373990</span>
                 </div>
@@ -219,20 +219,16 @@ const setLang = (lang) => {
   if (lang === "rtl") {
     toggleLang.textContent = "EN";
     toggleLangMinScreen.textContent = "EN";
-    ArLang.forEach(
-      (div) => (div.style.cssText = `display:initial !important;`)
-    );
-    EnLang.forEach((div) => (div.style.cssText = `display:none !important;`));
+    ArLang.forEach((div) => (div.style.cssText = `display:inline-block ;`));
+    EnLang.forEach((div) => (div.style.cssText = `display:none ;`));
     if (imageSliderContainer) {
       imageSliderContainer.setAttribute("dir", "ltr");
     }
   } else {
     toggleLang.textContent = "AR";
     toggleLangMinScreen.textContent = "AR";
-    ArLang.forEach((div) => (div.style.cssText = `display:none !important;`));
-    EnLang.forEach(
-      (div) => (div.style.cssText = `display:initial !important;`)
-    );
+    ArLang.forEach((div) => (div.style.cssText = `display:none ;`));
+    EnLang.forEach((div) => (div.style.cssText = `display:inline-block ;`));
     if (imageSliderContainer) {
       imageSliderContainer.setAttribute("dir", "ltr");
     }
@@ -254,18 +250,14 @@ function reRenderLang() {
   const ArLang = document.querySelectorAll(".ArLang");
   const EnLang = document.querySelectorAll(".EnLang");
   if (lang === "rtl") {
-    ArLang.forEach(
-      (div) => (div.style.cssText = `display:initial !important;`)
-    );
-    EnLang.forEach((div) => (div.style.cssText = `display:none !important;`));
+    ArLang.forEach((div) => (div.style.cssText = `display:inline-block ;`));
+    EnLang.forEach((div) => (div.style.cssText = `display:none ;`));
     if (imageSliderContainer) {
       imageSliderContainer.setAttribute("dir", "ltr");
     }
   } else {
-    ArLang.forEach((div) => (div.style.cssText = `display:none !important;`));
-    EnLang.forEach(
-      (div) => (div.style.cssText = `display:initial !important;`)
-    );
+    ArLang.forEach((div) => (div.style.cssText = `display:none ;`));
+    EnLang.forEach((div) => (div.style.cssText = `display:inline-block ;`));
   }
 }
 
@@ -389,7 +381,6 @@ let dropDownData = searchUnitOptionsArray.map((options) =>
   Array.from(options.querySelectorAll("li")).map((li) => li)
 );
 
-
 // <!-- //////////////// تعديل //////////////// -->
 function resetValues() {
   searchUnitSelectBtn = document.querySelectorAll(
@@ -447,6 +438,7 @@ function searchUnitAddCase(selectedLi) {
     });
   });
 }
+
 // <!-- //////////////// تعديل //////////////// -->
 function searchUnitUpdateName(selectedLi) {
   const inputContainer = selectedLi.closest(".inputContainer");

@@ -37,28 +37,39 @@
               <h2 class="EnLang">Tenant Data</h2>
             </div>
             <div class="dataSection" id="firstSection">
-              <div class="phoneInput">
+              <div class="inputContainer">
                 <label for="" class="ArLang">هاتف المستأجر </label>
                 <label for="" class="EnLang"> Tenant's Phone</label>
-                <div dir="ltr">
-                  <input type="tel" id="phone" name="phone" value="" disabled />
-                </div>
+                <input type="tel" id="phone" name="phone" value="" disabled />
+                <span class="errorMessage"></span>
               </div>
               <div class="inputContainer">
                 <label for="" class="ArLang"> رقم الهوية للمستأجر</label>
                 <label for="" class="EnLang"> Tenant's ID</label>
-                <input type="text" class="inputVal" />
+                <input
+                  type="number"
+                  class="inputVal"
+                  inputName="IdNumber"
+                  onkeyup="checkIsSaudian(this)"
+                  onblur="checkIsFormerClient(this)"
+                />
+                <span class="errorMessage"></span>
               </div>
               <div class="inputContainer">
                 <label for="" class="ArLang">اسم المستأجر</label>
                 <label for="" class="EnLang">Tenant's Name </label>
-                <input type="text" class="inputVal" />
+                <input type="text" class="inputVal" inputName="Name" />
+                <span class="errorMessage"></span>
               </div>
-              <div class="inputContainer">
+              <div class="inputContainer nationalityInput">
                 <label for="" class="ArLang">جنسية المستأجر </label>
                 <label for="" class="EnLang"> Tenant's Nationality</label>
                 <input type="text" class="valueInput" />
-                <input type="text" class="emptyInput inputVal" />
+                <input
+                  type="text"
+                  class="emptyInput inputVal"
+                  inputName="dropDown"
+                />
                 <div class="wrapper">
                   <div class="select-btn">
                     <span> </span>
@@ -75,6 +86,7 @@
                     <ul class="options nationality"></ul>
                   </div>
                 </div>
+                <span class="errorMessage"></span>
               </div>
             </div>
           </div>
@@ -86,10 +98,10 @@
                 <span
                   class="countOfElements"
                   maxCount="3"
-                  minCount="1"
+                  minCount="0"
                   id="companionsInfoCounter"
                 >
-                  ( <span id="companionsInfoMinCount">1</span> / 3 )
+                  ( <span id="companionsInfoMinCount">0</span> / 3 )
                 </span>
               </div>
               <button onclick="addNewCompanionsInfoSection()">
@@ -97,99 +109,10 @@
               </button>
             </div>
             <div class="dataSectionsContainer" id="dataSectionsContainer">
-              <div class="dataSection">
-                <div class="inputContainer">
-                  <label for="" class="ArLang">الاسم </label>
-                  <label for="" class="EnLang"> Name</label>
-                  <input type="text" class="inputVal" />
-                </div>
-                <div class="inputContainer">
-                  <label for="" class="ArLang">رقم الهوية </label>
-                  <label for="" class="EnLang"> ID Nunmber</label>
-                  <input type="text" class="inputVal" />
-                </div>
-                <div class="inputContainer">
-                  <label for="" class="ArLang">صله القرابة </label>
-                  <label for="" class="EnLang"> Kinship</label>
-                  <input type="text" class="valueInput" />
-                  <input type="text" class="emptyInput inputVal" />
-                  <div class="wrapper">
-                    <div class="select-btn">
-                      <span> </span>
-                      <i class="fa-solid fa-angle-down"></i>
-                    </div>
-                    <div class="content">
-                      <div class="search">
-                        <input
-                          spellcheck="false"
-                          type="text"
-                          placeholder="Search"
-                        />
-                      </div>
-                      <ul class="options">
-                        <li
-                          onclick="searchUnitUpdateName(this)"
-                          optionCode="2822"
-                        >
-                          زوج/زوجة
-                        </li>
-                        <li
-                          onclick="searchUnitUpdateName(this)"
-                          optionCode="2822"
-                        >
-                          ابن/بنت
-                        </li>
-                        <li
-                          onclick="searchUnitUpdateName(this)"
-                          optionCode="2822"
-                        >
-                          والد/والدة
-                        </li>
-                        <li
-                          onclick="searchUnitUpdateName(this)"
-                          optionCode="2822"
-                        >
-                          اخ/اخت
-                        </li>
-                        <li
-                          onclick="searchUnitUpdateName(this)"
-                          optionCode="2822"
-                        >
-                          اخرى
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div class="inputContainer">
-                  <label for="" class="ArLang">جنسية المرافق </label>
-                  <label for="" class="EnLang"> Escort's Nationality</label>
-                  <input type="text" class="valueInput" />
-                  <input type="text" class="emptyInput inputVal" />
-                  <div class="wrapper">
-                    <div class="select-btn">
-                      <span> </span>
-                      <i class="fa-solid fa-angle-down"></i>
-                    </div>
-                    <div class="content">
-                      <div class="search">
-                        <input
-                          spellcheck="false"
-                          type="text"
-                          placeholder="Search"
-                        />
-                      </div>
-                      <ul class="options nationality"></ul>
-                    </div>
-                  </div>
-                </div>
-                <div class="delete">
-                  <button onclick="removeSection(this)">
-                    <span class="ArLang">حذف</span
-                    ><span class="EnLang">delet</span>
-                  </button>
-                </div>
-              </div>
+              <h1 class="notFound">
+                <span class="ArLang">لا يوجد مرافقين.</span>
+                <span class="EnLang">No escorts.</span>
+              </h1>
             </div>
           </div>
           <div class="carData" id="carData">
@@ -199,11 +122,11 @@
                 <h2 class="EnLang">Car data</h2>
                 <span
                   class="countOfElements"
-                  minCount="1"
+                  minCount="0"
                   maxCount="3"
                   id="carDataCounter"
                 >
-                  ( <span id="carDataMinCount">1</span> / 3 )
+                  ( <span id="carDataMinCount">0</span> / 3 )
                 </span>
               </div>
               <button onclick="addNewCarDataSection()">
@@ -211,31 +134,21 @@
               </button>
             </div>
             <div class="dataSectionsContainer" id="carDataSectionsContainer">
-              <div class="dataSection">
-                <div class="inputContainer">
-                  <label for="" class="ArLang"> نوع السيارة</label>
-                  <label for="" class="EnLang">Car Type</label>
-                  <input type="text" class="inputVal" />
-                </div>
-                <div class="inputContainer">
-                  <label for="" class="ArLang">رقم لوحة السيارة </label>
-                  <label for="" class="EnLang">ID Nunmber </label>
-                  <input type="text" class="inputVal" />
-                </div>
-                <div class="delete">
-                  <button onclick="removeCarSection(this)">
-                    <span class="ArLang">حذف</span
-                    ><span class="EnLang">delet</span>
-                  </button>
-                </div>
-              </div>
+              <h1 class="notFound">
+                <span class="ArLang">لا يوجد سيارات.</span>
+                <span class="EnLang">No cars.</span>
+              </h1>
             </div>
           </div>
           <div class="confirmSection">
             <div class="dataSection">
               <div class="leftSide">
                 <div class="inputContainer" id="checkboxinput">
-                  <input type="checkbox" id="checkbox" />
+                  <input
+                    type="checkbox"
+                    id="confirmSectionCheckbox"
+                    onchange="checkIfUserConfirm(this)"
+                  />
                   <label for="checkbox" class="ArLang">
                     إرسال رابط الدفع إلى رقم اخر</label
                   >
@@ -245,7 +158,14 @@
                 </div>
                 <div class="inputContainer">
                   <div dir="ltr">
-                    <input type="tel" id="phone2" name="phone" value="+966" />
+                    <input
+                      type="tel"
+                      id="phone2"
+                      name="phone"
+                      value="+966"
+                      countryCode=""
+                      phoneNumber=""
+                    />
                   </div>
                 </div>
               </div>

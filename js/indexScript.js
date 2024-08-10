@@ -1,3 +1,5 @@
+localStorage.setItem("isUser", "false");
+
 //////////////////////////////////////// create backGroundHome slider /////////////////////////////////////////////
 window.addEventListener("popstate", function (event) {
   // تحقق من تغير عنوان URL
@@ -195,7 +197,6 @@ const handelCloseOffersSectionScreen = () => {
 };
 const handelOpenOrderBox = () => {
   $("#uintSearchOrderContainer").fadeIn();
-  3;
 };
 const handelOpenFilterBox = () => {
   $("#uintSearchFilterContainer").fadeIn();
@@ -439,6 +440,7 @@ const handelSendCardsToMap = (searchOutputMapButton, cardSelector) => {
         name: card.getAttribute("unitName"),
         lon: card.getAttribute("lon"),
         lat: card.getAttribute("lat"),
+        imgUrl: card.getAttribute("imgUrl"),
       });
       i++;
     }
@@ -507,6 +509,7 @@ function creatSection() {
             unitName="amlak"
             lat="30.3"
             lon="31.53"
+            imgUrl="../images/3.jpg"
           >
             <div class="favoriteIcon">
               <i class="fa-regular fa-heart"></i>
@@ -659,3 +662,119 @@ function fillConfirmDate() {
       `${formattedArrivedDate} - ${formattedLeavedDateDate}`
     );
 }
+
+document
+  .getElementById("uintSearchOrderForm")
+  .addEventListener("submit", (event) => {
+    event.preventDefault();
+    const radioInputs = document.querySelectorAll(
+      `#uintSearchOrderContainer .outputOrderForm input[name="order"]`
+    );
+    let inputValue;
+
+    for (const radioButton of radioInputs) {
+      if (radioButton.checked) {
+        inputValue = radioButton.value;
+        break;
+      }
+    }
+    let filteredCards;
+    switch (inputValue) {
+      case "default": {
+        filteredCards = false;
+        break;
+      }
+      // case "favorite": {
+      //  filteredCards =Array.from(unitSearchCards).sort((current, prev) => {
+      //  return Number(prev.getAttribute("favorite")) - Number(current.getAttribute("favorite"));
+      // });
+      //   break;
+      // }
+      // case "highestRate": {
+      //   filteredCards = Array.from(unitSearchCards).sort((current, prev) => {
+      //     return prev.getAttribute("unitRate") - current.getAttribute("unitRate");
+      //   });
+      //   break;
+      // }
+      case "highestPrice": {
+        console.log("lowestPrice");
+        filteredCards = Array.from(unitSearchCards).sort((current, prev) => {
+          return prev.getAttribute("price") - current.getAttribute("price");
+        });
+        break;
+      }
+      case "lowestPrice": {
+        filteredCards = Array.from(unitSearchCards).sort((current, prev) => {
+          return current.getAttribute("price") - prev.getAttribute("price");
+        });
+        break;
+      }
+    }
+
+    if (filteredCards !== false) {
+      unitSearchCardsContainer.innerHTML = "";
+      for (let i = 0; i < filteredCards.length; i++) {
+        const cardElement = filteredCards[i];
+        unitSearchCardsContainer.appendChild(cardElement);
+      }
+    }
+    handelCloseOrderBox();
+  });
+
+document
+  .getElementById("offerSectionOrderForm")
+  .addEventListener("submit", (event) => {
+    event.preventDefault();
+    const radioInputs = document.querySelectorAll(
+      `#offersSectionScreen .outputOrderForm input[name="order"]`
+    );
+    let inputValue;
+
+    for (const radioButton of radioInputs) {
+      if (radioButton.checked) {
+        inputValue = radioButton.value;
+        break;
+      }
+    }
+    let filteredCards;
+    switch (inputValue) {
+      case "default": {
+        filteredCards = false;
+        break;
+      }
+      // case "favorite": {
+      //  filteredCards = Array.from(offerCards).sort((current, prev) => {
+      //  return Number(prev.getAttribute("favorite")) - Number(current.getAttribute("favorite"));
+      // });
+      //   break;
+      // }
+      // case "highestRate": {
+      //   filteredCards = Array.from(offerCards).sort((current, prev) => {
+      //     return prev.getAttribute("unitRate") - current.getAttribute("unitRate");
+      //   });
+      //   break;
+      // }
+      case "highestPrice": {
+        console.log("lowestPrice");
+        filteredCards = Array.from(offerCards).sort((current, prev) => {
+          return prev.getAttribute("price") - current.getAttribute("price");
+        });
+        break;
+      }
+      case "lowestPrice": {
+        filteredCards = Array.from(offerCards).sort((current, prev) => {
+          return current.getAttribute("price") - prev.getAttribute("price");
+        });
+        break;
+      }
+    }
+
+    if (filteredCards !== false) {
+      offersSectionScreen.innerHTML = "";
+      for (let i = 0; i < filteredCards.length; i++) {
+        const cardElement = filteredCards[i];
+        offersSectioncardsContainer.appendChild(cardElement);
+      }
+    }
+    handelCloseOrderBox();
+  });

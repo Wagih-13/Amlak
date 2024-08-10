@@ -827,6 +827,22 @@
   .unitInformation
   .infoSide
   .activeSectionContainer
+  > div:nth-child(2)
+  .reviewsContainer
+  .replyButton {
+  font-size: var(--main-font-size);
+  color: var(--main-color);
+  border: none;
+  margin: 10px 10px;
+  outline: none;
+  background-color: transparent;
+  text-align: start;
+}
+.unitDetails
+  .container
+  .unitInformation
+  .infoSide
+  .activeSectionContainer
   > div:nth-child(4)
   pre {
   margin: -50px 0px 0px;
@@ -1001,8 +1017,6 @@
   margin-top: 20px;
   cursor: not-allowed;
 }
-
-/* ////////////////////////////////////////////////////////////////////////////// */
 
 .unitDetails .verificationScreen {
   position: fixed;
@@ -1211,7 +1225,7 @@
   i {
   display: none;
 }
-.unitDetails .verificationScreen .verificationSide .errorMessage span {
+.errorMessage span {
   font-size: var(--main-font-size);
   color: rgb(167, 4, 4);
 }
@@ -1337,21 +1351,12 @@
   padding: 5px;
 }
 
-.unitDetails
-  .verificationScreen
-  .verificationSide
-  .mobileInputBox
-  .iti--inline-dropdown
-  .iti__dropdown-content {
+.iti--inline-dropdown .iti__dropdown-content {
   margin-top: 10px;
   z-index: 99;
 }
 
-.unitDetails
-  .verificationScreen
-  .verificationSide
-  .mobileInputBox
-  #iti-0__dropdown-content {
+#iti-0__dropdown-content {
   width: 320px !important;
   border-radius: 6px;
   -webkit-border-radius: 6px;
@@ -1363,15 +1368,11 @@
   margin-top: 10px;
 }
 
-.unitDetails .verificationScreen .verificationSide .mobileInputBox #click {
+#click {
   margin-top: 50px;
 }
 
-.unitDetails
-  .verificationScreen
-  .verificationSide
-  .mobileInputBox
-  .iti__search-input {
+.iti__search-input {
   padding: 8px 20px !important;
   width: 100% !important;
 }
@@ -1380,11 +1381,11 @@
   gap: 5px;
 }
 
-.unitDetails .verificationScreen .verificationSide .mobileInputBox .iti__arrow {
+.iti__arrow {
   border-top-color: #000000;
 }
 
-.unitDetails .verificationScreen .verificationSide .mobileInputBox .select-btn {
+.select-btn {
   background-color: white;
   border-radius: 6px;
   -webkit-border-radius: 6px;
@@ -1392,20 +1393,12 @@
   -ms-border-radius: 6px;
   -o-border-radius: 6px;
 }
-.unitDetails
-  .verificationScreen
-  .verificationSide
-  .mobileInputBox
-  .select-btn
-  i {
+
+.select-btn i {
   color: black;
 }
-.unitDetails
-  .verificationScreen
-  .verificationSide
-  .mobileInputBox
-  .select-btn
-  span {
+
+.select-btn span {
   color: black;
 }
 
@@ -1413,8 +1406,284 @@
   z-index: 999999999;
 }
 
+.unitDetails .AddYourComment {
+  position: fixed;
+  inset: 0;
+  background-color: #0000003f;
+  backdrop-filter: blur(10px);
+  z-index: 99999999;
+  display: none;
+}
+
+.unitDetails .AddYourComment .AddYourCommentContainer {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.unitDetails .AddYourComment .AddYourCommentContainer > div {
+  width: 500px;
+  border: 1px solid white;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  padding: 20px;
+  background-color: var(--second-section-color);
+}
+
+.unitDetails .AddYourComment .AddYourCommentContainer .checkPhoneBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.unitDetails .AddYourComment .AddYourCommentContainer .checkPhoneBox h2 {
+  font-size: var(--Xlarg-font-size);
+  color: white;
+  margin: 0px;
+}
+
+.unitDetails
+  .AddYourComment
+  .AddYourCommentContainer
+  .checkPhoneBox
+  .phoneInputContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.unitDetails
+  .AddYourComment
+  .AddYourCommentContainer
+  .checkPhoneBox
+  .phoneInputContainer
+  input {
+  width: 250px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  outline: none;
+  font-size: var(--main-font-size);
+  cursor: text;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+}
+
+.iti__search-input {
+  padding: 8px 20px !important;
+  width: 100% !important;
+}
+
+.unitDetails
+  .AddYourComment
+  .AddYourCommentContainer
+  .checkPhoneBox
+  .buttonsContainer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+}
+.unitDetails
+  .AddYourComment
+  .AddYourCommentContainer
+  .checkPhoneBox
+  .buttonsContainer
+  .continueButton
+  i {
+  display: none;
+}
+
+.unitDetails
+  .AddYourComment
+  .AddYourCommentContainer
+  .checkPhoneBox
+  .buttonsContainer
+  button {
+  width: calc(100% / 2 - 30px);
+  padding: 10px 30px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border: 2px solid var(--main-color);
+  color: white;
+  font-size: var(--main-font-size);
+  background-color: var(--main-color);
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  cursor: pointer;
+}
+.unitDetails
+  .AddYourComment
+  .AddYourCommentContainer
+  .checkPhoneBox
+  .buttonsContainer
+  button:hover {
+  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  -o-transform: scale(1.05);
+}
+
+.unitDetails .AddYourComment .writeCommentBox,
+.unitDetails .AddYourComment .AddReplyBox {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.unitDetails .AddYourComment .writeCommentBox h2,
+.unitDetails .AddYourComment .AddReplyBox h2 {
+  font-size: var(--Xlarg-font-size);
+  color: white;
+  margin: 0px;
+}
+
+.unitDetails .AddYourComment .writeCommentBox textarea,
+.unitDetails .AddYourComment .AddReplyBox textarea {
+  width: 100%;
+  height: 150px;
+  border: 1px solid #ccc;
+  background-color: white;
+  color: #000000;
+  padding: 20px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.unitDetails .AddYourComment .writeCommentBox .buttonsContainer,
+.unitDetails .AddYourComment .AddReplyBox .buttonsContainer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+}
+
+.unitDetails .AddYourComment .writeCommentBox .buttonsContainer button,
+.unitDetails .AddYourComment .AddReplyBox .buttonsContainer button {
+  width: calc(100% / 2 - 30px);
+  padding: 10px 30px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border: 2px solid var(--main-color);
+  color: white;
+  font-size: var(--main-font-size);
+  background-color: var(--main-color);
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  cursor: pointer;
+}
+
+.unitDetails .AddYourComment .writeCommentBox .buttonsContainer button:hover,
+.unitDetails .AddYourComment .AddReplyBox .buttonsContainer button:hover {
+  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  -o-transform: scale(1.05);
+}
 
 /* ////////////////////////////////////////////////////////////////////////////// */
+
+.unitDetails .calenderSide .pricingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.unitDetails .calenderSide .pricingContainer .tableContainer {
+  width: 100%;
+  border-bottom: 1px solid var(--main-color);
+  padding: 20px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.unitDetails .calenderSide .pricingContainer .tableContainer .pricingInfo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 0px 20px;
+}
+
+.unitDetails
+  .calenderSide
+  .pricingContainer
+  .tableContainer
+  .pricingInfo
+  .unitPricingDateName {
+  font-size: var(--larg-font-size);
+  color: var(--main-color);
+  text-align: start;
+  margin: 0px 0px 10px;
+}
+
+.unitDetails .calenderSide .pricingContainer .tableContainer .pricingInfo p {
+  font-size: var(--main-font-size);
+  color: white;
+}
+
+.unitDetails
+  .calenderSide
+  .pricingContainer
+  .tableContainer
+  .pricingInfo
+  p
+  .date {
+  color: var(--main-color);
+}
+
+.unitDetails .calenderSide .pricingContainer .tableContainer table th,
+.unitDetails .calenderSide .pricingContainer .tableContainer table td {
+  font-size: var(--inital-font-size);
+  color: white;
+  padding: 5px;
+  text-align: center;
+  font-weight: 400;
+}
+
+.unitDetails .calenderSide .pricingContainer .tableContainer table .head span {
+  font-weight: bold;
+  color: var(--main-color);
+}
 
 @media (min-width: 1400px) {
   .unitDetails
@@ -1554,6 +1823,10 @@
     button {
     font-size: var(--main-font-size) !important;
   }
+  .unitDetails .calenderSide .pricingContainer .tableContainer .pricingInfo {
+    align-items: center;
+    text-align: center;
+  }
 }
 @media (max-width: 767px) {
   .unitDetails
@@ -1597,9 +1870,14 @@
   .unitDetails .container .unitInformation .calenderSide .calender .days > div {
     width: calc(100% / 7 -2px) !important;
   }
+
   .unitDetails .verificationScreen .verificationSide > div {
     width: 100%;
   }
+  .unitDetails .AddYourComment .AddYourCommentContainer > div {
+    width: 90%;
+  }
+
   .unitDetails
     .verificationScreen
     .verificationSide
@@ -1608,14 +1886,31 @@
     input {
     padding: 10px 15px;
   }
+  .unitDetails
+    .AddYourComment
+    .AddYourCommentContainer
+    .checkPhoneBox
+    .phoneInputContainer
+    input,
   .unitDetails .verificationScreen .verificationSide .mobileInputBox input {
     width: 150px !important;
   }
-  .unitDetails
-  .verificationScreen
-  .verificationSide
-  .mobileInputBox
+  .iti__search-input {
+    width: 100% !important;
+  }
+
   #iti-0__dropdown-content {
     width: 220px !important;
+  }
+  .unitDetails .calenderSide .pricingContainer .tableContainer table th,
+  .unitDetails .calenderSide .pricingContainer .tableContainer table td {
+    font-size: var(--main-font-size);
+  }
+}
+
+@media (max-width: 500px) {
+  .unitDetails .calenderSide .pricingContainer .tableContainer table th,
+  .unitDetails .calenderSide .pricingContainer .tableContainer table td {
+    font-size: 10px;
   }
 }

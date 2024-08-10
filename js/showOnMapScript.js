@@ -21,7 +21,7 @@ let cartona = "";
 for (let i = 0; i < unitsData.length; i++) {
   let card = `<div class="unit" id="${unitsData[i].id}">
             <img
-              src="./images/1.jpg"
+              src="${unitsData[i].imgUrl}"
               alt="صورة الوحدة 1"
             />
            <div class="info">

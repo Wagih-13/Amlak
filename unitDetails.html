@@ -50,8 +50,8 @@
           <div>
             <i class="fa-solid fa-arrow-up-from-bracket"></i>
           </div>
-          <div>
-            <i class="fa-regular fa-heart"></i>
+          <div onclick="addUnitToFavorite()">
+            <i class="fa-regular fa-heart favoriteIcon"></i>
           </div>
         </div>
         <div class="swiperContainer" id="mobileViewSwiper">
@@ -167,10 +167,10 @@
               <span class="EnLang">Share</span>
               <i class="fa-solid fa-arrow-up-from-bracket"></i>
             </div>
-            <div>
+            <div onclick="addUnitToFavorite()">
               <span class="ArLang">المفضلة</span>
               <span class="EnLang">Favorite</span>
-              <i class="fa-regular fa-heart"></i>
+              <i class="fa-regular fa-heart favoriteIcon"></i>
             </div>
           </div>
         </div>
@@ -332,13 +332,13 @@
                       <span class="ArLang">التقيمات </span>
                       <span class="EnLang"> Guest Reviews</span>
                     </h2>
-                    <button>
+                    <button onclick="openAddCommentBox()">
                       <span class="ArLang">اضف تعليقك</span
                       ><span class="EnLang">add reviews</span>
                     </button>
                   </div>
                   <div class="reviewsContainer">
-                    <div class="review">
+                    <div class="review" userId="3892">
                       <div class="user">
                         <img src="./images/user.jpg" alt="" />
                         <div>
@@ -350,71 +350,13 @@
                         على المستوى العالي الذي يمكنني معرفة ما جرى لك في
                         الوحدة، وبالتالي كانت الوحدة م
                       </p>
-                    </div>
-                    <div class="review">
-                      <div class="user">
-                        <img src="./images/user.jpg" alt="" />
-                        <div>
-                          <h4>محمد علي</h4>
-                          <span>20/12/2022</span>
-                        </div>
-                      </div>
-                      <p class="ArLang">
-                        على المستوى العالي الذي يمكنني معرفة ما جرى لك في
-                        الوحدة، وبالتالي كانت الوحدة م
-                      </p>
-                    </div>
-                    <div class="review">
-                      <div class="user">
-                        <img src="./images/user.jpg" alt="" />
-                        <div>
-                          <h4>محمد علي</h4>
-                          <span>20/12/2022</span>
-                        </div>
-                      </div>
-                      <p class="ArLang">
-                        على المستوى العالي الذي يمكنني معرفة ما جرى لك في
-                        الوحدة، وبالتالي كانت الوحدة م
-                      </p>
-                    </div>
-                    <div class="review">
-                      <div class="user">
-                        <img src="./images/user.jpg" alt="" />
-                        <div>
-                          <h4>محمد علي</h4>
-                          <span>20/12/2022</span>
-                        </div>
-                      </div>
-                      <p class="ArLang">
-                        على المستوى العالي الذي يمكنني معرفة ما جرى لك في
-                        الوحدة، وبالتالي كانت الوحدة م
-                      </p>
-                    </div>
-                    <div class="review">
-                      <div class="user">
-                        <img src="./images/user.jpg" alt="" />
-                        <div>
-                          <h4>محمد علي</h4>
-                          <span>20/12/2022</span>
-                        </div>
-                      </div>
-                      <p class="ArLang">
-                        على المستوى العالي الذي يمكنني معرفة ما جرى لك في
-                        الوحدة، وبالتالي كانت الوحدة م
-                      </p>
-                    </div>
-                    <div class="review">
-                      <div class="user">
-                        <img src="./images/user.jpg" alt="" />
-                        <div>
-                          <h4>محمد علي</h4>
-                          <span>20/12/2022</span>
-                        </div>
-                      </div>
-                      <p class="ArLang">
-                        على المستوى العالي الذي يمكنني معرفة ما جرى لك في
-                        الوحدة، وبالتالي كانت الوحدة م
-                      </p>
+                      <button
+                        onclick="openAddReplyBox(this)"
+                        class="replyButton"
+                      >
+                        <span class="ArLang">اكتب ردك </span>
+                        <span class="EnLang">Reply</span>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -447,8 +389,86 @@
             </div>
           </div>
           <div class="calenderSide">
-            <div class="calenderContainer" dir="rtl">
-              <div class="calender">
+            <div class="calenderContainer">
+              <div class="offersContainer" id="offersContainer"></div>
+              <div class="pricingContainer" id="pricingContainer">
+                <div class="tableContainer">
+                  <div class="pricingInfo">
+                    <h2 class="unitPricingDateName">اسعار العيد</h2>
+                    <div>
+                      <p class="dateTitle">
+                        <span class="ArLang">هذه الاسعار سارية من</span
+                        ><span class="EnLang"></span>
+                        <span class="date"> 38/322/323 </span>
+                        <span class="ArLang">الي</span
+                        ><span class="EnLang"></span>
+                        <span class="date"> 38/322/323 </span>
+                      </p>
+                      <p>
+                        <span class="ArLang">اقل عدد ايام حجز</span
+                        ><span class="EnLang"></span>
+
+                        <span class="ArLang">في هذه المدة</span
+                        ><span class="EnLang"></span>
+                      </p>
+                    </div>
+                  </div>
+                  <table class="">
+                    <thead>
+                      <th class="head">
+                        <span class="ArLang">اليوم</span>
+                        <span class="EnLang"> day </span>
+                      </th>
+
+                      <th>
+                        <span class="ArLang">السبت</span
+                        ><span class="EnLang">sat</span>
+                      </th>
+
+                      <th>
+                        <span class="ArLang">الاحد</span>
+                        <span class="EnLang">Sun</span>
+                      </th>
+                      <th>
+                        <span class="ArLang">الاثنين</span>
+                        <span class="EnLang">Mon</span>
+                      </th>
+                      <th>
+                        <span class="ArLang">الثلثاء</span>
+                        <span class="EnLang">Tue</span>
+                      </th>
+                      <th>
+                        <span class="ArLang">الاربعاء</span>
+                        <span class="EnLang">wed</span>
+                      </th>
+                      <th>
+                        <span class="ArLang">الخميس</span>
+                        <span class="EnLang">thu</span>
+                      </th>
+                      <th>
+                        <span class="ArLang">الجمعة</span>
+                        <span class="EnLang">Fri</span>
+                      </th>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="head">
+                          <span class="ArLang">السعر</span>
+                          <span class="EnLang"> price </span>
+                        </td>
+                        <td>500</td>
+                        <td>500</td>
+                        <td>500</td>
+                        <td>500</td>
+                        <td>500</td>
+                        <td>500</td>
+                        <td>500</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="calender" dir="rtl">
                 <div class="month">
                   <i class="fa fa-angle-right next" style="color: black"></i>
                   <div class="date">
@@ -597,6 +617,73 @@
         </div>
       </div>
       <!-- /////////////////////// تعديل ///////////////////////// -->
+      <div class="AddYourComment" id="AddYourComment">
+        <div class="AddYourCommentContainer">
+          <div class="checkPhoneBox" id="checkPhoneBox">
+            <h2 class="ArLang">ادخل رقمك</h2>
+            <h2 class="EnLang">Enter your number</h2>
+            <div
+              class="errorMessage"
+              id="AddCommentPhoneInputErrorMessage"
+            ></div>
+            <div dir="ltr" class="phoneInputContainer">
+              <input
+                type="tel"
+                id="phone2"
+                name="phone"
+                value="+966"
+                countryCode=""
+                phoneNumber=""
+              />
+            </div>
+            <div class="buttonsContainer">
+              <button
+                class="continueButton"
+                onclick="checkIsFormerClient()"
+                id="AddCommentPhoneSubmitButton"
+              >
+                <span class="ArLang">استمر</span
+                ><span class="EnLang">Continue</span>
+                <i class="fa-solid fa-spinner fa-spin"></i>
+              </button>
+              <button onclick="closeAddCommentScreen()">
+                <span class="ArLang">الغاء</span>
+                <span class="EnLang">close</span>
+              </button>
+            </div>
+          </div>
+          <div class="writeCommentBox" id="writeCommentBox">
+            <h2 class="ArLang">اضف تعليقك</h2>
+            <h2 class="EnLang">Add your comment</h2>
+            <textarea name="" id="clientComment"></textarea>
+            <div class="buttonsContainer">
+              <button onclick="AddComment()">
+                <span class="ArLang">اضافة</span>
+                <span class="EnLang">Add</span>
+              </button>
+              <button onclick="closeAddCommentScreen()">
+                <span class="ArLang">الغاء</span>
+                <span class="EnLang">close</span>
+              </button>
+            </div>
+          </div>
+          <div class="AddReplyBox" id="AddReplyBox">
+            <h2 class="ArLang">اضف ردك</h2>
+            <h2 class="EnLang">Add your reply</h2>
+            <textarea name="" id="AdminReply"></textarea>
+            <div class="buttonsContainer">
+              <button onclick="AddReply()">
+                <span class="ArLang">اضافة</span>
+                <span class="EnLang">Add</span>
+              </button>
+              <button onclick="closeAddCommentScreen()">
+                <span class="ArLang">الغاء</span>
+                <span class="EnLang">close</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="verificationScreen" id="verificationScreen">
         <div class="verificationScreenContainer">
           <div
@@ -643,7 +730,14 @@
               </p>
               <div class="errorMessage" id="phoneInputErrorMessage"></div>
               <div dir="ltr" class="phoneInputContainer">
-                <input type="tel" id="phone" name="phone" value="+966" />
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value="+966"
+                  countryCode=""
+                  phoneNumber=""
+                />
               </div>
               <span id="verificationCodeCounter"></span>
               <button
@@ -668,7 +762,8 @@
                 <span id="phoneNumber2"></span>
               </p>
               <div class="errorMessage" id="verificationCodeErrorMessage"></div>
-              <div class="verificationCodeInput">
+              <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+              <div class="verificationCodeInput" dir="ltr">
                 <input
                   class="verifiedInput"
                   autofocus
@@ -692,8 +787,9 @@
                   maxlength="1"
                 />
               </div>
+              <span id="verificationCode"></span>
               <p class="backToPhoneIput" onclick="backToPhoneIput()">
-                <span class="ArLang">عد الي كتابة رقم الهاتب</span>
+                <span class="ArLang">عد الي كتابة رقم الهاتف</span>
                 <span class="EnLang">Back to set phone</span
                 ><i class="fa-solid fa-arrow-up-right-from-square"></i>
               </p>
@@ -730,7 +826,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.8.0/build/js/intlTelInput.min.js"></script>
     <script src="./globalScript.js"></script>
-    <script src="./js/unitDetailsScript.js"></script>
     <script src="./js/calender.js"></script>
+    <script src="./js/unitDetailsScript.js"></script>
   </body>
 </html>

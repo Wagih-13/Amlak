@@ -122,7 +122,7 @@
   padding: 20px;
   display: flex;
   justify-content: flex-start;
-  align-items: flex-end;
+  align-items: flex-start;
   gap: 40px;
 }
 
@@ -193,6 +193,21 @@
   color: black;
   font-size: var(--main-font-size);
   background-color: rgb(255, 255, 255);
+}
+
+.bookingConfirmation
+  .container
+  .sections
+  > div
+  .dataSection
+  .inputContainer
+  #phone {
+  background-color: #ffffff50 !important;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  border: 1px solid var(--main-color);
+  cursor: not-allowed !important;
+  padding: 9px 30px;
 }
 
 .bookingConfirmation
@@ -329,12 +344,6 @@
   padding: 9px 10px 9px 60px !important;
 }
 
-.bookingConfirmation .container .sections .phoneInput input {
-  background-color: #906da598;
-  color: rgb(228, 228, 228);
-  font-weight: bold;
-  border: 1px solid var(--main-color);
-}
 .bookingConfirmation
   .container
   .sections
@@ -350,12 +359,10 @@
   -o-border-radius: 6px;
   outline: none;
   font-size: var(--main-font-size);
-  cursor: not-allowed;
   background-color: #ffffff !important;
   color: rgb(0, 0, 0);
   font-weight: bold;
   border: 1px solid rgb(212, 212, 212);
-  cursor: text;
 }
 
 .bookingConfirmation .iti__selected-country {
@@ -422,6 +429,29 @@
 
 .iti.iti--container.iti--fullscreen-popup {
   z-index: 999999999;
+}
+
+.notFound {
+  font-size: var(--Xlarg-font-size);
+  color: #a6a6a6;
+  margin: 30px auto;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.errorInput {
+  border: 2px solid rgb(129, 1, 1) !important;
+  box-shadow: 0px 0px 5px 2px rgba(129, 1, 1, 0.753);
+}
+.errorMessage span {
+  font-size: var(--inital-font-size);
+  color: rgb(129, 1, 1);
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 @media (max-width: 1100px) {
