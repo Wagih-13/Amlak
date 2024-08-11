@@ -65,8 +65,8 @@ const bookingButtonMobileView = document.getElementById(
 const bookingButton = document.getElementById("bookingButton");
 
 ///////////////////////
-let startDate;     ///
-let endDate;      ///
+let startDate; ///
+let endDate; ///
 ////////////////////
 function fillConfirmDate(arrivedDate, leavedDate) {
   startDate = arrivedDate;
@@ -408,6 +408,8 @@ const AddYourCommentSection = document.getElementById("AddYourComment");
 const checkPhoneBox = document.getElementById("checkPhoneBox");
 const writeCommentBox = document.getElementById("writeCommentBox");
 const AddReplyBox = document.getElementById("AddReplyBox");
+
+
 function checkIsFormerClient() {
   const role = localStorage.getItem("commentRole");
   const button = document.getElementById("AddCommentPhoneSubmitButton");
@@ -458,6 +460,7 @@ function checkIsFormerClient() {
     reRenderLang();
   }, 3000);
 }
+
 let clientReplyBack = "";
 function openAddCommentBox() {
   localStorage.setItem("commentRole", "client");
@@ -689,16 +692,12 @@ function fillOffersData(data) {
   reRenderLang();
 }
 
-
 /////////////////////////////////////////////////////////////////////////////////////////
 function fillFinalData(contractTotalData) {
-  // fetch unitDetails data 
+  // fetch unitDetails data
   const finalData = JSON.parse(localStorage.getItem("finalData"));
   console.log(finalData);
-  
-
 }
-
 
 // let lastData = {
 //   areaUnitContractID: 0,
@@ -735,3 +734,15 @@ function fillFinalData(contractTotalData) {
 //   areaUnitContractEscort: [],
 //   areaUnitContractCar: [],
 // };
+
+// const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
+// const formatter = new Intl.DateTimeFormat('en', options);
+// const dateParts = formatter.formatToParts(new Date());
+
+// console.log(dateParts)
+
+
+// const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
+// const formatter = new Intl.DateTimeFormat('fr-FR', options);
+// const formattedDate = formatter.format(new Date());
+// console.log(formattedDate);

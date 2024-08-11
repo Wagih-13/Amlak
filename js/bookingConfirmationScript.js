@@ -322,6 +322,8 @@ function inputsValidationsSchema() {
   const carNumberInputs = document.querySelectorAll('[inputName="CarNumber"]');
   const carTypeInputs = document.querySelectorAll('[inputName="CarType"]');
 
+  isAllInputsValid = true;
+
   dropDownInputs.forEach((input) => {
     console.log(input.value);
 
@@ -466,7 +468,9 @@ function inputsValidationsSchema() {
 
 function fillCompanionData() {
   ///////////////////////////////////////////////// inputsتاكد من صالحية ال  ///////////////////////////////////////
+
   inputsValidationsSchema();
+
   ///////////////////////////////////////////////// button  تغير حالة  ///////////////////////////////////////
 
   const confirmButton = document.querySelector(".confirmButton button");
@@ -520,8 +524,6 @@ function fillCompanionData() {
         countryCode == "" ? "+966" : countryCode;
     }
 
-    
-
     // send data to server or database
     //...
     ////////////////////////////// if response successfuly //////////////////////////
@@ -540,21 +542,21 @@ function fillCompanionData() {
     //   carData: [],
     // };
 
-    let inputs = document.querySelectorAll(".inputVal");
-    let selectBtn = document.querySelectorAll(".select-btn span");
-    inputs.forEach((input) => {
-      input.value = "";
-    });
-    selectBtn.forEach((btn) => {
-      btn.innerText = "";
-    });
-
     setTimeout(() => {
+      let inputs = document.querySelectorAll(".inputVal");
+      let selectBtn = document.querySelectorAll(".select-btn span");
+      inputs.forEach((input) => {
+        input.value = "";
+      });
+      selectBtn.forEach((btn) => {
+        btn.innerText = "";
+      });
       Swal.fire({
         icon: "success",
         title: "success",
         text: "Something went success",
         iconColor: "#a99571",
+        allowOutsideClick: false,
       }).then((result) => {
         if (result.isConfirmed) {
           localStorage.setItem("isUser", "false");

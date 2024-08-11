@@ -19,13 +19,6 @@ let swiper = new Swiper(".imageSlider .Slider-container", {
     disableOnInteraction: false,
     pauseOnMouseEnter: false,
   },
-  hashNavigation: {
-    replaceState: true,
-  },
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
 });
 swiper.running;
 // swiper.changeDirection('vertical');
