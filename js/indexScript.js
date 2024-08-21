@@ -296,8 +296,17 @@ filterForm.addEventListener("submit", (event) => {
 
   for (const radioButton of numberOfVehiclesInput) {
     if (radioButton.checked) {
-      minNumberOfVehicles = radioButton.getAttribute("minNumberOfVehicles");
+      const maxiNumberOfVehicles = radioButton.getAttribute(
+        "maxNumberOfVehicles"
+      );
+      minNumberOfVehicles =
+        maxiNumberOfVehicles <= 10
+          ? maxiNumberOfVehicles >= 5
+            ? String(Number(maxiNumberOfVehicles) - 5)
+            : ""
+          : String(Number(maxiNumberOfVehicles) - 10);
       maxNumberOfVehicles = radioButton.getAttribute("maxNumberOfVehicles");
+
       break;
     }
   }
@@ -306,8 +315,15 @@ filterForm.addEventListener("submit", (event) => {
   let maxCapacity;
   for (const radioButton of capacityInput) {
     if (radioButton.checked) {
-      minCapacity = radioButton.getAttribute("minCapacity");
+      const maximumCapacity = radioButton.getAttribute("maxCapacity");
+      minCapacity =
+        maximumCapacity <= 10
+          ? maximumCapacity >= 5
+            ? String(Number(maximumCapacity) - 5)
+            : ""
+          : String(Number(maximumCapacity) - 10);
       maxCapacity = radioButton.getAttribute("maxCapacity");
+
       break;
     }
   }
@@ -366,7 +382,15 @@ offerFilterForm.addEventListener("submit", (event) => {
 
   for (const radioButton of numberOfVehiclesInput) {
     if (radioButton.checked) {
-      minNumberOfVehicles = radioButton.getAttribute("minNumberOfVehicles");
+      const maxiNumberOfVehicles = radioButton.getAttribute(
+        "maxNumberOfVehicles"
+      );
+      minNumberOfVehicles =
+        maxiNumberOfVehicles <= 10
+          ? maxiNumberOfVehicles >= 5
+            ? String(Number(maxiNumberOfVehicles) - 5)
+            : ""
+          : String(Number(maxiNumberOfVehicles) - 10);
       maxNumberOfVehicles = radioButton.getAttribute("maxNumberOfVehicles");
       break;
     }
@@ -376,7 +400,13 @@ offerFilterForm.addEventListener("submit", (event) => {
   let maxCapacity;
   for (const radioButton of capacityInput) {
     if (radioButton.checked) {
-      minCapacity = radioButton.getAttribute("minCapacity");
+      const maximumCapacity = radioButton.getAttribute("maxCapacity");
+      minCapacity =
+        maximumCapacity <= 10
+          ? maximumCapacity >= 5
+            ? String(Number(maximumCapacity) - 5)
+            : ""
+          : String(Number(maximumCapacity) - 10);
       maxCapacity = radioButton.getAttribute("maxCapacity");
       break;
     }

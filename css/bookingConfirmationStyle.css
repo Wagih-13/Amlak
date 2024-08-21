@@ -216,6 +216,25 @@
   > div
   .dataSection
   .inputContainer
+  #phone {
+  background-color: white !important;
+  color: black;
+  font-weight: bold;
+  border: 1px solid var(--main-color);
+  cursor: not-allowed !important;
+  padding: 9px 30px;
+}
+
+.bookingConfirmation .phoneInput .iti__selected-country {
+  cursor: not-allowed !important;
+}
+
+.bookingConfirmation
+  .container
+  .sections
+  > div
+  .dataSection
+  .inputContainer
   label {
   font-size: var(--main-font-size);
   color: white;

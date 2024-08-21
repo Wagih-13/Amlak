@@ -655,6 +655,40 @@
           <div class="writeCommentBox" id="writeCommentBox">
             <h2 class="ArLang">اضف تعليقك</h2>
             <h2 class="EnLang">Add your comment</h2>
+            <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+            <div class="rating">
+              <div class="ratingLable">
+                <span class="ArLang">اضف تقييمك</span>
+                <span class="EnLang">اضف تقييمك</span>
+              </div>
+              <span>
+                <i
+                  class="fa-regular fa-star"
+                  data-rating="1"
+                  onclick="selectRate(this)"
+                ></i>
+                <i
+                  class="fa-regular fa-star"
+                  data-rating="2"
+                  onclick="selectRate(this)"
+                ></i>
+                <i
+                  class="fa-regular fa-star"
+                  data-rating="3"
+                  onclick="selectRate(this)"
+                ></i>
+                <i
+                  class="fa-regular fa-star"
+                  data-rating="4"
+                  onclick="selectRate(this)"
+                ></i>
+                <i
+                  class="fa-regular fa-star"
+                  data-rating="5"
+                  onclick="selectRate(this)"
+                ></i>
+              </span>
+            </div>
             <textarea name="" id="clientComment"></textarea>
             <div class="buttonsContainer">
               <button onclick="AddComment()">
@@ -808,6 +842,8 @@
         </div>
       </div>
     </div>
+
+  
 
     <script
       src="https://unpkg.com/leaflet@1.7.1/dist/leaflet-src.js"

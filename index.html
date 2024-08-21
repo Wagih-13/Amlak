@@ -15,6 +15,10 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@latest/swiper-bundle.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.8.0/build/css/intlTelInput.css"
+    />
     <link rel="stylesheet" href="./css/calender.css" />
     <link rel="stylesheet" href="./css/freamWork.css" />
     <link rel="stylesheet" href="globalStyle.css" />
@@ -632,7 +636,7 @@
                       type="radio"
                       name="numberOfVehicles"
                       minNumberOfVehicles="0"
-                      maxNumberOfVehicles="0"
+                      maxNumberOfVehicles="5"
                     />
                     <label for="">0-5 اشخاص</label>
                   </div>
@@ -2348,8 +2352,253 @@
       </div>
     </div>
 
+    <!-- ////////////////////////////////////////////////////////////////////// -->
+
+    <div class="addYourUintSection" id="addYourUintSection">
+      <div class="addUnitScreenContainer">
+        <div
+          class="addUnitScreenCloseIcon"
+          onclick="handelcCloseAddUnitScreen()"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </div>
+        <div class="imageSide">
+          <div class="backgroundLay">
+            <img src="./images/right.png" alt="" />
+          </div>
+          <div class="displaiedLay">
+            <img src="./images/logo.png" alt="" />
+            <div class="textSection">
+              <span class="ArLang"> سجل و أجر عقارك معنا</span>
+              <span class="ArLang"
+                >تبي تحجز شقة, شالية, وغيرها من بيوت العطلات</span
+              >
+              <span class="ArLang">موقع أملاك الشاطئ للضيوف</span>
+              <span class="EnLang">
+                Register and rent your property with us</span
+              >
+              <span class="EnLang"
+                >Would you like to book an apartment, chalet, and other holiday
+                homes?</span
+              >
+              <span class="EnLang">Location of beach property for guests</span>
+            </div>
+          </div>
+        </div>
+        <div class="addUintFormSide">
+          <div class="swiperContainer" id="addUintFormSlider">
+            <div class="swiper addUnitSwiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <form class="firstForm" id="firstForm">
+                    <h2>
+                      <span class="ArLang">اضف وحدتك</span
+                      ><span class="EnLang">Add your uint</span>
+                    </h2>
+                    <p>
+                      <span class="ArLang">بيانات الوحدة</span
+                      ><span class="EnLang">Unit information</span>
+                    </p>
+                    <div class="inputContainer">
+                      <label for="">البريد الالكتروني للمالك</label>
+                      <input type="email" class="inputVal" />
+                      <div class="errorMessage"></div>
+                    </div>
+                    <div class="inputContainer">
+                      <label for="">اسم المالك</label>
+                      <input type="text" class="inputVal" />
+                      <div class="errorMessage"></div>
+                    </div>
+                    <div class="inputContainer">
+                      <label for="">رقم الهوية</label>
+                      <input type="tel" class="inputVal IdNumber" />
+                      <div class="errorMessage"></div>
+                    </div>
+                    <div class="inputContainer">
+                      <label for="">اختر نوع وحدتك</label>
+                      <input type="text" class="valueInput" />
+                      <input type="text" class="emptyInput inputVal" />
+                      <div class="wrapper">
+                        <div class="select-btn">
+                          <span> </span>
+                          <i class="fa-solid fa-angle-down"></i>
+                        </div>
+                        <div class="content">
+                          <div class="search">
+                            <input
+                              spellcheck="false"
+                              type="text"
+                              placeholder="Search"
+                            />
+                          </div>
+                          <ul class="options">
+                            <li
+                              onclick="searchUnitUpdateName(this)"
+                              optionCode="2822"
+                            >
+                              زوج/زوجة
+                            </li>
+                            <li
+                              onclick="searchUnitUpdateName(this)"
+                              optionCode="2822"
+                            >
+                              ابن/بنت
+                            </li>
+                            <li
+                              onclick="searchUnitUpdateName(this)"
+                              optionCode="2822"
+                            >
+                              والد/والدة
+                            </li>
+                            <li
+                              onclick="searchUnitUpdateName(this)"
+                              optionCode="2822"
+                            >
+                              اخ/اخت
+                            </li>
+                            <li
+                              onclick="searchUnitUpdateName(this)"
+                              optionCode="2822"
+                            >
+                              اخرى
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="errorMessage"></div>
+                    </div>
+                    <div class="inputContainer">
+                      <label for="">اسم الوحدة</label>
+                      <input type="text" class="inputVal" />
+                      <div class="errorMessage"></div>
+                    </div>
+                  </form>
+                </div>
+                <div class="swiper-slide">
+                  <form class="secondForm" id="secondForm">
+                    <h2>
+                      <span class="ArLang">اضف وحدتك</span
+                      ><span class="EnLang">Add your uint</span>
+                    </h2>
+                    <div class="inputContainer">
+                      <label for="">
+                        <span class="ArLang"> اختر الصورة الرئيسية</span>
+                        <span class="EnLang">اختر الصورة الرئيسية</span>
+                      </label>
+                      <input
+                        hidden=""
+                        type="file"
+                        accept="image/*"
+                        onchange="displayImg(this)"
+                      />
+                      <div
+                        class="uploadImage"
+                        onclick="addPhotos(event , this)"
+                      >
+                        <div class="imageUploaded">
+                          <i
+                            class="fa-solid fa-x"
+                            onclick="deleteImage(this)"
+                          ></i>
+                          <img
+                            src=""
+                            id="test"
+                            width="200"
+                            height="200"
+                            alt=""
+                          />
+                        </div>
+                        <i class="fa-solid fa-camera-retro"></i>
+                        <p>
+                          <span class="ArLang">رفع صورة</span>
+                          <span class="EnLang">رفع صورة</span>
+                        </p>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="swiper-slide">
+                  <form action="">
+                    <div class="inputContainer">
+                      <label for=""></label>
+                      <input type="text" name="" id="" />
+                    </div>
+                    <div class="inputContainer">
+                      <label for=""></label>
+                      <input type="text" name="" id="" />
+                    </div>
+                    <div class="inputContainer">
+                      <label for=""></label>
+                      <input type="text" name="" id="" />
+                    </div>
+                  </form>
+                </div>
+                <div class="swiper-slide">
+                  <form action=""></form>
+                </div>
+                <div class="swiper-slide">
+                  <form action="">
+                    <div class="inputContainer">
+                      <label for=""></label>
+                      <input type="text" name="" id="" />
+                    </div>
+                    <div class="inputContainer">
+                      <label for=""></label>
+                      <input type="text" name="" id="" />
+                    </div>
+                    <div class="inputContainer">
+                      <label for=""></label>
+                      <input type="text" name="" id="" />
+                    </div>
+                    <div class="inputContainer">
+                      <label for=""></label>
+                      <input type="text" name="" id="" />
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="paginationButtons">
+                <button onclick="slidePrev()" class="swiperPrev">Prev</button>
+                <button onclick="slideNext()" class="swiperNext">Next</button>
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+          <div class="checkPoneNumberBox" id="checkPoneNumberBox">
+            <h2 class="ArLang">ادخل رقمك</h2>
+            <h2 class="EnLang">Enter your number</h2>
+            <p class="ArLang">
+              ستتلقى رمز التحقق لتسجيل الدخول إلى حسابك أو إنشاء حساب جديد
+            </p>
+            <p class="EnLang">
+              You will receive the verification code to log in to your account
+              or create an account New
+            </p>
+            <div class="errorMessage"></div>
+            <div dir="ltr" class="phoneInputContainer">
+              <input
+                type="tel"
+                id="checkPhoneInput"
+                name="phone"
+                value="+966"
+                countryCode=""
+                phoneNumber=""
+              />
+            </div>
+
+            <button class="continueButton" onclick="addPhoneNumber()">
+              <span class="ArLang">استمر</span
+              ><span class="EnLang">Continue</span>
+              <i class="fa-solid fa-spinner fa-spin"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.8.0/build/js/intlTelInput.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@latest/swiper-bundle.min.js"></script>
     <script src="./globalScript.js"></script>
     <script src="./js/indexScript.js"></script>

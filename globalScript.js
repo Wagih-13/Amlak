@@ -23,7 +23,7 @@ const navBar = `
         </div>
         <div class="buttons">
           <button class="mainButton gold-color">تسجيل الدخول</button>
-          <button class="mainButton transparent-color">اضف عقارك</button>
+          <button class="mainButton transparent-color" onclick="handelOpenAddUnitScreen()">اضف عقارك</button>
         </div>
         <div class="themeAndLang">
           <button class="lang" id="lang" onclick="switchLanguage()">AR</button>
@@ -543,3 +543,148 @@ document.addEventListener("click", (event) => {
     }
   });
 });
+
+/////////////////////////////////////////////////////////////////////////
+const basicPhoneRegex = /^\+?(\d{2}|\d{3})[- ]?(\d{2,3})[- ]?(\d{4,8})$/;
+const addUnitScreen = document.getElementById("addYourUintSection");
+
+function handelOpenAddUnitScreen() {
+  $(addUnitScreen).fadeIn();
+}
+function handelcCloseAddUnitScreen() {
+  $(addUnitScreen).fadeOut();
+  document.getElementById("checkPoneNumberBox").style.display = "flex";
+  document.getElementById("addUintFormSlider").style.display = "none";
+}
+
+let addUnitFormSwiper = new Swiper(".addUnitSwiper", {
+  pagination: {
+    el: ".swiper-pagination",
+    type: "progressbar",
+  },
+  touchRatio: 0.0001,
+  grabCursor: false,
+});
+
+let isConditionMet = false;
+
+function slideNext() {
+  currentForm = addUnitFormSwiper.activeIndex;
+  if (checkIsFormValid(currentForm)) {
+    addUnitFormSwiper.slideNext();
+  }
+}
+function slidePrev() {
+  addUnitFormSwiper.slidePrev();
+  currentForm = addUnitFormSwiper.activeIndex;
+}
+
+function checkIsFormValid(currentSlide) {
+  let status = true;
+  // switch (currentSlide) {
+  //   case 0:
+  //     const form = document.querySelectorAll("#firstForm .inputVal");
+  //     form.forEach((input) => {
+  //       input
+  //         .closest(".inputContainer")
+  //         .querySelector(".errorMessage").innerHTML = "";
+  //       if (input.value == "") {
+  //         input
+  //           .closest(".inputContainer")
+  //           .querySelector(
+  //             ".errorMessage"
+  //           ).innerHTML = ` <span class="ArLang">الحقل مطلوب</span>
+  //               <span class="EnLang">field is required</span>`;
+  //         reRenderLang();
+  //         status = false;
+  //       }
+  //     });
+  //     break;
+
+  //   default:
+  //     break;
+  // }
+  return status;
+}
+
+const checkPhoneInput = document.querySelector("#checkPhoneInput");
+
+window.intlTelInput(checkPhoneInput, {
+  utilsScript:
+    "https://cdn.jsdelivr.net/npm/intl-tel-input@23.8.0/build/js/utils.js",
+});
+
+function addPhoneNumber() {
+  const phone = document.getElementById("checkPhoneInput").value;
+  const userPhoneNumber = {
+    phoneNumber: phone,
+    countryCode:
+      checkPhoneInput.getAttribute("countryCode") == ""
+        ? "+966"
+        : checkPhoneInput.getAttribute("countryCode"),
+  };
+  const errorMsg = document.querySelector(
+    ".addYourUintSection .checkPoneNumberBox .errorMessage"
+  );
+  const continueButton = document.querySelector(
+    ".addYourUintSection .checkPoneNumberBox .continueButton"
+  );
+
+  continueButton.disabled = true;
+  continueButton
+    .querySelectorAll("span")
+    .forEach((span) => (span.style.display = "none"));
+  continueButton.querySelector("i").style.display = "block";
+  errorMsg.innerHTML = ``;
+  continueButton.disabled = true;
+  continueButton.style.cursor = "not-allowed";
+  continueButton.style.backgroundColor = "#928263c9";
+  setTimeout(() => {
+    continueButton
+      .querySelectorAll("span")
+      .forEach((span) => (span.style.display = "inline-block"));
+    continueButton.querySelector("i").style.display = "none";
+    reRenderLang();
+
+    ////////////////////////// if response is successful ///////////////////////////////
+    if (basicPhoneRegex.test(phone) /*&& response == "success"*/) {
+      document.getElementById("checkPoneNumberBox").style.display = "none";
+      document.getElementById("addUintFormSlider").style.display = "flex";
+    } else {
+      ///////////////////////////// if response is failed ///////////////////////////////////
+      errorMsg.innerHTML = `<span class="ArLang">رقم الهاتف غير صالح</span><span class="EnLang">phone is not valid</span>`;
+
+      reRenderLang();
+    }
+    continueButton.disabled = false;
+    continueButton.style.cursor = "pointer";
+    continueButton.style.backgroundColor = "#a99571";
+  }, 1000);
+}
+
+function addPhotos(event, element) {
+  const image = document.querySelector(".imageUploaded");
+  if (image.contains(event.target)) {
+    return;
+  } else {
+    const inputFile = element
+      .closest(".inputContainer")
+      .querySelector("input[type=file]");
+    inputFile.click();
+  }
+}
+
+function displayImg(input) {
+  const reader = new FileReader();
+  reader.onload = () => {
+    document.getElementById("test").src = reader.result;
+  };
+  reader.readAsDataURL(input.files[0]);
+  document.querySelector(".imageUploaded").style.display = "flex";
+}
+
+function deleteImage(element) {
+  element
+    .closest(".imageUploaded").style.display = "none";
+  element.closest(".imageUploaded").querySelector("img").src = "";
+}

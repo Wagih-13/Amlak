@@ -69,8 +69,8 @@ let startDate; ///
 let endDate; ///
 ////////////////////
 function fillConfirmDate(arrivedDate, leavedDate) {
-  startDate = arrivedDate;
-  endDate = leavedDate;
+  startDate = new Date(arrivedDate);
+  endDate = new Date(leavedDate);
   currentURL = window.location.href;
   const url = new URL(`${currentURL}`);
   const searchParams = new URLSearchParams(url.search);
@@ -113,6 +113,7 @@ function showContainer() {
     section.scrollIntoView({ behavior: "smooth" });
   }
 }
+
 let swiper = new Swiper(".mySwiper", {
   pagination: {
     el: ".swiper-pagination",
@@ -124,6 +125,7 @@ let swiper = new Swiper(".mySwiper", {
     prevEl: ".swiper-button-prev",
   },
 });
+
 let mobileViewSwiper = new Swiper(".mobileViewSwiper", {
   pagination: {
     el: ".swiper-pagination",
@@ -253,7 +255,6 @@ const verificationCodeInput = document.querySelectorAll(
   ".verificationCodeInput input"
 );
 const verificationButton = document.getElementById("verificationButton");
-const basicPhoneRegex = /^\+?(\d{2}|\d{3})[- ]?(\d{2,3})[- ]?(\d{4,8})$/;
 function checkPhone() {
   const phone = document.querySelector("#phone").value;
   const userPhoneNumber = {
@@ -408,7 +409,6 @@ const AddYourCommentSection = document.getElementById("AddYourComment");
 const checkPhoneBox = document.getElementById("checkPhoneBox");
 const writeCommentBox = document.getElementById("writeCommentBox");
 const AddReplyBox = document.getElementById("AddReplyBox");
-
 
 function checkIsFormerClient() {
   const role = localStorage.getItem("commentRole");
@@ -741,8 +741,32 @@ function fillFinalData(contractTotalData) {
 
 // console.log(dateParts)
 
-
 // const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
 // const formatter = new Intl.DateTimeFormat('fr-FR', options);
 // const formattedDate = formatter.format(new Date());
 // console.log(formattedDate);
+
+function selectRate(star) {
+  const rating = star.dataset.rating;
+  const stars = document.querySelectorAll(".fa-star");
+
+  stars.forEach((s) => {
+    s.classList.add("fa-regular");
+    s.classList.remove("fa-solid");
+  });
+  stars.forEach((s) => {
+    if (s.dataset.rating <= rating) {
+      s.classList.add("fa-solid");
+      s.classList.remove("fa-regular");
+    }
+  });
+
+  console.log(rating);
+}
+
+const final = {
+  arrivedDate: startDate,
+  leavedDate: new Date(endDate),
+};
+console.log(startDate )
+localStorage.setItem("hmada ", JSON.stringify(final));

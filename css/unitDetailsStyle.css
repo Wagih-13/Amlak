@@ -1553,6 +1553,21 @@
   gap: 20px;
 }
 
+.unitDetails .AddYourComment .writeCommentBox .rating {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+.unitDetails .AddYourComment .writeCommentBox .rating .ratingLable {
+  font-size: var(--inital-font-size);
+  color: white;
+}
+
+.unitDetails .AddYourComment .writeCommentBox .rating span i {
+  color: var(--main-color);
+}
+
 .unitDetails .AddYourComment .writeCommentBox h2,
 .unitDetails .AddYourComment .AddReplyBox h2 {
   font-size: var(--Xlarg-font-size);
@@ -1774,9 +1789,6 @@
   .unitDetails .verificationScreen .verificationSide {
     width: 100%;
   }
-  footer {
-    display: none;
-  }
 }
 @media (max-width: 991px) {
   .unitDetails {
@@ -1913,4 +1925,45 @@
   .unitDetails .calenderSide .pricingContainer .tableContainer table td {
     font-size: 10px;
   }
+}
+
+.offerContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.offerContainer .offerTitle h2 {
+  font-size: var(--Xlarg-font-size);
+  color: var(--main-color);
+}
+
+.offerContainer .offerDescription {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0px;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.offerContainer .offerDescription span {
+  color: white;
+  font-size: var(--main-font-size);
+}
+
+.offerContainer .offerDays {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+  flex-direction: row;
+
+}
+
+.offerContainer .offerDays li {
+  font-size: var(--inital-font-size);
+  color: white;
 }

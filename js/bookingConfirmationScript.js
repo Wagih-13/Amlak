@@ -52,11 +52,27 @@ country.forEach((item) => {
     console.log(item.querySelector(".iti__dial-code").innerText);
   });
 });
+const iti = window.intlTelInput(input, {
+  utilsScript:
+    "https://cdn.jsdelivr.net/npm/intl-tel-input@23.8.0/build/js/utils.js",
+});
+const countyCode = JSON.parse(
+  localStorage.getItem("userPhoneNumber")
+).countryCode;
 
 input.value =
-  JSON.parse(localStorage.getItem("userPhoneNumber")).countryCode +
-  " " +
+  countyCode +
+  "" +
   JSON.parse(localStorage.getItem("userPhoneNumber")).phoneNumber;
+
+input.setAttribute("countryCode", countyCode);
+
+country.forEach((item) => {
+  if (item.querySelector(".iti__dial-code").innerText == countyCode) {
+    const countryName = item.getAttribute("data-country-code");
+    iti.setCountry(countryName);
+  }
+});
 
 const dataSectionsContainer = document.getElementById("dataSectionsContainer");
 const companionsInformation = document.getElementById("companionsInformation");
