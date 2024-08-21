@@ -64,7 +64,7 @@ const navBar = `
       </div>
       <div class="buttons">
         <button class="mainButton gold-color">تسجيل الدخول</button>
-        <button class="mainButton transparent-color">اضف عقارك</button>
+        <button class="mainButton transparent-color" onclick="handelOpenAddUnitScreen()">اضف عقارك</button>
       </div>
       <div class="themeAndLang">
         <button class="lang" id="lang2" onclick="switchLanguage()">AR</button>
@@ -684,7 +684,6 @@ function displayImg(input) {
 }
 
 function deleteImage(element) {
-  element
-    .closest(".imageUploaded").style.display = "none";
+  element.closest(".imageUploaded").style.display = "none";
   element.closest(".imageUploaded").querySelector("img").src = "";
 }
