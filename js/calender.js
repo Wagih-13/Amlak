@@ -279,54 +279,60 @@ const renderCalendar = () => {
               new Date(setArrivedDate)) /
               (1000 * 3600 * 24)
           );
-          divDay.classList.add("leaved-selected");
 
-          setLeavedDate = divDay.getAttribute("data-date");
-          if (maxReserved !== 0) {
-            if (totalDaysDiff < parseInt(maxReserved)) {
-              divDay.classList.add("leaved-selected");
+          if (totalDaysDiff != 0) {
+            divDay.classList.add("leaved-selected");
 
-              document.getElementById("txtCheckOutDate").value = new Date(
-                divDay.getAttribute("data-date")
-              ).toDateString();
+            setLeavedDate = divDay.getAttribute("data-date");
+            if (maxReserved !== 0) {
+              if (totalDaysDiff < parseInt(maxReserved)) {
+                divDay.classList.add("leaved-selected");
 
-              setLeavedDate = divDay.getAttribute("data-date");
+                document.getElementById("txtCheckOutDate").value = new Date(
+                  divDay.getAttribute("data-date")
+                ).toDateString();
+
+                setLeavedDate = divDay.getAttribute("data-date");
+                selectAllDaysBetweenArrivedAndLeaved(
+                  new Date(setArrivedDate),
+                  new Date(setLeavedDate)
+                );
+              } else {
+                setArrivedDate = "";
+                document.querySelector(
+                  ".messages"
+                ).innerHTML = `أقصى عدد الأيام الحجز = ${maxReserved}`;
+                if (document.querySelector(".arrived-selected")) {
+                  document
+                    .querySelector(".arrived-selected")
+                    .classList.remove("arrived-selected");
+                }
+              }
+            }
+            if (
+              new Date(divDay.getAttribute("data-date")) -
+                new Date(setArrivedDate) >
+              0
+            ) {
               selectAllDaysBetweenArrivedAndLeaved(
                 new Date(setArrivedDate),
                 new Date(setLeavedDate)
               );
             } else {
-              setArrivedDate = "";
-              document.querySelector(
-                ".messages"
-              ).innerHTML = `أقصى عدد الأيام الحجز = ${maxReserved}`;
-              if (document.querySelector(".arrived-selected")) {
-                document
-                  .querySelector(".arrived-selected")
-                  .classList.remove("arrived-selected");
-              }
+              let arrivedDate = setArrivedDate;
+              setArrivedDate = setLeavedDate;
+              setLeavedDate = arrivedDate;
+              selectAllDaysBetweenArrivedAndLeaved(
+                new Date(setArrivedDate),
+                new Date(setLeavedDate)
+              );
             }
-          }
-          if (
-            new Date(divDay.getAttribute("data-date")) -
-              new Date(setArrivedDate) >
-            0
-          ) {
-            selectAllDaysBetweenArrivedAndLeaved(
-              new Date(setArrivedDate),
-              new Date(setLeavedDate)
-            );
+            fillConfirmDate(setArrivedDate, setLeavedDate);
+            countOfClick = 2;
           } else {
-            let arrivedDate = setArrivedDate;
-            setArrivedDate = setLeavedDate;
-            setLeavedDate = arrivedDate;
-            selectAllDaysBetweenArrivedAndLeaved(
-              new Date(setArrivedDate),
-              new Date(setLeavedDate)
-            );
+            removeReservedSelected();
+            countOfClick = 0;
           }
-          fillConfirmDate(setArrivedDate, setLeavedDate);
-          countOfClick = 2;
         } else if (countOfClick == 2) {
           removeReservedSelected();
           countOfClick = 0;

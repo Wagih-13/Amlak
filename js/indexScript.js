@@ -296,17 +296,8 @@ filterForm.addEventListener("submit", (event) => {
 
   for (const radioButton of numberOfVehiclesInput) {
     if (radioButton.checked) {
-      const maxiNumberOfVehicles = radioButton.getAttribute(
-        "maxNumberOfVehicles"
-      );
-      minNumberOfVehicles =
-        maxiNumberOfVehicles <= 10
-          ? maxiNumberOfVehicles >= 5
-            ? String(Number(maxiNumberOfVehicles) - 5)
-            : ""
-          : String(Number(maxiNumberOfVehicles) - 10);
+      minNumberOfVehicles = radioButton.getAttribute("minNumberOfVehicles");
       maxNumberOfVehicles = radioButton.getAttribute("maxNumberOfVehicles");
-
       break;
     }
   }
@@ -315,30 +306,19 @@ filterForm.addEventListener("submit", (event) => {
   let maxCapacity;
   for (const radioButton of capacityInput) {
     if (radioButton.checked) {
-      const maximumCapacity = radioButton.getAttribute("maxCapacity");
-      minCapacity =
-        maximumCapacity <= 10
-          ? maximumCapacity >= 5
-            ? String(Number(maximumCapacity) - 5)
-            : ""
-          : String(Number(maximumCapacity) - 10);
+      minCapacity = radioButton.getAttribute("minCapacity");
       maxCapacity = radioButton.getAttribute("maxCapacity");
-
       break;
     }
   }
-  console.log(unitSearchCards);
+
   const filteredCards = Array.from(unitSearchCards).filter((card) => {
     return (
-      (+card.getAttribute("minCapacity") >= minCapacity ||
-        minCapacity === "") &&
-      (+card.getAttribute("maxCapacity") <= maxCapacity ||
-        maxCapacity === "") &&
-      +card.getAttribute("price") >= minPrice &&
-      +card.getAttribute("price") <= maxPrice &&
-      (+card.getAttribute("minNumberOfVehicles") >= minNumberOfVehicles ||
+      (+card.getAttribute("capacity") >= minCapacity || minCapacity === "") &&
+      (+card.getAttribute("capacity") <= maxCapacity || maxCapacity === "") &&
+      (+card.getAttribute("numberOfVehicles") >= minNumberOfVehicles ||
         minNumberOfVehicles === "") &&
-      (+card.getAttribute("maxNumberOfVehicles") <= maxNumberOfVehicles ||
+      (+card.getAttribute("numberOfVehicles") <= maxNumberOfVehicles ||
         maxNumberOfVehicles === "") &&
       (card.getAttribute("unitName").includes(unitName) || unitName === "") &&
       (card.getAttribute("unitCode").includes(unitCode) || unitCode === "") &&
@@ -347,7 +327,7 @@ filterForm.addEventListener("submit", (event) => {
     );
   });
   unitSearchCardsContainer.innerHTML = "";
-
+  console.log(filteredCards);
   for (let i = 0; i < filteredCards.length; i++) {
     const cardElement = filteredCards[i];
     unitSearchCardsContainer.appendChild(cardElement);
@@ -382,15 +362,7 @@ offerFilterForm.addEventListener("submit", (event) => {
 
   for (const radioButton of numberOfVehiclesInput) {
     if (radioButton.checked) {
-      const maxiNumberOfVehicles = radioButton.getAttribute(
-        "maxNumberOfVehicles"
-      );
-      minNumberOfVehicles =
-        maxiNumberOfVehicles <= 10
-          ? maxiNumberOfVehicles >= 5
-            ? String(Number(maxiNumberOfVehicles) - 5)
-            : ""
-          : String(Number(maxiNumberOfVehicles) - 10);
+      minNumberOfVehicles = radioButton.getAttribute("minNumberOfVehicles");
       maxNumberOfVehicles = radioButton.getAttribute("maxNumberOfVehicles");
       break;
     }
@@ -400,13 +372,7 @@ offerFilterForm.addEventListener("submit", (event) => {
   let maxCapacity;
   for (const radioButton of capacityInput) {
     if (radioButton.checked) {
-      const maximumCapacity = radioButton.getAttribute("maxCapacity");
-      minCapacity =
-        maximumCapacity <= 10
-          ? maximumCapacity >= 5
-            ? String(Number(maximumCapacity) - 5)
-            : ""
-          : String(Number(maximumCapacity) - 10);
+      minCapacity = radioButton.getAttribute("minCapacity");
       maxCapacity = radioButton.getAttribute("maxCapacity");
       break;
     }
@@ -414,13 +380,11 @@ offerFilterForm.addEventListener("submit", (event) => {
 
   const filteredCards = Array.from(offerCards).filter((card) => {
     return (
-      (+card.getAttribute("minCapacity") >= minCapacity ||
-        minCapacity === "") &&
-      (+card.getAttribute("maxCapacity") <= maxCapacity ||
-        maxCapacity === "") &&
-      (+card.getAttribute("minNumberOfVehicles") >= minNumberOfVehicles ||
+      (+card.getAttribute("capacity") >= minCapacity || minCapacity === "") &&
+      (+card.getAttribute("capacity") <= maxCapacity || maxCapacity === "") &&
+      (+card.getAttribute("numberOfVehicles") >= minNumberOfVehicles ||
         minNumberOfVehicles === "") &&
-      (+card.getAttribute("maxNumberOfVehicles") <= maxNumberOfVehicles ||
+      (+card.getAttribute("numberOfVehicles") <= maxNumberOfVehicles ||
         maxNumberOfVehicles === "") &&
       (card.getAttribute("unitName").includes(unitName) || unitName === "") &&
       (card.getAttribute("unitCode").includes(unitCode) || unitCode === "") &&
@@ -523,10 +487,8 @@ function creatSection() {
       (card) => `<div
             class="card"
             price="${card.price}"
-            minCapacity="0"
-            maxCapacity="0"
-            minNumberOfVehicles="5"
-            maxNumberOfVehicles="10"
+            capacity="35"
+            numberOfVehicles="8"
             unitLocation="geda"
             unitCode="RB65"
             unitName="amlak"
@@ -801,3 +763,4 @@ document
     }
     handelCloseOrderBox();
   });
+

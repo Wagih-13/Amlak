@@ -327,6 +327,21 @@ function checkPhone() {
   }, 3000);
 }
 
+verificationCodeInput[0].addEventListener("focus", () => {
+  navigator.clipboard.readText().then((clipText) => {
+    if (clipText.length == 4 && !isNaN(clipText)) {
+      const verificationCode = clipText.split("");
+      verificationCodeInput.forEach((input, index) => {
+        input.value = verificationCode[index];
+        if (index < 3) {
+          input.disabled = true;
+        }
+      });
+      verificationCodeInput[3].focus();
+    }
+  });
+});
+
 verificationCodeInput.forEach((input) => {
   let lastInputStatus = 0;
   input.onkeyup = (event) => {
@@ -699,48 +714,6 @@ function fillFinalData(contractTotalData) {
   console.log(finalData);
 }
 
-// let lastData = {
-//   areaUnitContractID: 0,
-//   areaUnitContractCode: "0",
-//   areaUnitContractNumber: "0",
-//   areaUnitContractDate: new Date().toISOString(),
-//   areaUnitContractDateTime: new Date().toISOString(),
-//   areaUnitContractState: 0,
-//   areaUnitContractType: "0",
-//   areaUnitCode: unitId,
-//   areaUnitPrice: Number(unitDetails?.areaUnitPrice),
-//   areaUnitServiceFee: Number(unitDetails?.areaUnitServiceFee),
-//   areaUnitTaxValue: unitDetails?.taxValue,
-//   areaUnitSectionPercentValue: unitDetails?.sectionValue,
-//   areaUnitWebSitePercentValue: unitDetails?.websiteValue,
-//   areaUnitTotalPrice: totalCost?.total,
-//   checkInDate: startDate?.toISOString(),
-//   checkOutDate: endDate?.toISOString(),
-//   nightsCount: totalNights,
-//   nightPrice: Number(unitDetails?.areaUnitPrice),
-//   totalPrice: totalCost?.total,
-//   contractInsurance: Number(unitDetails?.areaUnitInsurance),
-//   waletStus: "0",
-//   createUserName: "",
-//   craeteUserDate: new Date().toISOString(),
-//   updateUserName: "",
-//   updateUserDate: new Date().toISOString(),
-//   renterMobile: currentPhoneNumber,
-//   renterCountryCode: `+${countryCode}`,
-//   verificationCode: verificationCode,
-//   renterIDNo: renterInfo.areaUnitContract.renterIDNo,
-//   renterName: renterInfo.areaUnitContract.renterName,
-//   renterNationalityCode: renterInfo.areaUnitContract.renterNationalityCode,
-//   areaUnitContractEscort: [],
-//   areaUnitContractCar: [],
-// };
-
-// const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
-// const formatter = new Intl.DateTimeFormat('en', options);
-// const dateParts = formatter.formatToParts(new Date());
-
-// console.log(dateParts)
-
 // const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
 // const formatter = new Intl.DateTimeFormat('fr-FR', options);
 // const formattedDate = formatter.format(new Date());
@@ -768,5 +741,19 @@ const final = {
   arrivedDate: startDate,
   leavedDate: new Date(endDate),
 };
-console.log(startDate )
+console.log(startDate);
 localStorage.setItem("hmada ", JSON.stringify(final));
+
+const url = window.location.href;
+function shareUintLink() {
+
+  if (navigator.share) {
+    navigator
+      .share({
+        title: "وحدات املاك الشاطئ",
+        url: url,
+      })
+      .then(() => console.log("Successful share"))
+      .catch((error) => console.log("Error sharing", error));
+  }
+}
