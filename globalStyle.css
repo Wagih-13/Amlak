@@ -977,7 +977,7 @@ footer .copyright {
   align-items: center;
 }
 
-.addYourUintSection .addUintFormSide .swiper-slide form {
+.addYourUintSection .addUintFormSide .swiper-slide > div {
   width: 100%;
   height: 100%;
   padding: 20px;
@@ -989,24 +989,24 @@ footer .copyright {
   gap: 20px;
 }
 
-.addYourUintSection .addUintFormSide .swiper-slide form::-webkit-scrollbar {
+.addYourUintSection .addUintFormSide .swiper-slide div::-webkit-scrollbar {
   width: 4px;
 }
 
 .addYourUintSection
   .addUintFormSide
   .swiper-slide
-  form::-webkit-scrollbar-track {
+  div::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
 
 .addYourUintSection
   .addUintFormSide
   .swiper-slide
-  form::-webkit-scrollbar-thumb {
+  div::-webkit-scrollbar-thumb {
   background: #a5a5a5;
 }
-.addYourUintSection .addUintFormSide .swiper-slide form h2 {
+.addYourUintSection .addUintFormSide .swiper-slide div h2 {
   margin-top: 20px;
   margin-bottom: 0px;
   width: 100%;
@@ -1015,18 +1015,18 @@ footer .copyright {
   color: white;
 }
 
-.addYourUintSection .addUintFormSide .swiper-slide form p {
+.addYourUintSection .addUintFormSide .swiper-slide div p {
   margin: 0px 0px 20px;
   width: 100%;
   text-align: start;
   font-size: var(--larg-font-size);
   color: #ccc;
 }
-.addYourUintSection .addUintFormSide .swiper-slide form h2 span {
+.addYourUintSection .addUintFormSide .swiper-slide div h2 span {
   margin-top: 0px !important;
 }
 
-.addYourUintSection .addUintFormSide .swiper-slide form .inputContainer {
+.addYourUintSection .addUintFormSide .swiper-slide div .inputContainer {
   display: flex;
   flex-direction: column;
   justify-self: center;
@@ -1035,7 +1035,7 @@ footer .copyright {
   gap: 15px;
 }
 
-.addYourUintSection .addUintFormSide .swiper-slide form .inputContainer label {
+.addYourUintSection .addUintFormSide .swiper-slide div .inputContainer label {
   font-size: var(--inital-font-size);
   color: white;
 }
@@ -1043,7 +1043,7 @@ footer .copyright {
 .addYourUintSection
   .addUintFormSide
   .swiper-slide
-  form
+  div
   .inputContainer
   .select-btn {
   background-color: white;
@@ -1051,21 +1051,21 @@ footer .copyright {
 .addYourUintSection
   .addUintFormSide
   .swiper-slide
-  form
+  div
   .inputContainer
   .select-btn
   span,
 .addYourUintSection
   .addUintFormSide
   .swiper-slide
-  form
+  div
   .inputContainer
   .select-btn
   i {
   color: #000;
 }
 
-.addYourUintSection .addUintFormSide .swiper-slide form .inputContainer input {
+.addYourUintSection .addUintFormSide .swiper-slide div .inputContainer input {
   background-color: white !important;
   padding: 8px 20px;
   font-size: var(--inital-font-size);
@@ -1248,6 +1248,8 @@ footer .copyright {
   z-index: 999999999;
 }
 
+/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
 .addYourUintSection
   .addUintFormSide
   .swiperContainer
@@ -1257,13 +1259,7 @@ footer .copyright {
   flex-direction: column;
 }
 
-.addYourUintSection
-  .addUintFormSide
-  .swiperContainer
-  .addUnitSwiper
-  .secondForm
-  .inputContainer
-  .uploadImage {
+.inputContainer .uploadImage {
   width: 100%;
   border: 2px dashed #ccc;
   border-radius: 10px;
@@ -1280,16 +1276,15 @@ footer .copyright {
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  height: 140px;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
 }
 
-.addYourUintSection
-  .addUintFormSide
-  .swiperContainer
-  .addUnitSwiper
-  .secondForm
-  .inputContainer
-  .uploadImage
-  .imageUploaded {
+.inputContainer .uploadImage .imageUploaded {
   position: absolute;
   inset: 0px;
   overflow: hidden;
@@ -1299,6 +1294,114 @@ footer .copyright {
   -ms-transition: 0.5s;
   -o-transition: 0.5s;
   display: none;
+  cursor: initial;
+}
+.inputContainer .uploadImage .imageUploaded i {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: var(--inital-font-size);
+  color: white;
+  cursor: pointer;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  opacity: 0;
+}
+
+.inputContainer .uploadImage:hover {
+  filter: grayscale(1);
+  -webkit-filter: grayscale(1);
+}
+.inputContainer .uploadImage:hover i {
+  opacity: 1 !important;
+}
+
+.inputContainer .uploadImage .imageUploaded img {
+  width: 100%;
+}
+
+.inputContainer .uploadImage i {
+  color: #ccc;
+  font-size: var(--larg-font-size);
+}
+
+.inputContainer .uploadImage p {
+  margin: 0px;
+  width: 100%;
+  text-align: center  !important;
+}
+
+.inputContainer .uploadImage span {
+  font-size: var(--inital-font-size);
+  color: #ccc;
+  text-align: center;
+}
+
+.addYourUintSection
+  .addUintFormSide
+  .swiperContainer
+  .addUnitSwiper
+  .secondForm
+  .addPhoto {
+  padding: 20px 0px;
+  border-top: 1px solid var(--main-color);
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.addYourUintSection
+  .addUintFormSide
+  .swiperContainer
+  .addUnitSwiper
+  .secondForm
+  .addPhoto
+  button {
+  padding: 10px 20px;
+  font-size: var(--inital-font-size);
+  color: white;
+  background-color: var(--main-color);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+}
+
+.addYourUintSection
+  .addUintFormSide
+  .swiperContainer
+  .addUnitSwiper
+  .secondForm
+  .addPhoto
+  > span {
+  color: #ccc;
+  font-size: var(--inital-font-size);
+}
+
+.addYourUintSection
+  .addUintFormSide
+  .swiperContainer
+  .addUnitSwiper
+  .secondForm
+  .addPhoto
+  button:hover {
+  transform: scale(0.98);
+  -webkit-transform: scale(0.98);
+  -moz-transform: scale(0.98);
+  -ms-transform: scale(0.98);
+  -o-transform: scale(0.98);
 }
 
 .addYourUintSection
@@ -1308,7 +1411,33 @@ footer .copyright {
   .secondForm
   .inputContainer
   .uploadImage
-  .imageUploaded
+  .imageBox {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  cursor: initial;
+}
+
+.addYourUintSection
+  .addUintFormSide
+  .swiperContainer
+  .addUnitSwiper
+  .secondForm
+  .inputContainer
+  .uploadImage
+  .imageBox
+  img {
+  width: 100%;
+}
+
+.addYourUintSection
+  .addUintFormSide
+  .swiperContainer
+  .addUnitSwiper
+  .secondForm
+  .inputContainer
+  .uploadImage
+  .imageBox
   i {
   position: absolute;
   top: 15px;
@@ -1324,75 +1453,133 @@ footer .copyright {
   opacity: 0;
 }
 
-.addYourUintSection
-  .addUintFormSide
-  .swiperContainer
-  .addUnitSwiper
-  .secondForm
-  .inputContainer
-  .uploadImage
-  .imageUploaded:hover {
-  filter: grayscale(1);
-  -webkit-filter: grayscale(1);
-}
-.addYourUintSection
-  .addUintFormSide
-  .swiperContainer
-  .addUnitSwiper
-  .secondForm
-  .inputContainer
-  .uploadImage
-  .imageUploaded:hover
-  i {
-  opacity: 1;
-}
-
-.addYourUintSection
-  .addUintFormSide
-  .swiperContainer
-  .addUnitSwiper
-  .secondForm
-  .inputContainer
-  .uploadImage
-  .imageUploaded
-  img {
-  width: 100%;
-}
-
-.addYourUintSection
-  .addUintFormSide
-  .swiperContainer
-  .addUnitSwiper
-  .secondForm
-  .inputContainer
-  .uploadImage
-  i {
+#lodingSpiner {
+  display: none;
+  position: fixed;
+  bottom: 10px;
+  left: 0px;
+  z-index: 99;
   color: #ccc;
   font-size: var(--Xlarg-font-size);
-}
-.addYourUintSection
-  .addUintFormSide
-  .swiperContainer
-  .addUnitSwiper
-  .secondForm
-  .inputContainer
-  .uploadImage
-  p {
-  margin: 0px;
   width: 100%;
   text-align: center;
 }
+
+.addYourUintSection .addUintFormSide .swiperContainer .fourthSectionSlide {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: calc(100% - 100px);
+  z-index: 9999;
+  overflow: hidden;
+  padding: 20px;
+  background-color: #18131c;
+  display: none;
+}
+
 .addYourUintSection
   .addUintFormSide
   .swiperContainer
-  .addUnitSwiper
-  .secondForm
-  .inputContainer
-  .uploadImage
-  span {
+  .fourthSectionSlide
+  .addUnitMap {
+  width: 100%;
+  height: 50vh;
+}
+.addYourUintSection
+  .addUintFormSide
+  .swiperContainer
+  .fourthSectionSlide
+  .addUnitMap
+  #addUnitMap {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.addYourUintSection .addUintFormSide .swiperContainer .fourthSectionSlide h2 {
+  color: white;
+  font-size: var(--Xlarg-font-size);
+}
+.counterContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+.counterContainer h3 {
+  color: white;
   font-size: var(--larg-font-size);
-  color: #ccc;
+}
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.counter button {
+  font-size: 30px;
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.counter input {
+  width: 60px;
+  height: 60px;
   text-align: center;
+  font-size: 20px;
+  color: white;
+  border: 1px solid white;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  background-color: transparent;
+}
+
+#addUnitSubmitButton {
+  padding: 10px 20px;
+  font-size: var(--inital-font-size);
+  color: white;
+  background-color: var(--main-color);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  display: none;
+}
+
+.eleventhSection p {
+  font-size: var(--inital-font-size) !important;
+  color: #ccc;
+}
+
+.eleventhSection .inputContainer textarea {
+  width: 100%;
+  height: 150px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  padding: 20px;
+  font-size: var(--inital-font-size);
+  color: black;
+  resize: none;
 }
 
 /* ///////////////////////////////////////////////// Start media  //////////////////////////////////////////////////// */
@@ -1526,6 +1713,9 @@ footer .copyright {
   }
   .addYourUintSection .addUintFormSide .swiper-pagination {
     bottom: 70px !important;
+  }
+  .addYourUintSection .addUintFormSide .swiperContainer {
+    height: 95vh;
   }
 }
 @media (max-width: 500px) {

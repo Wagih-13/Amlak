@@ -327,6 +327,8 @@ function checkPhone() {
   }, 3000);
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////////
+
 verificationCodeInput[0].addEventListener("focus", () => {
   navigator.clipboard.readText().then((clipText) => {
     if (clipText.length == 4 && !isNaN(clipText)) {
@@ -746,7 +748,6 @@ localStorage.setItem("hmada ", JSON.stringify(final));
 
 const url = window.location.href;
 function shareUintLink() {
-
   if (navigator.share) {
     navigator
       .share({

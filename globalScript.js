@@ -550,6 +550,7 @@ const addUnitScreen = document.getElementById("addYourUintSection");
 
 function handelOpenAddUnitScreen() {
   $(addUnitScreen).fadeIn();
+  handelOpenLinksList();
 }
 function handelcCloseAddUnitScreen() {
   $(addUnitScreen).fadeOut();
@@ -558,12 +559,49 @@ function handelcCloseAddUnitScreen() {
 }
 
 let addUnitFormSwiper = new Swiper(".addUnitSwiper", {
+  preventInteractionOnTransition: true,
   pagination: {
     el: ".swiper-pagination",
     type: "progressbar",
   },
-  touchRatio: 0.0001,
+  touchRatio: 0.001,
   grabCursor: false,
+});
+addUnitFormSwiper.on("slideChangeTransitionStart", function () {
+  console.log("hiii");
+
+  if ($(this.slides[this.activeIndex]).find(".fourthSection").length > 0) {
+    document.querySelector(".fourthSectionSlide").style.display = "inline-block";
+    let addUnitMap = L.map("addUnitMap", {
+      zoomSnap: 3,
+      dragging: true,
+    }).setView(["30", "33.2"], 13);
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(addUnitMap);
+
+    let currentMarker;
+
+    addUnitMap.on("click", function (e) {
+      if (currentMarker) {
+        addUnitMap.removeLayer(currentMarker);
+      }
+      let lat = e.latlng.lat;
+      let lng = e.latlng.lng;
+      currentMarker = L.marker([lat, lng]).addTo(addUnitMap);
+      currentMarker.bindPopup("<h3> تم تحديد الموقع الجديد </h3>").openPopup();
+      console.log(lat, lng);
+    });
+
+    // Call invalidateSize() only if container is visible
+    setTimeout(() => {
+      addUnitMap.invalidateSize();
+    }, 1500);
+  } else {
+    document.querySelector(".fourthSectionSlide").style.display = "none";
+  }
 });
 
 let isConditionMet = false;
@@ -604,6 +642,15 @@ function checkIsFormValid(currentSlide) {
   //   default:
   //     break;
   // }
+  // if (currentSlide == 9) {
+  //   document.getElementById("swiperNext").style.display = "none";
+  //   document.getElementById("addUnitSubmitButton").style.display =
+  //     "inline-block";
+  // } else {
+  //   document.getElementById("addUnitSubmitButton").style.display = "none";
+  //   document.getElementById("swiperNext").style.display = "inline-block";
+  // }
+
   return status;
 }
 
@@ -662,8 +709,10 @@ function addPhoneNumber() {
   }, 1000);
 }
 
-function addPhotos(event, element) {
-  const image = document.querySelector(".imageUploaded");
+function addMainPhoto(event, element) {
+  const image = element
+    .closest(".inputContainer")
+    .querySelector(".imageUploaded");
   if (image.contains(event.target)) {
     return;
   } else {
@@ -676,14 +725,96 @@ function addPhotos(event, element) {
 
 function displayImg(input) {
   const reader = new FileReader();
-  reader.onload = () => {
-    document.getElementById("test").src = reader.result;
-  };
   reader.readAsDataURL(input.files[0]);
-  document.querySelector(".imageUploaded").style.display = "flex";
+  reader.onload = () => {
+    const image = input
+      .closest(".inputContainer")
+      .querySelector(".imageUploaded img");
+    image.src = reader.result;
+  };
+
+  input
+    .closest(".inputContainer")
+    .querySelector(".imageUploaded").style.display = "flex";
 }
 
 function deleteImage(element) {
   element.closest(".imageUploaded").style.display = "none";
   element.closest(".imageUploaded").querySelector("img").src = "";
+}
+
+const addImgInput = document.getElementById("addImgInput");
+const imageCounter = document.getElementById("imgCounter");
+const displayCounter = document.getElementById("displayCounter");
+
+function deleteImageSection(element) {
+  let minCount = imageCounter.dataset.mincount;
+  if (Number(minCount) > 0) {
+    element.closest(".inputContainer").remove();
+    imageCounter.dataset.mincount = Number(minCount) - 1;
+    displayCounter.innerText = imageCounter.dataset.mincount;
+  }
+}
+
+function addNewImage() {
+  const secondForm = document.getElementById("secondForm");
+  let minCount = imageCounter.dataset.mincount;
+  let maxCount = imageCounter.dataset.maxcount;
+  if (minCount != maxCount) {
+    addImgInput.click();
+  }
+}
+
+addImgInput.onchange = (e) => {
+  const reader = new FileReader();
+  reader.readAsDataURL(addImgInput.files[0]);
+  document.getElementById("lodingSpiner").style.display = "block";
+  reader.onload = () => {
+    const section = `
+                    <input
+                      hidden=""
+                      class="unitPhoto"
+                      type="file"
+                      accept="image/*"
+                      value="${reader.result}"
+                    />
+                    <div class="uploadImage">
+                      <div class="imageBox">
+                        <i
+                          class="fa-solid fa-x"
+                          onclick="deleteImageSection(this)"
+                        ></i>
+                        <img
+                          src="${reader.result}"
+                          width="200"
+                          height="200"
+                          alt=""
+                        />
+                      </div>
+                    </div>`;
+    document.getElementById("lodingSpiner").style.display = "none";
+    const newDiv = document.createElement("div");
+    let minCount = imageCounter.dataset.mincount;
+    let maxCount = imageCounter.dataset.maxcount;
+    imageCounter.dataset.mincount = Number(minCount) + 1;
+    displayCounter.innerText = imageCounter.dataset.mincount;
+    newDiv.className = "inputContainer";
+    newDiv.innerHTML = section;
+    secondForm.appendChild(newDiv);
+  };
+};
+
+function increase(element) {
+  const parent = element.closest(".counter");
+  let countInput = parent.querySelector(".count");
+  countInput.value = parseInt(countInput.value) + 1;
+}
+
+function decrease(element) {
+  const parent = element.closest(".counter");
+  let countInput = parent.querySelector(".count");
+
+  if (countInput.value > 0) {
+    countInput.value = parseInt(countInput.value) - 1;
+  }
 }

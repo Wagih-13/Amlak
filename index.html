@@ -19,13 +19,25 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.8.0/build/css/intlTelInput.css"
     />
+
     <link rel="stylesheet" href="./css/calender.css" />
     <link rel="stylesheet" href="./css/freamWork.css" />
     <link rel="stylesheet" href="globalStyle.css" />
     <link rel="stylesheet" href="./css/fillterUnit.css" />
     <link rel="stylesheet" href="./css/indexStlye.css" />
-
     <title>Amlak-Elshatea</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
   </head>
 
   <body dir="">
@@ -303,7 +315,6 @@
         </div>
       </div>
     </div>
-
     <div class="unitSearchOutput" id="unitSearchOutput">
       <div class="filterContainer" id="uintSearchFilterContainer">
         <div class="filterBoxContainer">
@@ -1062,7 +1073,6 @@
         </div>
       </div>
     </div>
-
     <div class="specialUnits" id="specialUnits">
       <h1>وحدات مميزة</h1>
       <div class="specialUnitsSlider">
@@ -2373,10 +2383,21 @@
         </div>
         <div class="addUintFormSide">
           <div class="swiperContainer" id="addUintFormSlider">
+            <div class="fourthSectionSlide" id="fourthSection">
+              <h2>
+                <span class="ArLang">عنوان العقار علي الخريطه </span
+                ><span class="EnLang"
+                  >The address of the property is on the map
+                </span>
+              </h2>
+              <div class="addUnitMap">
+                <div id="addUnitMap"></div>
+              </div>
+            </div>
             <div class="swiper addUnitSwiper">
               <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                  <form class="firstForm" id="firstForm">
+                  <div class="firstForm" id="firstForm">
                     <h2>
                       <span class="ArLang">اضف وحدتك</span
                       ><span class="EnLang">Add your uint</span>
@@ -2386,22 +2407,34 @@
                       ><span class="EnLang">Unit information</span>
                     </p>
                     <div class="inputContainer">
-                      <label for="">البريد الالكتروني للمالك</label>
+                      <label>
+                        <span class="ArLang">البريد الالكتروني للمالك</span>
+                        <span class="EnLang">Owmer Email</span>
+                      </label>
                       <input type="email" class="inputVal" />
                       <div class="errorMessage"></div>
                     </div>
                     <div class="inputContainer">
-                      <label for="">اسم المالك</label>
+                      <label>
+                        <span class="ArLang">اسم المالك</span>
+                        <span class="EnLang">Name Owner</span>
+                      </label>
                       <input type="text" class="inputVal" />
                       <div class="errorMessage"></div>
                     </div>
                     <div class="inputContainer">
-                      <label for="">رقم الهوية</label>
-                      <input type="tel" class="inputVal IdNumber" />
+                      <label>
+                        <span class="ArLang">رقم الهوية</span>
+                        <span class="EnLang">Owner ID</span>
+                      </label>
+                      <input type="number" class="inputVal IdNumber" />
                       <div class="errorMessage"></div>
                     </div>
                     <div class="inputContainer">
-                      <label for="">اختر نوع وحدتك</label>
+                      <label>
+                        <span class="ArLang">اختر نوع وحدتك</span>
+                        <span class="EnLang">Choose Your Type Unit</span>
+                      </label>
                       <input type="text" class="valueInput" />
                       <input type="text" class="emptyInput inputVal" />
                       <div class="wrapper">
@@ -2454,14 +2487,17 @@
                       <div class="errorMessage"></div>
                     </div>
                     <div class="inputContainer">
-                      <label for="">اسم الوحدة</label>
+                      <label>
+                        <span class="ArLang">اسم الوحدة</span>
+                        <span class="EnLang">Unit Name</span>
+                      </label>
                       <input type="text" class="inputVal" />
                       <div class="errorMessage"></div>
                     </div>
-                  </form>
+                  </div>
                 </div>
                 <div class="swiper-slide">
-                  <form class="secondForm" id="secondForm">
+                  <div class="secondForm" id="secondForm">
                     <h2>
                       <span class="ArLang">اضف وحدتك</span
                       ><span class="EnLang">Add your uint</span>
@@ -2469,7 +2505,7 @@
                     <div class="inputContainer">
                       <label for="">
                         <span class="ArLang"> اختر الصورة الرئيسية</span>
-                        <span class="EnLang">اختر الصورة الرئيسية</span>
+                        <span class="EnLang">select main image</span>
                       </label>
                       <input
                         hidden=""
@@ -2479,73 +2515,607 @@
                       />
                       <div
                         class="uploadImage"
-                        onclick="addPhotos(event , this)"
+                        onclick="addMainPhoto(event , this)"
                       >
                         <div class="imageUploaded">
                           <i
                             class="fa-solid fa-x"
                             onclick="deleteImage(this)"
                           ></i>
-                          <img
-                            src=""
-                            id="test"
-                            width="200"
-                            height="200"
-                            alt=""
-                          />
+                          <img src="" width="200" height="200" alt="" />
                         </div>
                         <i class="fa-solid fa-camera-retro"></i>
                         <p>
                           <span class="ArLang">رفع صورة</span>
-                          <span class="EnLang">رفع صورة</span>
+                          <span class="EnLang"> Upload Image </span>
                         </p>
                       </div>
                     </div>
-                  </form>
+                    <div class="addPhoto">
+                      <span data-maxCount="4" data-minCount="0" id="imgCounter"
+                        >(<span id="displayCounter">0</span
+                        >/<span>4</span>)</span
+                      >
+                      <button id="addPhoto" onclick="addNewImage()">
+                        <input
+                          hidden=""
+                          id="addImgInput"
+                          type="file"
+                          accept="image/*"
+                        />
+                        <span class="ArLang">اضف صورة</span
+                        ><span class="EnLang">UPLOAD IMAGE</span>
+                      </button>
+                    </div>
+                    <div id="lodingSpiner">
+                      <i class="fa-solid fa-spinner fa-spin"></i>
+                    </div>
+                  </div>
                 </div>
                 <div class="swiper-slide">
-                  <form action="">
+                  <div class="thirdSection" id="thirdSection">
+                    <h2>
+                      <span class="ArLang">عنوان العقار</span
+                      ><span class="EnLang">Property Address</span>
+                    </h2>
                     <div class="inputContainer">
-                      <label for=""></label>
-                      <input type="text" name="" id="" />
+                      <label>
+                        <span class="ArLang">أدخل الحي</span>
+                        <span class="EnLang">City</span>
+                      </label>
+                      <input type="text" class="valueInput" />
+                      <input type="text" class="emptyInput inputVal" />
+                      <div class="wrapper">
+                        <div class="select-btn">
+                          <span> </span>
+                          <i class="fa-solid fa-angle-down"></i>
+                        </div>
+                        <div class="content">
+                          <div class="search">
+                            <input
+                              spellcheck="false"
+                              type="text"
+                              placeholder="Search"
+                            />
+                          </div>
+                          <ul class="options">
+                            <li
+                              onclick="searchUnitUpdateName(this)"
+                              optionCode="2822"
+                            >
+                              زوج/زوجة
+                            </li>
+                            <li
+                              onclick="searchUnitUpdateName(this)"
+                              optionCode="2822"
+                            >
+                              ابن/بنت
+                            </li>
+                            <li
+                              onclick="searchUnitUpdateName(this)"
+                              optionCode="2822"
+                            >
+                              والد/والدة
+                            </li>
+                            <li
+                              onclick="searchUnitUpdateName(this)"
+                              optionCode="2822"
+                            >
+                              اخ/اخت
+                            </li>
+                            <li
+                              onclick="searchUnitUpdateName(this)"
+                              optionCode="2822"
+                            >
+                              اخرى
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="errorMessage"></div>
                     </div>
                     <div class="inputContainer">
-                      <label for=""></label>
-                      <input type="text" name="" id="" />
+                      <label>
+                        <span class="ArLang">أدخل الحي</span>
+                        <span class="EnLang">Enter Your Neighborhood</span>
+                      </label>
+                      <input type="text" class="valueInput" />
+                      <input type="text" class="emptyInput inputVal" />
+                      <div class="wrapper">
+                        <div class="select-btn">
+                          <span> </span>
+                          <i class="fa-solid fa-angle-down"></i>
+                        </div>
+                        <div class="content">
+                          <div class="search">
+                            <input
+                              spellcheck="false"
+                              type="text"
+                              placeholder="Search"
+                            />
+                          </div>
+                          <ul class="options">
+                            <li
+                              onclick="searchUnitUpdateName(this)"
+                              optionCode="2822"
+                            >
+                              زوج/زوجة
+                            </li>
+                            <li
+                              onclick="searchUnitUpdateName(this)"
+                              optionCode="2822"
+                            >
+                              ابن/بنت
+                            </li>
+                            <li
+                              onclick="searchUnitUpdateName(this)"
+                              optionCode="2822"
+                            >
+                              والد/والدة
+                            </li>
+                            <li
+                              onclick="searchUnitUpdateName(this)"
+                              optionCode="2822"
+                            >
+                              اخ/اخت
+                            </li>
+                            <li
+                              onclick="searchUnitUpdateName(this)"
+                              optionCode="2822"
+                            >
+                              اخرى
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="errorMessage"></div>
                     </div>
                     <div class="inputContainer">
-                      <label for=""></label>
-                      <input type="text" name="" id="" />
+                      <label>
+                        <span class="ArLang">أدخل الاتجاه</span>
+                        <span class="EnLang">Enter Your Direction</span>
+                      </label>
+                      <input type="text" class="valueInput" />
+                      <input type="text" class="emptyInput inputVal" />
+                      <div class="wrapper">
+                        <div class="select-btn">
+                          <span> </span>
+                          <i class="fa-solid fa-angle-down"></i>
+                        </div>
+                        <div class="content">
+                          <div class="search">
+                            <input
+                              spellcheck="false"
+                              type="text"
+                              placeholder="Search"
+                            />
+                          </div>
+                          <ul class="options">
+                            <li
+                              onclick="searchUnitUpdateName(this)"
+                              optionCode="2822"
+                            >
+                              زوج/زوجة
+                            </li>
+                            <li
+                              onclick="searchUnitUpdateName(this)"
+                              optionCode="2822"
+                            >
+                              ابن/بنت
+                            </li>
+                            <li
+                              onclick="searchUnitUpdateName(this)"
+                              optionCode="2822"
+                            >
+                              والد/والدة
+                            </li>
+                            <li
+                              onclick="searchUnitUpdateName(this)"
+                              optionCode="2822"
+                            >
+                              اخ/اخت
+                            </li>
+                            <li
+                              onclick="searchUnitUpdateName(this)"
+                              optionCode="2822"
+                            >
+                              اخرى
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="errorMessage"></div>
                     </div>
-                  </form>
+                  </div>
                 </div>
                 <div class="swiper-slide">
-                  <form action=""></form>
+                  <div class="fourthSection"></div>
                 </div>
                 <div class="swiper-slide">
-                  <form action="">
+                  <div class="fifthSection" id="fifthSection">
+                    <h2>
+                      <span class="ArLang">تفاصيل عقارك</span
+                      ><span class="EnLang">Your Property Details </span>
+                    </h2>
                     <div class="inputContainer">
-                      <label for=""></label>
-                      <input type="text" name="" id="" />
+                      <label for="">
+                        <span class="ArLang">مساحة الوحدة</span>
+                        <span class="EnLang">Unit Area</span>
+                      </label>
+                      <input type="number" name="" id="" />
                     </div>
                     <div class="inputContainer">
-                      <label for=""></label>
-                      <input type="text" name="" id="" />
+                      <label for="">
+                        <span class="ArLang">عدد الأشخاص</span>
+                        <span class="EnLang">Number of People</span>
+                      </label>
+                      <input type="number" name="" id="" />
                     </div>
                     <div class="inputContainer">
-                      <label for=""></label>
-                      <input type="text" name="" id="" />
+                      <label for="">
+                        <span class="ArLang">عدد السيارات</span>
+                        <span class="EnLang"> Number of Cars</span>
+                      </label>
+                      <input type="number" name="" id="" />
                     </div>
                     <div class="inputContainer">
-                      <label for=""></label>
-                      <input type="text" name="" id="" />
+                      <label for="">
+                        <span class="ArLang">عدد الغرف</span>
+                        <span class="EnLang">Number of Rooms</span>
+                      </label>
+                      <input type="number" name="" id="" />
                     </div>
-                  </form>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="sixthSection">
+                    <h2>
+                      <span class="ArLang">تفاصيل المجلس</span
+                      ><span class="EnLang">Council Details</span>
+                    </h2>
+                    <div class="counterContainer">
+                      <h3>
+                        <span class="ArLang">المجلس الرئيسي</span>
+                        <span class="EnLang">Main Council</span>
+                      </h3>
+                      <div class="counter">
+                        <button id="decrease" onclick="decrease(this)">
+                          -
+                        </button>
+                        <input type="text" class="count" value="0" readonly />
+                        <button id="increase" onclick="increase(this)">
+                          +
+                        </button>
+                      </div>
+                    </div>
+                    <div class="counterContainer">
+                      <h3>
+                        <span class="ArLang">مجلس إضافي</span>
+                        <span class="EnLang">Extra Council</span>
+                      </h3>
+                      <div class="counter">
+                        <button id="decrease" onclick="decrease(this)">
+                          -
+                        </button>
+                        <input type="text" class="count" value="0" readonly />
+                        <button id="increase" onclick="increase(this)">
+                          +
+                        </button>
+                      </div>
+                    </div>
+                    <div class="counterContainer">
+                      <h3>
+                        <span class="ArLang">مجلس خارجي</span>
+                        <span class="EnLang">External Council</span>
+                      </h3>
+                      <div class="counter">
+                        <button id="decrease" onclick="decrease(this)">
+                          -
+                        </button>
+                        <input type="text" class="count" value="0" readonly />
+                        <button id="increase" onclick="increase(this)">
+                          +
+                        </button>
+                      </div>
+                    </div>
+                    <div class="counterContainer">
+                      <h3>
+                        <span class="ArLang">ملحق خارجي</span>
+                        <span class="EnLang">External Accessory</span>
+                      </h3>
+                      <div class="counter">
+                        <button id="decrease" onclick="decrease(this)">
+                          -
+                        </button>
+                        <input type="text" class="count" value="0" readonly />
+                        <button id="increase" onclick="increase(this)">
+                          +
+                        </button>
+                      </div>
+                    </div>
+                    <div class="counterContainer">
+                      <h3>
+                        <span class="ArLang">عدد الكراسي</span>
+                        <span class="EnLang">Number of Chairs</span>
+                      </h3>
+                      <div class="counter">
+                        <button id="decrease" onclick="decrease(this)">
+                          -
+                        </button>
+                        <input type="text" class="count" value="0" readonly />
+                        <button id="increase" onclick="increase(this)">
+                          +
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="seventhSection">
+                    <h2>
+                      <span class="ArLang">تفاصيل الأسرة</span
+                      ><span class="EnLang">Bedroom Details</span>
+                    </h2>
+                    <div class="counterContainer">
+                      <h3>
+                        <span class="ArLang">عدد غرف النوم</span>
+                        <span class="EnLang">Number of Bedrooms</span>
+                      </h3>
+                      <div class="counter">
+                        <button id="decrease" onclick="decrease(this)">
+                          -
+                        </button>
+                        <input type="text" class="count" value="0" readonly />
+                        <button id="increase" onclick="increase(this)">
+                          +
+                        </button>
+                      </div>
+                    </div>
+                    <div class="counterContainer">
+                      <h3>
+                        <span class="ArLang">عدد الأسرة</span>
+                        <span class="EnLang">Number of Beds</span>
+                      </h3>
+                      <div class="counter">
+                        <button id="decrease" onclick="decrease(this)">
+                          -
+                        </button>
+                        <input type="text" class="count" value="0" readonly />
+                        <button id="increase" onclick="increase(this)">
+                          +
+                        </button>
+                      </div>
+                    </div>
+                    <div class="counterContainer">
+                      <h3>
+                        <span class="ArLang">عدد الأسرة الرئيسية</span>
+                        <span class="EnLang">Number of Master Beds</span>
+                      </h3>
+                      <div class="counter">
+                        <button id="decrease" onclick="decrease(this)">
+                          -
+                        </button>
+                        <input type="text" class="count" value="0" readonly />
+                        <button id="increase" onclick="increase(this)">
+                          +
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="eighthSection" id="eighthSection"></div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="ninthSection" id="ninthSection">
+                    <h2>
+                      <span class="ArLang">أضف وحدتك</span
+                      ><span class="EnLang">Add your uint</span>
+                    </h2>
+                    <p>
+                      <span class="ArLang">بيانات الوحدة</span
+                      ><span class="EnLang">Unit information</span>
+                    </p>
+                    <div class="inputContainer">
+                      <label>
+                        <span class="ArLang">سعر الوحدة</span>
+                        <span class="EnLang">Unit Price</span>
+                      </label>
+                      <input type="email" class="inputVal" />
+                      <div class="errorMessage"></div>
+                    </div>
+                    <div class="inputContainer">
+                      <label>
+                        <span class="ArLang">سعر الوحدة في عطلة نهاية الاسبوع</span>
+                        <span class="EnLang">Unit Price During Weekend</span>
+                      </label>
+                      <input type="email" class="inputVal" />
+                      <div class="errorMessage"></div>
+                    </div>
+                    <div class="inputContainer">
+                      <label>
+                        <span class="ArLang">تأمين الوحدة</span>
+                        <span class="EnLang">Unit Insurance</span>
+                      </label>
+                      <input type="text" class="inputVal" />
+                      <div class="errorMessage"></div>
+                    </div>
+                    <div class="inputContainer">
+                      <label>
+                        <span class="ArLang">رسوم الخدمة</span>
+                        <span class="EnLang">Unit Service Fees</span>
+                      </label>
+                      <input type="number" class="inputVal IdNumber" />
+                      <div class="errorMessage"></div>
+                    </div>
+                    <div class="inputContainer">
+                      <label>
+                        <span class="ArLang">وقت الوصول</span>
+                        <span class="EnLang">Arrival Time</span>
+                      </label>
+                      <input type="date" class="inputVal" />
+                      <div class="errorMessage"></div>
+                    </div>
+                    <div class="inputContainer">
+                      <label>
+                        <span class="ArLang">وقت المغادرة</span>
+                        <span class="EnLang">Departure Time</span>
+                      </label>
+                      <input type="date" class="inputVal" />
+                      <div class="errorMessage"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="tenthSection" id="tenthSection">
+                    <h2>
+                      <span class="ArLang">بيانات الوحدة</span
+                      ><span class="EnLang">Add your uint</span>
+                    </h2>
+                    <div class="inputContainer">
+                      <label for="">
+                        <span class="ArLang"> وثيقة الملكيه</span>
+                        <span class="EnLang">Authorization Document</span>
+                      </label>
+                      <input
+                        hidden=""
+                        type="file"
+                        accept="image/*"
+                        onchange="displayImg(this)"
+                      />
+                      <div
+                        class="uploadImage"
+                        onclick="addMainPhoto(event , this)"
+                      >
+                        <div class="imageUploaded">
+                          <i
+                            class="fa-solid fa-x"
+                            onclick="deleteImage(this)"
+                          ></i>
+                          <img src="" width="200" height="200" alt="" />
+                        </div>
+                        <i class="fa-solid fa-camera-retro"></i>
+                        <p>
+                          <span class="ArLang">رفع صورة</span>
+                          <span class="EnLang"> Upload Image </span>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="inputContainer">
+                      <label for="">
+                        <span class="ArLang"> وثيقة السلامة العامة</span>
+                        <span class="EnLang">Public Safety Document</span>
+                      </label>
+                      <input
+                        hidden=""
+                        type="file"
+                        accept="image/*"
+                        onchange="displayImg(this)"
+                      />
+                      <div
+                        class="uploadImage"
+                        onclick="addMainPhoto(event , this)"
+                      >
+                        <div class="imageUploaded">
+                          <i
+                            class="fa-solid fa-x"
+                            onclick="deleteImage(this)"
+                          ></i>
+                          <img src="" width="200" height="200" alt="" />
+                        </div>
+                        <i class="fa-solid fa-camera-retro"></i>
+                        <p>
+                          <span class="ArLang">رفع صورة</span>
+                          <span class="EnLang"> Upload Image </span>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="inputContainer">
+                      <label for="">
+                        <span class="ArLang"> وثيقة الترخيص</span>
+                        <span class="EnLang">License Document</span>
+                      </label>
+                      <input
+                        hidden=""
+                        type="file"
+                        accept="image/*"
+                        onchange="displayImg(this)"
+                      />
+                      <div
+                        class="uploadImage"
+                        onclick="addMainPhoto(event , this)"
+                      >
+                        <div class="imageUploaded">
+                          <i
+                            class="fa-solid fa-x"
+                            onclick="deleteImage(this)"
+                          ></i>
+                          <img src="" width="200" height="200" alt="" />
+                        </div>
+                        <i class="fa-solid fa-camera-retro"></i>
+                        <p>
+                          <span class="ArLang">رفع صورة</span>
+                          <span class="EnLang"> Upload Image </span>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="inputContainer">
+                      <label for="">
+                        <span class="ArLang">تاريخ انتهاء الرخصة</span>
+                        <span class="EnLang">License Expiry Date</span>
+                      </label>
+                      <input type="date" name="" id="" />
+                    </div>
+                    <div class="inputContainer">
+                      <label for="">
+                        <span class="ArLang">تاريخ إنتهاء تسجيل الوحدة</span>
+                        <span class="EnLang">Unit Registeration Expiry Date</span>
+                      </label>
+                      <input type="date" name="" id="" />
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="eleventhSection" id="eleventhSection">
+                    <h2>
+                      <span class="ArLang"> صف مكان الإقامة الخاص بك</span
+                      ><span class="EnLang">Describe your property</span>
+                    </h2>
+                    <p class="ArLang">تقديم وصف تفصيلي لمكان الإقامة الخاص بك</p>
+                    <p class="EnLang">Provide a detailed description of your property</p>
+                    <div class="inputContainer">
+                      <label >     <span class="ArLang">وصف العقار</span
+                        ><span class="EnLang">Property Description</span></label>
+                      <textarea name="" id="" class="inputVal"></textarea>
+                      <div class="errorMessage"></div>
+                    </div>
+                    <div class="inputContainer">
+                      <label >     <span class="ArLang">ملاحظات</span
+                        ><span class="EnLang">Reviews</span></label>
+                      <textarea name="" id="" class="inputVal"></textarea>
+                      <div class="errorMessage"></div>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="paginationButtons">
-                <button onclick="slidePrev()" class="swiperPrev">Prev</button>
-                <button onclick="slideNext()" class="swiperNext">Next</button>
+                <button
+                  onclick="slidePrev()"
+                  id="swiperPrev"
+                  class="swiperPrev"
+                >
+                <span class="ArLang">السابق</span
+                  ><span class="EnLang">Back</span>
+                </button>
+                <button
+                  onclick="slideNext()"
+                  id="swiperNext"
+                  class="swiperNext"
+                >
+                <span class="ArLang">التالي</span
+                  ><span class="EnLang">Next</span>
+                </button>
+                <button id="addUnitSubmitButton">انهاء</button>
               </div>
               <div class="swiper-pagination"></div>
             </div>
@@ -2581,7 +3151,16 @@
         </div>
       </div>
     </div>
-
+    <script
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet-src.js"
+      integrity="sha512-I5Hd7FcJ9rZkH7uD01G3AjsuzFy3gqz7HIJvzFZGFt2mrCS4Piw9bYZvCgUE0aiJuiZFYIJIwpbNnDIM6ohTrg=="
+      crossorigin=""
+    ></script>
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.8.0/build/js/intlTelInput.min.js"></script>
