@@ -2383,17 +2383,6 @@
         </div>
         <div class="addUintFormSide">
           <div class="swiperContainer" id="addUintFormSlider">
-            <div class="fourthSectionSlide" id="fourthSection">
-              <h2>
-                <span class="ArLang">عنوان العقار علي الخريطه </span
-                ><span class="EnLang"
-                  >The address of the property is on the map
-                </span>
-              </h2>
-              <div class="addUnitMap">
-                <div id="addUnitMap"></div>
-              </div>
-            </div>
             <div class="swiper addUnitSwiper">
               <div class="swiper-wrapper">
                 <div class="swiper-slide">
@@ -2411,7 +2400,7 @@
                         <span class="ArLang">البريد الالكتروني للمالك</span>
                         <span class="EnLang">Owmer Email</span>
                       </label>
-                      <input type="email" class="inputVal" />
+                      <input type="text" class="inputVal" autocomplete="off" />
                       <div class="errorMessage"></div>
                     </div>
                     <div class="inputContainer">
@@ -2509,6 +2498,7 @@
                       </label>
                       <input
                         hidden=""
+                        class="inputVal"
                         type="file"
                         accept="image/*"
                         onchange="displayImg(this)"
@@ -2530,6 +2520,7 @@
                           <span class="EnLang"> Upload Image </span>
                         </p>
                       </div>
+                      <div class="errorMessage"></div>
                     </div>
                     <div class="addPhoto">
                       <span data-maxCount="4" data-minCount="0" id="imgCounter"
@@ -2729,7 +2720,7 @@
                   </div>
                 </div>
                 <div class="swiper-slide">
-                  <div class="fourthSection"></div>
+                  <div class="fourthSection" id="fourthSection"></div>
                 </div>
                 <div class="swiper-slide">
                   <div class="fifthSection" id="fifthSection">
@@ -2742,33 +2733,37 @@
                         <span class="ArLang">مساحة الوحدة</span>
                         <span class="EnLang">Unit Area</span>
                       </label>
-                      <input type="number" name="" id="" />
+                      <input type="number" class="inputVal" id="" />
+                      <div class="errorMessage"></div>
                     </div>
                     <div class="inputContainer">
                       <label for="">
                         <span class="ArLang">عدد الأشخاص</span>
                         <span class="EnLang">Number of People</span>
                       </label>
-                      <input type="number" name="" id="" />
+                      <input type="number" class="inputVal" id="" />
+                      <div class="errorMessage"></div>
                     </div>
                     <div class="inputContainer">
                       <label for="">
                         <span class="ArLang">عدد السيارات</span>
                         <span class="EnLang"> Number of Cars</span>
                       </label>
-                      <input type="number" name="" id="" />
+                      <input type="number" class="inputVal" id="" />
+                      <div class="errorMessage"></div>
                     </div>
                     <div class="inputContainer">
                       <label for="">
                         <span class="ArLang">عدد الغرف</span>
                         <span class="EnLang">Number of Rooms</span>
                       </label>
-                      <input type="number" name="" id="" />
+                      <input type="number" class="inputVal" id="" />
+                      <div class="errorMessage"></div>
                     </div>
                   </div>
                 </div>
                 <div class="swiper-slide">
-                  <div class="sixthSection">
+                  <div class="sixthSection" id="sixthSection">
                     <h2>
                       <span class="ArLang">تفاصيل المجلس</span
                       ><span class="EnLang">Council Details</span>
@@ -2782,7 +2777,12 @@
                         <button id="decrease" onclick="decrease(this)">
                           -
                         </button>
-                        <input type="text" class="count" value="0" readonly />
+                        <input
+                          type="text"
+                          class="count inputVal"
+                          value="0"
+                          readonly
+                        />
                         <button id="increase" onclick="increase(this)">
                           +
                         </button>
@@ -2797,7 +2797,12 @@
                         <button id="decrease" onclick="decrease(this)">
                           -
                         </button>
-                        <input type="text" class="count" value="0" readonly />
+                        <input
+                          type="text"
+                          class="count inputVal"
+                          value="0"
+                          readonly
+                        />
                         <button id="increase" onclick="increase(this)">
                           +
                         </button>
@@ -2812,7 +2817,12 @@
                         <button id="decrease" onclick="decrease(this)">
                           -
                         </button>
-                        <input type="text" class="count" value="0" readonly />
+                        <input
+                          type="text"
+                          class="count inputVal"
+                          value="0"
+                          readonly
+                        />
                         <button id="increase" onclick="increase(this)">
                           +
                         </button>
@@ -2827,7 +2837,12 @@
                         <button id="decrease" onclick="decrease(this)">
                           -
                         </button>
-                        <input type="text" class="count" value="0" readonly />
+                        <input
+                          type="text"
+                          class="count inputVal"
+                          value="0"
+                          readonly
+                        />
                         <button id="increase" onclick="increase(this)">
                           +
                         </button>
@@ -2842,7 +2857,12 @@
                         <button id="decrease" onclick="decrease(this)">
                           -
                         </button>
-                        <input type="text" class="count" value="0" readonly />
+                        <input
+                          type="text"
+                          class="count inputVal"
+                          value="0"
+                          readonly
+                        />
                         <button id="increase" onclick="increase(this)">
                           +
                         </button>
@@ -2851,7 +2871,7 @@
                   </div>
                 </div>
                 <div class="swiper-slide">
-                  <div class="seventhSection">
+                  <div class="seventhSection" id="seventhSection">
                     <h2>
                       <span class="ArLang">تفاصيل الأسرة</span
                       ><span class="EnLang">Bedroom Details</span>
@@ -2865,7 +2885,12 @@
                         <button id="decrease" onclick="decrease(this)">
                           -
                         </button>
-                        <input type="text" class="count" value="0" readonly />
+                        <input
+                          type="text"
+                          class="count inputVal"
+                          value="0"
+                          readonly
+                        />
                         <button id="increase" onclick="increase(this)">
                           +
                         </button>
@@ -2880,7 +2905,12 @@
                         <button id="decrease" onclick="decrease(this)">
                           -
                         </button>
-                        <input type="text" class="count" value="0" readonly />
+                        <input
+                          type="text"
+                          class="count inputVal"
+                          value="0"
+                          readonly
+                        />
                         <button id="increase" onclick="increase(this)">
                           +
                         </button>
@@ -2895,7 +2925,12 @@
                         <button id="decrease" onclick="decrease(this)">
                           -
                         </button>
-                        <input type="text" class="count" value="0" readonly />
+                        <input
+                          type="text"
+                          class="count inputVal"
+                          value="0"
+                          readonly
+                        />
                         <button id="increase" onclick="increase(this)">
                           +
                         </button>
@@ -2904,7 +2939,26 @@
                   </div>
                 </div>
                 <div class="swiper-slide">
-                  <div class="eighthSection" id="eighthSection"></div>
+                  <div class="eighthSection" id="eighthSection">
+                    <h2>
+                      <span class="ArLang">ميزات الممتلكات الخاصة بك</span
+                      ><span class="EnLang">Bedroom Details</span>
+                    </h2>
+                    <div class="sectionTitle">
+                    <h3><span class="ArLang">مرافق الوحدة</span><span class="EnLang"></span></h3>
+                    <span class="ArLang"> ميزات الممتلكات الخاصة بك</span>
+                    <span class="EnLang">  </span>
+                    </div>
+                    <ul>
+                      <li>اوضة اطفال</li>
+                      <li>اوضة اطفال</li>
+                      <li>اوضة اطفال</li>
+                      <li>اوضة اطفال</li>
+                      <li>اوضة اطفال</li>
+                      <li>اوضة اطفال</li>
+                      <li>اوضة اطفال</li>
+                    </ul>
+                  </div>
                 </div>
                 <div class="swiper-slide">
                   <div class="ninthSection" id="ninthSection">
@@ -2921,15 +2975,17 @@
                         <span class="ArLang">سعر الوحدة</span>
                         <span class="EnLang">Unit Price</span>
                       </label>
-                      <input type="email" class="inputVal" />
+                      <input type="number" class="inputVal" />
                       <div class="errorMessage"></div>
                     </div>
                     <div class="inputContainer">
                       <label>
-                        <span class="ArLang">سعر الوحدة في عطلة نهاية الاسبوع</span>
+                        <span class="ArLang"
+                          >سعر الوحدة في عطلة نهاية الاسبوع</span
+                        >
                         <span class="EnLang">Unit Price During Weekend</span>
                       </label>
-                      <input type="email" class="inputVal" />
+                      <input type="number" class="inputVal" />
                       <div class="errorMessage"></div>
                     </div>
                     <div class="inputContainer">
@@ -2937,7 +2993,7 @@
                         <span class="ArLang">تأمين الوحدة</span>
                         <span class="EnLang">Unit Insurance</span>
                       </label>
-                      <input type="text" class="inputVal" />
+                      <input type="number" class="inputVal" />
                       <div class="errorMessage"></div>
                     </div>
                     <div class="inputContainer">
@@ -2953,7 +3009,7 @@
                         <span class="ArLang">وقت الوصول</span>
                         <span class="EnLang">Arrival Time</span>
                       </label>
-                      <input type="date" class="inputVal" />
+                      <input type="time" class="inputVal" />
                       <div class="errorMessage"></div>
                     </div>
                     <div class="inputContainer">
@@ -2961,7 +3017,7 @@
                         <span class="ArLang">وقت المغادرة</span>
                         <span class="EnLang">Departure Time</span>
                       </label>
-                      <input type="date" class="inputVal" />
+                      <input type="time" class="inputVal" />
                       <div class="errorMessage"></div>
                     </div>
                   </div>
@@ -2980,6 +3036,7 @@
                       <input
                         hidden=""
                         type="file"
+                        class="inputVal"
                         accept="image/*"
                         onchange="displayImg(this)"
                       />
@@ -3000,6 +3057,7 @@
                           <span class="EnLang"> Upload Image </span>
                         </p>
                       </div>
+                      <div class="errorMessage"></div>
                     </div>
                     <div class="inputContainer">
                       <label for="">
@@ -3008,6 +3066,7 @@
                       </label>
                       <input
                         hidden=""
+                        class="inputVal"
                         type="file"
                         accept="image/*"
                         onchange="displayImg(this)"
@@ -3029,6 +3088,7 @@
                           <span class="EnLang"> Upload Image </span>
                         </p>
                       </div>
+                      <div class="errorMessage"></div>
                     </div>
                     <div class="inputContainer">
                       <label for="">
@@ -3038,6 +3098,7 @@
                       <input
                         hidden=""
                         type="file"
+                        class="inputVal"
                         accept="image/*"
                         onchange="displayImg(this)"
                       />
@@ -3058,20 +3119,25 @@
                           <span class="EnLang"> Upload Image </span>
                         </p>
                       </div>
+                      <div class="errorMessage"></div>
                     </div>
                     <div class="inputContainer">
                       <label for="">
                         <span class="ArLang">تاريخ انتهاء الرخصة</span>
                         <span class="EnLang">License Expiry Date</span>
                       </label>
-                      <input type="date" name="" id="" />
+                      <input type="date" class="inputVal" id="" />
+                      <div class="errorMessage"></div>
                     </div>
                     <div class="inputContainer">
                       <label for="">
                         <span class="ArLang">تاريخ إنتهاء تسجيل الوحدة</span>
-                        <span class="EnLang">Unit Registeration Expiry Date</span>
+                        <span class="EnLang"
+                          >Unit Registeration Expiry Date</span
+                        >
                       </label>
-                      <input type="date" name="" id="" />
+                      <input type="date" class="inputVal" id="" />
+                      <div class="errorMessage"></div>
                     </div>
                   </div>
                 </div>
@@ -3081,17 +3147,25 @@
                       <span class="ArLang"> صف مكان الإقامة الخاص بك</span
                       ><span class="EnLang">Describe your property</span>
                     </h2>
-                    <p class="ArLang">تقديم وصف تفصيلي لمكان الإقامة الخاص بك</p>
-                    <p class="EnLang">Provide a detailed description of your property</p>
+                    <p class="ArLang">
+                      تقديم وصف تفصيلي لمكان الإقامة الخاص بك
+                    </p>
+                    <p class="EnLang">
+                      Provide a detailed description of your property
+                    </p>
                     <div class="inputContainer">
-                      <label >     <span class="ArLang">وصف العقار</span
-                        ><span class="EnLang">Property Description</span></label>
+                      <label>
+                        <span class="ArLang">وصف العقار</span
+                        ><span class="EnLang">Property Description</span></label
+                      >
                       <textarea name="" id="" class="inputVal"></textarea>
                       <div class="errorMessage"></div>
                     </div>
                     <div class="inputContainer">
-                      <label >     <span class="ArLang">ملاحظات</span
-                        ><span class="EnLang">Reviews</span></label>
+                      <label>
+                        <span class="ArLang">ملاحظات</span
+                        ><span class="EnLang">Reviews</span></label
+                      >
                       <textarea name="" id="" class="inputVal"></textarea>
                       <div class="errorMessage"></div>
                     </div>
@@ -3104,7 +3178,7 @@
                   id="swiperPrev"
                   class="swiperPrev"
                 >
-                <span class="ArLang">السابق</span
+                  <span class="ArLang">السابق</span
                   ><span class="EnLang">Back</span>
                 </button>
                 <button
@@ -3112,12 +3186,33 @@
                   id="swiperNext"
                   class="swiperNext"
                 >
-                <span class="ArLang">التالي</span
+                  <span class="ArLang">التالي</span
                   ><span class="EnLang">Next</span>
                 </button>
-                <button id="addUnitSubmitButton">انهاء</button>
+                <button id="addUnitSubmitButton" onclick="supmitFinalData()">
+                  <span class="ArLang">تأكيد</span
+                  ><span class="EnLang">Confirm</span>
+                </button>
               </div>
               <div class="swiper-pagination"></div>
+            </div>
+            <div class="fourthSectionSlide" id="fourthSectionSlide">
+              <h2>
+                <span class="ArLang">عنوان العقار علي الخريطه </span
+                ><span class="EnLang"
+                  >The address of the property is on the map
+                </span>
+              </h2>
+              <div class="addUnitMap">
+                <input
+                  type="text"
+                  id="newUnitLocation"
+                  class="inputVal"
+                  hidden
+                />
+                <div id="addUnitMap"></div>
+              </div>
+              <div class="errorMessage"></div>
             </div>
           </div>
           <div class="checkPoneNumberBox" id="checkPoneNumberBox">
@@ -3145,6 +3240,62 @@
             <button class="continueButton" onclick="addPhoneNumber()">
               <span class="ArLang">استمر</span
               ><span class="EnLang">Continue</span>
+              <i class="fa-solid fa-spinner fa-spin"></i>
+            </button>
+          </div>
+          <div class="addUintVerifyInputBox" id="addUintVerifyInputBox">
+            <h2 class="ArLang">أدخل رقم التحقق</h2>
+            <h2 class="EnLang">Enter verification number</h2>
+            <p class="ArLang">
+              تم إرسال رمز التحقق إلى
+              <span id="phoneNumber11"></span>
+            </p>
+            <p class="EnLang">
+              A verification code has been sent to
+              <span id="phoneNumber22"></span>
+            </p>
+            <div
+              class="errorMessage"
+              id="addUintVerificationCodeErrorMessage"
+            ></div>
+            <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+            <div class="addUintVerificationCodeInput" dir="ltr">
+              <input
+                class="verifiedInput"
+                autofocus
+                placeholder="*"
+                type="tel"
+                maxlength="1"
+              /><input
+                class="verifiedInput"
+                placeholder="*"
+                type="tel"
+                maxlength="1"
+              /><input
+                class="verifiedInput"
+                placeholder="*"
+                type="tel"
+                maxlength="1"
+              /><input
+                class="verifiedInput"
+                placeholder="*"
+                type="tel"
+                maxlength="1"
+              />
+            </div>
+            <span id="addUintVerificationCode"></span>
+            <p class="backToPhoneIput" onclick="addUnitBackToPhoneIput()">
+              <span class="ArLang">عد الي كتابة رقم الهاتف</span>
+              <span class="EnLang">Back to set phone</span
+              ><i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </p>
+
+            <button
+              class="continueButton"
+              onclick="AddUnitCheckVerfiedCode()"
+              id="addUintVerificationButton"
+            >
+              <span class="ArLang">تحقق</span><span class="EnLang">Verfiy</span>
               <i class="fa-solid fa-spinner fa-spin"></i>
             </button>
           </div>

@@ -546,7 +546,11 @@ document.addEventListener("click", (event) => {
 
 /////////////////////////////////////////////////////////////////////////
 const basicPhoneRegex = /^\+?(\d{2}|\d{3})[- ]?(\d{2,3})[- ]?(\d{4,8})$/;
+const emailRegex =
+  /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const addUnitScreen = document.getElementById("addYourUintSection");
+let defaultSlide = 0;
+let isConditionMet = false;
 
 function handelOpenAddUnitScreen() {
   $(addUnitScreen).fadeIn();
@@ -560,6 +564,7 @@ function handelcCloseAddUnitScreen() {
 
 let addUnitFormSwiper = new Swiper(".addUnitSwiper", {
   preventInteractionOnTransition: true,
+  touchStartPreventDefault: false,
   pagination: {
     el: ".swiper-pagination",
     type: "progressbar",
@@ -568,10 +573,9 @@ let addUnitFormSwiper = new Swiper(".addUnitSwiper", {
   grabCursor: false,
 });
 addUnitFormSwiper.on("slideChangeTransitionStart", function () {
-  console.log("hiii");
-
   if ($(this.slides[this.activeIndex]).find(".fourthSection").length > 0) {
-    document.querySelector(".fourthSectionSlide").style.display = "inline-block";
+    document.querySelector(".fourthSectionSlide").style.display =
+      "inline-block";
     let addUnitMap = L.map("addUnitMap", {
       zoomSnap: 3,
       dragging: true,
@@ -591,65 +595,277 @@ addUnitFormSwiper.on("slideChangeTransitionStart", function () {
       let lat = e.latlng.lat;
       let lng = e.latlng.lng;
       currentMarker = L.marker([lat, lng]).addTo(addUnitMap);
-      currentMarker.bindPopup("<h3> تم تحديد الموقع الجديد </h3>").openPopup();
-      console.log(lat, lng);
+      currentMarker
+        .bindPopup(
+          "<h3> <span class='ArLang'>تم تحديد الموقع </span> <span class='EnLang' >Location determined </span></h3>"
+        )
+        .openPopup();
+      reRenderLang();
+      document.getElementById("newUnitLocation").value = `${lat} , ${lng}`;
+      console.log(document.getElementById("newUnitLocation").value);
     });
 
     // Call invalidateSize() only if container is visible
     setTimeout(() => {
       addUnitMap.invalidateSize();
-    }, 1500);
+    }, 2000);
   } else {
     document.querySelector(".fourthSectionSlide").style.display = "none";
   }
 });
 
-let isConditionMet = false;
-
 function slideNext() {
+  if (defaultSlide == 0) {
+    addUnitFormSwiper.slideTo(0, 300);
+  }
+  addUnitFormSwiper.params.touchStartPreventDefault = true;
+  setTimeout(function () {
+    addUnitFormSwiper.params.touchStartPreventDefault = false;
+  }, 100);
   currentForm = addUnitFormSwiper.activeIndex;
   if (checkIsFormValid(currentForm)) {
     addUnitFormSwiper.slideNext();
   }
+
+  if (currentForm == 9 && checkIsFormValid(currentForm) != false) {
+    document.getElementById("swiperNext").style.display = "none";
+    document.getElementById("addUnitSubmitButton").style.display =
+      "inline-block";
+  } else {
+    document.getElementById("addUnitSubmitButton").style.display = "none";
+    document.getElementById("swiperNext").style.display = "inline-block";
+  }
 }
 function slidePrev() {
+  if (defaultSlide == 0) {
+    addUnitFormSwiper.slideTo(0, 300);
+  }
+  addUnitFormSwiper.params.touchStartPreventDefault = true;
+  setTimeout(function () {
+    addUnitFormSwiper.params.touchStartPreventDefault = false;
+  }, 100);
   addUnitFormSwiper.slidePrev();
   currentForm = addUnitFormSwiper.activeIndex;
+  document.getElementById("addUnitSubmitButton").style.display = "none";
+  document.getElementById("swiperNext").style.display = "inline-block";
 }
 
+const unitPhotos = [];
+const unitData = {};
 function checkIsFormValid(currentSlide) {
   let status = true;
-  // switch (currentSlide) {
-  //   case 0:
-  //     const form = document.querySelectorAll("#firstForm .inputVal");
-  //     form.forEach((input) => {
-  //       input
-  //         .closest(".inputContainer")
-  //         .querySelector(".errorMessage").innerHTML = "";
-  //       if (input.value == "") {
-  //         input
-  //           .closest(".inputContainer")
-  //           .querySelector(
-  //             ".errorMessage"
-  //           ).innerHTML = ` <span class="ArLang">الحقل مطلوب</span>
-  //               <span class="EnLang">field is required</span>`;
-  //         reRenderLang();
-  //         status = false;
-  //       }
-  //     });
-  //     break;
+  switch (currentSlide) {
+    case 0:
+      const form_1 = document.querySelectorAll("#firstForm .inputVal");
+      const f1SelectedList = document.querySelector("#firstForm .valueInput");
+      form_1.forEach((input) => {
+        input
+          .closest(".inputContainer")
+          .querySelector(".errorMessage").innerHTML = "";
+        if (input.value == "") {
+          input
+            .closest(".inputContainer")
+            .querySelector(
+              ".errorMessage"
+            ).innerHTML = ` <span class="ArLang">الحقل مطلوب</span>
+                <span class="EnLang">field is required</span>`;
+          reRenderLang();
+          status = false;
+        }
+      });
+      if (!emailRegex.test(form_1[0].value) && form_1[0].value != "") {
+        form_1[0]
+          .closest(".inputContainer")
+          .querySelector(
+            ".errorMessage"
+          ).innerHTML = ` <span class="ArLang">ادخل ايميل صحيح</span>
+            <span class="EnLang">field is required</span>`;
+        reRenderLang();
+        status = false;
+      }
+      if (status == true) {
+        defaultSlide = 1;
+        unitData.f1_inp1 = form_1[0].value;
+        unitData.f1_inp2 = form_1[1].value;
+        unitData.f1_inp3 = form_1[2].value;
+        unitData.f1_inp4 = f1SelectedList.value.trim();
+        unitData.f1_inp5 = form_1[4].value;
+      }
+      console.log(unitData);
 
-  //   default:
-  //     break;
-  // }
-  // if (currentSlide == 9) {
-  //   document.getElementById("swiperNext").style.display = "none";
-  //   document.getElementById("addUnitSubmitButton").style.display =
-  //     "inline-block";
-  // } else {
-  //   document.getElementById("addUnitSubmitButton").style.display = "none";
-  //   document.getElementById("swiperNext").style.display = "inline-block";
-  // }
+      break;
+    case 1:
+      const form_2 = document.querySelectorAll("#secondForm .inputVal");
+      form_2.forEach((input) => {
+        input
+          .closest(".inputContainer")
+          .querySelector(".errorMessage").innerHTML = "";
+        if (input.value == "") {
+          input
+            .closest(".inputContainer")
+            .querySelector(
+              ".errorMessage"
+            ).innerHTML = ` <span class="ArLang">الحقل مطلوب</span>
+                  <span class="EnLang">field is required</span>`;
+          reRenderLang();
+          status = false;
+        }
+      });
+      if (status == true) {
+        unitData.f2_inp1 = form_2[0].value;
+        unitData.f2_inp2 = unitPhotos;
+      }
+      console.log(unitData);
+      break;
+    case 2:
+      const form_3 = document.querySelectorAll("#thirdSection .inputVal");
+      const f3SelectedList = document.querySelectorAll(
+        "#thirdSection .valueInput"
+      );
+      form_3.forEach((input) => {
+        input
+          .closest(".inputContainer")
+          .querySelector(".errorMessage").innerHTML = "";
+        if (input.value == "") {
+          input
+            .closest(".inputContainer")
+            .querySelector(
+              ".errorMessage"
+            ).innerHTML = ` <span class="ArLang">الحقل مطلوب</span>
+                  <span class="EnLang">field is required</span>`;
+          reRenderLang();
+          status = false;
+        }
+      });
+      if (status == true) {
+        unitData.f3_inp1 = f3SelectedList[0].value.trim();
+        unitData.f3_inp2 = f3SelectedList[1].value.trim();
+        unitData.f3_inp3 = f3SelectedList[2].value.trim();
+      }
+      console.log(unitData);
+      break;
+    case 3:
+      const form_4 = document.querySelectorAll("#fourthSectionSlide .inputVal");
+      form_4.forEach((input) => {
+        input
+          .closest(".fourthSectionSlide")
+          .querySelector(".errorMessage").innerHTML = "";
+        if (input.value == "") {
+          input
+            .closest(".fourthSectionSlide")
+            .querySelector(
+              ".errorMessage"
+            ).innerHTML = ` <span class="ArLang">الحقل مطلوب</span>
+                  <span class="EnLang">field is required</span>`;
+          reRenderLang();
+          status = false;
+        }
+      });
+      if (status == true) {
+        unitData.f4_inp1 = form_4[0].value;
+      }
+      console.log(unitData);
+      break;
+    case 4:
+      const form_5 = document.querySelectorAll("#fifthSection .inputVal");
+      form_5.forEach((input) => {
+        input
+          .closest(".inputContainer")
+          .querySelector(".errorMessage").innerHTML = "";
+        if (input.value == "") {
+          input
+            .closest(".inputContainer")
+            .querySelector(
+              ".errorMessage"
+            ).innerHTML = ` <span class="ArLang">الحقل مطلوب</span>
+                  <span class="EnLang">field is required</span>`;
+          reRenderLang();
+          status = false;
+        }
+      });
+      if (status == true) {
+        unitData.f5_inp1 = form_5[0].value;
+        unitData.f5_inp2 = form_5[1].value;
+        unitData.f5_inp3 = form_5[2].value;
+        unitData.f5_inp4 = form_5[3].value;
+      }
+      console.log(unitData);
+      break;
+    case 5:
+      const form_6 = document.querySelectorAll("#sixthSection .inputVal");
+      unitData.f6_inp1 = form_6[0].value;
+      unitData.f6_inp2 = form_6[1].value;
+      unitData.f6_inp3 = form_6[2].value;
+      unitData.f6_inp4 = form_6[3].value;
+      unitData.f6_inp5 = form_6[4].value;
+      console.log(unitData);
+      break;
+    case 6:
+      const form_7 = document.querySelectorAll("#seventhSection .inputVal");
+      unitData.f7_inp1 = form_7[0].value;
+      unitData.f7_inp2 = form_7[1].value;
+      unitData.f7_inp3 = form_7[2].value;
+      console.log(unitData);
+      break;
+
+    case 8:
+      const form_9 = document.querySelectorAll("#ninthSection .inputVal");
+      form_9.forEach((input) => {
+        input
+          .closest(".inputContainer")
+          .querySelector(".errorMessage").innerHTML = "";
+        if (input.value == "") {
+          input
+            .closest(".inputContainer")
+            .querySelector(
+              ".errorMessage"
+            ).innerHTML = ` <span class="ArLang">الحقل مطلوب</span>
+                  <span class="EnLang">field is required</span>`;
+          reRenderLang();
+          status = false;
+        }
+      });
+      if (status == true) {
+        unitData.f8_inp1 = form_9[0].value;
+        unitData.f8_inp2 = form_9[1].value;
+        unitData.f8_inp3 = form_9[2].value;
+        unitData.f8_inp4 = form_9[3].value;
+        unitData.f8_inp5 = form_9[4].value;
+        unitData.f8_inp6 = form_9[5].value;
+      }
+      console.log(unitData);
+      break;
+    case 9:
+      const form_10 = document.querySelectorAll("#tenthSection .inputVal");
+      form_10.forEach((input) => {
+        input
+          .closest(".inputContainer")
+          .querySelector(".errorMessage").innerHTML = "";
+        if (input.value == "") {
+          input
+            .closest(".inputContainer")
+            .querySelector(
+              ".errorMessage"
+            ).innerHTML = ` <span class="ArLang">الحقل مطلوب</span>
+                  <span class="EnLang">field is required</span>`;
+          reRenderLang();
+          status = false;
+        }
+      });
+      if (status == true) {
+        unitData.f9_inp1 = form_10[0].value;
+        unitData.f9_inp2 = form_10[1].value;
+        unitData.f9_inp3 = form_10[2].value;
+        unitData.f9_inp4 = form_10[3].value;
+        unitData.f9_inp5 = form_10[4].value;
+      }
+      console.log(unitData);
+
+      break;
+
+    default:
+      break;
+  }
 
   return status;
 }
@@ -696,7 +912,17 @@ function addPhoneNumber() {
     ////////////////////////// if response is successful ///////////////////////////////
     if (basicPhoneRegex.test(phone) /*&& response == "success"*/) {
       document.getElementById("checkPoneNumberBox").style.display = "none";
-      document.getElementById("addUintFormSlider").style.display = "flex";
+      document.getElementById("addUintVerifyInputBox").style.display = "flex";
+      const addUintVerificationCodeInput = document.querySelectorAll(
+        ".addUintVerificationCodeInput input"
+      );
+      addUintVerificationCodeInput.forEach((input) => {
+        input.value = "";
+      });
+
+      addUintVerificationCodeInput[0].disabled = false;
+      addUintVerificationCodeInput[3].disabled = true;
+      addUintVerificationCodeInput[0].focus();
     } else {
       ///////////////////////////// if response is failed ///////////////////////////////////
       errorMsg.innerHTML = `<span class="ArLang">رقم الهاتف غير صالح</span><span class="EnLang">phone is not valid</span>`;
@@ -724,23 +950,26 @@ function addMainPhoto(event, element) {
 }
 
 function displayImg(input) {
-  const reader = new FileReader();
-  reader.readAsDataURL(input.files[0]);
-  reader.onload = () => {
-    const image = input
-      .closest(".inputContainer")
-      .querySelector(".imageUploaded img");
-    image.src = reader.result;
-  };
+  if (input.value != "") {
+    const reader = new FileReader();
+    reader.readAsDataURL(input.files[0]);
+    reader.onload = () => {
+      const image = input
+        .closest(".inputContainer")
+        .querySelector(".imageUploaded img");
+      image.src = reader.result;
+    };
 
-  input
-    .closest(".inputContainer")
-    .querySelector(".imageUploaded").style.display = "flex";
+    input
+      .closest(".inputContainer")
+      .querySelector(".imageUploaded").style.display = "flex";
+  }
 }
 
 function deleteImage(element) {
   element.closest(".imageUploaded").style.display = "none";
   element.closest(".imageUploaded").querySelector("img").src = "";
+  element.closest(".inputContainer").querySelector(".inputVal").value = "";
 }
 
 const addImgInput = document.getElementById("addImgInput");
@@ -748,11 +977,19 @@ const imageCounter = document.getElementById("imgCounter");
 const displayCounter = document.getElementById("displayCounter");
 
 function deleteImageSection(element) {
+  console.log(element);
+
   let minCount = imageCounter.dataset.mincount;
   if (Number(minCount) > 0) {
     element.closest(".inputContainer").remove();
     imageCounter.dataset.mincount = Number(minCount) - 1;
     displayCounter.innerText = imageCounter.dataset.mincount;
+    const deletedInput = element
+      .closest(".inputContainer")
+      .querySelector(".inputVal");
+
+    const inputIndex = unitPhotos.findIndex((x) => x == deletedInput.value);
+    unitPhotos.splice(inputIndex, 1);
   }
 }
 
@@ -773,10 +1010,16 @@ addImgInput.onchange = (e) => {
     const section = `
                     <input
                       hidden=""
-                      class="unitPhoto"
+                      class="unitPhoto "
                       type="file"
                       accept="image/*"
-                      value="${reader.result}"
+                    />
+                    <input
+                      hidden=""
+                      class=" inputVal"
+                      type="text"
+                      value="${addImgInput.files}"
+                      hidden
                     />
                     <div class="uploadImage">
                       <div class="imageBox">
@@ -791,7 +1034,9 @@ addImgInput.onchange = (e) => {
                           alt=""
                         />
                       </div>
-                    </div>`;
+                    </div>
+                       <div class="errorMessage"></div>
+                    `;
     document.getElementById("lodingSpiner").style.display = "none";
     const newDiv = document.createElement("div");
     let minCount = imageCounter.dataset.mincount;
@@ -801,6 +1046,7 @@ addImgInput.onchange = (e) => {
     newDiv.className = "inputContainer";
     newDiv.innerHTML = section;
     secondForm.appendChild(newDiv);
+    unitPhotos.push(addImgInput.files);
   };
 };
 
@@ -817,4 +1063,143 @@ function decrease(element) {
   if (countInput.value > 0) {
     countInput.value = parseInt(countInput.value) - 1;
   }
+}
+////////////////////////////////////////////////////////////
+
+const addUintVerificationCodeInput = document.querySelectorAll(
+  ".addUintVerificationCodeInput input"
+);
+const addUintVerificationButton = document.getElementById(
+  "addUintVerificationButton"
+);
+addUintVerificationCodeInput[0].addEventListener("focus", () => {
+  navigator.clipboard.readText().then((clipText) => {
+    if (clipText.length == 4 && !isNaN(clipText)) {
+      const verificationCode = clipText.split("");
+      addUintVerificationCodeInput.forEach((input, index) => {
+        input.value = verificationCode[index];
+        if (index < 3) {
+          input.disabled = true;
+        }
+      });
+      addUintVerificationCodeInput[3].focus();
+    }
+  });
+});
+
+addUintVerificationCodeInput.forEach((input) => {
+  let lastInputStatus = 0;
+  input.onkeyup = (event) => {
+    const currentElement = event.target;
+    const nextElement = input.nextElementSibling;
+    const prevElement = input.previousElementSibling;
+
+    if (prevElement && event.keyCode === 8) {
+      if (lastInputStatus === 1) {
+        currentElement.disabled = true;
+        prevElement.disabled = false;
+        prevElement.value = "";
+        prevElement.focus();
+      }
+      addUintVerificationButton.setAttribute("disabled", true);
+      lastInputStatus = 1;
+    } else {
+      const regex = /^[0-9]+$/;
+      if (!regex.test(currentElement.value)) {
+        currentElement.value = currentElement.value.replace(/\D/g, "");
+      } else if (currentElement.value) {
+        if (nextElement) {
+          currentElement.disabled = true;
+          nextElement.disabled = false;
+          nextElement.focus();
+        } else {
+          addUintVerificationButton.removeAttribute("disabled");
+        }
+      }
+    }
+  };
+});
+
+function AddUnitCheckVerfiedCode() {
+  const errorMsg = document.getElementById(
+    "addUintVerificationCodeErrorMessage"
+  );
+  let values = Array.from(addUintVerificationCodeInput).map(
+    (input) => input.value
+  );
+  if (!values.includes("")) {
+    let verifiedCode = "";
+    addUintVerificationCodeInput.forEach((input) => {
+      verifiedCode += input.value;
+    });
+    const continueButton = document.getElementById("addUintVerificationButton");
+    continueButton
+      .querySelectorAll("span")
+      .forEach((span) => (span.style.display = "none"));
+    continueButton.querySelector("i").style.display = "block";
+    continueButton.disabled = true;
+    setTimeout(() => {
+      continueButton.disabled = false;
+      continueButton
+        .querySelectorAll("span")
+        .forEach((span) => (span.style.display = "inline-block"));
+      continueButton.querySelector("i").style.display = "none";
+      reRenderLang();
+      ////////////////////////// if response is successful ///////////////////////////////
+      if (verifiedCode == "0000") {
+        document.getElementById("addUintFormSlider").style.display = "flex";
+        document.getElementById("addUintVerifyInputBox").style.display = "none";
+      } else {
+        errorMsg.innerHTML = `<span class="ArLang"> الرقم المتغير غير صالح</span>
+        <span class="EnLang">vervified code is not valid</span>`;
+        reRenderLang();
+      }
+    }, 3000);
+  }
+}
+
+function addUnitBackToPhoneIput() {
+  document.getElementById("checkPoneNumberBox").style.display = "flex";
+  document.getElementById("addUintVerifyInputBox").style.display = "none";
+}
+
+function supmitFinalData() {
+  const status = true;
+  const form_11 = document.querySelectorAll("#eleventhSection .inputVal");
+  form_11.forEach((input) => {
+    input.closest(".inputContainer").querySelector(".errorMessage").innerHTML =
+      "";
+    if (input.value == "") {
+      input
+        .closest(".inputContainer")
+        .querySelector(
+          ".errorMessage"
+        ).innerHTML = ` <span class="ArLang">الحقل مطلوب</span>
+              <span class="EnLang">field is required</span>`;
+      reRenderLang();
+      status = false;
+    }
+  });
+  if (status == true) {
+    unitData.f10_inp1 = form_11[0].value;
+    unitData.f10_inp2 = form_11[1].value;
+    handelcCloseAddUnitScreen();
+    let message;
+    if (lang == "rtl") {
+      message = "Unit has been added successfully";
+    } else {
+      message = "تم اضافة الوحدة بنجاح";
+    }
+    Swal.fire({
+      position: "center",
+      icon: `success`,
+      title: `${message}`,
+      showConfirmButton: false,
+      timer: 1500,
+      iconColor: "#a99571",
+    });
+  }
+  // ajex call here
+  // final data is unitData
+  console.log(unitData);
 }
